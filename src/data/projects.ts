@@ -29,7 +29,7 @@ export interface Project {
   reflection: { fr: string; en: string };
   thumbnail: string;
   images: string[];
-  links?: { github?: string; live?: string };
+  links?: { github?: string; live?: string; video?: string };
 }
 
 export const projects: Project[] = [
@@ -395,6 +395,158 @@ This was my very first professional experience and it was extremely formative. I
     links: { live: "https://tama-stat.vercel.app/" }
   },
   {
+    slug: "referendum",
+    title: "Referendum — Application de Vote Sécurisée",
+    category: "university",
+    technologies: ["Java", "JavaFX", "ElGamal", "Cryptographie", "Sockets", "Scrum", "Git"],
+    duration: { fr: "Toute la deuxième année de BUT 2 (Projet de fin d'année)", en: "Full second year of CS degree (Year-end project)" },
+    team: { fr: "Groupe de 4 étudiants", en: "Group of 4 students" },
+    role: { fr: "Product Owner & Développeur Cryptographie — Chiffrement ElGamal et sécurisation des sockets", en: "Product Owner & Cryptography Developer — ElGamal encryption and socket security" },
+    shortDescription: {
+      fr: "Application de vote sécurisée développée en Java/JavaFX pour une entreprise fictive (cas d'étude), avec chiffrement ElGamal et méthodologie Scrum sur toute une année universitaire.",
+      en: "Secure voting application developed in Java/JavaFX for a fictional company (case study), with ElGamal encryption and Scrum methodology over a full academic year."
+    },
+    context: {
+      fr: `Referendum est le projet de fin de deuxième année de BUT Informatique. C'est le projet le plus structurant de la formation : il a duré toute l'année universitaire et a été mené avec la méthodologie Scrum dans des conditions proches du monde professionnel.
+
+Le cas d'étude était une entreprise fictive qui avait besoin de faire voter ses employés de manière sécurisée. Notre mission était de concevoir et développer une application de vote complète, garantissant la confidentialité des votes, l'intégrité des résultats et l'authentification des votants.
+
+Nous étions une équipe de 4 étudiants, et j'occupais le rôle de Product Owner. À ce titre, je gérais le backlog produit, priorisais les fonctionnalités, et faisais le lien entre les "besoins client" (définis par les enseignants) et l'équipe de développement. Mais j'avais aussi un rôle technique majeur : j'étais responsable de toute la partie cryptographie (chiffrement ElGamal, imposé par les professeurs) et de la sécurisation des communications par sockets.
+
+Le projet était découpé en plusieurs phases : des sprints avec des rendus réguliers, puis un nouveau contrat où nous devions améliorer davantage l'application, suivis de nouveaux sprints. Chaque phase comprenait des présentations orales devant un "client" (les enseignants), la rédaction de dossiers techniques, et des soutenances.`,
+      en: `Referendum is the final project of the second year of the Computer Science degree. It's the most structuring project of the program: it lasted the entire academic year and was conducted using Scrum methodology under conditions close to the professional world.
+
+The case study was a fictional company that needed its employees to vote securely. Our mission was to design and develop a complete voting application, guaranteeing vote confidentiality, result integrity, and voter authentication.
+
+We were a team of 4 students, and I held the role of Product Owner. In this capacity, I managed the product backlog, prioritized features, and served as the link between "client needs" (defined by instructors) and the development team. But I also had a major technical role: I was responsible for the entire cryptography part (ElGamal encryption, imposed by the professors) and for securing socket communications.
+
+The project was divided into several phases: sprints with regular deliveries, then a new contract where we had to further improve the application, followed by more sprints. Each phase included oral presentations to a "client" (the instructors), technical documentation writing, and defenses.`
+    },
+    objectives: {
+      fr: `1. **Application de vote sécurisée** : Développer une application Java/JavaFX permettant de créer des scrutins, de voter de manière confidentielle, et de consulter les résultats de manière sécurisée.
+
+2. **Chiffrement ElGamal** : Implémenter le protocole cryptographique ElGamal (imposé par les professeurs) pour garantir la confidentialité des votes. C'était ma partie principale dans l'équipe.
+
+3. **Sécurisation des sockets** : Mettre en place une communication client-serveur sécurisée via des sockets chiffrés, pour empêcher l'interception ou la manipulation des votes en transit.
+
+4. **Méthodologie Scrum** : Travailler en sprints avec des rendus réguliers, des rétrospectives, un backlog priorisé, et des présentations client orales.
+
+5. **Documentation technique** : Rédiger des dossiers techniques complets à chaque phase du projet (architecture, choix techniques, diagrammes UML, tests).`,
+      en: `1. **Secure voting application**: Develop a Java/JavaFX application allowing creation of polls, confidential voting, and secure result viewing.
+
+2. **ElGamal encryption**: Implement the ElGamal cryptographic protocol (imposed by professors) to guarantee vote confidentiality. This was my main part within the team.
+
+3. **Socket security**: Set up secure client-server communication via encrypted sockets, to prevent interception or manipulation of votes in transit.
+
+4. **Scrum methodology**: Work in sprints with regular deliveries, retrospectives, a prioritized backlog, and oral client presentations.
+
+5. **Technical documentation**: Write complete technical documents at each project phase (architecture, technical choices, UML diagrams, tests).`
+    },
+    approach: {
+      fr: `Le projet a suivi la méthodologie Scrum sur toute l'année. En tant que Product Owner, j'organisais les sprint plannings, maintenais le backlog, et présentais les démos au "client" (les enseignants) à chaque fin de sprint. À la fin de chaque cycle, nous recevions un nouveau contrat avec des exigences supplémentaires, simulant l'évolution des besoins d'un vrai client.
+
+Côté technique, l'application est développée en Java avec une interface JavaFX. Mon rôle technique principal était le chiffrement ElGamal — un système de cryptographie asymétrique à clé publique. Le principe : chaque vote est chiffré avec la clé publique du scrutin avant d'être envoyé au serveur. Seul le détenteur de la clé privée peut déchiffrer les votes à la clôture du scrutin. Cela garantit que personne — pas même le serveur — ne peut lire un vote individuel avant la fin du scrutin.
+
+J'ai également sécurisé les communications par sockets entre le client et le serveur. Les échanges sont chiffrés pour empêcher toute interception (man-in-the-middle) ou manipulation des données en transit.
+
+Le reste de l'équipe travaillait sur l'interface JavaFX, la gestion des utilisateurs, la base de données et la logique métier des scrutins. Nous faisions des revues de code régulières et utilisions Git pour la gestion du code source.`,
+      en: `The project followed Scrum methodology throughout the year. As Product Owner, I organized sprint plannings, maintained the backlog, and presented demos to the "client" (instructors) at each sprint end. At the end of each cycle, we received a new contract with additional requirements, simulating the evolving needs of a real client.
+
+On the technical side, the application is developed in Java with a JavaFX interface. My main technical role was ElGamal encryption — an asymmetric public-key cryptography system. The principle: each vote is encrypted with the poll's public key before being sent to the server. Only the private key holder can decrypt votes when the poll closes. This ensures that nobody — not even the server — can read an individual vote before the poll ends.
+
+I also secured socket communications between client and server. Exchanges are encrypted to prevent any interception (man-in-the-middle) or data manipulation in transit.
+
+The rest of the team worked on the JavaFX interface, user management, database, and poll business logic. We conducted regular code reviews and used Git for source code management.`
+    },
+    architecture: {
+      fr: `Application Java client-serveur avec interface JavaFX :
+- **Client JavaFX** : Interface graphique pour la création de scrutins, le vote et la consultation des résultats.
+- **Serveur Java** : Gestion des scrutins, stockage des votes chiffrés, déchiffrement à la clôture.
+- **Cryptographie ElGamal** : Génération de clés (publique/privée), chiffrement des votes côté client, déchiffrement côté serveur à la clôture du scrutin.
+- **Sockets sécurisés** : Communication client-serveur chiffrée pour protéger les échanges de données.
+- **Méthodologie** : Scrum avec sprints, backlog, rétrospectives, présentations client, dossiers techniques.`,
+      en: `Java client-server application with JavaFX interface:
+- **JavaFX Client**: GUI for poll creation, voting, and result viewing.
+- **Java Server**: Poll management, encrypted vote storage, decryption at poll closure.
+- **ElGamal Cryptography**: Key generation (public/private), client-side vote encryption, server-side decryption at poll closure.
+- **Secure Sockets**: Encrypted client-server communication to protect data exchanges.
+- **Methodology**: Scrum with sprints, backlog, retrospectives, client presentations, technical documents.`
+    },
+    skills: [
+      {
+        name: { fr: "Cryptographie — ElGamal", en: "Cryptography — ElGamal" },
+        description: { fr: "Implémentation complète du protocole ElGamal : génération de clés asymétriques, chiffrement et déchiffrement des votes. Compréhension des fondements mathématiques (logarithme discret, arithmétique modulaire) et des enjeux de sécurité.", en: "Complete implementation of the ElGamal protocol: asymmetric key generation, vote encryption and decryption. Understanding of mathematical foundations (discrete logarithm, modular arithmetic) and security challenges." }
+      },
+      {
+        name: { fr: "Sécurisation des sockets", en: "Socket Security" },
+        description: { fr: "Mise en place de communications client-serveur chiffrées via sockets Java, protection contre l'interception et la manipulation des données en transit.", en: "Implementation of encrypted client-server communications via Java sockets, protection against interception and data manipulation in transit." }
+      },
+      {
+        name: { fr: "Product Owner (Scrum)", en: "Product Owner (Scrum)" },
+        description: { fr: "Gestion du backlog produit, priorisation des fonctionnalités, organisation des sprints, présentations client orales, rédaction de dossiers techniques. Interface entre les besoins client et l'équipe de développement.", en: "Product backlog management, feature prioritization, sprint organization, oral client presentations, technical document writing. Interface between client needs and the development team." }
+      },
+      {
+        name: { fr: "Java avancé & JavaFX", en: "Advanced Java & JavaFX" },
+        description: { fr: "Développement d'une application desktop Java complète avec interface graphique JavaFX, gestion d'événements, et architecture client-serveur.", en: "Development of a complete Java desktop application with JavaFX GUI, event handling, and client-server architecture." }
+      }
+    ],
+    codeHighlights: [
+      {
+        title: { fr: "Extraits de code à venir", en: "Code excerpts coming soon" },
+        code: `// Les extraits de code seront ajoutés prochainement
+// Code excerpts will be added soon
+
+// Referendum — Application de Vote Sécurisée
+// Chiffrement ElGamal & Sécurisation des Sockets
+// ElGamal Encryption & Socket Security`,
+        language: "java",
+        explanation: {
+          fr: "Les extraits de code détaillés du projet Referendum seront ajoutés prochainement, avec des exemples concrets de l'implémentation du chiffrement ElGamal et de la sécurisation des communications par sockets.",
+          en: "Detailed code excerpts from the Referendum project will be added soon, with concrete examples of the ElGamal encryption implementation and socket communication security."
+        }
+      }
+    ],
+    results: {
+      fr: `Le projet Referendum a été mené avec succès sur toute l'année universitaire :
+
+- **Application de vote fonctionnelle et sécurisée** : Création de scrutins, vote confidentiel avec chiffrement ElGamal, consultation des résultats après clôture, le tout via une interface JavaFX intuitive.
+- **Cryptographie ElGamal opérationnelle** : Le système de chiffrement asymétrique garantit que les votes sont illisibles en transit et en stockage, et ne sont déchiffrés qu'à la clôture du scrutin.
+- **Communications sécurisées** : Les échanges client-serveur via sockets sont chiffrés, empêchant toute interception.
+- **Méthodologie Scrum respectée** : Sprints réguliers, rendus, amélioration continue via les nouveaux contrats, présentations orales devant le client, et dossiers techniques complets à chaque phase.
+- **Travail d'équipe structuré** : Collaboration efficace à 4, avec des rôles clairs et une bonne répartition du travail.`,
+      en: `The Referendum project was successfully conducted throughout the academic year:
+
+- **Functional and secure voting application**: Poll creation, confidential voting with ElGamal encryption, result viewing after closure, all through an intuitive JavaFX interface.
+- **Operational ElGamal cryptography**: The asymmetric encryption system ensures votes are unreadable in transit and storage, and are only decrypted at poll closure.
+- **Secure communications**: Client-server exchanges via sockets are encrypted, preventing any interception.
+- **Scrum methodology respected**: Regular sprints, deliveries, continuous improvement through new contracts, oral presentations to the client, and complete technical documents at each phase.
+- **Structured teamwork**: Effective collaboration of 4, with clear roles and good work distribution.`
+    },
+    reflection: {
+      fr: `Le projet Referendum est celui qui m'a le plus apporté sur le plan professionnel pendant ma formation :
+
+1. **Le rôle de Product Owner** m'a appris à voir un projet au-delà du code. Gérer un backlog, prioriser les fonctionnalités en fonction de la valeur métier, et présenter un produit à un client — ce sont des compétences que je n'aurais pas développées en restant uniquement développeur.
+
+2. **La cryptographie ElGamal** m'a confronté à un domaine que je ne connaissais pas du tout. Comprendre les fondements mathématiques, implémenter un protocole de chiffrement asymétrique, et garantir la sécurité des votes m'a donné une vraie sensibilité à la cybersécurité et à la rigueur qu'elle exige.
+
+3. **La durée du projet** (toute l'année) m'a appris la gestion sur le long terme : maintenir la motivation, gérer la dette technique, et s'adapter aux changements de périmètre à chaque nouveau contrat. C'est très différent d'un projet de quelques semaines.
+
+4. **Les présentations orales et dossiers techniques** m'ont forcé à structurer ma pensée et à expliquer des concepts complexes de manière accessible. C'est une compétence essentielle que le code seul ne développe pas.`,
+      en: `The Referendum project taught me the most on a professional level during my studies:
+
+1. **The Product Owner role** taught me to see a project beyond the code. Managing a backlog, prioritizing features based on business value, and presenting a product to a client — these are skills I wouldn't have developed by staying purely a developer.
+
+2. **ElGamal cryptography** confronted me with a domain I knew nothing about. Understanding the mathematical foundations, implementing an asymmetric encryption protocol, and ensuring vote security gave me a genuine sensitivity to cybersecurity and the rigor it demands.
+
+3. **The project duration** (the full year) taught me long-term management: maintaining motivation, managing technical debt, and adapting to scope changes with each new contract. It's very different from a project lasting just a few weeks.
+
+4. **Oral presentations and technical documents** forced me to structure my thinking and explain complex concepts in an accessible way. It's an essential skill that code alone doesn't develop.`
+    },
+    thumbnail: "/images/referendum.jpg",
+    images: ["/images/referendum1.jpg", "/images/referendum2.jpg", "/images/referendum3.jpg", "/images/referendum4.jpg", "/images/referendum5.jpg"],
+    links: { github: "https://github.com/killianrms/referendum", video: "https://youtu.be/F3I_4daMcuk" }
+  },
+  {
     slug: "site-ecommerce-parfum",
     title: "Site E-commerce de Parfums",
     category: "university",
@@ -533,132 +685,6 @@ The main difficulty was managing the cart in session while maintaining consisten
     thumbnail: "/images/ecommerce.jpg",
     images: [],
     links: { github: "https://github.com/killianrms/ecommerce-parfum" }
-  },
-  {
-    slug: "referendum",
-    title: "Referendum",
-    category: "university",
-    technologies: ["Java", "JavaFX", "FXML", "CSS", "MVC", "SQLite"],
-    duration: { fr: "Octobre — Décembre 2023 (Projet universitaire)", en: "October — December 2023 (University project)" },
-    team: { fr: "Groupe de 3 étudiants", en: "Group of 3 students" },
-    role: { fr: "Développeur principal — Architecture et interface graphique", en: "Lead Developer — Architecture and GUI" },
-    shortDescription: {
-      fr: "Application de bureau développée en Java/JavaFX permettant la création et la gestion de référendums avec système de vote sécurisé.",
-      en: "Desktop application developed in Java/JavaFX enabling the creation and management of referendums with a secure voting system."
-    },
-    context: {
-      fr: `Dans le cadre du module de développement d'applications du BUT Informatique, nous avons conçu et développé une application de bureau en Java/JavaFX permettant d'organiser et de gérer des référendums numériques. L'application devait respecter le pattern MVC et offrir une interface graphique ergonomique.
-
-Le contexte pédagogique mettait l'accent sur la programmation orientée objet avancée, l'utilisation de design patterns, et la séparation entre la logique métier et l'interface utilisateur. Le projet nous a également amené à réfléchir sur les problématiques de sécurité du vote électronique, même dans un cadre simplifié.`,
-      en: `As part of the application development module in the Computer Science degree, we designed and developed a desktop application in Java/JavaFX for organizing and managing digital referendums. The application had to follow the MVC pattern and offer an ergonomic graphical interface.
-
-The pedagogical context emphasized advanced object-oriented programming, the use of design patterns, and the separation between business logic and user interface. The project also led us to think about electronic voting security issues, even in a simplified context.`
-    },
-    objectives: {
-      fr: `1. Concevoir une application desktop en Java avec interface graphique JavaFX
-2. Implémenter le pattern MVC pour séparer la logique métier de l'interface
-3. Gérer la persistance des données avec SQLite
-4. Assurer l'unicité du vote par utilisateur et la confidentialité des résultats
-5. Créer une interface utilisateur intuitive et responsive`,
-      en: `1. Design a desktop application in Java with JavaFX GUI
-2. Implement the MVC pattern to separate business logic from the interface
-3. Manage data persistence with SQLite
-4. Ensure vote uniqueness per user and result confidentiality
-5. Create an intuitive and responsive user interface`
-    },
-    approach: {
-      fr: `L'application a été structurée selon le pattern MVC avec JavaFX :
-
-- **Modèle** : Classes Java représentant les entités métier (Referendum, Vote, User) avec accès à la base SQLite via JDBC.
-- **Vue** : Fichiers FXML définissant la structure de l'interface, stylés avec CSS pour un rendu moderne.
-- **Contrôleur** : Classes Java liées aux vues FXML, gérant les interactions utilisateur et orchestrant les appels au modèle.
-
-La sécurité du vote a été assurée par un système de hashage des identifiants de votants, rendant impossible le lien entre un vote et un utilisateur tout en garantissant l'unicité du vote. Les résultats ne sont accessibles qu'après la clôture du référendum.`,
-      en: `The application was structured according to the MVC pattern with JavaFX:
-
-- **Model**: Java classes representing business entities (Referendum, Vote, User) with SQLite database access via JDBC.
-- **View**: FXML files defining the interface structure, styled with CSS for a modern look.
-- **Controller**: Java classes linked to FXML views, managing user interactions and orchestrating model calls.
-
-Vote security was ensured by a voter identifier hashing system, making it impossible to link a vote to a user while guaranteeing vote uniqueness. Results are only accessible after the referendum closes.`
-    },
-    architecture: {
-      fr: `Application JavaFX structurée en MVC :
-- **Model** : Entités Java + DAO (Data Access Object) pour l'accès SQLite
-- **View** : FXML + CSS pour l'interface graphique
-- **Controller** : Contrôleurs JavaFX liés aux vues FXML
-- **Service** : Couche service pour la logique métier (VoteService, ReferendumService)`,
-      en: `JavaFX application structured in MVC:
-- **Model**: Java entities + DAO (Data Access Object) for SQLite access
-- **View**: FXML + CSS for the graphical interface
-- **Controller**: JavaFX controllers linked to FXML views
-- **Service**: Service layer for business logic (VoteService, ReferendumService)`
-    },
-    skills: [
-      {
-        name: { fr: "Java avancé & POO", en: "Advanced Java & OOP" },
-        description: { fr: "Utilisation avancée de l'héritage, du polymorphisme, des interfaces et des design patterns (DAO, Observer, Singleton) dans un projet concret.", en: "Advanced use of inheritance, polymorphism, interfaces, and design patterns (DAO, Observer, Singleton) in a concrete project." }
-      },
-      {
-        name: { fr: "Interface graphique JavaFX", en: "JavaFX GUI" },
-        description: { fr: "Conception d'interfaces utilisateur avec JavaFX et FXML, gestion des événements, binding de propriétés et stylisation CSS.", en: "User interface design with JavaFX and FXML, event handling, property binding, and CSS styling." }
-      }
-    ],
-    codeHighlights: [
-      {
-        title: { fr: "Pattern DAO pour l'accès aux données", en: "DAO Pattern for Data Access" },
-        code: `public class ReferendumDAO {
-    private final Connection connection;
-
-    public ReferendumDAO(Connection connection) {
-        this.connection = connection;
-    }
-
-    public List<Referendum> findActive() throws SQLException {
-        String sql = "SELECT * FROM referendums WHERE end_date > ? AND status = 'ACTIVE'";
-        PreparedStatement stmt = connection.prepareStatement(sql);
-        stmt.setTimestamp(1, Timestamp.valueOf(LocalDateTime.now()));
-
-        ResultSet rs = stmt.executeQuery();
-        List<Referendum> results = new ArrayList<>();
-        while (rs.next()) {
-            results.add(mapRow(rs));
-        }
-        return results;
-    }
-
-    private Referendum mapRow(ResultSet rs) throws SQLException {
-        return new Referendum(
-            rs.getLong("id"),
-            rs.getString("title"),
-            rs.getString("description"),
-            rs.getTimestamp("end_date").toLocalDateTime(),
-            ReferendumStatus.valueOf(rs.getString("status"))
-        );
-    }
-}`,
-        language: "java",
-        explanation: {
-          fr: "Ce DAO (Data Access Object) encapsule toute la logique d'accès à la base de données SQLite pour les référendums. Le pattern DAO permet d'isoler la couche de persistance du reste de l'application, facilitant ainsi les tests et l'évolution de la base de données. Les requêtes préparées (PreparedStatement) protègent contre les injections SQL.",
-          en: "This DAO (Data Access Object) encapsulates all SQLite database access logic for referendums. The DAO pattern isolates the persistence layer from the rest of the application, facilitating testing and database evolution. Prepared statements protect against SQL injection."
-        }
-      }
-    ],
-    results: {
-      fr: `L'application a été livrée fonctionnelle avec toutes les fonctionnalités demandées : création de référendums, système de vote sécurisé, affichage des résultats et interface d'administration. Le projet a été bien noté et salué pour la qualité de son architecture et la clarté de son interface.`,
-      en: `The application was delivered functional with all required features: referendum creation, secure voting system, result display, and administration interface. The project was well-graded and praised for the quality of its architecture and the clarity of its interface.`
-    },
-    reflection: {
-      fr: `Ce projet a été ma première vraie expérience de développement d'application desktop structurée. J'ai appris l'importance du pattern DAO pour isoler l'accès aux données, et comment JavaFX permet de créer des interfaces riches tout en maintenant une bonne séparation des responsabilités.
-
-La gestion de la sécurité du vote, même simplifiée, m'a sensibilisé aux enjeux de la confiance numérique et de l'intégrité des données dans les systèmes de vote. C'est un sujet qui a renforcé mon intérêt pour la cybersécurité.`,
-      en: `This project was my first real experience developing a structured desktop application. I learned the importance of the DAO pattern for isolating data access, and how JavaFX enables creating rich interfaces while maintaining good separation of concerns.
-
-Managing vote security, even simplified, made me aware of digital trust and data integrity issues in voting systems. This topic reinforced my interest in cybersecurity.`
-    },
-    thumbnail: "/images/referendum.jpg",
-    images: [],
-    links: { github: "https://github.com/killianrms/referendum" }
   },
   {
     slug: "bot-fortnite-python",
