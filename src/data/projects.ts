@@ -29,7 +29,7 @@ export interface Project {
   reflection: { fr: string; en: string };
   thumbnail: string;
   images: string[];
-  links?: { github?: string; live?: string; video?: string };
+  links?: { github?: string; live?: string; video?: string; report?: string };
 }
 
 export const projects: Project[] = [
@@ -581,27 +581,27 @@ This project proves that a passionate side project can become something signific
     slug: "referendum",
     title: "Referendum — Application de Vote Sécurisée",
     category: "university",
-    technologies: ["Java", "JavaFX", "ElGamal", "Cryptographie", "Sockets", "Scrum", "Git"],
+    technologies: ["Java", "JavaFX", "ElGamal", "Zero Knowledge Proof", "DeepSeek API", "Cryptographie", "Sockets", "Scrum", "Git"],
     duration: { fr: "Toute la deuxième année de BUT 2 (Projet de fin d'année)", en: "Full second year of CS degree (Year-end project)" },
     team: { fr: "Groupe de 4 étudiants", en: "Group of 4 students" },
-    role: { fr: "Product Owner & Développeur Cryptographie — Chiffrement ElGamal et sécurisation des sockets", en: "Product Owner & Cryptography Developer — ElGamal encryption and socket security" },
+    role: { fr: "Product Owner & Développeur Cryptographie — Chiffrement ElGamal, Preuve Zero Knowledge, ChatBot IA et sécurisation des sockets", en: "Product Owner & Cryptography Developer — ElGamal encryption, Zero Knowledge Proof, AI ChatBot and socket security" },
     shortDescription: {
-      fr: "Application de vote sécurisée développée en Java/JavaFX pour une entreprise fictive (cas d'étude), avec chiffrement ElGamal et méthodologie Scrum sur toute une année universitaire.",
-      en: "Secure voting application developed in Java/JavaFX for a fictional company (case study), with ElGamal encryption and Scrum methodology over a full academic year."
+      fr: "Application de vote sécurisée en Java/JavaFX avec chiffrement ElGamal, preuve Zero Knowledge non-interactive, chatbot IA (DeepSeek) et méthodologie Scrum sur toute une année universitaire.",
+      en: "Secure voting application in Java/JavaFX with ElGamal encryption, non-interactive Zero Knowledge Proof, AI chatbot (DeepSeek) and Scrum methodology over a full academic year."
     },
     context: {
       fr: `Referendum est le projet de fin de deuxième année de BUT Informatique. C'est le projet le plus structurant de la formation : il a duré toute l'année universitaire et a été mené avec la méthodologie Scrum dans des conditions proches du monde professionnel.
 
 Le cas d'étude était une entreprise fictive qui avait besoin de faire voter ses employés de manière sécurisée. Notre mission était de concevoir et développer une application de vote complète, garantissant la confidentialité des votes, l'intégrité des résultats et l'authentification des votants.
 
-Nous étions une équipe de 4 étudiants, et j'occupais le rôle de Product Owner. À ce titre, je gérais le backlog produit, priorisais les fonctionnalités, et faisais le lien entre les "besoins client" (définis par les enseignants) et l'équipe de développement. Mais j'avais aussi un rôle technique majeur : j'étais responsable de toute la partie cryptographie (chiffrement ElGamal, imposé par les professeurs) et de la sécurisation des communications par sockets.
+Nous étions une équipe de 4 étudiants, et j'occupais le rôle de Product Owner. À ce titre, je gérais le backlog produit, priorisais les fonctionnalités, et faisais le lien entre les "besoins client" (définis par les enseignants) et l'équipe de développement. Mais j'avais aussi un rôle technique majeur : j'étais responsable de toute la partie cryptographie (chiffrement ElGamal, imposé par les professeurs), de la sécurisation des communications par sockets, de l'implémentation de la Preuve Zero Knowledge non-interactive pour la vérification des votes, et de la création d'un chatbot FAQ alimenté par l'API DeepSeek.
 
 Le projet était découpé en plusieurs phases : des sprints avec des rendus réguliers, puis un nouveau contrat où nous devions améliorer davantage l'application, suivis de nouveaux sprints. Chaque phase comprenait des présentations orales devant un "client" (les enseignants), la rédaction de dossiers techniques, et des soutenances.`,
       en: `Referendum is the final project of the second year of the Computer Science degree. It's the most structuring project of the program: it lasted the entire academic year and was conducted using Scrum methodology under conditions close to the professional world.
 
 The case study was a fictional company that needed its employees to vote securely. Our mission was to design and develop a complete voting application, guaranteeing vote confidentiality, result integrity, and voter authentication.
 
-We were a team of 4 students, and I held the role of Product Owner. In this capacity, I managed the product backlog, prioritized features, and served as the link between "client needs" (defined by instructors) and the development team. But I also had a major technical role: I was responsible for the entire cryptography part (ElGamal encryption, imposed by the professors) and for securing socket communications.
+We were a team of 4 students, and I held the role of Product Owner. In this capacity, I managed the product backlog, prioritized features, and served as the link between "client needs" (defined by instructors) and the development team. But I also had a major technical role: I was responsible for the entire cryptography part (ElGamal encryption, imposed by the professors), securing socket communications, implementing the non-interactive Zero Knowledge Proof for vote verification, and creating a FAQ chatbot powered by the DeepSeek API.
 
 The project was divided into several phases: sprints with regular deliveries, then a new contract where we had to further improve the application, followed by more sprints. Each phase included oral presentations to a "client" (the instructors), technical documentation writing, and defenses.`
     },
@@ -610,25 +610,37 @@ The project was divided into several phases: sprints with regular deliveries, th
 
 2. **Chiffrement ElGamal** : Implémenter le protocole cryptographique ElGamal (imposé par les professeurs) pour garantir la confidentialité des votes. C'était ma partie principale dans l'équipe.
 
-3. **Sécurisation des sockets** : Mettre en place une communication client-serveur sécurisée via des sockets chiffrés, pour empêcher l'interception ou la manipulation des votes en transit.
+3. **Preuve Zero Knowledge non-interactive** : Garantir que chaque vote est bien 0 ou 1 (oui ou non) sans révéler la valeur du vote. Le projet intègre les fonctions createZKProof (création de la preuve côté client) et verifyZKProof (vérification côté serveur) pour valider les votes en un seul échange.
 
-4. **Méthodologie Scrum** : Travailler en sprints avec des rendus réguliers, des rétrospectives, un backlog priorisé, et des présentations client orales.
+4. **ChatBot FAQ (DeepSeek API)** : Créer un chatbot intégré à l'application pour répondre aux questions fréquentes des utilisateurs. L'API DeepSeek est utilisée uniquement pour comprendre la question de l'utilisateur et fournir la réponse la plus pertinente parmi des réponses pré-préparées relatives à l'application.
 
-5. **Documentation technique** : Rédiger des dossiers techniques complets à chaque phase du projet (architecture, choix techniques, diagrammes UML, tests).`,
+5. **Sécurisation des sockets** : Mettre en place une communication client-serveur sécurisée via des sockets chiffrés, pour empêcher l'interception ou la manipulation des votes en transit.
+
+6. **Méthodologie Scrum** : Travailler en sprints avec des rendus réguliers, des rétrospectives, un backlog priorisé, et des présentations client orales.
+
+7. **Documentation technique** : Rédiger des dossiers techniques complets à chaque phase du projet (architecture, choix techniques, diagrammes UML, tests).`,
       en: `1. **Secure voting application**: Develop a Java/JavaFX application allowing creation of polls, confidential voting, and secure result viewing.
 
 2. **ElGamal encryption**: Implement the ElGamal cryptographic protocol (imposed by professors) to guarantee vote confidentiality. This was my main part within the team.
 
-3. **Socket security**: Set up secure client-server communication via encrypted sockets, to prevent interception or manipulation of votes in transit.
+3. **Non-interactive Zero Knowledge Proof**: Ensure each vote is strictly 0 or 1 (yes or no) without revealing the actual vote value. The project integrates createZKProof (client-side proof creation) and verifyZKProof (server-side verification) functions to validate votes in a single exchange.
 
-4. **Scrum methodology**: Work in sprints with regular deliveries, retrospectives, a prioritized backlog, and oral client presentations.
+4. **FAQ ChatBot (DeepSeek API)**: Create a chatbot integrated into the application to answer frequently asked questions. The DeepSeek API is used solely to understand the user's question and provide the most relevant answer from pre-prepared responses related to the application.
 
-5. **Technical documentation**: Write complete technical documents at each project phase (architecture, technical choices, UML diagrams, tests).`
+5. **Socket security**: Set up secure client-server communication via encrypted sockets, to prevent interception or manipulation of votes in transit.
+
+6. **Scrum methodology**: Work in sprints with regular deliveries, retrospectives, a prioritized backlog, and oral client presentations.
+
+7. **Technical documentation**: Write complete technical documents at each project phase (architecture, technical choices, UML diagrams, tests).`
     },
     approach: {
       fr: `Le projet a suivi la méthodologie Scrum sur toute l'année. En tant que Product Owner, j'organisais les sprint plannings, maintenais le backlog, et présentais les démos au "client" (les enseignants) à chaque fin de sprint. À la fin de chaque cycle, nous recevions un nouveau contrat avec des exigences supplémentaires, simulant l'évolution des besoins d'un vrai client.
 
 Côté technique, l'application est développée en Java avec une interface JavaFX. Mon rôle technique principal était le chiffrement ElGamal — un système de cryptographie asymétrique à clé publique. Le principe : chaque vote est chiffré avec la clé publique du scrutin avant d'être envoyé au serveur. Seul le détenteur de la clé privée peut déchiffrer les votes à la clôture du scrutin. Cela garantit que personne — pas même le serveur — ne peut lire un vote individuel avant la fin du scrutin.
+
+**Preuve Zero Knowledge non-interactive** : Pour garantir l'intégrité des votes, le projet intègre une preuve Zero Knowledge. L'objectif est de prouver côté serveur que le vote d'un client est bien "oui" ou "non" (0 ou 1), sans révéler lequel. Si un utilisateur tente de voter une valeur invalide (par exemple 10 ou un nombre négatif), le vote est rejeté. La preuve est non-interactive : un seul échange entre le client et le serveur suffit — l'envoi de la preuve avec le message chiffré. Côté client, la fonction createZKProof génère deux preuves (une vraie, une simulée) via des engagements cryptographiques, un haché SHA-256 et de l'arithmétique modulaire. Côté serveur, verifyZKProof recalcule les valeurs et vérifie que la somme des challenges correspond au haché. Si c'est le cas, la preuve est valide — le vote est bien 0 ou 1, sans que le serveur ne sache lequel.
+
+**ChatBot FAQ (DeepSeek API)** : J'ai implémenté un chatbot FAQ intégré à l'application dont le but est de répondre aux questions fréquentes des utilisateurs. J'ai intégré l'API DeepSeek qui sert uniquement à comprendre la question de l'utilisateur pour lui fournir la réponse la plus pertinente parmi des réponses spécifiques pré-préparées, limitées aux questions relatives à l'application.
 
 J'ai également sécurisé les communications par sockets entre le client et le serveur. Les échanges sont chiffrés pour empêcher toute interception (man-in-the-middle) ou manipulation des données en transit.
 
@@ -636,6 +648,10 @@ Le reste de l'équipe travaillait sur l'interface JavaFX, la gestion des utilisa
       en: `The project followed Scrum methodology throughout the year. As Product Owner, I organized sprint plannings, maintained the backlog, and presented demos to the "client" (instructors) at each sprint end. At the end of each cycle, we received a new contract with additional requirements, simulating the evolving needs of a real client.
 
 On the technical side, the application is developed in Java with a JavaFX interface. My main technical role was ElGamal encryption — an asymmetric public-key cryptography system. The principle: each vote is encrypted with the poll's public key before being sent to the server. Only the private key holder can decrypt votes when the poll closes. This ensures that nobody — not even the server — can read an individual vote before the poll ends.
+
+**Non-interactive Zero Knowledge Proof**: To guarantee vote integrity, the project integrates a Zero Knowledge Proof. The goal is to prove server-side that a client's vote is indeed "yes" or "no" (0 or 1), without revealing which one. If a user attempts to vote an invalid value (e.g., 10 or a negative number), the vote is rejected. The proof is non-interactive: a single exchange between client and server suffices — sending the proof along with the encrypted message. Client-side, the createZKProof function generates two proofs (one real, one simulated) via cryptographic commitments, a SHA-256 hash, and modular arithmetic. Server-side, verifyZKProof recalculates values and verifies that the sum of challenges matches the hash. If so, the proof is valid — the vote is indeed 0 or 1, without the server knowing which.
+
+**FAQ ChatBot (DeepSeek API)**: I implemented a FAQ chatbot integrated into the application to answer users' frequently asked questions. I integrated the DeepSeek API which serves solely to understand the user's question and provide the most relevant answer from specific pre-prepared responses, limited to questions related to the application.
 
 I also secured socket communications between client and server. Exchanges are encrypted to prevent any interception (man-in-the-middle) or data manipulation in transit.
 
@@ -646,12 +662,16 @@ The rest of the team worked on the JavaFX interface, user management, database, 
 - **Client JavaFX** : Interface graphique pour la création de scrutins, le vote et la consultation des résultats.
 - **Serveur Java** : Gestion des scrutins, stockage des votes chiffrés, déchiffrement à la clôture.
 - **Cryptographie ElGamal** : Génération de clés (publique/privée), chiffrement des votes côté client, déchiffrement côté serveur à la clôture du scrutin.
+- **Preuve Zero Knowledge** : Fonctions createZKProof (client) et verifyZKProof (serveur) dans la librairie cryptographique pour valider que chaque vote est strictement 0 ou 1 sans révéler sa valeur.
+- **ChatBot FAQ** : Chatbot intégré utilisant l'API DeepSeek pour comprendre les questions utilisateurs et fournir des réponses pré-préparées relatives à l'application.
 - **Sockets sécurisés** : Communication client-serveur chiffrée pour protéger les échanges de données.
 - **Méthodologie** : Scrum avec sprints, backlog, rétrospectives, présentations client, dossiers techniques.`,
       en: `Java client-server application with JavaFX interface:
 - **JavaFX Client**: GUI for poll creation, voting, and result viewing.
 - **Java Server**: Poll management, encrypted vote storage, decryption at poll closure.
 - **ElGamal Cryptography**: Key generation (public/private), client-side vote encryption, server-side decryption at poll closure.
+- **Zero Knowledge Proof**: createZKProof (client) and verifyZKProof (server) functions in the cryptographic library to validate that each vote is strictly 0 or 1 without revealing its value.
+- **FAQ ChatBot**: Integrated chatbot using the DeepSeek API to understand user questions and provide pre-prepared answers related to the application.
 - **Secure Sockets**: Encrypted client-server communication to protect data exchanges.
 - **Methodology**: Scrum with sprints, backlog, retrospectives, client presentations, technical documents.`
     },
@@ -659,6 +679,14 @@ The rest of the team worked on the JavaFX interface, user management, database, 
       {
         name: { fr: "Cryptographie — ElGamal", en: "Cryptography — ElGamal" },
         description: { fr: "Implémentation complète du protocole ElGamal : génération de clés asymétriques, chiffrement et déchiffrement des votes. Compréhension des fondements mathématiques (logarithme discret, arithmétique modulaire) et des enjeux de sécurité.", en: "Complete implementation of the ElGamal protocol: asymmetric key generation, vote encryption and decryption. Understanding of mathematical foundations (discrete logarithm, modular arithmetic) and security challenges." }
+      },
+      {
+        name: { fr: "Preuve Zero Knowledge non-interactive", en: "Non-interactive Zero Knowledge Proof" },
+        description: { fr: "Vérification cryptographique que chaque vote est strictement 0 ou 1 sans révéler sa valeur. Preuve non-interactive en un seul échange via engagements cryptographiques, haché SHA-256 et arithmétique modulaire (fonctions createZKProof et verifyZKProof).", en: "Cryptographic verification that each vote is strictly 0 or 1 without revealing its value. Non-interactive proof in a single exchange via cryptographic commitments, SHA-256 hash, and modular arithmetic (createZKProof and verifyZKProof functions)." }
+      },
+      {
+        name: { fr: "ChatBot IA (DeepSeek API)", en: "AI ChatBot (DeepSeek API)" },
+        description: { fr: "Implémentation d'un chatbot FAQ intégré à l'application utilisant l'API DeepSeek pour comprendre les questions des utilisateurs et fournir des réponses pertinentes pré-préparées, limitées au contexte de l'application.", en: "Implementation of a FAQ chatbot integrated into the application using the DeepSeek API to understand user questions and provide relevant pre-prepared answers, limited to the application context." }
       },
       {
         name: { fr: "Sécurisation des sockets", en: "Socket Security" },
@@ -694,6 +722,8 @@ The rest of the team worked on the JavaFX interface, user management, database, 
 
 - **Application de vote fonctionnelle et sécurisée** : Création de scrutins, vote confidentiel avec chiffrement ElGamal, consultation des résultats après clôture, le tout via une interface JavaFX intuitive.
 - **Cryptographie ElGamal opérationnelle** : Le système de chiffrement asymétrique garantit que les votes sont illisibles en transit et en stockage, et ne sont déchiffrés qu'à la clôture du scrutin.
+- **Preuve Zero Knowledge fonctionnelle** : Vérification cryptographique que chaque vote est bien 0 ou 1 en un seul échange, sans compromettre la confidentialité du vote. Les votes invalides sont automatiquement rejetés par le serveur.
+- **ChatBot FAQ opérationnel** : Chatbot intégré utilisant l'API DeepSeek pour répondre aux questions fréquentes des utilisateurs de manière pertinente et contextuelle.
 - **Communications sécurisées** : Les échanges client-serveur via sockets sont chiffrés, empêchant toute interception.
 - **Méthodologie Scrum respectée** : Sprints réguliers, rendus, amélioration continue via les nouveaux contrats, présentations orales devant le client, et dossiers techniques complets à chaque phase.
 - **Travail d'équipe structuré** : Collaboration efficace à 4, avec des rôles clairs et une bonne répartition du travail.`,
@@ -701,6 +731,8 @@ The rest of the team worked on the JavaFX interface, user management, database, 
 
 - **Functional and secure voting application**: Poll creation, confidential voting with ElGamal encryption, result viewing after closure, all through an intuitive JavaFX interface.
 - **Operational ElGamal cryptography**: The asymmetric encryption system ensures votes are unreadable in transit and storage, and are only decrypted at poll closure.
+- **Functional Zero Knowledge Proof**: Cryptographic verification that each vote is indeed 0 or 1 in a single exchange, without compromising vote confidentiality. Invalid votes are automatically rejected by the server.
+- **Operational FAQ ChatBot**: Integrated chatbot using the DeepSeek API to answer users' frequently asked questions in a relevant and contextual manner.
 - **Secure communications**: Client-server exchanges via sockets are encrypted, preventing any interception.
 - **Scrum methodology respected**: Regular sprints, deliveries, continuous improvement through new contracts, oral presentations to the client, and complete technical documents at each phase.
 - **Structured teamwork**: Effective collaboration of 4, with clear roles and good work distribution.`
@@ -710,24 +742,28 @@ The rest of the team worked on the JavaFX interface, user management, database, 
 
 1. **Le rôle de Product Owner** m'a appris à voir un projet au-delà du code. Gérer un backlog, prioriser les fonctionnalités en fonction de la valeur métier, et présenter un produit à un client — ce sont des compétences que je n'aurais pas développées en restant uniquement développeur.
 
-2. **La cryptographie ElGamal** m'a confronté à un domaine que je ne connaissais pas du tout. Comprendre les fondements mathématiques, implémenter un protocole de chiffrement asymétrique, et garantir la sécurité des votes m'a donné une vraie sensibilité à la cybersécurité et à la rigueur qu'elle exige.
+2. **La cryptographie ElGamal et la Preuve Zero Knowledge** m'ont confronté à un domaine que je ne connaissais pas du tout. Comprendre les fondements mathématiques (logarithme discret, arithmétique modulaire, SHA-256), implémenter un protocole de chiffrement asymétrique, et concevoir une preuve non-interactive garantissant l'intégrité des votes sans compromettre leur confidentialité m'a donné une vraie sensibilité à la cybersécurité et à la rigueur qu'elle exige.
 
-3. **La durée du projet** (toute l'année) m'a appris la gestion sur le long terme : maintenir la motivation, gérer la dette technique, et s'adapter aux changements de périmètre à chaque nouveau contrat. C'est très différent d'un projet de quelques semaines.
+3. **Le chatbot IA avec DeepSeek** m'a permis d'explorer l'intégration d'API d'intelligence artificielle dans une application concrète, en limitant l'IA à la compréhension de la question pour fournir des réponses pré-préparées pertinentes.
 
-4. **Les présentations orales et dossiers techniques** m'ont forcé à structurer ma pensée et à expliquer des concepts complexes de manière accessible. C'est une compétence essentielle que le code seul ne développe pas.`,
+4. **La durée du projet** (toute l'année) m'a appris la gestion sur le long terme : maintenir la motivation, gérer la dette technique, et s'adapter aux changements de périmètre à chaque nouveau contrat. C'est très différent d'un projet de quelques semaines.
+
+5. **Les présentations orales et dossiers techniques** m'ont forcé à structurer ma pensée et à expliquer des concepts complexes de manière accessible. C'est une compétence essentielle que le code seul ne développe pas.`,
       en: `The Referendum project taught me the most on a professional level during my studies:
 
 1. **The Product Owner role** taught me to see a project beyond the code. Managing a backlog, prioritizing features based on business value, and presenting a product to a client — these are skills I wouldn't have developed by staying purely a developer.
 
-2. **ElGamal cryptography** confronted me with a domain I knew nothing about. Understanding the mathematical foundations, implementing an asymmetric encryption protocol, and ensuring vote security gave me a genuine sensitivity to cybersecurity and the rigor it demands.
+2. **ElGamal cryptography and Zero Knowledge Proof** confronted me with a domain I knew nothing about. Understanding the mathematical foundations (discrete logarithm, modular arithmetic, SHA-256), implementing an asymmetric encryption protocol, and designing a non-interactive proof guaranteeing vote integrity without compromising confidentiality gave me a genuine sensitivity to cybersecurity and the rigor it demands.
 
-3. **The project duration** (the full year) taught me long-term management: maintaining motivation, managing technical debt, and adapting to scope changes with each new contract. It's very different from a project lasting just a few weeks.
+3. **The AI chatbot with DeepSeek** allowed me to explore integrating artificial intelligence APIs into a concrete application, limiting the AI to question understanding to provide relevant pre-prepared answers.
 
-4. **Oral presentations and technical documents** forced me to structure my thinking and explain complex concepts in an accessible way. It's an essential skill that code alone doesn't develop.`
+4. **The project duration** (the full year) taught me long-term management: maintaining motivation, managing technical debt, and adapting to scope changes with each new contract. It's very different from a project lasting just a few weeks.
+
+5. **Oral presentations and technical documents** forced me to structure my thinking and explain complex concepts in an accessible way. It's an essential skill that code alone doesn't develop.`
     },
     thumbnail: "/images/referendum.jpg",
     images: ["/images/referendum1.jpg", "/images/referendum2.jpg", "/images/referendum3.jpg", "/images/referendum4.jpg", "/images/referendum5.jpg"],
-    links: { github: "https://github.com/killianrms/referendum", video: "https://youtu.be/F3I_4daMcuk" }
+    links: { github: "https://github.com/killianrms/referendum", video: "https://youtu.be/F3I_4daMcuk", report: "https://docs.google.com/document/d/11MfYwfZin0VpMzFhqWLSZ3Y3LzQwRpnDo-VK7oX6jJ8/edit?tab=t.0" }
   },
   {
     slug: "site-ecommerce-parfum",
