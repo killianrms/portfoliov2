@@ -35,230 +35,188 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: "itesoft-assistant-ingenieur",
-    title: "ITESOFT — Assistant Ingénieur Projet",
+    title: "ITESOFT — Assistant Ingénieur Développement et Projet",
     category: "professional",
-    technologies: ["Java", "Spring Boot", "Docker", "Kubernetes", "Jenkins", "PostgreSQL", "Git", "Jira", "SonarQube"],
+    technologies: ["Java", "Angular", "SQL", "PostgreSQL", "Maven", "IntelliJ IDEA", "Termius", "Postman", "Azure", "Git"],
     duration: { fr: "Septembre 2024 — Présent (Alternance)", en: "September 2024 — Present (Work-Study)" },
-    team: { fr: "Équipe Projet de 8 personnes (développeurs, QA, chef de projet)", en: "Project team of 8 people (developers, QA, project manager)" },
-    role: { fr: "Assistant Ingénieur Projet — Développement, tests et intégration continue", en: "Assistant Project Engineer — Development, testing and continuous integration" },
+    team: { fr: "Équipe Delivery (équipe projet d'ITESOFT)", en: "Delivery team (ITESOFT's project team)" },
+    role: { fr: "Assistant Ingénieur Développement et Projet — Personnalisation, déploiement et support de Streamline Invoices", en: "Assistant Development & Project Engineer — Customization, deployment and support of Streamline Invoices" },
     shortDescription: {
-      fr: "Alternance en tant qu'Assistant Ingénieur Projet dans une entreprise d'édition logicielle spécialisée dans la dématérialisation et l'automatisation des processus documentaires.",
-      en: "Work-study program as Assistant Project Engineer in a software company specializing in dematerialization and document process automation."
+      fr: "Alternance au sein de l'équipe Delivery d'ITESOFT : personnalisation de la plateforme Streamline Invoices pour des grandes entreprises, développement d'outils internes et support client.",
+      en: "Work-study in ITESOFT's Delivery team: customization of the Streamline Invoices platform for large enterprises, internal tool development and client support."
     },
     context: {
-      fr: `ITESOFT est un éditeur logiciel français leader dans le domaine de la dématérialisation et de l'automatisation des processus documentaires. L'entreprise propose des solutions de capture, de traitement et d'archivage de documents à destination des grandes entreprises et administrations publiques. Fondée en 1984, elle emploie plus de 200 collaborateurs et est cotée en bourse sur Euronext Growth.
+      fr: `ITESOFT est un éditeur logiciel français spécialisé dans la dématérialisation et l'automatisation des processus documentaires. L'entreprise développe notamment Streamline Invoices, une plateforme de gestion de factures destinée à de grandes entreprises réalisant plusieurs milliards d'euros de chiffre d'affaires annuel. Cet outil permet aux comptables de centraliser l'ensemble du traitement des factures : capture automatique (PDF, email), circuits de validation configurables, et flux de traitement de bout en bout.
 
-Dans le cadre de mon alternance en BUT Informatique parcours « Réalisation d'applications : conception, développement, validation » à l'IUT de Montpellier-Sète, j'ai intégré l'équipe Projet en septembre 2024. Mon rôle consiste à participer activement au cycle de développement logiciel, de la conception à la mise en production, en passant par les phases de test et d'intégration continue.
+Dans le cadre de mon alternance en BUT Informatique parcours « Réalisation d'applications : conception, développement, validation » à l'IUT de Montpellier-Sète, j'ai intégré l'équipe Delivery en septembre 2024. Cette équipe est littéralement l'équipe projet d'ITESOFT : elle est responsable de la personnalisation, du déploiement et du support de Streamline Invoices auprès des clients.
 
-L'environnement de travail est structuré autour de la méthodologie Agile Scrum, avec des sprints de deux semaines, des daily meetings quotidiens, et des rétrospectives régulières. Cette organisation m'a permis de comprendre les enjeux d'un développement logiciel professionnel à grande échelle, où la qualité du code, la traçabilité des modifications et la collaboration entre équipes sont primordiales.`,
-      en: `ITESOFT is a leading French software company in the field of dematerialization and document process automation. The company offers document capture, processing, and archiving solutions for large enterprises and public administrations. Founded in 1984, it employs over 200 people and is listed on Euronext Growth.
+Mon rôle consiste à personnaliser la plateforme selon les besoins spécifiques de chaque client : configuration des entreprises, holdings, utilisateurs et permissions, mais aussi développement de fonctionnalités sur-mesure (endpoints supplémentaires, connexions ERP, filtres, boutons). Un enjeu majeur de mon travail est de minimiser les modifications au code standard (maintenu par l'équipe R&D) afin de faciliter les montées de version et de limiter les conflits lors des mises à jour, tout en respectant les exigences de sécurité de l'entreprise, certifiée ISO 27001.`,
+      en: `ITESOFT is a French software company specializing in dematerialization and document process automation. The company develops Streamline Invoices, an invoice management platform designed for large enterprises generating billions of euros in annual revenue. This tool allows accountants to centralize all invoice processing: automatic capture (PDF, email), configurable validation circuits, and end-to-end processing workflows.
 
-As part of my work-study program in a Computer Science degree (specialization: "Application Development: Design, Development, Validation") at IUT Montpellier-Sète, I joined the Project team in September 2024. My role involves actively participating in the software development lifecycle, from design to production deployment, including testing and continuous integration phases.
+As part of my work-study program in a Computer Science degree (specialization: "Application Development: Design, Development, Validation") at IUT Montpellier-Sète, I joined the Delivery team in September 2024. This team is literally ITESOFT's project team: responsible for the customization, deployment, and support of Streamline Invoices for clients.
 
-The work environment is structured around Agile Scrum methodology, with two-week sprints, daily stand-up meetings, and regular retrospectives. This organization has allowed me to understand the challenges of large-scale professional software development, where code quality, change traceability, and cross-team collaboration are paramount.`
+My role involves customizing the platform according to each client's specific needs: configuring companies, holdings, users, and permissions, as well as developing custom features (additional endpoints, ERP connections, filters, buttons). A major challenge in my work is minimizing modifications to the standard code (maintained by the R&D team) to facilitate version upgrades and limit conflicts during updates, while respecting the company's security requirements under ISO 27001 certification.`
     },
     objectives: {
-      fr: `Les objectifs principaux de ma mission chez ITESOFT sont multiples et s'articulent autour de trois axes :
+      fr: `Les objectifs de ma mission chez ITESOFT s'articulent autour de quatre axes principaux :
 
-1. **Développement et maintenance** : Contribuer au développement de nouvelles fonctionnalités et à la correction de bugs sur les produits existants, en respectant les normes de qualité et les conventions de code établies par l'équipe.
+1. **Personnalisation client** : Configurer et adapter Streamline Invoices pour chaque nouveau client — mise en place des VM de développement et de staging, installation de la plateforme, configuration des entreprises, holdings, utilisateurs et permissions, et développement des personnalisations spécifiques (endpoints, connexions ERP, filtres, boutons, fonctionnalités métier).
 
-2. **Intégration et déploiement continus** : Participer à l'amélioration des pipelines CI/CD avec Jenkins, en automatisant les processus de build, de test et de déploiement sur les environnements Docker/Kubernetes.
+2. **Développement d'outils internes** : Concevoir et développer des outils qui améliorent la productivité de l'équipe Delivery. Notamment l'amélioration majeure de l'outil interne CreatField, utilisé pour la gestion des champs personnalisés des clients.
 
-3. **Assurance qualité** : Mettre en place et exécuter des tests unitaires et d'intégration, analyser la qualité du code avec SonarQube, et participer aux revues de code avec les développeurs seniors.`,
-      en: `The main objectives of my mission at ITESOFT are multiple and revolve around three axes:
+3. **Support client** : Traiter les tickets ouverts par les clients, diagnostiquer les problèmes (côté client ou côté plateforme), et si nécessaire rédiger des Demandes d'Assistance (DA) détaillées pour l'équipe R&D lorsqu'un problème relève du standard.
 
-1. **Development and maintenance**: Contributing to the development of new features and bug fixes on existing products, following quality standards and code conventions established by the team.
+4. **Recette et déploiement** : Exécuter les procédures de recette pour valider les personnalisations, gérer le cycle Dev → Staging → Production, et préparer les packages de déploiement pour l'équipe de mise en production.`,
+      en: `The objectives of my mission at ITESOFT revolve around four main axes:
 
-2. **Continuous integration and deployment**: Participating in improving CI/CD pipelines with Jenkins, automating build, test, and deployment processes on Docker/Kubernetes environments.
+1. **Client customization**: Configure and adapt Streamline Invoices for each new client — setting up development and staging VMs, installing the platform, configuring companies, holdings, users and permissions, and developing specific customizations (endpoints, ERP connections, filters, buttons, business features).
 
-3. **Quality assurance**: Setting up and executing unit and integration tests, analyzing code quality with SonarQube, and participating in code reviews with senior developers.`
+2. **Internal tool development**: Design and develop tools that improve the Delivery team's productivity. Notably the major improvement of the internal CreatField tool, used for managing client custom fields.
+
+3. **Client support**: Handle client-opened tickets, diagnose issues (client-side or platform-side), and when necessary write detailed Assistance Requests (DA) for the R&D team when an issue relates to the standard product.
+
+4. **Testing and deployment**: Execute testing procedures to validate customizations, manage the Dev → Staging → Production cycle, and prepare deployment packages for the production deployment team.`
     },
     approach: {
-      fr: `L'approche technique adoptée chez ITESOFT repose sur une architecture microservices déployée sur Kubernetes. Chaque service est développé en Java avec le framework Spring Boot, ce qui permet une modularité et une scalabilité optimales.
+      fr: `Mon workflow de développement chez ITESOFT suit un cycle structuré en plusieurs étapes. Pour chaque nouveau client, je commence par créer une VM de développement sur laquelle j'installe Streamline Invoices, puis je configure l'environnement selon les spécifications du client (entreprises, holdings, utilisateurs, permissions, circuits de validation).
 
-Le workflow de développement suit un processus rigoureux : chaque fonctionnalité est développée sur une branche dédiée (feature branch), fait l'objet d'une pull request avec revue de code obligatoire par au moins un développeur senior, puis est intégrée dans la branche principale après validation des tests automatisés.
+Lorsque le client a besoin de fonctionnalités spécifiques — comme des endpoints supplémentaires pour se connecter à son ERP, des filtres personnalisés, ou des boutons métier — je développe ces personnalisations en Java (back-end) et Angular (front-end), en veillant à rester au maximum en dehors du code standard de la R&D. Cette contrainte est essentielle : elle permet de limiter les conflits lors des montées de version et de simplifier la maintenance à long terme.
 
-La conteneurisation avec Docker permet de garantir la reproductibilité des environnements de développement, de test et de production. Les images Docker sont construites automatiquement par Jenkins à chaque push sur le dépôt Git, puis déployées sur le cluster Kubernetes de staging pour validation avant mise en production.
+Le code est compilé via Maven dans IntelliJ IDEA, l'outil utilisé par toute l'entreprise. J'utilise Termius pour la connexion SSH/SFTP aux machines virtuelles, Postman pour tester les endpoints et envoyer des fichiers JSON, et PostgreSQL comme base de données. Les VM de développement sont locales, tandis que les VM de staging sont hébergées sur Azure, ce qui permet au client de s'y connecter pour tester. Une fois les tests validés en staging avec le client, je prépare un package de déploiement que j'envoie à l'équipe de production.
 
-J'ai également travaillé sur l'optimisation des requêtes PostgreSQL, en analysant les plans d'exécution et en mettant en place des index appropriés pour améliorer les performances des requêtes les plus critiques. Cette expérience m'a permis de comprendre l'importance de l'optimisation des bases de données dans un contexte de production à fort volume.`,
-      en: `The technical approach at ITESOFT is based on a microservices architecture deployed on Kubernetes. Each service is developed in Java with the Spring Boot framework, enabling optimal modularity and scalability.
+J'ai également contribué de manière significative à l'amélioration de CreatField, un outil interne permettant de créer des champs personnalisés en respectant les conventions de l'entreprise. Le problème initial était que lors des migrations, il fallait retélécharger et renvoyer les champs un par un, ce qui pouvait représenter 20 à 30 champs par client — un processus long et fastidieux. J'ai d'abord développé un script pour télécharger via API tous les champs d'un client d'un coup, puis j'ai intégré cette fonctionnalité directement dans l'application avec une barre de recherche (avant, il fallait chercher manuellement le client parmi plus de 200) et des cases à cocher permettant de sélectionner des champs spécifiques ou tous les champs d'un client.`,
+      en: `My development workflow at ITESOFT follows a structured multi-step cycle. For each new client, I start by creating a development VM on which I install Streamline Invoices, then configure the environment according to client specifications (companies, holdings, users, permissions, validation circuits).
 
-The development workflow follows a rigorous process: each feature is developed on a dedicated branch (feature branch), undergoes a pull request with mandatory code review by at least one senior developer, then is integrated into the main branch after automated test validation.
+When the client needs specific features — such as additional endpoints to connect to their ERP, custom filters, or business buttons — I develop these customizations in Java (back-end) and Angular (front-end), making sure to stay as much as possible outside the R&D's standard code. This constraint is essential: it limits conflicts during version upgrades and simplifies long-term maintenance.
 
-Containerization with Docker ensures reproducibility of development, test, and production environments. Docker images are automatically built by Jenkins on each push to the Git repository, then deployed to the Kubernetes staging cluster for validation before production deployment.
+Code is compiled via Maven in IntelliJ IDEA, the tool used across the entire company. I use Termius for SSH/SFTP connections to virtual machines, Postman for testing endpoints and sending JSON files, and PostgreSQL as the database. Development VMs are local, while staging VMs are hosted on Azure, allowing clients to connect and test. Once staging tests are validated with the client, I prepare a deployment package that I send to the production team.
 
-I also worked on PostgreSQL query optimization, analyzing execution plans and implementing appropriate indexes to improve the performance of the most critical queries. This experience helped me understand the importance of database optimization in a high-volume production context.`
+I also significantly contributed to improving CreatField, an internal tool for creating custom fields following company conventions. The initial problem was that during migrations, fields had to be re-downloaded and re-uploaded one by one, which could represent 20 to 30 fields per client — a long and tedious process. I first developed a script to download all client fields at once via API, then integrated this feature directly into the application with a search bar (previously, you had to manually search for the client among 200+) and checkboxes allowing selection of specific fields or all fields for a client.`
     },
     architecture: {
-      fr: `L'architecture globale du système ITESOFT suit le pattern microservices avec les composants suivants :
+      fr: `Streamline Invoices repose sur une architecture applicative structurée autour des composants suivants :
 
-- **API Gateway** : Point d'entrée unique pour toutes les requêtes clients, gestion du routage et de l'authentification.
-- **Services métier** : Chaque domaine fonctionnel (capture, traitement OCR, workflow, archivage) est encapsulé dans un microservice indépendant.
-- **Message Broker** : Communication asynchrone entre services via un système de messaging (file d'attente).
-- **Base de données** : Chaque service possède sa propre base PostgreSQL, garantissant l'isolation des données.
-- **Orchestration** : Kubernetes gère le déploiement, la mise à l'échelle automatique et la haute disponibilité des services.
+- **Capture documentaire** : Ingestion automatique des factures par PDF ou email, avec extraction des données via OCR et reconnaissance intelligente.
+- **Moteur de workflow** : Orchestration des circuits de validation configurables par client (ex : au-delà de X euros, validation par tel responsable). Les comptables peuvent vérifier, valider ou demander des informations à d'autres membres de l'entreprise.
+- **Front-end Angular** : Interface web permettant aux utilisateurs de naviguer dans leurs factures, appliquer des filtres, et suivre l'état de traitement.
+- **Back-end Java** : API REST et logique métier, compilée via Maven. Les personnalisations client sont développées dans des modules séparés du code standard R&D.
+- **Base de données PostgreSQL** : Stockage des factures, configurations client, utilisateurs et données de workflow.
+- **Infrastructure** : VM locales (dev) et VM Azure (staging/production). Accès via Termius (SSH/SFTP).
 
-Cette architecture m'a permis de comprendre les avantages et les défis des systèmes distribués : la complexité de la gestion des transactions distribuées, l'importance du monitoring et de l'observabilité, ainsi que les stratégies de résilience (circuit breaker, retry, fallback).`,
-      en: `The overall ITESOFT system architecture follows the microservices pattern with the following components:
+Le cycle de déploiement suit le chemin : Développement local → VM de staging Azure (test client) → Package de production (envoyé à l'équipe dédiée).`,
+      en: `Streamline Invoices is built on an application architecture structured around the following components:
 
-- **API Gateway**: Single entry point for all client requests, handling routing and authentication.
-- **Business Services**: Each functional domain (capture, OCR processing, workflow, archiving) is encapsulated in an independent microservice.
-- **Message Broker**: Asynchronous communication between services via a messaging system (queue).
-- **Database**: Each service has its own PostgreSQL database, ensuring data isolation.
-- **Orchestration**: Kubernetes manages deployment, auto-scaling, and high availability of services.
+- **Document capture**: Automatic invoice ingestion via PDF or email, with data extraction through OCR and intelligent recognition.
+- **Workflow engine**: Orchestration of client-configurable validation circuits (e.g., above X euros, validation by a specific manager). Accountants can verify, validate, or request information from other company members.
+- **Angular front-end**: Web interface allowing users to browse their invoices, apply filters, and track processing status.
+- **Java back-end**: REST API and business logic, compiled via Maven. Client customizations are developed in modules separate from the R&D standard code.
+- **PostgreSQL database**: Storage for invoices, client configurations, users, and workflow data.
+- **Infrastructure**: Local VMs (dev) and Azure VMs (staging/production). Access via Termius (SSH/SFTP).
 
-This architecture allowed me to understand the advantages and challenges of distributed systems: the complexity of distributed transaction management, the importance of monitoring and observability, and resilience strategies (circuit breaker, retry, fallback).`
+The deployment cycle follows the path: Local development → Azure staging VM (client testing) → Production package (sent to the dedicated team).`
     },
     skills: [
       {
-        name: { fr: "Développement Java / Spring Boot", en: "Java / Spring Boot Development" },
-        description: { fr: "Conception et développement de services REST avec Spring Boot, utilisation des annotations, injection de dépendances, gestion des transactions et sécurité avec Spring Security.", en: "Design and development of REST services with Spring Boot, using annotations, dependency injection, transaction management, and security with Spring Security." }
+        name: { fr: "Développement Java & Angular", en: "Java & Angular Development" },
+        description: { fr: "Développement de personnalisations back-end en Java (endpoints REST, logique métier, connexions ERP) et front-end en Angular (composants, filtres, boutons). Compilation et build via Maven dans IntelliJ IDEA.", en: "Back-end customization development in Java (REST endpoints, business logic, ERP connections) and front-end in Angular (components, filters, buttons). Compilation and build via Maven in IntelliJ IDEA." }
       },
       {
-        name: { fr: "DevOps & CI/CD", en: "DevOps & CI/CD" },
-        description: { fr: "Mise en place et maintenance de pipelines Jenkins, écriture de Dockerfiles et manifestes Kubernetes, automatisation des tests et déploiements.", en: "Setup and maintenance of Jenkins pipelines, writing Dockerfiles and Kubernetes manifests, automating tests and deployments." }
+        name: { fr: "Gestion d'infrastructure & déploiement", en: "Infrastructure Management & Deployment" },
+        description: { fr: "Création et gestion de machines virtuelles (locales et Azure), installation et configuration de Streamline Invoices, gestion du cycle de déploiement Dev → Staging → Production via SSH/SFTP avec Termius.", en: "Creation and management of virtual machines (local and Azure), Streamline Invoices installation and configuration, management of the Dev → Staging → Production deployment cycle via SSH/SFTP with Termius." }
       },
       {
-        name: { fr: "Base de données & SQL", en: "Database & SQL" },
-        description: { fr: "Optimisation de requêtes SQL complexes, analyse de plans d'exécution, création d'index, modélisation de données relationnelles avec PostgreSQL.", en: "Optimization of complex SQL queries, execution plan analysis, index creation, relational data modeling with PostgreSQL." }
+        name: { fr: "Base de données PostgreSQL", en: "PostgreSQL Database" },
+        description: { fr: "Configuration et interrogation de bases de données PostgreSQL dans le cadre de la personnalisation client. Écriture de requêtes SQL pour la configuration des données métier et le diagnostic de problèmes.", en: "Configuration and querying of PostgreSQL databases for client customization. Writing SQL queries for business data configuration and issue diagnosis." }
       },
       {
-        name: { fr: "Méthodologie Agile", en: "Agile Methodology" },
-        description: { fr: "Participation active aux cérémonies Scrum (daily, sprint planning, rétrospective), utilisation de Jira pour le suivi des tâches et la gestion du backlog.", en: "Active participation in Scrum ceremonies (daily, sprint planning, retrospective), using Jira for task tracking and backlog management." }
+        name: { fr: "Support client & diagnostic", en: "Client Support & Diagnosis" },
+        description: { fr: "Traitement de tickets clients, diagnostic d'erreurs (côté client ou plateforme), rédaction de Demandes d'Assistance détaillées pour l'équipe R&D, et communication avec les clients pour résoudre les problèmes.", en: "Processing client tickets, diagnosing errors (client-side or platform-side), writing detailed Assistance Requests for the R&D team, and communicating with clients to resolve issues." }
       },
       {
-        name: { fr: "Qualité logicielle", en: "Software Quality" },
-        description: { fr: "Rédaction de tests unitaires et d'intégration, analyse statique avec SonarQube, revue de code, respect des principes SOLID et des design patterns.", en: "Writing unit and integration tests, static analysis with SonarQube, code review, adherence to SOLID principles and design patterns." }
+        name: { fr: "Développement d'outils internes", en: "Internal Tool Development" },
+        description: { fr: "Amélioration significative de l'outil CreatField : développement d'un script d'API pour le téléchargement en masse, puis intégration dans l'application avec barre de recherche et sélection par cases à cocher, remplaçant un processus manuel fastidieux.", en: "Significant improvement of the CreatField tool: development of an API script for bulk downloading, then integration into the application with search bar and checkbox selection, replacing a tedious manual process." }
+      },
+      {
+        name: { fr: "Sécurité & conformité ISO 27001", en: "Security & ISO 27001 Compliance" },
+        description: { fr: "Développement en respectant les normes de sécurité ISO 27001 de l'entreprise. Attention particulière à la sécurité des personnalisations : validation des entrées, gestion des permissions, protection des données sensibles.", en: "Development respecting the company's ISO 27001 security standards. Particular attention to customization security: input validation, permission management, sensitive data protection." }
       }
     ],
     codeHighlights: [
       {
-        title: { fr: "Exemple de service REST Spring Boot", en: "Spring Boot REST Service Example" },
-        code: `@RestController
-@RequestMapping("/api/documents")
-public class DocumentController {
+        title: { fr: "Amélioration de CreatField — Téléchargement en masse via API", en: "CreatField Improvement — Bulk Download via API" },
+        code: `// Principe de l'amélioration CreatField (code simplifié)
+// Avant : téléchargement manuel un par un parmi 200+ clients
+// Après : recherche + sélection multiple + téléchargement en lot
 
-    private final DocumentService documentService;
+// 1. Appel API pour récupérer tous les champs d'un client
+GET /api/creatfield/clients/{clientId}/fields
+// Retourne la liste des champs custom du client
 
-    @Autowired
-    public DocumentController(DocumentService documentService) {
-        this.documentService = documentService;
-    }
+// 2. Téléchargement en lot des champs sélectionnés
+POST /api/creatfield/download-batch
+Content-Type: application/json
+{
+  "clientId": "CLIENT_001",
+  "fieldIds": ["field_1", "field_2", "field_15", "field_22"],
+  "format": "standard"
+}
 
-    @PostMapping("/process")
-    public ResponseEntity<ProcessingResult> processDocument(
-            @RequestBody @Valid DocumentRequest request) {
-        ProcessingResult result = documentService.process(request);
-        return ResponseEntity.ok(result);
-    }
-
-    @GetMapping("/{id}/status")
-    public ResponseEntity<DocumentStatus> getStatus(
-            @PathVariable Long id) {
-        return documentService.findById(id)
-            .map(ResponseEntity::ok)
-            .orElse(ResponseEntity.notFound().build());
-    }
-}`,
-        language: "java",
+// 3. Côté front-end Angular : barre de recherche + checkboxes
+// - Recherche dynamique parmi 200+ clients (filtrage instantané)
+// - Cases à cocher par champ ou "tout sélectionner"
+// - Bouton de téléchargement groupé`,
+        language: "javascript",
         explanation: {
-          fr: "Ce contrôleur REST illustre l'architecture que j'ai mise en place pour le traitement des documents. L'injection de dépendances via @Autowired permet de découpler le contrôleur du service métier. La validation des requêtes est assurée par l'annotation @Valid, et la gestion des réponses HTTP suit les bonnes pratiques REST avec les codes de statut appropriés.",
-          en: "This REST controller illustrates the architecture I implemented for document processing. Dependency injection via @Autowired decouples the controller from the business service. Request validation is ensured by the @Valid annotation, and HTTP response handling follows REST best practices with appropriate status codes."
-        }
-      },
-      {
-        title: { fr: "Pipeline Jenkins CI/CD", en: "Jenkins CI/CD Pipeline" },
-        code: `pipeline {
-    agent any
-    stages {
-        stage('Build') {
-            steps {
-                sh 'mvn clean package -DskipTests'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-                junit 'target/surefire-reports/*.xml'
-            }
-        }
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('SonarQube') {
-                    sh 'mvn sonar:sonar'
-                }
-            }
-        }
-        stage('Docker Build & Push') {
-            steps {
-                script {
-                    def image = docker.build("itesoft/service:\${env.BUILD_NUMBER}")
-                    docker.withRegistry('https://registry.itesoft.com') {
-                        image.push()
-                        image.push('latest')
-                    }
-                }
-            }
-        }
-        stage('Deploy to Staging') {
-            steps {
-                sh 'kubectl apply -f k8s/staging/'
-            }
-        }
-    }
-}`,
-        language: "groovy",
-        explanation: {
-          fr: "Ce pipeline Jenkins que j'ai contribué à mettre en place automatise l'ensemble du cycle de livraison. Chaque commit déclenche automatiquement la compilation, l'exécution des tests, l'analyse de qualité SonarQube, la construction de l'image Docker et le déploiement sur l'environnement de staging. Cette automatisation a permis de réduire significativement les erreurs de déploiement et d'accélérer le cycle de livraison.",
-          en: "This Jenkins pipeline I helped set up automates the entire delivery cycle. Each commit automatically triggers compilation, test execution, SonarQube quality analysis, Docker image building, and deployment to the staging environment. This automation significantly reduced deployment errors and accelerated the delivery cycle."
+          fr: "Cette amélioration illustre mon approche chez ITESOFT : identifier un processus manuel fastidieux (télécharger 20-30 champs un par un en cherchant parmi 200+ clients), puis l'automatiser progressivement. D'abord un script API simple, puis une intégration complète dans l'application avec interface de recherche et sélection multiple. Le gain de temps est considérable pour toute l'équipe Delivery.",
+          en: "This improvement illustrates my approach at ITESOFT: identifying a tedious manual process (downloading 20-30 fields one by one while searching among 200+ clients), then progressively automating it. First a simple API script, then a complete integration into the application with search interface and multi-selection. The time savings are considerable for the entire Delivery team."
         }
       }
     ],
     results: {
-      fr: `Mon expérience chez ITESOFT a été extrêmement formatrice et m'a permis d'atteindre des résultats concrets :
+      fr: `Mon expérience chez ITESOFT a produit des résultats concrets tant pour l'entreprise que pour mon développement professionnel :
 
-- **Amélioration des pipelines CI/CD** : Réduction du temps de build de 30% grâce à l'optimisation des étapes de compilation et à la mise en cache des dépendances Maven.
-- **Qualité du code** : Contribution à l'augmentation de la couverture de tests de 65% à 78% sur les services dont j'avais la charge.
-- **Optimisation base de données** : Amélioration des temps de réponse de certaines requêtes critiques de 40% grâce à l'ajout d'index et à la réécriture de requêtes SQL.
-- **Documentation** : Rédaction de documentation technique pour les nouveaux arrivants, facilitant l'onboarding de deux nouveaux développeurs.
+- **Personnalisations client livrées** : Plusieurs clients configurés et personnalisés avec succès, de l'installation initiale à la mise en production, en passant par les phases de test avec le client sur les environnements staging Azure.
+- **Amélioration de CreatField** : L'intégration de la recherche et du téléchargement en lot dans l'outil CreatField a considérablement réduit le temps nécessaire à la gestion des champs personnalisés, passant de plusieurs heures à quelques minutes pour les migrations de 20-30 champs. Cette amélioration est utilisée par toute l'équipe Delivery au quotidien.
+- **Support client** : Traitement de nombreux tickets de support, avec diagnostic et résolution de problèmes variés, allant de la configuration utilisateur à des erreurs plus complexes nécessitant des Demandes d'Assistance à l'équipe R&D.
+- **Montées de version** : Gestion réussie de montées de version de Streamline Invoices chez les clients, grâce à l'approche de minimisation des modifications du code standard qui a limité les conflits.
 
-Cette alternance m'a permis de confronter mes connaissances théoriques acquises en formation avec la réalité du terrain professionnel. J'ai pu mesurer l'importance de la communication au sein d'une équipe de développement, la rigueur nécessaire dans la gestion du code source, et la valeur ajoutée de l'automatisation dans le processus de développement logiciel.`,
-      en: `My experience at ITESOFT has been extremely educational and allowed me to achieve concrete results:
+Cette alternance m'a confronté à la réalité d'un éditeur logiciel servant de grandes entreprises, où la fiabilité, la sécurité et la satisfaction client sont des priorités absolues.`,
+      en: `My experience at ITESOFT has produced concrete results both for the company and my professional development:
 
-- **CI/CD pipeline improvement**: 30% reduction in build time through optimization of compilation steps and Maven dependency caching.
-- **Code quality**: Contribution to increasing test coverage from 65% to 78% on the services I was responsible for.
-- **Database optimization**: 40% improvement in response times for certain critical queries through index addition and SQL query rewriting.
-- **Documentation**: Writing technical documentation for newcomers, facilitating the onboarding of two new developers.
+- **Client customizations delivered**: Several clients successfully configured and customized, from initial installation to production deployment, through client testing phases on Azure staging environments.
+- **CreatField improvement**: The integration of search and bulk download into the CreatField tool significantly reduced the time needed for custom field management, going from several hours to a few minutes for migrations of 20-30 fields. This improvement is used by the entire Delivery team daily.
+- **Client support**: Processing numerous support tickets, with diagnosis and resolution of varied issues, from user configuration to more complex errors requiring Assistance Requests to the R&D team.
+- **Version upgrades**: Successful management of Streamline Invoices version upgrades for clients, thanks to the approach of minimizing standard code modifications that limited conflicts.
 
-This work-study program allowed me to confront theoretical knowledge acquired in training with professional reality. I was able to measure the importance of communication within a development team, the rigor required in source code management, and the added value of automation in the software development process.`
+This work-study confronted me with the reality of a software publisher serving large enterprises, where reliability, security, and client satisfaction are absolute priorities.`
     },
     reflection: {
-      fr: `Cette expérience professionnelle chez ITESOFT constitue un tournant majeur dans mon parcours de formation. Elle m'a permis de passer d'un niveau de compétence essentiellement académique à une véritable pratique professionnelle du développement logiciel.
+      fr: `Cette expérience professionnelle chez ITESOFT constitue un tournant majeur dans mon parcours. Elle m'a fait passer d'un développeur essentiellement « scolaire » à quelqu'un qui comprend les enjeux réels d'un produit logiciel en production utilisé par des grandes entreprises.
 
 Les principaux apprentissages que je retiens sont :
 
-1. **La complexité des systèmes distribués** : Travailler sur une architecture microservices m'a fait comprendre que la distribution d'un système apporte certes de la flexibilité, mais aussi une complexité significative en termes de débogage, de monitoring et de gestion des erreurs.
+1. **L'art du compromis technique** : La contrainte de ne pas toucher au code standard de la R&D m'a appris à trouver des solutions créatives pour implémenter des fonctionnalités client tout en préservant la maintenabilité. Chaque personnalisation doit être pensée en fonction de son impact sur les futures montées de version.
 
-2. **L'importance des bonnes pratiques** : Les revues de code, les conventions de nommage, la documentation du code — ces pratiques qui peuvent sembler contraignantes dans un contexte académique prennent tout leur sens lorsqu'on travaille à plusieurs sur un même projet pendant des mois.
+2. **La relation client** : Le support m'a appris à communiquer avec des utilisateurs non-techniques, à diagnostiquer des problèmes à distance, et à rédiger des rapports clairs pour l'équipe R&D via les Demandes d'Assistance. La patience et la pédagogie sont des compétences aussi importantes que le code.
 
-3. **La communication technique** : Savoir expliquer un choix technique, argumenter sur une solution architecturale, ou documenter un processus sont des compétences tout aussi importantes que le code lui-même.
+3. **L'automatisation comme réflexe** : L'amélioration de CreatField m'a montré que lorsqu'un processus est répétitif et fastidieux, il vaut toujours la peine d'investir du temps pour l'automatiser. Le script initial m'a pris quelques heures, mais il fait gagner des heures chaque semaine à toute l'équipe.
 
-4. **La gestion du temps et des priorités** : Dans un contexte agile, il faut savoir estimer la complexité des tâches, communiquer sur les obstacles et adapter son travail aux priorités du sprint.
+4. **La sécurité comme culture** : Travailler sous norme ISO 27001 m'a appris que la sécurité n'est pas une fonctionnalité qu'on ajoute à la fin, mais une préoccupation constante qui influence chaque choix de conception et de développement.
 
-Si c'était à refaire, j'aurais aimé investir plus de temps dans la compréhension approfondie de Kubernetes dès le début de mon alternance, car c'est une technologie centrale dans l'infrastructure d'ITESOFT et sa maîtrise ouvre de nombreuses portes.`,
-      en: `This professional experience at ITESOFT represents a major turning point in my educational journey. It allowed me to transition from an essentially academic skill level to genuine professional software development practice.
+5. **La rigueur du cycle de déploiement** : Le passage obligé par Dev → Staging → Production m'a fait comprendre l'importance des environnements de test et de la validation client avant toute mise en production. Une erreur en production chez un client à plusieurs milliards de CA n'est pas une option.`,
+      en: `This professional experience at ITESOFT represents a major turning point in my journey. It took me from being an essentially "academic" developer to someone who understands the real challenges of a production software product used by large enterprises.
 
 The main learnings I take away are:
 
-1. **The complexity of distributed systems**: Working on a microservices architecture made me understand that system distribution brings flexibility but also significant complexity in terms of debugging, monitoring, and error management.
+1. **The art of technical compromise**: The constraint of not touching R&D's standard code taught me to find creative solutions for implementing client features while preserving maintainability. Each customization must be considered in terms of its impact on future version upgrades.
 
-2. **The importance of best practices**: Code reviews, naming conventions, code documentation — these practices that may seem constraining in an academic context become fully meaningful when working as a team on the same project for months.
+2. **Client relations**: Support taught me to communicate with non-technical users, diagnose problems remotely, and write clear reports for the R&D team via Assistance Requests. Patience and pedagogy are skills as important as code.
 
-3. **Technical communication**: Knowing how to explain a technical choice, argue for an architectural solution, or document a process are skills just as important as the code itself.
+3. **Automation as a reflex**: The CreatField improvement showed me that when a process is repetitive and tedious, it's always worth investing time to automate it. The initial script took me a few hours, but it saves hours every week for the entire team.
 
-4. **Time and priority management**: In an agile context, you need to know how to estimate task complexity, communicate about obstacles, and adapt your work to sprint priorities.
+4. **Security as a culture**: Working under ISO 27001 standards taught me that security is not a feature you add at the end, but a constant concern that influences every design and development choice.
 
-If I could do it over, I would have liked to invest more time in deeply understanding Kubernetes from the start of my work-study, as it's a central technology in ITESOFT's infrastructure and mastering it opens many doors.`
+5. **Deployment cycle rigor**: The mandatory path through Dev → Staging → Production made me understand the importance of test environments and client validation before any production deployment. An error in production for a client with billions in revenue is not an option.`
     },
     thumbnail: "/images/itesoft.jpg",
     images: [],
