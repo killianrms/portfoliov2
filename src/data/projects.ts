@@ -395,6 +395,189 @@ This was my very first professional experience and it was extremely formative. I
     links: { live: "https://tama-stat.vercel.app/" }
   },
   {
+    slug: "lobbybot-fortnite",
+    title: "LobbyBot 2.0 — Bots Fortnite",
+    category: "personal",
+    technologies: ["Node.js", "Python", "Discord.js", "Express", "Socket.IO", "PostgreSQL", "Docker", "OAuth2", "WebSocket", "Asyncio"],
+    duration: { fr: "Projet personnel continu (2020 — Présent)", en: "Ongoing personal project (2020 — Present)" },
+    team: { fr: "Projet individuel — Communauté de 8 500+ membres Discord", en: "Individual project — Community of 8,500+ Discord members" },
+    role: { fr: "Développeur unique — Conception, développement, maintenance et gestion de communauté", en: "Sole Developer — Design, development, maintenance and community management" },
+    shortDescription: {
+      fr: "Système complet de bots Fortnite avec gestion multi-comptes, bot Discord central, dashboard web temps réel et communauté de 8 500+ membres. Projet initié pendant le COVID à 16 ans, devenu mon plus gros projet personnel.",
+      en: "Complete Fortnite bot system with multi-account management, central Discord bot, real-time web dashboard and community of 8,500+ members. Project started during COVID at age 16, became my biggest personal project."
+    },
+    context: {
+      fr: `LobbyBot 2.0 est mon plus gros projet personnel. Il a démarré en 2020, pendant le COVID, alors que j'avais 16 ans. À l'origine, c'était simplement des bots Fortnite en Python qui permettaient aux joueurs de voir tous les skins et danses du jeu. Le projet était financé par la publicité de mon code créateur Epic Games (10% de rémunération sur chaque achat effectué par mes soutiens sur le store Epic Games).
+
+Les joueurs utilisaient les bots pour prévisualiser les skins et danses à venir dans la boutique, mais aussi pour jouer avec eux afin de faciliter leur progression et éviter de tomber contre des joueurs trop forts. J'ai eu plusieurs contacts avec Epic Games qui m'ont autorisé à faire ces bots.
+
+Ce petit projet initié pendant le confinement est devenu, et reste encore aujourd'hui, mon plus gros projet personnel. La communauté compte plus de 8 500 membres sur Discord qui suivent activement le projet. Au fil des années, j'ai considérablement amélioré le code : passage du simple script Python à une architecture complète avec un bot Discord central en Node.js, un dashboard web en temps réel, une base de données PostgreSQL, et le tout orchestré avec Docker.
+
+Les améliorations majeures incluent : l'automatisation de la création de nouveaux bots quand un bot atteint sa limite d'amis, l'automatisation du relancement des bots en cas de crash ou de redémarrage serveur, et un système de load balancing intelligent qui sélectionne automatiquement le bot le moins chargé pour chaque nouvel ami.`,
+      en: `LobbyBot 2.0 is my biggest personal project. It started in 2020, during COVID, when I was 16 years old. Originally, it was simply Python Fortnite bots that allowed players to see all the game's skins and dances. The project was funded through my Epic Games creator code advertising (10% commission on each purchase made by my supporters on the Epic Games store).
+
+Players used the bots to preview upcoming skins and dances in the shop, but also to play with them to ease their progression and avoid facing overly strong opponents. I had multiple contacts with Epic Games who authorized me to create these bots.
+
+This small project started during lockdown became, and still remains today, my biggest personal project. The community has over 8,500 members on Discord actively following the project. Over the years, I significantly improved the code: from simple Python scripts to a complete architecture with a central Discord bot in Node.js, a real-time web dashboard, a PostgreSQL database, all orchestrated with Docker.
+
+Major improvements include: automated creation of new bots when a bot reaches its friend limit, automated bot restart in case of crash or server reboot, and an intelligent load balancing system that automatically selects the least loaded bot for each new friend.`
+    },
+    objectives: {
+      fr: `1. **Système multi-bots** : Gérer un nombre illimité de bots Fortnite simultanément avec un load balancing intelligent (seuil de 900 amis par bot)
+2. **Bot Discord central** : Permettre aux 8 500+ membres de la communauté d'interagir avec les bots Fortnite via des commandes Discord (/add, /login, /list, /shop, /locker...)
+3. **Dashboard web temps réel** : Interface de contrôle permettant de voir l'état des bots, leurs amis, et de les gérer (kick, promote, privacy) via Socket.IO
+4. **Automatisation complète** : Création automatique de bots, relancement en cas de crash, et gestion autonome des listes d'amis
+5. **Internationalisation** : Support multilingue (FR/EN/ES/DE) pour la communauté internationale`,
+      en: `1. **Multi-bot system**: Manage unlimited simultaneous Fortnite bots with intelligent load balancing (900 friends threshold per bot)
+2. **Central Discord bot**: Allow the 8,500+ community members to interact with Fortnite bots via Discord commands (/add, /login, /list, /shop, /locker...)
+3. **Real-time web dashboard**: Control interface to view bot status, friends, and manage them (kick, promote, privacy) via Socket.IO
+4. **Full automation**: Automatic bot creation, restart on crash, and autonomous friend list management
+5. **Internationalization**: Multilingual support (FR/EN/ES/DE) for the international community`
+    },
+    approach: {
+      fr: `Le projet a évolué d'un simple script Python vers une architecture distribuée complète :
+
+- **Phase 1 (2020)** : Bots Python simples utilisant les API non-documentées d'Epic Games, avec authentification OAuth2 et gestion basique des amis et skins.
+- **Phase 2 (évolution)** : Migration vers une architecture Node.js pour le bot Discord central, avec Discord.js pour gérer les commandes de la communauté.
+- **Phase 3 (actuelle — LobbyBot 2.0)** : Architecture complète avec trois composants principaux orchestrés par Docker :
+
+  1. **Discord Manager** (Node.js) : Le cœur du système. Gère tous les bots simultanément, le load balancing, les commandes Discord, et la communication avec la base de données PostgreSQL.
+  2. **Dashboard Web** (Node.js/Express/Socket.IO) : Interface de contrôle en temps réel avec un design "Space/Starfield". Communication instantanée avec le Manager via Socket.IO.
+  3. **Base de données PostgreSQL** : Stockage des comptes bots, utilisateurs, préférences de langue, et statistiques.
+
+Le système de load balancing sélectionne automatiquement le bot ayant le moins d'amis (< 900) pour chaque nouvelle demande d'ajout. Si tous les bots sont pleins, un nouveau bot est créé automatiquement.`,
+      en: `The project evolved from a simple Python script to a complete distributed architecture:
+
+- **Phase 1 (2020)**: Simple Python bots using Epic Games' undocumented APIs, with OAuth2 authentication and basic friend/skin management.
+- **Phase 2 (evolution)**: Migration to Node.js architecture for the central Discord bot, using Discord.js to handle community commands.
+- **Phase 3 (current — LobbyBot 2.0)**: Complete architecture with three main components orchestrated by Docker:
+
+  1. **Discord Manager** (Node.js): The system's core. Manages all bots simultaneously, load balancing, Discord commands, and PostgreSQL database communication.
+  2. **Web Dashboard** (Node.js/Express/Socket.IO): Real-time control interface with a "Space/Starfield" design. Instant communication with the Manager via Socket.IO.
+  3. **PostgreSQL Database**: Storage for bot accounts, users, language preferences, and statistics.
+
+The load balancing system automatically selects the bot with the fewest friends (< 900) for each new friend request. If all bots are full, a new bot is automatically created.`
+    },
+    architecture: {
+      fr: `Architecture distribuée Docker multi-services :
+
+- **lobbybot2.0-discord/** (Node.js) : Manager central
+  - \`src/managers/\` : Gestionnaires principaux (Bots, Database, User, API, Discord)
+  - \`src/commands/\` : Commandes Discord (/login, /add, /list, /shop, /locker, /admin...)
+  - \`src/actions/\` : Logique des actions Fortnite (Skin, Party, Friends)
+  - \`src/utils/\` : Utilitaires (Locales i18n, helpers)
+
+- **lobbybot2.0-website/** (Node.js/Express) : Dashboard web
+  - Backend Express + Socket.IO pour la communication temps réel
+  - Frontend HTML5/CSS3/Vanilla JS avec design "Space/Starfield"
+  - Affichage de l'état des bots, amis, contrôles (Kick, Promote, Privacy)
+
+- **PostgreSQL** : Base de données partagée (comptes, utilisateurs, préférences)
+- **Docker Compose** : Orchestration des trois services`,
+      en: `Distributed multi-service Docker architecture:
+
+- **lobbybot2.0-discord/** (Node.js): Central Manager
+  - \`src/managers/\`: Main managers (Bots, Database, User, API, Discord)
+  - \`src/commands/\`: Discord commands (/login, /add, /list, /shop, /locker, /admin...)
+  - \`src/actions/\`: Fortnite action logic (Skin, Party, Friends)
+  - \`src/utils/\`: Utilities (i18n Locales, helpers)
+
+- **lobbybot2.0-website/** (Node.js/Express): Web Dashboard
+  - Express + Socket.IO backend for real-time communication
+  - HTML5/CSS3/Vanilla JS frontend with "Space/Starfield" design
+  - Bot status display, friends, controls (Kick, Promote, Privacy)
+
+- **PostgreSQL**: Shared database (accounts, users, preferences)
+- **Docker Compose**: Orchestration of all three services`
+    },
+    skills: [
+      {
+        name: { fr: "Architecture distribuée & Docker", en: "Distributed Architecture & Docker" },
+        description: { fr: "Conception et déploiement d'une architecture multi-services avec Docker Compose : Manager Node.js, Dashboard web, et base de données PostgreSQL communiquant en temps réel.", en: "Design and deployment of a multi-service architecture with Docker Compose: Node.js Manager, Web Dashboard, and PostgreSQL database communicating in real-time." }
+      },
+      {
+        name: { fr: "Gestion de communauté & produit", en: "Community & Product Management" },
+        description: { fr: "Animation d'une communauté de 8 500+ membres Discord, gestion des retours utilisateurs, évolution continue du produit sur 5+ ans, et financement via code créateur Epic Games.", en: "Management of a 8,500+ member Discord community, user feedback handling, continuous product evolution over 5+ years, and funding through Epic Games creator code." }
+      },
+      {
+        name: { fr: "Communication temps réel (Socket.IO)", en: "Real-time Communication (Socket.IO)" },
+        description: { fr: "Implémentation de communications bidirectionnelles en temps réel entre le Dashboard web et le Manager via Socket.IO pour le contrôle instantané des bots.", en: "Implementation of bidirectional real-time communications between the Web Dashboard and Manager via Socket.IO for instant bot control." }
+      },
+      {
+        name: { fr: "Automatisation & Load Balancing", en: "Automation & Load Balancing" },
+        description: { fr: "Système intelligent de répartition de charge entre les bots, création automatique de nouveaux bots, et relancement automatique en cas de crash ou redémarrage serveur.", en: "Intelligent load distribution system between bots, automatic creation of new bots, and automatic restart on crash or server reboot." }
+      }
+    ],
+    codeHighlights: [
+      {
+        title: { fr: "Extraits de code à venir", en: "Code excerpts coming soon" },
+        code: `// Les extraits de code seront ajoutés prochainement
+// Code excerpts will be added soon
+
+// LobbyBot 2.0 — Système de Bots Fortnite
+// Architecture: Discord Manager + Web Dashboard + PostgreSQL
+// LobbyBot 2.0 — Fortnite Bot System
+// Architecture: Discord Manager + Web Dashboard + PostgreSQL`,
+        language: "javascript",
+        explanation: {
+          fr: "Les extraits de code détaillés du projet LobbyBot 2.0 seront ajoutés prochainement, avec des exemples concrets du système de load balancing, de la gestion multi-bots et de la communication Socket.IO temps réel.",
+          en: "Detailed code excerpts from the LobbyBot 2.0 project will be added soon, with concrete examples of the load balancing system, multi-bot management and real-time Socket.IO communication."
+        }
+      }
+    ],
+    results: {
+      fr: `LobbyBot 2.0 est un projet actif depuis 2020 avec des résultats concrets :
+
+- **8 500+ membres Discord** suivant activement le projet et utilisant les bots au quotidien
+- **Système multi-bots fonctionnel** avec load balancing intelligent et création automatique de nouveaux bots
+- **Dashboard web temps réel** permettant le monitoring et le contrôle de tous les bots
+- **Autorisation officielle d'Epic Games** obtenue après plusieurs échanges directs
+- **Financement autonome** via le système de code créateur Epic Games (10% de commission)
+- **5+ ans de maintenance continue**, avec des évolutions majeures (Python → Node.js, scripts → architecture Docker)
+- **Internationalisation complète** en 4 langues (FR/EN/ES/DE) pour la communauté internationale
+
+Ce projet, initié à 16 ans pendant le COVID, est devenu et reste mon plus gros projet personnel, démontrant ma capacité à mener un projet de A à Z sur le long terme.`,
+      en: `LobbyBot 2.0 has been an active project since 2020 with concrete results:
+
+- **8,500+ Discord members** actively following the project and using bots daily
+- **Functional multi-bot system** with intelligent load balancing and automatic new bot creation
+- **Real-time web dashboard** enabling monitoring and control of all bots
+- **Official Epic Games authorization** obtained after multiple direct exchanges
+- **Self-funded** through the Epic Games creator code system (10% commission)
+- **5+ years of continuous maintenance**, with major evolutions (Python → Node.js, scripts → Docker architecture)
+- **Full internationalization** in 4 languages (FR/EN/ES/DE) for the international community
+
+This project, started at age 16 during COVID, became and remains my biggest personal project, demonstrating my ability to lead a project from A to Z over the long term.`
+    },
+    reflection: {
+      fr: `LobbyBot 2.0 est le projet qui m'a le plus appris en dehors du cadre scolaire :
+
+1. **L'évolution technique sur 5 ans** m'a fait passer de simples scripts Python à une architecture distribuée complète avec Docker. Chaque itération m'a poussé à apprendre de nouvelles technologies pour résoudre des problèmes concrets : Node.js pour la performance, PostgreSQL pour la persistance, Socket.IO pour le temps réel, Docker pour le déploiement.
+
+2. **La gestion d'une communauté de 8 500+ membres** m'a enseigné des compétences non-techniques essentielles : communication, gestion des attentes, priorisation des fonctionnalités basée sur les retours utilisateurs, et la responsabilité de maintenir un service utilisé quotidiennement.
+
+3. **Le contact avec Epic Games** m'a appris à interagir professionnellement avec une grande entreprise, à présenter mon projet de manière convaincante et à respecter leurs conditions d'utilisation.
+
+4. **La maintenance sur le long terme** est la leçon la plus importante : les API changent, les serveurs crashent, les utilisateurs ont des besoins qui évoluent. Ce projet m'a enseigné la valeur d'une architecture robuste, de l'automatisation (relancement automatique, load balancing), et de la documentation.
+
+Ce projet prouve qu'un side project passionné peut devenir quelque chose de significatif avec de la persévérance et une amélioration continue.`,
+      en: `LobbyBot 2.0 is the project that taught me the most outside of school:
+
+1. **5 years of technical evolution** took me from simple Python scripts to a complete distributed architecture with Docker. Each iteration pushed me to learn new technologies to solve concrete problems: Node.js for performance, PostgreSQL for persistence, Socket.IO for real-time, Docker for deployment.
+
+2. **Managing a community of 8,500+ members** taught me essential non-technical skills: communication, expectation management, feature prioritization based on user feedback, and the responsibility of maintaining a daily-used service.
+
+3. **Contact with Epic Games** taught me to interact professionally with a large company, present my project convincingly, and respect their terms of use.
+
+4. **Long-term maintenance** is the most important lesson: APIs change, servers crash, users' needs evolve. This project taught me the value of robust architecture, automation (automatic restart, load balancing), and documentation.
+
+This project proves that a passionate side project can become something significant with perseverance and continuous improvement.`
+    },
+    thumbnail: "/images/fortnite-bot.jpg",
+    images: [],
+    links: { github: "https://github.com/killianrms/lobbybot2.0-discord", live: "https://github.com/killianrms/lobbybot2.0-website", video: "https://youtu.be/tja-34-FpnY" }
+  },
+  {
     slug: "referendum",
     title: "Referendum — Application de Vote Sécurisée",
     category: "university",
@@ -685,171 +868,6 @@ The main difficulty was managing the cart in session while maintaining consisten
     thumbnail: "/images/ecommerce.jpg",
     images: [],
     links: { github: "https://github.com/killianrms/ecommerce-parfum" }
-  },
-  {
-    slug: "bot-fortnite-python",
-    title: "Bot Fortnite en Python",
-    category: "personal",
-    technologies: ["Python", "API REST", "OAuth2", "JSON", "Asyncio", "WebSocket"],
-    duration: { fr: "Projet personnel continu (2023 — 2024)", en: "Ongoing personal project (2023 — 2024)" },
-    team: { fr: "Projet individuel", en: "Individual project" },
-    role: { fr: "Développeur unique — Conception, développement et maintenance", en: "Sole Developer — Design, development and maintenance" },
-    shortDescription: {
-      fr: "Bot automatisé en Python interagissant avec les API d'Epic Games pour récupérer des statistiques, gérer des listes d'amis et automatiser des tâches dans Fortnite.",
-      en: "Automated Python bot interacting with Epic Games APIs to retrieve statistics, manage friend lists, and automate tasks in Fortnite."
-    },
-    context: {
-      fr: `Ce projet personnel est né de ma passion pour le jeu Fortnite et de ma volonté d'explorer les possibilités offertes par les API d'Epic Games. L'objectif initial était simple : récupérer automatiquement mes statistiques de jeu. Mais le projet a rapidement évolué pour devenir un bot complet capable d'interagir avec l'écosystème Fortnite via les API non-documentées d'Epic Games.
-
-Ce projet m'a poussé à explorer des concepts avancés de programmation Python que je n'aurais pas abordés dans un cadre universitaire : la programmation asynchrone avec asyncio, l'authentification OAuth2, la gestion de WebSockets pour les communications en temps réel, et le reverse engineering d'API non-documentées.
-
-La particularité de ce projet est qu'il m'a obligé à faire du reverse engineering : les API d'Epic Games n'étant pas publiquement documentées, j'ai dû analyser le trafic réseau du client officiel pour comprendre les endpoints disponibles, les formats de requêtes attendus et les mécanismes d'authentification.`,
-      en: `This personal project was born from my passion for Fortnite and my desire to explore the possibilities offered by Epic Games APIs. The initial goal was simple: automatically retrieve my game statistics. But the project quickly evolved into a complete bot capable of interacting with the Fortnite ecosystem via Epic Games' undocumented APIs.
-
-This project pushed me to explore advanced Python programming concepts that I wouldn't have encountered in a university setting: asynchronous programming with asyncio, OAuth2 authentication, WebSocket management for real-time communications, and reverse engineering of undocumented APIs.
-
-The specificity of this project is that it required reverse engineering: since Epic Games' APIs are not publicly documented, I had to analyze the official client's network traffic to understand available endpoints, expected request formats, and authentication mechanisms.`
-    },
-    objectives: {
-      fr: `1. Récupérer et afficher les statistiques de jeu détaillées via les API Epic Games
-2. Automatiser la gestion de la liste d'amis (ajout, suppression, acceptation)
-3. Implémenter l'authentification OAuth2 complète avec refresh token
-4. Communiquer en temps réel via WebSocket pour les notifications
-5. Maintenir le bot à jour face aux changements d'API fréquents`,
-      en: `1. Retrieve and display detailed game statistics via Epic Games APIs
-2. Automate friend list management (add, remove, accept)
-3. Implement complete OAuth2 authentication with refresh token
-4. Communicate in real-time via WebSocket for notifications
-5. Keep the bot updated against frequent API changes`
-    },
-    approach: {
-      fr: `Le bot est développé en Python 3 avec une architecture modulaire :
-
-- **Module d'authentification** : Gestion complète du flux OAuth2 d'Epic Games, incluant l'obtention du token initial, le refresh automatique, et la gestion de multiples comptes.
-- **Module API** : Classes encapsulant les appels aux différents endpoints (statistiques, amis, matchmaking, boutique).
-- **Module WebSocket** : Client XMPP/WebSocket pour les communications en temps réel (notifications d'amis, invitations).
-- **Module CLI** : Interface en ligne de commande interactive pour contrôler le bot.
-
-L'utilisation d'asyncio permet de gérer simultanément les requêtes HTTP, les connexions WebSocket et l'interface utilisateur sans blocage, offrant une réactivité optimale.`,
-      en: `The bot is developed in Python 3 with a modular architecture:
-
-- **Authentication module**: Complete management of Epic Games' OAuth2 flow, including initial token acquisition, automatic refresh, and multi-account management.
-- **API module**: Classes encapsulating calls to different endpoints (statistics, friends, matchmaking, shop).
-- **WebSocket module**: XMPP/WebSocket client for real-time communications (friend notifications, invitations).
-- **CLI module**: Interactive command-line interface for bot control.
-
-Using asyncio allows simultaneous handling of HTTP requests, WebSocket connections, and user interface without blocking, providing optimal responsiveness.`
-    },
-    architecture: {
-      fr: `Architecture modulaire asynchrone :
-- **auth/** : Gestion OAuth2 (AuthClient, TokenManager)
-- **api/** : Clients API (StatsAPI, FriendsAPI, ShopAPI)
-- **ws/** : Client WebSocket XMPP pour le temps réel
-- **commands/** : Commandes CLI du bot
-- **utils/** : Utilitaires (logging, config, helpers)`,
-      en: `Asynchronous modular architecture:
-- **auth/**: OAuth2 management (AuthClient, TokenManager)
-- **api/**: API clients (StatsAPI, FriendsAPI, ShopAPI)
-- **ws/**: XMPP WebSocket client for real-time
-- **commands/**: Bot CLI commands
-- **utils/**: Utilities (logging, config, helpers)`
-    },
-    skills: [
-      {
-        name: { fr: "Programmation asynchrone Python", en: "Asynchronous Python Programming" },
-        description: { fr: "Maîtrise d'asyncio, des coroutines, des event loops et de la gestion concurrente des I/O pour des performances optimales.", en: "Mastery of asyncio, coroutines, event loops, and concurrent I/O management for optimal performance." }
-      },
-      {
-        name: { fr: "Authentification OAuth2", en: "OAuth2 Authentication" },
-        description: { fr: "Implémentation complète du protocole OAuth2 avec gestion des tokens d'accès, refresh tokens et flux d'authentification multi-étapes.", en: "Complete implementation of the OAuth2 protocol with access token management, refresh tokens, and multi-step authentication flows." }
-      },
-      {
-        name: { fr: "Reverse Engineering d'API", en: "API Reverse Engineering" },
-        description: { fr: "Analyse du trafic réseau pour identifier les endpoints, les headers requis et les formats de données des API non-documentées d'Epic Games.", en: "Network traffic analysis to identify endpoints, required headers, and data formats of Epic Games' undocumented APIs." }
-      }
-    ],
-    codeHighlights: [
-      {
-        title: { fr: "Client d'authentification OAuth2 asynchrone", en: "Asynchronous OAuth2 Authentication Client" },
-        code: `import aiohttp
-import asyncio
-from datetime import datetime, timedelta
-
-class EpicAuthClient:
-    TOKEN_URL = "https://account-public-service-prod.ol.epicgames.com/account/api/oauth/token"
-
-    def __init__(self, client_id: str, client_secret: str):
-        self.client_id = client_id
-        self.client_secret = client_secret
-        self.access_token = None
-        self.refresh_token = None
-        self.token_expiry = None
-
-    async def authenticate(self, auth_code: str) -> dict:
-        async with aiohttp.ClientSession() as session:
-            async with session.post(
-                self.TOKEN_URL,
-                headers={"Content-Type": "application/x-www-form-urlencoded"},
-                auth=aiohttp.BasicAuth(self.client_id, self.client_secret),
-                data={
-                    "grant_type": "authorization_code",
-                    "code": auth_code
-                }
-            ) as resp:
-                data = await resp.json()
-                self._update_tokens(data)
-                return data
-
-    async def refresh(self) -> dict:
-        async with aiohttp.ClientSession() as session:
-            async with session.post(
-                self.TOKEN_URL,
-                auth=aiohttp.BasicAuth(self.client_id, self.client_secret),
-                data={
-                    "grant_type": "refresh_token",
-                    "refresh_token": self.refresh_token
-                }
-            ) as resp:
-                data = await resp.json()
-                self._update_tokens(data)
-                return data
-
-    def _update_tokens(self, data: dict):
-        self.access_token = data["access_token"]
-        self.refresh_token = data.get("refresh_token")
-        self.token_expiry = datetime.now() + timedelta(
-            seconds=data["expires_in"]
-        )`,
-        language: "python",
-        explanation: {
-          fr: "Ce client d'authentification asynchrone gère le flux OAuth2 complet d'Epic Games. La méthode authenticate() effectue l'échange du code d'autorisation contre les tokens d'accès, tandis que refresh() renouvelle automatiquement le token avant son expiration. L'utilisation d'aiohttp permet des requêtes non-bloquantes, essentielles pour maintenir la réactivité du bot pendant l'authentification.",
-          en: "This asynchronous authentication client manages Epic Games' complete OAuth2 flow. The authenticate() method exchanges the authorization code for access tokens, while refresh() automatically renews the token before expiration. Using aiohttp enables non-blocking requests, essential for maintaining bot responsiveness during authentication."
-        }
-      }
-    ],
-    results: {
-      fr: `Le bot est fonctionnel et utilisé quotidiennement. Il gère avec succès l'authentification OAuth2, récupère les statistiques en temps réel, et automatise la gestion des amis. Le projet a été partagé sur GitHub et a reçu des contributions de la communauté.
-
-Ce projet personnel m'a apporté des compétences que je n'aurais pas acquises uniquement dans le cadre universitaire, notamment en programmation asynchrone et en sécurité des API.`,
-      en: `The bot is functional and used daily. It successfully handles OAuth2 authentication, retrieves real-time statistics, and automates friend management. The project has been shared on GitHub and received community contributions.
-
-This personal project gave me skills I wouldn't have acquired solely in a university setting, particularly in asynchronous programming and API security.`
-    },
-    reflection: {
-      fr: `Ce projet illustre parfaitement la valeur de l'apprentissage par la pratique. En m'attaquant à un problème qui me passionnait, j'ai exploré des technologies et des concepts bien au-delà du programme universitaire.
-
-Le reverse engineering des API m'a appris à lire et analyser le trafic réseau, une compétence directement transposable en cybersécurité. La programmation asynchrone m'a fait comprendre les enjeux de performance et de concurrence dans les applications modernes.
-
-La principale leçon apprise est l'importance de la maintenance : les API non-documentées changent fréquemment, et j'ai dû adapter mon code régulièrement, ce qui m'a enseigné la valeur d'une architecture modulaire et bien testée.`,
-      en: `This project perfectly illustrates the value of learning by doing. By tackling a problem I was passionate about, I explored technologies and concepts well beyond the university curriculum.
-
-API reverse engineering taught me to read and analyze network traffic, a skill directly transferable to cybersecurity. Asynchronous programming made me understand performance and concurrency challenges in modern applications.
-
-The main lesson learned is the importance of maintenance: undocumented APIs change frequently, and I had to adapt my code regularly, which taught me the value of a modular and well-tested architecture.`
-    },
-    thumbnail: "/images/fortnite-bot.jpg",
-    images: [],
-    links: { github: "https://github.com/killianrms/fortnite-bot" }
   },
   {
     slug: "nuit-info-2025",
