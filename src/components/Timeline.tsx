@@ -61,6 +61,22 @@ const timelineData: TimelineItem[] = [
     type: "experience",
   },
   {
+    year: "Mai 2024 — Avril 2026",
+    title: {
+      fr: "BDE Informatique Montpellier",
+      en: "BDE Informatique Montpellier (Student Association)",
+    },
+    subtitle: {
+      fr: "Responsable Événementiel et Communication",
+      en: "Events & Communication Manager",
+    },
+    description: {
+      fr: "Organisation d'événements pour les étudiants en informatique de l'IUT de Montpellier. Gestion de la communication sur les réseaux sociaux (Discord, Instagram). Coordination logistique des soirées, sorties et activités étudiantes.",
+      en: "Organizing events for computer science students at IUT Montpellier. Managing social media communication (Discord, Instagram). Logistical coordination of parties, outings, and student activities.",
+    },
+    type: "volunteer",
+  },
+  {
     year: "2023",
     title: {
       fr: "Baccalauréat Général",
