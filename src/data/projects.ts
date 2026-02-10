@@ -228,142 +228,171 @@ The main learnings I take away are:
   },
   {
     slug: "tamastat",
-    title: "TamaStat",
+    title: "TamaStat — TamaBox",
     category: "professional",
-    technologies: ["Python", "Flask", "JavaScript", "Chart.js", "API REST", "HTML/CSS", "Bootstrap"],
-    duration: { fr: "Avril — Juin 2024 (Stage)", en: "April — June 2024 (Internship)" },
-    team: { fr: "2 stagiaires + 1 tuteur de stage", en: "2 interns + 1 internship supervisor" },
-    role: { fr: "Développeur Full-Stack — Conception et développement de l'application", en: "Full-Stack Developer — Application design and development" },
+    technologies: ["JavaScript", "Chart.js", "HTML/CSS", "Vercel", "Git"],
+    duration: { fr: "Janvier — Avril 2025 (Stage)", en: "January — April 2025 (Internship)" },
+    team: { fr: "Seul avec le gérant de l'entreprise", en: "Solo with the company owner" },
+    role: { fr: "Développeur Full-Stack — Conception, développement et déploiement complet de l'application", en: "Full-Stack Developer — Complete design, development and deployment of the application" },
     shortDescription: {
-      fr: "Application web de visualisation statistique des données de transport en commun de la métropole de Montpellier (TaM).",
-      en: "Web application for statistical visualization of Montpellier metropolitan public transport data (TaM)."
+      fr: "Outil de visualisation statistique développé pour TamaBox (Draguignan, 83) : analyse des données de location de box de stockage, personas marketing et outil de prévision.",
+      en: "Statistical visualization tool developed for TamaBox (Draguignan, France): storage box rental data analysis, marketing personas and forecasting tool."
     },
     context: {
-      fr: `TamaStat est un projet réalisé dans le cadre de mon stage de deuxième année de BUT Informatique. L'objectif était de concevoir et développer une application web permettant de visualiser et d'analyser les données statistiques du réseau de transport en commun de la Métropole de Montpellier, géré par TaM (Transports de l'Agglomération de Montpellier).
+      fr: `TamaStat est un outil de visualisation statistique que j'ai conçu et développé dans le cadre de mon stage de deuxième année de BUT Informatique, réalisé chez TamaBox, une entreprise de location de box de stockage située à Draguignan dans le Var (83), de janvier à avril 2025.
 
-Le réseau TaM dessert plus de 500 000 habitants et génère un volume considérable de données sur la fréquentation, les retards, les itinéraires et les performances des lignes. Cependant, ces données brutes étaient difficilement exploitables par les décideurs et les analystes sans un outil de visualisation adapté.
+C'était ma toute première expérience professionnelle. J'étais seul avec le gérant de l'entreprise — pas d'équipe technique, pas de développeur senior pour me guider. Le gérant m'a donné carte blanche : il m'a expliqué son activité, ses données, et ce qu'il voulait comprendre à travers un tableau de bord. À partir de là, j'ai eu une autonomie totale sur la conception, le développement et le déploiement de l'outil.
 
-Mon stage s'est déroulé au sein d'une équipe technique qui avait besoin d'un tableau de bord interactif pour faciliter la prise de décision basée sur les données. L'enjeu principal était de transformer des données brutes en informations visuelles pertinentes et facilement interprétables.`,
-      en: `TamaStat is a project completed during my second-year Computer Science internship. The goal was to design and develop a web application for visualizing and analyzing statistical data from the Montpellier Metropolitan public transport network, managed by TaM (Transports de l'Agglomération de Montpellier).
+Le contexte métier était le suivant : TamaBox propose des box de stockage de différentes tailles à la location. Le gérant disposait de données brutes sur son activité (entrées/sorties de locataires, répartition par taille de box, taux d'occupation, chiffre d'affaires, surface totale louée) mais n'avait aucun outil pour les visualiser et les analyser. Son taux d'occupation oscillait entre 75% et 82%, et il souhaitait atteindre les 100%.
 
-The TaM network serves over 500,000 residents and generates a considerable volume of data on ridership, delays, routes, and line performance. However, this raw data was difficult to use for decision-makers and analysts without an appropriate visualization tool.
+Nos échanges se faisaient lors de réunions hebdomadaires où je présentais l'avancement et où il me faisait ses retours. Le reste du temps, je travaillais en totale autonomie.`,
+      en: `TamaStat is a statistical visualization tool that I designed and developed during my second-year Computer Science internship at TamaBox, a storage box rental company located in Draguignan, Var (83), France, from January to April 2025.
 
-My internship took place within a technical team that needed an interactive dashboard to facilitate data-driven decision making. The main challenge was transforming raw data into relevant and easily interpretable visual information.`
+This was my very first professional experience. I was alone with the company owner — no technical team, no senior developer to guide me. The owner gave me full creative freedom: he explained his business, his data, and what he wanted to understand through a dashboard. From there, I had complete autonomy over the design, development, and deployment of the tool.
+
+The business context was as follows: TamaBox offers storage boxes of various sizes for rent. The owner had raw data about his business (tenant entries/exits, box size distribution, occupancy rates, revenue, total rented surface area) but had no tool to visualize and analyze it. His occupancy rate fluctuated between 75% and 82%, and he wanted to reach 100%.
+
+Our exchanges took place during weekly meetings where I presented progress and he gave his feedback. The rest of the time, I worked with complete autonomy.`
     },
     objectives: {
-      fr: `1. **Collecte et traitement des données** : Mettre en place un système d'extraction et de nettoyage des données depuis les API du réseau TaM.
-2. **Visualisation interactive** : Développer des graphiques dynamiques et interactifs permettant d'explorer les données selon différents axes (temporel, géographique, par ligne).
-3. **Interface utilisateur intuitive** : Créer une interface accessible aux non-techniciens avec des filtres et des options de personnalisation.
-4. **Performance** : Assurer des temps de chargement rapides malgré le volume important de données à traiter.`,
-      en: `1. **Data collection and processing**: Set up a system for extracting and cleaning data from TaM network APIs.
-2. **Interactive visualization**: Develop dynamic and interactive charts allowing data exploration along different axes (temporal, geographical, by line).
-3. **Intuitive user interface**: Create an interface accessible to non-technical users with filters and customization options.
-4. **Performance**: Ensure fast loading times despite the large volume of data to process.`
+      fr: `1. **Tableau de bord statistique** : Créer un outil de visualisation complet permettant au gérant de comprendre en un coup d'œil l'état de son activité — entrées/sorties de locataires, répartition par taille de box, taux de boxes louées vs non louées, évolution du chiffre d'affaires, et surface totale louée.
+
+2. **Personas marketing** : Concevoir des profils types de clients (personas) à partir de l'analyse des données, afin de permettre au gérant de cibler ses campagnes publicitaires vers les bons segments de clientèle.
+
+3. **Outil de prévision (forecasting)** : Développer un module de projection permettant d'anticiper l'évolution du taux d'occupation et du chiffre d'affaires sur les mois à venir.
+
+4. **Autonomie complète** : Gérer l'intégralité du projet seul — de la conception à la mise en production — en tant que première expérience professionnelle.`,
+      en: `1. **Statistical dashboard**: Create a comprehensive visualization tool allowing the owner to understand his business at a glance — tenant entries/exits, box size distribution, rented vs unrented box rates, revenue evolution, and total rented surface area.
+
+2. **Marketing personas**: Design typical customer profiles (personas) from data analysis, enabling the owner to target his advertising campaigns towards the right customer segments.
+
+3. **Forecasting tool**: Develop a projection module to anticipate the evolution of occupancy rates and revenue in the coming months.
+
+4. **Complete autonomy**: Manage the entire project solo — from design to production deployment — as a first professional experience.`
     },
     approach: {
-      fr: `L'application a été développée avec une architecture client-serveur classique. Le back-end utilise Python avec le framework Flask pour exposer une API REST qui traite et agrège les données. Le front-end est construit en HTML/CSS avec JavaScript et Chart.js pour les visualisations.
+      fr: `C'était la première fois que je faisais du JavaScript — je l'ai appris sur le tas pendant le stage. J'ai choisi une approche front-end pure avec JavaScript et Chart.js pour les visualisations, ce qui permettait un déploiement simple et rapide sur Vercel.
 
-La chaîne de traitement des données suit le schéma suivant : les données brutes sont extraites des API TaM, nettoyées et transformées côté serveur (Python/Flask), puis exposées via des endpoints REST que le front-end consomme pour générer les graphiques dynamiques avec Chart.js.
+J'ai tout construit seul de A à Z : le design de l'interface, le développement des graphiques interactifs, la logique de traitement des données, les personas marketing, et le module de prévision. Pour chaque fonctionnalité, je partais des données brutes fournies par le gérant, que je structurais et transformais en visualisations exploitables.
 
-J'ai implémenté un système de mise en cache côté serveur pour éviter de surcharger les API externes et améliorer les temps de réponse. Les données sont rafraîchies périodiquement en arrière-plan, ce qui garantit la fraîcheur des informations sans impacter l'expérience utilisateur.`,
-      en: `The application was developed with a classic client-server architecture. The back-end uses Python with the Flask framework to expose a REST API that processes and aggregates data. The front-end is built with HTML/CSS, JavaScript, and Chart.js for visualizations.
+Les graphiques couvrent plusieurs axes d'analyse :
+- **Entrées/sorties** : Suivi des mouvements de locataires dans le temps
+- **Répartition par taille** : Distribution des box louées selon leur superficie
+- **Taux d'occupation** : Pourcentage de box louées vs disponibles, avec évolution temporelle
+- **Chiffre d'affaires** : Évolution des revenus avec ventilation par type de box
+- **Surface totale louée** : Suivi de la surface louée en m²
 
-The data processing chain follows this schema: raw data is extracted from TaM APIs, cleaned and transformed server-side (Python/Flask), then exposed via REST endpoints that the front-end consumes to generate dynamic charts with Chart.js.
+Pour les personas, j'ai analysé les données clients pour identifier des profils types (particuliers déménagement, entreprises stockage long terme, étudiants, etc.) avec leurs caractéristiques et comportements. Le gérant a ensuite utilisé ces personas pour cibler ses publicités.
 
-I implemented a server-side caching system to avoid overloading external APIs and improve response times. Data is periodically refreshed in the background, ensuring information freshness without impacting user experience.`
+Le module de forecasting utilise les tendances historiques pour projeter l'évolution du taux d'occupation et du CA sur les mois suivants, permettant au gérant d'anticiper et d'ajuster sa stratégie.
+
+Le tout a été déployé sur Vercel pour un accès simple et permanent.`,
+      en: `This was the first time I ever worked with JavaScript — I learned it on the job during the internship. I chose a pure front-end approach with JavaScript and Chart.js for visualizations, which allowed simple and fast deployment on Vercel.
+
+I built everything from scratch on my own: the interface design, interactive chart development, data processing logic, marketing personas, and the forecasting module. For each feature, I started from raw data provided by the owner, which I structured and transformed into actionable visualizations.
+
+The charts cover several analysis axes:
+- **Entries/exits**: Tracking tenant movements over time
+- **Size distribution**: Distribution of rented boxes by surface area
+- **Occupancy rate**: Percentage of rented vs available boxes, with temporal evolution
+- **Revenue**: Revenue evolution with breakdown by box type
+- **Total rented surface**: Tracking rented surface area in m²
+
+For the personas, I analyzed customer data to identify typical profiles (moving individuals, long-term business storage, students, etc.) with their characteristics and behaviors. The owner then used these personas to target his advertisements.
+
+The forecasting module uses historical trends to project occupancy rate and revenue evolution for the coming months, allowing the owner to anticipate and adjust his strategy.
+
+Everything was deployed on Vercel for simple and permanent access.`
     },
     architecture: {
-      fr: `Architecture en trois couches :
-- **Couche données** : Scripts Python d'extraction et de nettoyage des données depuis les API TaM, stockage en cache local.
-- **Couche métier** : API REST Flask exposant les données agrégées et filtrées selon les paramètres de requête.
-- **Couche présentation** : Interface web responsive avec graphiques Chart.js interactifs, filtres dynamiques et export des données.`,
-      en: `Three-layer architecture:
-- **Data layer**: Python scripts for extracting and cleaning data from TaM APIs, local cache storage.
-- **Business layer**: Flask REST API exposing aggregated and filtered data according to query parameters.
-- **Presentation layer**: Responsive web interface with interactive Chart.js charts, dynamic filters, and data export.`
+      fr: `Application front-end déployée sur Vercel :
+- **Données** : Fichiers de données structurées à partir des exports bruts du gérant, transformées en format exploitable par les graphiques.
+- **Visualisation** : Chart.js pour l'ensemble des graphiques interactifs (barres, lignes, camemberts, graphiques combinés) avec tooltips, légendes et animations.
+- **Personas** : Module d'analyse présentant les profils types de clients avec leurs caractéristiques, comportements de location et recommandations de ciblage publicitaire.
+- **Forecasting** : Module de projection basé sur les tendances historiques, affichant les prévisions d'occupation et de chiffre d'affaires.
+- **Déploiement** : Hébergement sur Vercel avec déploiement continu depuis Git.`,
+      en: `Front-end application deployed on Vercel:
+- **Data**: Structured data files from the owner's raw exports, transformed into chart-friendly format.
+- **Visualization**: Chart.js for all interactive charts (bars, lines, pies, combined charts) with tooltips, legends and animations.
+- **Personas**: Analysis module presenting typical customer profiles with their characteristics, rental behaviors and advertising targeting recommendations.
+- **Forecasting**: Projection module based on historical trends, displaying occupancy and revenue forecasts.
+- **Deployment**: Hosted on Vercel with continuous deployment from Git.`
     },
     skills: [
       {
-        name: { fr: "Développement Python / Flask", en: "Python / Flask Development" },
-        description: { fr: "Création d'une API REST complète avec Flask, gestion des routes, sérialisation JSON, et mise en place d'un système de cache.", en: "Creation of a complete REST API with Flask, route management, JSON serialization, and cache system implementation." }
+        name: { fr: "JavaScript (apprentissage sur le tas)", en: "JavaScript (learned on the job)" },
+        description: { fr: "Première utilisation de JavaScript dans un contexte professionnel. Apprentissage autonome du langage et de ses spécificités (manipulation DOM, événements, asynchrone) directement en développant l'application.", en: "First use of JavaScript in a professional context. Self-taught learning of the language and its specifics (DOM manipulation, events, async) directly while developing the application." }
       },
       {
-        name: { fr: "Visualisation de données", en: "Data Visualization" },
-        description: { fr: "Utilisation avancée de Chart.js pour créer des graphiques interactifs (barres, lignes, camemberts) avec des animations et des tooltips personnalisés.", en: "Advanced use of Chart.js to create interactive charts (bars, lines, pies) with animations and custom tooltips." }
+        name: { fr: "Visualisation de données avec Chart.js", en: "Data Visualization with Chart.js" },
+        description: { fr: "Utilisation approfondie de Chart.js pour créer des graphiques variés et interactifs : barres empilées, courbes d'évolution, camemberts de répartition, avec personnalisation des tooltips, couleurs et animations.", en: "In-depth use of Chart.js to create varied and interactive charts: stacked bars, evolution curves, distribution pies, with custom tooltips, colors and animations." }
       },
       {
-        name: { fr: "Traitement de données", en: "Data Processing" },
-        description: { fr: "Extraction, nettoyage et transformation de données brutes provenant d'API externes, gestion des formats de données hétérogènes.", en: "Extraction, cleaning and transformation of raw data from external APIs, handling heterogeneous data formats." }
+        name: { fr: "Analyse de données et personas", en: "Data Analysis and Personas" },
+        description: { fr: "Analyse des données clients pour identifier des segments types et créer des personas marketing actionnables. Transformation de données brutes en recommandations stratégiques concrètes.", en: "Customer data analysis to identify typical segments and create actionable marketing personas. Transformation of raw data into concrete strategic recommendations." }
+      },
+      {
+        name: { fr: "Autonomie et gestion de projet solo", en: "Autonomy and Solo Project Management" },
+        description: { fr: "Gestion complète d'un projet en autonomie totale : analyse du besoin, conception, développement, déploiement, et présentations hebdomadaires au gérant. Première expérience professionnelle.", en: "Complete project management with full autonomy: requirement analysis, design, development, deployment, and weekly presentations to the owner. First professional experience." }
       }
     ],
     codeHighlights: [
       {
-        title: { fr: "Endpoint API Flask avec cache", en: "Flask API Endpoint with Caching" },
-        code: `from flask import Flask, jsonify, request
-from functools import lru_cache
-from datetime import datetime, timedelta
+        title: { fr: "Extraits de code à venir", en: "Code excerpts coming soon" },
+        code: `// Les extraits de code seront ajoutés prochainement
+// Code excerpts will be added soon
 
-app = Flask(__name__)
-
-@app.route('/api/stats/line/<line_id>')
-def get_line_stats(line_id):
-    date_from = request.args.get('from', default_date())
-    date_to = request.args.get('to', today())
-
-    stats = compute_line_statistics(line_id, date_from, date_to)
-
-    return jsonify({
-        'line': line_id,
-        'period': {'from': date_from, 'to': date_to},
-        'ridership': stats['ridership'],
-        'avg_delay': stats['avg_delay'],
-        'punctuality_rate': stats['punctuality_rate'],
-        'peak_hours': stats['peak_hours']
-    })`,
-        language: "python",
+// TamaStat — TamaBox
+// Outil de visualisation statistique
+// Statistical visualization tool`,
+        language: "javascript",
         explanation: {
-          fr: "Cet endpoint Flask illustre le traitement des données par ligne de transport. Les paramètres de date sont extraits de la requête URL, les statistiques sont calculées à la volée, et le résultat est renvoyé au format JSON structuré. Le système de cache évite les recalculs inutiles pour les mêmes requêtes.",
-          en: "This Flask endpoint illustrates data processing by transport line. Date parameters are extracted from the URL query, statistics are computed on the fly, and the result is returned in structured JSON format. The caching system avoids unnecessary recalculations for identical requests."
+          fr: "Les extraits de code détaillés de TamaStat seront ajoutés prochainement avec des exemples concrets de la logique de visualisation, du traitement des données et du module de forecasting.",
+          en: "Detailed code excerpts from TamaStat will be added soon with concrete examples of the visualization logic, data processing and forecasting module."
         }
       }
     ],
     results: {
-      fr: `Le projet TamaStat a abouti à un tableau de bord fonctionnel et interactif qui a été présenté et validé par l'équipe encadrante. Les principaux résultats sont :
+      fr: `TamaStat a eu un impact direct et mesurable sur l'activité de TamaBox :
 
-- Un dashboard permettant de visualiser les données de fréquentation sur plus de 30 lignes de transport
-- Des graphiques interactifs avec filtrage par période, par ligne et par type de données
-- Un temps de chargement moyen inférieur à 2 secondes grâce au système de cache
-- Une interface responsive accessible sur ordinateur et tablette
+- **Taux d'occupation passé de 75-82% à 100%** : Grâce aux personas marketing que j'ai développés, le gérant a pu cibler ses campagnes publicitaires vers les bons segments de clientèle. Il a atteint un taux d'occupation de 100% de ses box, ce qui était son objectif principal.
+- **Tableau de bord complet** : Visualisation en temps réel des entrées/sorties, de la répartition par taille, du taux d'occupation, du chiffre d'affaires et de la surface louée.
+- **Outil de prévision fonctionnel** : Le module de forecasting permet au gérant d'anticiper les tendances et d'ajuster sa stratégie commerciale en conséquence.
+- **Application déployée et utilisée** : L'outil est en ligne sur Vercel et utilisé activement par le gérant au quotidien.
 
-Ce stage m'a apporté une première expérience concrète du développement web professionnel et m'a conforté dans mon choix de poursuivre dans ce domaine.`,
-      en: `The TamaStat project resulted in a functional and interactive dashboard that was presented and validated by the supervising team. The main results are:
+C'était ma toute première expérience professionnelle et elle a été très formatrice. J'ai découvert ce que c'est de travailler seul sur un projet avec une vraie responsabilité et un vrai impact business.`,
+      en: `TamaStat had a direct and measurable impact on TamaBox's business:
 
-- A dashboard for visualizing ridership data across more than 30 transport lines
-- Interactive charts with filtering by period, line, and data type
-- Average loading time under 2 seconds thanks to the caching system
-- A responsive interface accessible on desktop and tablet
+- **Occupancy rate went from 75-82% to 100%**: Thanks to the marketing personas I developed, the owner was able to target his advertising campaigns towards the right customer segments. He reached a 100% occupancy rate for his boxes, which was his primary goal.
+- **Complete dashboard**: Real-time visualization of entries/exits, size distribution, occupancy rates, revenue, and rented surface area.
+- **Functional forecasting tool**: The forecasting module allows the owner to anticipate trends and adjust his business strategy accordingly.
+- **Deployed and actively used application**: The tool is live on Vercel and actively used by the owner on a daily basis.
 
-This internship gave me a first concrete experience of professional web development and confirmed my choice to continue in this field.`
+This was my very first professional experience and it was extremely formative. I discovered what it's like to work solo on a project with real responsibility and real business impact.`
     },
     reflection: {
-      fr: `Ce stage m'a permis de prendre conscience de plusieurs réalités du développement professionnel :
+      fr: `Ce stage chez TamaBox a été une expérience fondatrice à plusieurs niveaux :
 
-1. **La qualité des données** est un enjeu majeur. Les données brutes des API TaM contenaient des incohérences, des valeurs manquantes et des formats hétérogènes. J'ai appris que le nettoyage et la validation des données représentent souvent une part significative du travail de développement.
+1. **Apprendre un langage sur le tas** : C'était la première fois que je faisais du JavaScript. Devoir l'apprendre en conditions réelles, sans filet, avec un livrable attendu, m'a poussé à développer une vraie capacité d'auto-apprentissage. J'ai appris à chercher efficacement dans la documentation, à comprendre les erreurs, et à progresser vite par la pratique.
 
-2. **L'importance du prototypage** : En présentant des maquettes et des prototypes tôt dans le processus, j'ai pu obtenir des retours rapides et ajuster l'orientation du projet avant d'investir trop de temps dans une direction.
+2. **L'autonomie totale** : Être seul sur un projet sans équipe technique m'a obligé à prendre toutes les décisions moi-même — choix techniques, architecture, priorisation des fonctionnalités. C'est une responsabilité qui m'a beaucoup fait grandir et qui m'a donné confiance pour les projets suivants.
 
-3. **La communication avec les utilisateurs finaux** est essentielle pour comprendre leurs besoins réels et adapter l'interface en conséquence. Certaines fonctionnalités que je pensais importantes se sont révélées secondaires, tandis que d'autres besoins insoupçonnés ont émergé au fil des échanges.`,
-      en: `This internship made me aware of several realities of professional development:
+3. **L'impact business concret** : Voir le gérant passer de 75-82% à 100% d'occupation grâce aux personas que j'avais développés a été extrêmement gratifiant. Cela m'a montré que le développement ne se limite pas au code — c'est un outil au service d'objectifs business concrets.
 
-1. **Data quality** is a major challenge. Raw data from TaM APIs contained inconsistencies, missing values, and heterogeneous formats. I learned that data cleaning and validation often represent a significant portion of development work.
+4. **La relation directe avec le client** : Les réunions hebdomadaires m'ont appris à présenter mon travail de manière claire à un non-technicien, à recueillir et interpréter ses retours, et à adapter mes priorités en fonction de ses besoins réels plutôt que de mes intuitions techniques.`,
+      en: `This internship at TamaBox was a foundational experience on several levels:
 
-2. **The importance of prototyping**: By presenting mockups and prototypes early in the process, I was able to get quick feedback and adjust the project direction before investing too much time in one direction.
+1. **Learning a language on the job**: This was my first time working with JavaScript. Having to learn it in real conditions, without a safety net, with an expected deliverable, pushed me to develop a genuine self-learning ability. I learned to search documentation efficiently, understand errors, and progress quickly through practice.
 
-3. **Communication with end users** is essential to understand their real needs and adapt the interface accordingly. Some features I thought were important turned out to be secondary, while other unsuspected needs emerged through discussions.`
+2. **Complete autonomy**: Being alone on a project without a technical team forced me to make all decisions myself — technical choices, architecture, feature prioritization. This responsibility helped me grow significantly and gave me confidence for subsequent projects.
+
+3. **Concrete business impact**: Seeing the owner go from 75-82% to 100% occupancy thanks to the personas I had developed was extremely rewarding. It showed me that development isn't just about code — it's a tool serving concrete business objectives.
+
+4. **Direct client relationship**: The weekly meetings taught me to present my work clearly to a non-technical person, to gather and interpret their feedback, and to adapt my priorities based on their actual needs rather than my technical intuitions.`
     },
     thumbnail: "/images/tamastat.jpg",
     images: [],
-    links: { github: "https://github.com/killianrms/tamastat" }
+    links: { live: "https://tama-stat.vercel.app/" }
   },
   {
     slug: "site-ecommerce-parfum",

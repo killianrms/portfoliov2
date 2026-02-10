@@ -45,18 +45,18 @@ const timelineData: TimelineItem[] = [
     type: "education",
   },
   {
-    year: "Avril — Juin 2024",
+    year: "Janvier — Avril 2025",
     title: {
-      fr: "Stage — TamaStat",
-      en: "Internship — TamaStat",
+      fr: "Stage — TamaBox (Draguignan, 83)",
+      en: "Internship — TamaBox (Draguignan, France)",
     },
     subtitle: {
-      fr: "Développeur Full-Stack",
-      en: "Full-Stack Developer",
+      fr: "Développeur Full-Stack — Projet TamaStat",
+      en: "Full-Stack Developer — TamaStat Project",
     },
     description: {
-      fr: "Conception et développement d'une application de visualisation statistique des données de transport en commun. Stack Python/Flask pour le back-end et JavaScript/Chart.js pour les visualisations interactives.",
-      en: "Design and development of a statistical visualization application for public transport data. Python/Flask stack for back-end and JavaScript/Chart.js for interactive visualizations.",
+      fr: "Conception et développement en autonomie totale d'un outil de visualisation statistique pour une entreprise de location de box. JavaScript/Chart.js, personas marketing, module de prévision. Première expérience professionnelle — le taux d'occupation du client est passé de 75-82% à 100%.",
+      en: "Fully autonomous design and development of a statistical visualization tool for a storage box rental company. JavaScript/Chart.js, marketing personas, forecasting module. First professional experience — client occupancy rate went from 75-82% to 100%.",
     },
     type: "experience",
   },
