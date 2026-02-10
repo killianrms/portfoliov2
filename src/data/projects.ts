@@ -39,7 +39,7 @@ export const projects: Project[] = [
     category: "professional",
     technologies: ["Java", "Angular", "SQL", "PostgreSQL", "Maven", "IntelliJ IDEA", "Termius", "Postman", "Azure", "Git"],
     duration: { fr: "Septembre 2024 — Présent (Alternance)", en: "September 2024 — Present (Work-Study)" },
-    team: { fr: "Équipe Delivery (équipe projet d'ITESOFT)", en: "Delivery team (ITESOFT's project team)" },
+    team: { fr: "Équipe Delivery (~30 personnes) — l'équipe projet d'ITESOFT", en: "Delivery team (~30 people) — ITESOFT's project team" },
     role: { fr: "Assistant Ingénieur Développement et Projet — Personnalisation, déploiement et support de Streamline Invoices", en: "Assistant Development & Project Engineer — Customization, deployment and support of Streamline Invoices" },
     shortDescription: {
       fr: "Alternance au sein de l'équipe Delivery d'ITESOFT : personnalisation de la plateforme Streamline Invoices pour des grandes entreprises, développement d'outils internes et support client.",
@@ -50,12 +50,16 @@ export const projects: Project[] = [
 
 Dans le cadre de mon alternance en BUT Informatique parcours « Réalisation d'applications : conception, développement, validation » à l'IUT de Montpellier-Sète, j'ai intégré l'équipe Delivery en septembre 2024. Cette équipe est littéralement l'équipe projet d'ITESOFT : elle est responsable de la personnalisation, du déploiement et du support de Streamline Invoices auprès des clients.
 
-Mon rôle consiste à personnaliser la plateforme selon les besoins spécifiques de chaque client : configuration des entreprises, holdings, utilisateurs et permissions, mais aussi développement de fonctionnalités sur-mesure (endpoints supplémentaires, connexions ERP, filtres, boutons). Un enjeu majeur de mon travail est de minimiser les modifications au code standard (maintenu par l'équipe R&D) afin de faciliter les montées de version et de limiter les conflits lors des mises à jour, tout en respectant les exigences de sécurité de l'entreprise, certifiée ISO 27001.`,
+Mon rôle consiste à personnaliser la plateforme selon les besoins spécifiques de chaque client : configuration des entreprises, holdings, utilisateurs et permissions, mais aussi développement de fonctionnalités sur-mesure (endpoints supplémentaires, connexions ERP, filtres, boutons). Un enjeu majeur de mon travail est de minimiser les modifications au code standard (maintenu par l'équipe R&D) afin de faciliter les montées de version et de limiter les conflits lors des mises à jour, tout en respectant les exigences de sécurité de l'entreprise, certifiée ISO 27001.
+
+Au quotidien, je participe aux daily meetings de l'équipe Delivery pour suivre l'avancement des projets et remonter les éventuels blocages, et je fais également des reviews de pull requests des autres développeurs de l'équipe, ce qui me permet de monter en compétences en lisant du code métier et de contribuer à la qualité globale du code livré.`,
       en: `ITESOFT is a French software company specializing in dematerialization and document process automation. The company develops Streamline Invoices, an invoice management platform designed for large enterprises generating billions of euros in annual revenue. This tool allows accountants to centralize all invoice processing: automatic capture (PDF, email), configurable validation circuits, and end-to-end processing workflows.
 
 As part of my work-study program in a Computer Science degree (specialization: "Application Development: Design, Development, Validation") at IUT Montpellier-Sète, I joined the Delivery team in September 2024. This team is literally ITESOFT's project team: responsible for the customization, deployment, and support of Streamline Invoices for clients.
 
-My role involves customizing the platform according to each client's specific needs: configuring companies, holdings, users, and permissions, as well as developing custom features (additional endpoints, ERP connections, filters, buttons). A major challenge in my work is minimizing modifications to the standard code (maintained by the R&D team) to facilitate version upgrades and limit conflicts during updates, while respecting the company's security requirements under ISO 27001 certification.`
+My role involves customizing the platform according to each client's specific needs: configuring companies, holdings, users, and permissions, as well as developing custom features (additional endpoints, ERP connections, filters, buttons). A major challenge in my work is minimizing modifications to the standard code (maintained by the R&D team) to facilitate version upgrades and limit conflicts during updates, while respecting the company's security requirements under ISO 27001 certification.
+
+On a daily basis, I participate in the Delivery team's daily meetings to track project progress and flag any blockers, and I also review pull requests from other developers on the team, which helps me improve my skills by reading business code and contributes to the overall quality of delivered code.`
     },
     objectives: {
       fr: `Les objectifs de ma mission chez ITESOFT s'articulent autour de quatre axes principaux :
