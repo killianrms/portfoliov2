@@ -29,7 +29,7 @@ export interface Project {
   reflection: { fr: string; en: string };
   thumbnail: string;
   images: string[];
-  links?: { github?: string; live?: string; video?: string; report?: string };
+  links?: { github?: string; live?: string; video?: string; report?: string; discord?: string };
 }
 
 export const projects: Project[] = [
@@ -575,7 +575,7 @@ This project proves that a passionate side project can become something signific
     },
     thumbnail: "/images/fortnite-bot.jpg",
     images: [],
-    links: { github: "https://github.com/killianrms/lobbybot2.0-discord", live: "https://github.com/killianrms/lobbybot2.0-website", video: "https://youtu.be/tja-34-FpnY" }
+    links: { github: "https://github.com/killianrms/lobbybot2.0-discord", live: "https://github.com/killianrms/lobbybot2.0-website", video: "https://youtu.be/tja-34-FpnY", discord: "https://discord.gg/SarmtBh3Gu" }
   },
   {
     slug: "referendum",
@@ -763,7 +763,173 @@ The rest of the team worked on the JavaFX interface, user management, database, 
     },
     thumbnail: "/images/referendum.jpg",
     images: ["/images/referendum1.jpg", "/images/referendum2.jpg", "/images/referendum3.jpg", "/images/referendum4.jpg", "/images/referendum5.jpg"],
-    links: { github: "https://github.com/killianrms/referendum", video: "https://youtu.be/F3I_4daMcuk", report: "https://docs.google.com/document/d/11MfYwfZin0VpMzFhqWLSZ3Y3LzQwRpnDo-VK7oX6jJ8/edit?tab=t.0" }
+    links: { github: "https://github.com/killianrms/referendum", video: "https://youtu.be/F3I_4daMcuk", report: "https://docs.google.com/document/d/11MfYwfZin0VpMzFhqWLSZ3Y3LzQwRpnDo-VK7oX6jJ8/edit?usp=sharing" }
+  },
+  {
+    slug: "portfolio",
+    title: "Portfolio",
+    category: "personal",
+    technologies: ["Next.js", "React", "TypeScript", "Framer Motion", "CSS Modules", "Vercel"],
+    duration: { fr: "Projet personnel (2025)", en: "Personal project (2025)" },
+    team: { fr: "Projet individuel", en: "Individual project" },
+    role: { fr: "Développeur & Designer", en: "Developer & Designer" },
+    shortDescription: {
+      fr: "Portfolio personnel développé avec Next.js 15, React et TypeScript. Système bilingue FR/EN, animations Framer Motion, analyses de projets détaillées et design responsive.",
+      en: "Personal portfolio developed with Next.js 15, React and TypeScript. Bilingual FR/EN system, Framer Motion animations, detailed project analyses and responsive design."
+    },
+    context: {
+      fr: `Ce portfolio est la refonte complète de mon ancien site personnel (HTML/CSS/JS vanilla). L'objectif était de créer une vitrine professionnelle moderne avec des analyses de projets détaillées, répondant aux attentes académiques de mon parcours BUT Informatique.
+
+Le site est développé avec Next.js 15, React et TypeScript, et intègre des fonctionnalités avancées : un système bilingue français/anglais avec context React, des animations fluides avec Framer Motion, un routage dynamique pour les pages de projets, et un design responsive soigné. Chaque projet est documenté en profondeur avec contexte, objectifs, approche technique, architecture, compétences acquises et réflexion personnelle.`,
+      en: `This portfolio is a complete redesign of my old personal site (vanilla HTML/CSS/JS). The goal was to create a modern professional showcase with detailed project analyses, meeting the academic expectations of my Computer Science degree.
+
+The site is developed with Next.js 15, React and TypeScript, and integrates advanced features: a French/English bilingual system with React context, smooth animations with Framer Motion, dynamic routing for project pages, and a polished responsive design. Each project is documented in depth with context, objectives, technical approach, architecture, acquired skills, and personal reflection.`
+    },
+    objectives: {
+      fr: `1. **Refonte complète** de l'ancien portfolio HTML/CSS en une application Next.js moderne
+2. **Système bilingue** FR/EN avec context React et traductions type-safe
+3. **Animations fluides** avec Framer Motion (scroll-triggered, staggered)
+4. **Analyses de projets détaillées** avec code highlights et réflexions
+5. **Design responsive** avec thème sombre et typographie soignée`,
+      en: `1. **Complete redesign** of the old HTML/CSS portfolio into a modern Next.js application
+2. **Bilingual system** FR/EN with React context and type-safe translations
+3. **Smooth animations** with Framer Motion (scroll-triggered, staggered)
+4. **Detailed project analyses** with code highlights and reflections
+5. **Responsive design** with dark theme and polished typography`
+    },
+    approach: {
+      fr: `Le portfolio est développé avec Next.js 15 (App Router) en TypeScript. L'architecture suit les conventions Next.js avec des composants React modulaires.
+
+- **Système bilingue** : Un LanguageContext React fournit une fonction \`t(key)\` type-safe via \`useCallback\` pour les traductions, avec toggle FR/EN. Le contenu des projets utilise des objets \`{ fr, en }\` pour le bilingue inline.
+- **Animations** : Framer Motion avec \`whileInView\` pour les animations au scroll, et un système de stagger via \`delay: index * 0.1\` pour les cartes de projets.
+- **Routage dynamique** : Les pages de projets utilisent \`/projects/[slug]\` avec lookup dans le tableau de données.
+- **Design** : Thème sombre avec variables CSS, typographie serif/sans-serif, et composants réutilisables (ProjectCard, Timeline, etc.).`,
+      en: `The portfolio is developed with Next.js 15 (App Router) in TypeScript. The architecture follows Next.js conventions with modular React components.
+
+- **Bilingual system**: A React LanguageContext provides a type-safe \`t(key)\` function via \`useCallback\` for translations, with FR/EN toggle. Project content uses \`{ fr, en }\` objects for inline bilingual support.
+- **Animations**: Framer Motion with \`whileInView\` for scroll-triggered animations, and a stagger system via \`delay: index * 0.1\` for project cards.
+- **Dynamic routing**: Project pages use \`/projects/[slug]\` with lookup in the data array.
+- **Design**: Dark theme with CSS variables, serif/sans-serif typography, and reusable components (ProjectCard, Timeline, etc.).`
+    },
+    architecture: {
+      fr: `Application Next.js 15 (App Router) :
+- **src/app/** : Pages et layout (page d'accueil, pages projets dynamiques)
+- **src/components/** : Composants React (ProjectCard, ProjectsSection, Timeline, Header, etc.)
+- **src/context/** : LanguageContext pour le système bilingue
+- **src/data/** : Données des projets et traductions (TypeScript)
+- **public/** : Assets statiques (images, icônes)
+- **Déploiement** : Vercel`,
+      en: `Next.js 15 Application (App Router):
+- **src/app/**: Pages and layout (homepage, dynamic project pages)
+- **src/components/**: React components (ProjectCard, ProjectsSection, Timeline, Header, etc.)
+- **src/context/**: LanguageContext for the bilingual system
+- **src/data/**: Project data and translations (TypeScript)
+- **public/**: Static assets (images, icons)
+- **Deployment**: Vercel`
+    },
+    skills: [
+      {
+        name: { fr: "Next.js & React avancé", en: "Advanced Next.js & React" },
+        description: { fr: "Utilisation de Next.js 15 App Router, composants React modulaires, context API pour la gestion d'état, et routage dynamique avec [slug].", en: "Usage of Next.js 15 App Router, modular React components, context API for state management, and dynamic routing with [slug]." }
+      },
+      {
+        name: { fr: "TypeScript", en: "TypeScript" },
+        description: { fr: "Typage strict des interfaces (Project, Skill, CodeHighlight), des traductions (TranslationKey), et des props de composants pour la fiabilité du code.", en: "Strict typing of interfaces (Project, Skill, CodeHighlight), translations (TranslationKey), and component props for code reliability." }
+      },
+      {
+        name: { fr: "Framer Motion", en: "Framer Motion" },
+        description: { fr: "Animations au scroll (whileInView), transitions staggered pour les listes, et animations de page pour une expérience utilisateur fluide.", en: "Scroll-triggered animations (whileInView), staggered transitions for lists, and page animations for a smooth user experience." }
+      }
+    ],
+    codeHighlights: [
+      {
+        title: { fr: "Système bilingue avec Context React", en: "Bilingual System with React Context" },
+        code: `"use client";
+import { createContext, useContext, useState, useCallback } from "react";
+import { translations, type TranslationKey } from "@/data/translations";
+
+type Language = "fr" | "en";
+
+export function LanguageProvider({ children }) {
+  const [language, setLanguage] = useState<Language>("fr");
+
+  const toggleLanguage = () => {
+    setLanguage((prev) => (prev === "fr" ? "en" : "fr"));
+  };
+
+  const t = useCallback(
+    (key: TranslationKey): string => {
+      return translations[language][key] || key;
+    },
+    [language]
+  );
+
+  return (
+    <LanguageContext.Provider value={{ language, toggleLanguage, t }}>
+      {children}
+    </LanguageContext.Provider>
+  );
+}`,
+        language: "typescript",
+        explanation: {
+          fr: "Ce contexte React fournit le systeme bilingue a toute l'application. La fonction t() est optimisee avec useCallback pour eviter les re-rendus inutiles. Le typage TranslationKey garantit que toutes les cles de traduction existent a la compilation. Les composants appellent simplement t(\"key\") pour obtenir le texte dans la langue active.",
+          en: "This React context provides the bilingual system to the entire application. The t() function is optimized with useCallback to avoid unnecessary re-renders. The TranslationKey typing ensures all translation keys exist at compile time. Components simply call t(\"key\") to get text in the active language."
+        }
+      },
+      {
+        title: { fr: "Animations staggered avec Framer Motion", en: "Staggered Animations with Framer Motion" },
+        code: `<motion.div
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, margin: "-50px" }}
+  transition={{ duration: 0.5, delay: index * 0.1 }}
+>
+  <Link href={\`/projects/\${project.slug}\`}>
+    <div className="group relative bg-surface border border-border
+         rounded-xl overflow-hidden hover:border-accent/50
+         transition-all duration-300">
+      {/* Project card content */}
+    </div>
+  </Link>
+</motion.div>`,
+        language: "typescript",
+        explanation: {
+          fr: "Chaque carte de projet utilise Framer Motion avec whileInView pour declencher l'animation uniquement quand l'element entre dans le viewport. Le delay base sur l'index (index * 0.1) cree un effet cascade ou les cartes apparaissent les unes apres les autres. Le margin de -50px anticipe l'animation pour une UX plus fluide. once: true empeche la re-animation au scroll inverse.",
+          en: "Each project card uses Framer Motion with whileInView to trigger animation only when the element enters the viewport. The index-based delay (index * 0.1) creates a cascade effect where cards appear one after another. The -50px margin anticipates the animation for smoother UX. once: true prevents re-animation on reverse scroll."
+        }
+      }
+    ],
+    results: {
+      fr: `Le portfolio v2 est le site que vous consultez actuellement. Il remplace entierement l'ancienne version HTML/CSS avec une experience bien plus riche :
+
+- **Systeme bilingue complet** FR/EN avec basculement instantane
+- **11 projets documentes** en profondeur avec contexte, approche technique, code highlights et reflexions
+- **Animations fluides** au scroll avec Framer Motion
+- **Design responsive** adapte a tous les ecrans
+- **Boutons de liens** vers GitHub, demos live, videos, rapports techniques et Discord pour chaque projet`,
+      en: `The v2 portfolio is the site you are currently viewing. It completely replaces the old HTML/CSS version with a much richer experience:
+
+- **Complete bilingual system** FR/EN with instant switching
+- **11 projects documented** in depth with context, technical approach, code highlights and reflections
+- **Smooth scroll animations** with Framer Motion
+- **Responsive design** adapted to all screens
+- **Link buttons** to GitHub, live demos, videos, technical reports and Discord for each project`
+    },
+    reflection: {
+      fr: `Ce portfolio v2 est bien plus qu'une vitrine : c'est un exercice de conception complet. Passer de HTML/CSS vanilla a Next.js/React/TypeScript m'a fait prendre conscience de la puissance des frameworks modernes pour structurer une application web.
+
+Le systeme bilingue m'a appris a penser l'internationalisation des le depart plutot qu'en afterthought. Le typage TypeScript des traductions et des projets m'a evite de nombreuses erreurs et rend le code maintenable meme avec 11 projets detailles.
+
+Ce projet demontre aussi ma capacite a documenter et communiquer sur mon travail, une competence aussi importante que le code lui-meme.`,
+      en: `This v2 portfolio is much more than a showcase: it's a complete design exercise. Going from vanilla HTML/CSS to Next.js/React/TypeScript made me realize the power of modern frameworks for structuring a web application.
+
+The bilingual system taught me to think about internationalization from the start rather than as an afterthought. TypeScript typing of translations and projects prevented many errors and keeps the code maintainable even with 11 detailed projects.
+
+This project also demonstrates my ability to document and communicate about my work, a skill as important as the code itself.`
+    },
+    thumbnail: "/images/portfolio.jpg",
+    images: [],
+    links: { github: "https://github.com/killianrms/portfoliov2", live: "https://killianrms.com" }
   },
   {
     slug: "site-ecommerce-parfum",
@@ -1280,24 +1446,24 @@ The idea of offering as open source a feature that Twitter charges for motivated
     links: { github: "https://github.com/killianrms/AutoTweetVideoUploader" }
   },
   {
-    slug: "portfolio-personnel",
-    title: "Portfolio Personnel",
+    slug: "ancien-portfolio",
+    title: "Ancien Portfolio",
     category: "personal",
     technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"],
     duration: { fr: "Projet personnel (2024)", en: "Personal project (2024)" },
     team: { fr: "Projet individuel", en: "Individual project" },
     role: { fr: "Développeur & Designer", en: "Developer & Designer" },
     shortDescription: {
-      fr: "Première version de mon portfolio personnel, développé en HTML/CSS/JS vanilla pour présenter mes projets et compétences.",
-      en: "First version of my personal portfolio, developed in vanilla HTML/CSS/JS to showcase my projects and skills."
+      fr: "Première version de mon portfolio personnel, développé en HTML/CSS/JS vanilla. Remplacé par la version actuelle en Next.js/React/TypeScript.",
+      en: "First version of my personal portfolio, developed in vanilla HTML/CSS/JS. Replaced by the current Next.js/React/TypeScript version."
     },
     context: {
       fr: `Ce portfolio (v1) a été mon premier projet de vitrine personnelle en ligne. Développé en HTML, CSS et JavaScript sans framework, il m'a permis d'apprendre les fondamentaux du développement web front-end et les principes du responsive design.
 
-La version actuelle (v2) que vous consultez est une refonte complète réalisée avec Next.js, intégrant des animations avancées, un système bilingue, et des analyses de projets beaucoup plus détaillées pour répondre aux attentes académiques de mon parcours BUT Informatique.`,
+Il a depuis été remplacé par la version actuelle (v2) développée avec Next.js, React et TypeScript, qui intègre des animations avancées, un système bilingue, et des analyses de projets détaillées. L'ancienne version reste accessible sur old.killianrms.com.`,
       en: `This portfolio (v1) was my first personal online showcase project. Developed in HTML, CSS, and JavaScript without a framework, it allowed me to learn the fundamentals of front-end web development and responsive design principles.
 
-The current version (v2) you are viewing is a complete redesign built with Next.js, integrating advanced animations, a bilingual system, and much more detailed project analyses to meet the academic expectations of my Computer Science degree.`
+It has since been replaced by the current version (v2) developed with Next.js, React and TypeScript, which integrates advanced animations, a bilingual system, and detailed project analyses. The old version remains accessible at old.killianrms.com.`
     },
     objectives: {
       fr: `1. Créer une présence en ligne professionnelle
@@ -1337,16 +1503,16 @@ The current version (v2) you are viewing is a complete redesign built with Next.
     ],
     codeHighlights: [],
     results: {
-      fr: `Le portfolio v1 a rempli son rôle de vitrine en ligne pendant un an, me permettant de partager mes projets avec des recruteurs et des pairs. Son principal défaut était le manque de profondeur dans les analyses de projets, ce qui a motivé la création de cette v2.`,
-      en: `The v1 portfolio served its purpose as an online showcase for a year, allowing me to share my projects with recruiters and peers. Its main drawback was the lack of depth in project analyses, which motivated the creation of this v2.`
+      fr: `Le portfolio v1 a rempli son rôle de vitrine en ligne pendant un an, me permettant de partager mes projets avec des recruteurs et des pairs. Son principal défaut était le manque de profondeur dans les analyses de projets, ce qui a motivé la création de la v2 (le site actuel).`,
+      en: `The v1 portfolio served its purpose as an online showcase for a year, allowing me to share my projects with recruiters and peers. Its main drawback was the lack of depth in project analyses, which motivated the creation of v2 (the current site).`
     },
     reflection: {
-      fr: `Ce premier portfolio m'a appris l'importance de la présentation dans la carrière d'un développeur. Au-delà du code, savoir communiquer sur son travail est une compétence essentielle. La v2 représente une évolution naturelle, avec plus de profondeur analytique et une meilleure expérience utilisateur.`,
-      en: `This first portfolio taught me the importance of presentation in a developer's career. Beyond code, knowing how to communicate about your work is an essential skill. V2 represents a natural evolution, with more analytical depth and better user experience.`
+      fr: `Ce premier portfolio m'a appris l'importance de la présentation dans la carrière d'un développeur. Au-delà du code, savoir communiquer sur son travail est une compétence essentielle. La v2 (le site actuel) représente une évolution naturelle, avec plus de profondeur analytique et une meilleure expérience utilisateur.`,
+      en: `This first portfolio taught me the importance of presentation in a developer's career. Beyond code, knowing how to communicate about your work is an essential skill. V2 (the current site) represents a natural evolution, with more analytical depth and better user experience.`
     },
-    thumbnail: "/images/portfolio.jpg",
+    thumbnail: "/images/ancien-portfolio.jpg",
     images: [],
-    links: { github: "https://github.com/killianrms/portfolio", live: "https://killianrms.com" }
+    links: { github: "https://github.com/killianrms/portfolio", live: "https://old.killianrms.com" }
   },
   {
     slug: "nuit-info-2024",
