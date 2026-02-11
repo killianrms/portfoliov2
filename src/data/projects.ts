@@ -498,18 +498,101 @@ The load balancing system automatically selects the bot with the fewest friends 
     ],
     codeHighlights: [
       {
-        title: { fr: "Extraits de code à venir", en: "Code excerpts coming soon" },
-        code: `// Les extraits de code seront ajoutés prochainement
-// Code excerpts will be added soon
+        title: { fr: "Load Balancing intelligent des bots", en: "Intelligent bot load balancing" },
+        code: `// LobbyBot 2.0 - Bot Manager avec load balancing
+class BotManager {
+  constructor() {
+    this.bots = new Map();  // Map<botId, BotInstance>
+    this.FRIEND_LIMIT = 900;
+  }
 
-// LobbyBot 2.0 - Système de Bots Fortnite
-// Architecture: Discord Manager + Web Dashboard + PostgreSQL
-// LobbyBot 2.0 - Fortnite Bot System
-// Architecture: Discord Manager + Web Dashboard + PostgreSQL`,
+  async selectOptimalBot() {
+    // 1. Filtrer les bots disponibles (< 900 amis)
+    const availableBots = Array.from(this.bots.values())
+      .filter(bot => bot.isReady && bot.friendCount < this.FRIEND_LIMIT)
+      .sort((a, b) => a.friendCount - b.friendCount);
+
+    if (availableBots.length > 0) {
+      // 2. Retourner le bot avec le moins d'amis
+      const selectedBot = availableBots[0];
+      return selectedBot;
+    }
+
+    // 3. Si tous les bots sont pleins, creer automatiquement un nouveau bot
+    const newBot = await this.createNewBot();
+    return newBot;
+  }
+
+  async addFriend(epicUsername) {
+    const bot = await this.selectOptimalBot();
+
+    try {
+      await bot.addFriend(epicUsername);
+      bot.friendCount++;
+
+      // Sauvegarder en base de donnees PostgreSQL
+      await db.query(
+        'UPDATE bots SET friend_count = $1 WHERE account_id = $2',
+        [bot.friendCount, bot.accountId]
+      );
+
+      return { success: true, bot: bot.displayName };
+    } catch (error) {
+      return { success: false, error: error.message };
+    }
+  }
+}`,
         language: "javascript",
         explanation: {
-          fr: "Les extraits de code détaillés du projet LobbyBot 2.0 seront ajoutés prochainement, avec des exemples concrets du système de load balancing, de la gestion multi-bots et de la communication Socket.IO temps réel.",
-          en: "Detailed code excerpts from the LobbyBot 2.0 project will be added soon, with concrete examples of the load balancing system, multi-bot management and real-time Socket.IO communication."
+          fr: "Ce code implémente le système de load balancing du Bot Manager. La méthode selectOptimalBot() filtre les bots disponibles (< 900 amis), les trie par nombre d'amis croissant, et retourne le moins chargé. Si tous les bots sont pleins, un nouveau bot est automatiquement créé depuis le pool PostgreSQL.",
+          en: "This code implements the Bot Manager's load balancing system. The selectOptimalBot() method filters available bots (< 900 friends), sorts them by ascending friend count, and returns the least loaded one. If all bots are full, a new bot is automatically created from the PostgreSQL pool."
+        }
+      },
+      {
+        title: { fr: "Communication temps réel Socket.IO Dashboard", en: "Socket.IO real-time Dashboard communication" },
+        code: `// LobbyBot 2.0 - Dashboard Socket.IO Server
+const express = require('express');
+const socketIo = require('socket.io');
+const server = require('http').createServer(express());
+const io = socketIo(server);
+
+// Connexion au Discord Manager via Socket.IO
+const managerSocket = require('socket.io-client')('http://localhost:3001');
+
+io.on('connection', (clientSocket) => {
+  // 1. Envoyer etat initial des bots au client
+  managerSocket.emit('get_all_bots_status', (botsData) => {
+    clientSocket.emit('initial_state', {
+      bots: botsData.bots,
+      totalFriends: botsData.totalFriends,
+      activeBots: botsData.activeBots
+    });
+  });
+
+  // 2. Ecouter les mises a jour en temps reel du Manager
+  managerSocket.on('bot_status_update', (data) => {
+    io.emit('bot_update', {
+      botId: data.botId,
+      displayName: data.displayName,
+      friendCount: data.friendCount,
+      status: data.status
+    });
+  });
+
+  // 3. Actions depuis le dashboard vers le Manager
+  clientSocket.on('kick_friend', async (data) => {
+    managerSocket.emit('kick_friend', {
+      botId: data.botId,
+      friendId: data.friendId
+    }, (response) => {
+      clientSocket.emit('kick_response', response);
+    });
+  });
+});`,
+        language: "javascript",
+        explanation: {
+          fr: "Ce code gère la communication temps réel entre le Dashboard web et le Discord Manager via Socket.IO. Le serveur Dashboard écoute les connexions clients, envoie l'état initial des bots, propage les mises à jour en temps réel et gère les actions utilisateur (kick, changement de skin).",
+          en: "This code handles real-time communication between the Web Dashboard and Discord Manager via Socket.IO. The Dashboard server listens for client connections, sends initial bot state, propagates real-time updates and handles user actions (kick, skin change)."
         }
       }
     ],
@@ -691,17 +774,95 @@ The rest of the team worked on the JavaFX interface, user management, database, 
     ],
     codeHighlights: [
       {
-        title: { fr: "Extraits de code à venir", en: "Code excerpts coming soon" },
-        code: `// Les extraits de code seront ajoutés prochainement
-// Code excerpts will be added soon
+        title: { fr: "Chiffrement ElGamal avec grands nombres", en: "ElGamal encryption with big numbers" },
+        code: `// Referendum - Chiffrement ElGamal en Java
+import java.math.BigInteger;
+import java.security.SecureRandom;
 
-// Referendum - Application de Vote Sécurisée
-// Chiffrement ElGamal & Sécurisation des Sockets
-// ElGamal Encryption & Socket Security`,
+public class ElGamalEncryption {
+    private BigInteger p;  // Nombre premier grand
+    private BigInteger g;  // Generateur
+    private BigInteger publicKey;   // Cle publique (g^x mod p)
+    private BigInteger privateKey;  // Cle privee (x)
+
+    public ElGamalEncryption(int bitLength) {
+        SecureRandom random = new SecureRandom();
+        // 1. Generer nombre premier p de taille bitLength
+        this.p = BigInteger.probablePrime(bitLength, random);
+        // 2. Trouver generateur g du groupe multiplicatif Z*p
+        this.g = findGenerator(p, random);
+        // 3. Generer cle privee x (aleatoire dans [1, p-2])
+        this.privateKey = new BigInteger(bitLength - 1, random);
+        // 4. Calculer cle publique: h = g^x mod p
+        this.publicKey = g.modPow(privateKey, p);
+    }
+
+    public ElGamalCiphertext encrypt(BigInteger message) {
+        SecureRandom random = new SecureRandom();
+        // 1. Generer k aleatoire (ephemere) dans [1, p-2]
+        BigInteger k = new BigInteger(p.bitLength() - 1, random);
+        // 2. Calculer c1 = g^k mod p
+        BigInteger c1 = g.modPow(k, p);
+        // 3. Calculer s = h^k mod p (secret partage)
+        BigInteger s = publicKey.modPow(k, p);
+        // 4. Calculer c2 = m * s mod p
+        BigInteger c2 = message.multiply(s).mod(p);
+        return new ElGamalCiphertext(c1, c2);
+    }
+
+    public BigInteger decrypt(ElGamalCiphertext ciphertext) {
+        BigInteger s = ciphertext.c1.modPow(privateKey, p);
+        BigInteger sInverse = s.modInverse(p);
+        return ciphertext.c2.multiply(sInverse).mod(p);
+    }
+}`,
         language: "java",
         explanation: {
-          fr: "Les extraits de code détaillés du projet Referendum seront ajoutés prochainement, avec des exemples concrets de l'implémentation du chiffrement ElGamal et de la sécurisation des communications par sockets.",
-          en: "Detailed code excerpts from the Referendum project will be added soon, with concrete examples of the ElGamal encryption implementation and socket communication security."
+          fr: "Implémentation du chiffrement asymétrique ElGamal en Java avec BigInteger pour les grands nombres. La génération de clés utilise un nombre premier p de 512+ bits, un générateur g, une clé privée x aléatoire et une clé publique h = g^x mod p. Le chiffrement génère un k éphémère, calcule c1 = g^k et c2 = m * h^k, garantissant la sécurité par la difficulté du logarithme discret.",
+          en: "ElGamal asymmetric encryption implementation in Java with BigInteger for large numbers. Key generation uses a 512+ bit prime p, generator g, random private key x and public key h = g^x mod p. Encryption generates ephemeral k, computes c1 = g^k and c2 = m * h^k, ensuring security through discrete logarithm hardness."
+        }
+      },
+      {
+        title: { fr: "Interface JavaFX avec gestion votes chiffrés", en: "JavaFX interface with encrypted votes management" },
+        code: `// Referendum - Controlleur JavaFX pour vote chiffre
+public class VoteController {
+    @FXML private ListView<String> candidateListView;
+    @FXML private TextArea encryptedVoteArea;
+    @FXML private Label statusLabel;
+    private ElGamalEncryption elGamal;
+
+    @FXML
+    private void handleVote() {
+        String selected = candidateListView.getSelectionModel().getSelectedItem();
+        if (selected == null) {
+            statusLabel.setText("Erreur: Selectionnez un candidat!");
+            return;
+        }
+
+        // 1. Convertir choix en BigInteger (A=1, B=2, C=3, Blanc=0)
+        int index = candidateListView.getItems().indexOf(selected);
+        BigInteger voteValue = BigInteger.valueOf(index);
+
+        // 2. Chiffrer le vote avec ElGamal
+        ElGamalCiphertext encrypted = elGamal.encrypt(voteValue);
+
+        // 3. Afficher vote chiffre en hexadecimal
+        encryptedVoteArea.setText(String.format(
+            "c1 = %s\\nc2 = %s",
+            encrypted.c1.toString(16),
+            encrypted.c2.toString(16)
+        ));
+
+        // 4. Enregistrer et confirmer
+        database.saveEncryptedVote(encrypted);
+        statusLabel.setText("Vote enregistre! (Chiffre ElGamal)");
+        voteButton.setDisable(true);
+    }
+}`,
+        language: "java",
+        explanation: {
+          fr: "Ce contrôleur JavaFX gère l'interface de vote chiffré. L'utilisateur sélectionne un candidat, le vote est converti en BigInteger puis chiffré avec ElGamal. Le texte chiffré (c1, c2) est affiché en hexadécimal et stocké en base de données. Seul l'administrateur avec la clé privée peut déchiffrer les résultats.",
+          en: "This JavaFX controller manages the encrypted voting interface. User selects a candidate, vote is converted to BigInteger then encrypted with ElGamal. Ciphertext (c1, c2) is displayed in hexadecimal and stored in database. Only the administrator with the private key can decrypt results."
         }
       }
     ],
@@ -1198,155 +1359,64 @@ The game uses these inverted mechanics to create an awareness experience: winnin
       }
     ],
     codeHighlights: [
-     {
-        title: { fr: "Load Balancing intelligent des bots", en: "Intelligent bot load balancing" },
-        code: `// LobbyBot 2.0 - Bot Manager avec load balancing
-class BotManager {
-  constructor() {
-    this.bots = new Map();  // Map<botId, BotInstance>
-    this.FRIEND_LIMIT = 900;
-  }
-
-  async selectOptimalBot() {
-    // 1. Filtrer les bots disponibles (< 900 amis)
-    const availableBots = Array.from(this.bots.values())
-      .filter(bot => bot.isReady && bot.friendCount < this.FRIEND_LIMIT)
-      .sort((a, b) => a.friendCount - b.friendCount);
-
-    if (availableBots.length > 0) {
-      // 2. Retourner le bot avec le moins d'amis
-      const selectedBot = availableBots[0];
-      logger.info(\`Bot selectionne: \${selectedBot.displayName} (\${selectedBot.friendCount}/900 amis)\`);
-      return selectedBot;
-    }
-
-    // 3. Si tous les bots sont pleins, creer automatiquement un nouveau bot
-    logger.warn('Tous les bots sont pleins. Creation automatique d\'un nouveau bot...');
-    const newBot = await this.createNewBot();
-    return newBot;
-  }
-
-  async addFriend(epicUsername) {
-    const bot = await this.selectOptimalBot();
-
-    try {
-      await bot.addFriend(epicUsername);
-      bot.friendCount++;
-
-      // Sauvegarder en base de donnees PostgreSQL
-      await db.query(
-        'UPDATE bots SET friend_count = $1 WHERE account_id = $2',
-        [bot.friendCount, bot.accountId]
-      );
-
-      return { success: true, bot: bot.displayName };
-    } catch (error) {
-      logger.error('Erreur ajout ami: \${error.message}');
-      return { success: false, error: error.message };
-    }
-  }
-
-  async createNewBot() {
-    // Recuperer nouveau compte depuis pool PostgreSQL
-    const account = await db.query(
-      'SELECT * FROM bot_accounts WHERE in_use = false LIMIT 1'
-    );
-
-    if (!account.rows[0]) {
-      throw new Error('Aucun compte bot disponible!');
-    }
-
-    const newBot = await this.initializeBot(account.rows[0]);
-    this.bots.set(newBot.accountId, newBot);
-
-    logger.info('Nouveau bot cree: \${newBot.displayName}');
-    return newBot;
-  }
-}`,
-        language: "javascript",
-        explanation: {
-          fr: "Ce code implemente le systeme de load balancing du Bot Manager. La methode selectOptimalBot() filtre les bots disponibles (< 900 amis), les trie par nombre d'amis croissant, et retourne le moins charge. Si tous les bots sont pleins, un nouveau bot est automatiquement cree depuis le pool PostgreSQL. Chaque ajout d'ami incremente le compteur et met a jour la base de donnees.",
-          en: "This code implements the Bot Manager's load balancing system. The selectOptimalBot() method filters available bots (< 900 friends), sorts them by ascending friend count, and returns the least loaded one. If all bots are full, a new bot is automatically created from the PostgreSQL pool. Each friend addition increments the counter and updates the database."
-        }
-      },
       {
-        title: { fr: "Communication temps reel Socket.IO Dashboard", en: "Socket.IO real-time Dashboard communication" },
-        code: `// LobbyBot 2.0 - Dashboard Socket.IO Server
-const express = require('express');
-const socketIo = require('socket.io');
-const app = express();
-const server = require('http').createServer(app);
-const io = socketIo(server);
+        title: { fr: "Système de double jauge - Scroll Party", en: "Dual gauge system - Scroll Party" },
+        code: `// Scroll Party - Systeme de jauges Unity C#
+using UnityEngine;
+using UnityEngine.UI;
 
-// Connexion au Discord Manager via Socket.IO
-const managerSocket = require('socket.io-client')('http://localhost:3001');
+public class GaugeManager : MonoBehaviour
+{
+    [SerializeField] private Slider socializationGauge;
+    [SerializeField] private Slider likesGauge;
+    [SerializeField] private float decayRate = 0.02f;
 
-io.on('connection', (clientSocket) => {
-  console.log('Dashboard client connecte:', clientSocket.id);
+    private float socialization = 0.5f;
+    private float likes = 0.5f;
 
-  // 1. Envoyer etat initial des bots au client
-  managerSocket.emit('get_all_bots_status', (botsData) => {
-    clientSocket.emit('initial_state', {
-      bots: botsData.bots,
-      totalFriends: botsData.totalFriends,
-      activeBots: botsData.activeBots
-    });
-  });
+    void Update()
+    {
+        // Decay naturel : les deux jauges diminuent avec le temps
+        socialization -= decayRate * Time.deltaTime;
+        likes -= decayRate * Time.deltaTime;
 
-  // 2. Ecouter les mises a jour en temps reel du Manager
-  managerSocket.on('bot_status_update', (data) => {
-    // Propager la mise a jour a tous les clients dashboard
-    io.emit('bot_update', {
-      botId: data.botId,
-      displayName: data.displayName,
-      friendCount: data.friendCount,
-      status: data.status,
-      isReady: data.isReady
-    });
-  });
+        // Clamp entre 0 et 1
+        socialization = Mathf.Clamp01(socialization);
+        likes = Mathf.Clamp01(likes);
 
-  managerSocket.on('friend_added', (data) => {
-    io.emit('notification', {
-      type: 'success',
-      message: '\${data.username} ajoute au bot \${data.botName}',
-      timestamp: Date.now()
-    });
-  });
+        // Mise a jour UI
+        socializationGauge.value = socialization;
+        likesGauge.value = likes;
 
-  // 3. Actions depuis le dashboard vers le Manager
-  clientSocket.on('kick_friend', async (data) => {
-    managerSocket.emit('kick_friend', {
-      botId: data.botId,
-      friendId: data.friendId
-    }, (response) => {
-      clientSocket.emit('kick_response', response);
-    });
-  });
+        CheckEndConditions();
+    }
 
-  clientSocket.on('change_skin', async (data) => {
-    managerSocket.emit('change_skin', {
-      botId: data.botId,
-      skinId: data.skinId
-    }, (response) => {
-      io.emit('bot_skin_changed', {
-        botId: data.botId,
-        skinName: response.skinName
-      });
-    });
-  });
+    public void OnNPCInteraction()
+    {
+        // Le joueur pose son telephone pour parler au PNJ
+        socialization += 0.15f;
+        likes -= 0.05f;  // Penalite : moins de scroll
+    }
 
-  clientSocket.on('disconnect', () => {
-    console.log('Dashboard client deconnecte:', clientSocket.id);
-  });
-});
+    public void OnScroll()
+    {
+        // Le joueur continue de scroller
+        likes += 0.1f;
+        socialization -= 0.08f;  // Penalite : ignore le PNJ
+    }
 
-server.listen(5000, () => {
-  console.log('Dashboard Socket.IO serveur demarre sur port 5000');
-});`,
-        language: "javascript",
+    private void CheckEndConditions()
+    {
+        if (socialization >= 1f)
+            GameManager.Instance.TriggerEnding("declic");
+        if (likes >= 1f)
+            GameManager.Instance.TriggerEnding("addiction");
+    }
+}`,
+        language: "csharp",
         explanation: {
-          fr: "Ce code gere la communication temps reel entre le Dashboard web et le Discord Manager via Socket.IO. Le serveur Dashboard ecoute les connexions clients, envoie l'etat initial des bots, propage les mises a jour en temps reel (ajout d'ami, changement de statut) et gere les actions utilisateur (kick, changement de skin). L'architecture bidirectionnelle permet une experience interactive instantanee.",
-          en: "This code handles real-time communication between the Web Dashboard and Discord Manager via Socket.IO. The Dashboard server listens for client connections, sends initial bot state, propagates real-time updates (friend addition, status changes) and handles user actions (kick, skin change). The bidirectional architecture enables an instant interactive experience."
+          fr: "Ce système de double jauge est le coeur du gameplay de Scroll Party. Les jauges de sociabilisation et de likes évoluent en fonction des choix du joueur : interagir avec les PNJ augmente la sociabilisation, scroller augmente les likes. Le decay naturel force le joueur à faire des choix constants. Atteindre le maximum d'une jauge déclenche la fin correspondante.",
+          en: "This dual gauge system is the core gameplay of Scroll Party. The socialization and likes gauges evolve based on player choices: interacting with NPCs increases socialization, scrolling increases likes. Natural decay forces the player to make constant choices. Reaching the maximum of a gauge triggers the corresponding ending."
         }
       }
     ],
@@ -1465,178 +1535,60 @@ For the chatbot challenge, we created **Chat'bruti**, an AI chatbot accessible v
       }
     ],
     codeHighlights: [
-     {
-        title: { fr: "Chiffrement ElGamal avec grands nombres", en: "ElGamal encryption with big numbers" },
-        code: `// Referendum - Chiffrement ElGamal en Java
-import java.math.BigInteger;
-import java.security.SecureRandom;
-
-public class ElGamalEncryption {
-    private BigInteger p;  // Nombre premier grand
-    private BigInteger g;  // Generateur
-    private BigInteger publicKey;   // Cle publique (g^x mod p)
-    private BigInteger privateKey;  // Cle privee (x)
-
-    public ElGamalEncryption(int bitLength) {
-        SecureRandom random = new SecureRandom();
-
-        // 1. Generer nombre premier p de taille bitLength
-        this.p = BigInteger.probablePrime(bitLength, random);
-
-        // 2. Trouver generateur g du groupe multiplicatif Z*p
-        this.g = findGenerator(p, random);
-
-        // 3. Generer cle privee x (aleatoire dans [1, p-2])
-        this.privateKey = new BigInteger(bitLength - 1, random);
-
-        // 4. Calculer cle publique: h = g^x mod p
-        this.publicKey = g.modPow(privateKey, p);
-    }
-
-    public ElGamalCiphertext encrypt(BigInteger message) {
-        SecureRandom random = new SecureRandom();
-
-        // 1. Generer k aleatoire (ephemere) dans [1, p-2]
-        BigInteger k = new BigInteger(p.bitLength() - 1, random);
-
-        // 2. Calculer c1 = g^k mod p
-        BigInteger c1 = g.modPow(k, p);
-
-        // 3. Calculer s = h^k mod p (secret partage)
-        BigInteger s = publicKey.modPow(k, p);
-
-        // 4. Calculer c2 = m * s mod p
-        BigInteger c2 = message.multiply(s).mod(p);
-
-        return new ElGamalCiphertext(c1, c2);
-    }
-
-    public BigInteger decrypt(ElGamalCiphertext ciphertext) {
-        // 1. Calculer s = c1^x mod p (secret partage)
-        BigInteger s = ciphertext.c1.modPow(privateKey, p);
-
-        // 2. Calculer inverse modulaire: s^(-1) mod p
-        BigInteger sInverse = s.modInverse(p);
-
-        // 3. Recuperer message: m = c2 * s^(-1) mod p
-        BigInteger message = ciphertext.c2.multiply(sInverse).mod(p);
-
-        return message;
-    }
-
-    private BigInteger findGenerator(BigInteger p, SecureRandom random) {
-        // Trouver generateur du groupe Z*p
-        BigInteger pMinusOne = p.subtract(BigInteger.ONE);
-        BigInteger g;
-
-        do {
-            g = new BigInteger(p.bitLength() - 1, random);
-        } while (g.compareTo(BigInteger.ONE) <= 0 ||
-                 g.modPow(pMinusOne, p).equals(BigInteger.ONE));
-
-        return g;
-    }
-}`,
-        language: "java",
-        explanation: {
-          fr: "Ce code implemente le chiffrement asymetrique ElGamal en Java avec BigInteger pour gerer les tres grands nombres. La generation de cles utilise un nombre premier p de 512+ bits, un generateur g, une cle privee x aleatoire et une cle publique h = g^x mod p. Le chiffrement genere un k ephemere, calcule c1 = g^k et c2 = m * h^k, garantissant la securite par la difficulte du logarithme discret.",
-          en: "This code implements ElGamal asymmetric encryption in Java with BigInteger to handle very large numbers. Key generation uses a 512+ bit prime p, generator g, random private key x and public key h = g^x mod p. Encryption generates ephemeral k, computes c1 = g^k and c2 = m * h^k, ensuring security through discrete logarithm hardness."
-        }
-      },
       {
-        title: { fr: "Interface JavaFX avec gestion votes chiffres", en: "JavaFX interface with encrypted votes management" },
-        code: `// Referendum - Controlleur JavaFX pour vote chiffre
-import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.collections.FXCollections;
+        title: { fr: "Extension Chrome SafeLinks - Analyse de sécurité des liens", en: "SafeLinks Chrome Extension - Link safety analysis" },
+        code: `// SafeLinks - Chrome Extension Manifest V3
+// content-script.ts - Analyse des liens sur la page
 
-public class VoteController {
-    @FXML private ListView<String> candidateListView;
-    @FXML private TextArea encryptedVoteArea;
-    @FXML private Label statusLabel;
-    @FXML private Button voteButton;
+interface LinkAnalysis {
+  url: string;
+  isHTTPS: boolean;
+  domain: string;
+  isSuspicious: boolean;
+  reasons: string[];
+}
 
-    private ElGamalEncryption elGamal;
-    private VoteDatabase database;
+function analyzeLinkSafety(url: string): LinkAnalysis {
+  const parsed = new URL(url);
+  const reasons: string[] = [];
 
-    @FXML
-    public void initialize() {
-        // 1. Initialiser ElGamal avec cle publique serveur
-        this.elGamal = new ElGamalEncryption(512);
-        this.database = new VoteDatabase();
+  // 1. Verifier HTTPS
+  const isHTTPS = parsed.protocol === 'https:';
+  if (!isHTTPS) reasons.push('Connection non securisee (HTTP)');
 
-        // 2. Charger liste candidats
-        candidateListView.setItems(FXCollections.observableArrayList(
-            "Candidat A", "Candidat B", "Candidat C", "Blanc"
-        ));
-    }
+  // 2. Detecter domaines suspects
+  const suspiciousPatterns = [
+    /\\d{4,}/,           // IP-like domains
+    /-{2,}/,             // Multiple hyphens
+    /\\.(xyz|tk|ml|ga)$/, // TLDs suspects
+    /login|signin|verify|secure/i  // Phishing keywords
+  ];
 
-    @FXML
-    private void handleVote() {
-        String selectedCandidate = candidateListView.getSelectionModel().getSelectedItem();
+  const isSuspicious = suspiciousPatterns.some(p => p.test(parsed.hostname));
+  if (isSuspicious) reasons.push('Domaine suspect detecte');
 
-        if (selectedCandidate == null) {
-            statusLabel.setText("Erreur: Selectionnez un candidat!");
-            return;
-        }
+  // 3. Verifier longueur URL excessive
+  if (url.length > 200) reasons.push('URL anormalement longue');
 
-        try {
-            // 1. Convertir choix en BigInteger (A=1, B=2, C=3, Blanc=0)
-            int candidateIndex = candidateListView.getItems().indexOf(selectedCandidate);
-            BigInteger voteValue = BigInteger.valueOf(candidateIndex);
+  return {
+    url, isHTTPS, domain: parsed.hostname,
+    isSuspicious: !isHTTPS || isSuspicious,
+    reasons
+  };
+}
 
-            // 2. Chiffrer le vote avec ElGamal
-            ElGamalCiphertext encryptedVote = elGamal.encrypt(voteValue);
-
-            // 3. Afficher vote chiffre (c1, c2) en hexadecimal
-            String encryptedDisplay = String.format(
-                "Vote chiffre:
-c1 = %s
-c2 = %s",
-                encryptedVote.c1.toString(16),
-                encryptedVote.c2.toString(16)
-            );
-            encryptedVoteArea.setText(encryptedDisplay);
-
-            // 4. Enregistrer dans base de donnees
-            database.saveEncryptedVote(encryptedVote);
-
-            // 5. Confirmation
-            statusLabel.setText("Vote enregistre avec succes! (Chiffre ElGamal)");
-            voteButton.setDisable(true);
-
-            // 6. Afficher statistiques temps reel (nombre votes, sans contenu)
-            updateVoteStatistics();
-
-        } catch (Exception e) {
-            statusLabel.setText("Erreur: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
-    private void updateVoteStatistics() {
-        int totalVotes = database.getTotalVoteCount();
-        statusLabel.setText(statusLabel.getText() +
-            String.format(" | Total votes: %d", totalVotes));
-    }
-
-    @FXML
-    private void handleDecryptResults() {
-        // Seul l'administrateur avec cle privee peut dechiffrer
-        if (!isAdmin()) {
-            showAlert("Acces refuse", "Seul l'administrateur peut dechiffrer les resultats.");
-            return;
-        }
-
-        // Dechiffrer tous les votes et afficher resultats
-        Map<String, Integer> results = database.decryptAndCountVotes(elGamal);
-        showResultsWindow(results);
-    }
-}`,
-        language: "java",
+// Injecter indicateurs visuels sur tous les liens
+document.querySelectorAll('a[href]').forEach(link => {
+  const analysis = analyzeLinkSafety(link.getAttribute('href')!);
+  if (analysis.isSuspicious) {
+    link.style.outline = '2px solid red';
+    link.title = 'SafeLinks: ' + analysis.reasons.join(', ');
+  }
+});`,
+        language: "typescript",
         explanation: {
-          fr: "Ce controlleur JavaFX gere l'interface de vote chiffre. L'utilisateur selectionne un candidat, le vote est converti en BigInteger puis chiffre avec ElGamal. Le texte chiffre (c1, c2) est affiche en hexadecimal et stocke en base de donnees. Seul l'administrateur avec la cle privee peut dechiffrer les resultats en fin de scrutin, garantissant l'anonymat et l'integrite du vote.",
-          en: "This JavaFX controller manages the encrypted voting interface. User selects a candidate, vote is converted to BigInteger then encrypted with ElGamal. Ciphertext (c1, c2) is displayed in hexadecimal and stored in database. Only administrator with private key can decrypt results at end of poll, ensuring vote anonymity and integrity."
+          fr: "Cette extension Chrome (Manifest V3) analyse la sécurité des liens sur chaque page visitée. Le content script inspecte tous les liens : vérification HTTPS, détection de domaines suspects (patterns de phishing, TLDs douteux, IP-like), et URLs anormalement longues. Les liens dangereux sont surlignés en rouge avec un tooltip explicatif.",
+          en: "This Chrome extension (Manifest V3) analyzes link safety on every visited page. The content script inspects all links: HTTPS verification, suspicious domain detection (phishing patterns, dubious TLDs, IP-like), and abnormally long URLs. Dangerous links are highlighted in red with an explanatory tooltip."
         }
       }
     ],
