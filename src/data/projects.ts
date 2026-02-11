@@ -761,7 +761,7 @@ The rest of the team worked on the JavaFX interface, user management, database, 
 
 5. **Oral presentations and technical documents** forced me to structure my thinking and explain complex concepts in an accessible way. It's an essential skill that code alone doesn't develop.`
     },
-    thumbnail: "/images/ref.webp",
+    thumbnail: "/images/referendum1.webp",
     images: ["/images/referendum1.webp", "/images/referendum2.webp", "/images/referendum3.webp", "/images/referendum4.webp", "/images/referendum5.webp"],
     links: { github: "https://github.com/killianrms/referendum", video: "https://youtu.be/F3I_4daMcuk", report: "https://docs.google.com/document/d/11MfYwfZin0VpMzFhqWLSZ3Y3LzQwRpnDo-VK7oX6jJ8/edit?usp=sharing" }
   },
@@ -932,144 +932,28 @@ This project also demonstrates my ability to document and communicate about my w
     links: { github: "https://github.com/killianrms/portfoliov2", live: "https://killianrms.com" }
   },
   {
-    slug: "site-ecommerce-parfum",
-    title: "Site E-commerce de Parfums",
-    category: "university",
-    technologies: ["PHP", "MySQL", "HTML/CSS", "JavaScript", "Bootstrap", "MVC"],
-    duration: { fr: "Janvier - Mars 2024 (Projet universitaire)", en: "January - March 2024 (University project)" },
-    team: { fr: "Groupe de 4 étudiants", en: "Group of 4 students" },
-    role: { fr: "Développeur Back-End - Architecture MVC et base de données", en: "Back-End Developer - MVC Architecture and database" },
+    slug: "kcnyx",
+    title: "Kcnyx",
+    category: "personal",
     shortDescription: {
-      fr: "Site e-commerce complet développé en PHP suivant l'architecture MVC, avec gestion de catalogue, panier, commandes et espace administrateur.",
-      en: "Complete e-commerce website developed in PHP following MVC architecture, with catalog management, shopping cart, orders, and admin panel."
+      fr: "TODO - A remplir avec le contenu du projet kcnyx.com",
+      en: "TODO - To fill with kcnyx.com project content"
     },
-    context: {
-      fr: `Ce projet s'inscrit dans le cadre du module de développement web du BUT Informatique. L'objectif pédagogique était de concevoir et réaliser un site e-commerce complet en PHP, en appliquant le pattern architectural MVC (Modèle-Vue-Contrôleur) de manière rigoureuse.
-
-Le thème choisi par notre groupe était un site de vente de parfums en ligne. Ce choix nous a permis de travailler sur des problématiques variées : gestion d'un catalogue de produits avec différentes caractéristiques (notes olfactives, volumes, marques), système de panier avec calcul de prix dynamique, gestion des utilisateurs avec authentification, et interface d'administration pour la gestion du stock.
-
-Le projet a été mené en méthodologie semi-agile, avec des jalons hebdomadaires et des présentations intermédiaires devant l'enseignant. Chaque membre de l'équipe avait un rôle défini, et nous utilisions Git pour la gestion collaborative du code source.`,
-      en: `This project was part of the web development module in the Computer Science degree. The pedagogical objective was to design and build a complete e-commerce website in PHP, rigorously applying the MVC (Model-View-Controller) architectural pattern.
-
-The theme chosen by our group was an online perfume store. This choice allowed us to work on various challenges: managing a product catalog with different characteristics (fragrance notes, volumes, brands), a shopping cart system with dynamic price calculation, user management with authentication, and an administration interface for stock management.
-
-The project was conducted in a semi-agile methodology, with weekly milestones and intermediate presentations to the instructor. Each team member had a defined role, and we used Git for collaborative source code management.`
-    },
-    objectives: {
-      fr: `1. **Implémenter l'architecture MVC** en PHP pur, sans framework, pour comprendre les fondements de ce pattern architectural.
-2. **Concevoir une base de données relationnelle** normalisée pour gérer les produits, utilisateurs, commandes et paniers.
-3. **Développer un système d'authentification** sécurisé avec hashage des mots de passe et gestion des sessions.
-4. **Créer une interface d'administration** permettant la gestion complète du catalogue produit (CRUD).
-5. **Assurer la sécurité** de l'application contre les failles courantes (injection SQL, XSS, CSRF).`,
-      en: `1. **Implement MVC architecture** in pure PHP, without a framework, to understand the foundations of this architectural pattern.
-2. **Design a normalized relational database** to manage products, users, orders, and carts.
-3. **Develop a secure authentication system** with password hashing and session management.
-4. **Create an administration interface** allowing complete product catalog management (CRUD).
-5. **Ensure application security** against common vulnerabilities (SQL injection, XSS, CSRF).`
-    },
-    approach: {
-      fr: `L'application suit strictement le pattern MVC :
-
-- **Modèle** : Classes PHP encapsulant la logique métier et les interactions avec la base de données MySQL via PDO (requêtes préparées pour prévenir les injections SQL).
-- **Vue** : Templates PHP avec séparation stricte entre la logique et la présentation, utilisant Bootstrap pour le design responsive.
-- **Contrôleur** : Classes PHP gérant les requêtes HTTP, la validation des données utilisateur, et l'orchestration entre les modèles et les vues.
-
-Un routeur central (front controller) intercepte toutes les requêtes et les distribue au contrôleur approprié. Cette approche m'a permis de comprendre en profondeur le fonctionnement interne des frameworks web modernes qui utilisent ce même pattern.
-
-La base de données MySQL a été modélisée avec un MCD (Modèle Conceptuel de Données) puis un MLD (Modèle Logique de Données), en respectant les formes normales pour éviter la redondance des données.`,
-      en: `The application strictly follows the MVC pattern:
-
-- **Model**: PHP classes encapsulating business logic and interactions with the MySQL database via PDO (prepared statements to prevent SQL injection).
-- **View**: PHP templates with strict separation between logic and presentation, using Bootstrap for responsive design.
-- **Controller**: PHP classes handling HTTP requests, user data validation, and orchestration between models and views.
-
-A central router (front controller) intercepts all requests and distributes them to the appropriate controller. This approach allowed me to deeply understand the internal workings of modern web frameworks that use this same pattern.
-
-The MySQL database was modeled with a CDM (Conceptual Data Model) then an LDM (Logical Data Model), respecting normal forms to avoid data redundancy.`
-    },
-    architecture: {
-      fr: `Structure du projet MVC :
-- **/public** : Point d'entrée unique (index.php), assets CSS/JS
-- **/src/Controller** : Contrôleurs (ProductController, UserController, CartController, AdminController)
-- **/src/Model** : Modèles (Product, User, Cart, Order) avec accès base de données via PDO
-- **/src/View** : Templates PHP organisés par module (products/, users/, cart/, admin/)
-- **/config** : Configuration base de données et constantes applicatives
-- **/sql** : Scripts de création et de peuplement de la base de données`,
-      en: `MVC project structure:
-- **/public**: Single entry point (index.php), CSS/JS assets
-- **/src/Controller**: Controllers (ProductController, UserController, CartController, AdminController)
-- **/src/Model**: Models (Product, User, Cart, Order) with database access via PDO
-- **/src/View**: PHP templates organized by module (products/, users/, cart/, admin/)
-- **/config**: Database configuration and application constants
-- **/sql**: Database creation and seeding scripts`
-    },
-    skills: [
-      {
-        name: { fr: "Architecture MVC", en: "MVC Architecture" },
-        description: { fr: "Implémentation complète du pattern MVC en PHP pur, comprenant le routage, la séparation des responsabilités et le front controller.", en: "Complete implementation of the MVC pattern in pure PHP, including routing, separation of concerns, and front controller." }
-      },
-      {
-        name: { fr: "Sécurité Web", en: "Web Security" },
-        description: { fr: "Protection contre les injections SQL (requêtes préparées PDO), XSS (échappement des sorties), CSRF (tokens de vérification) et sécurisation des sessions.", en: "Protection against SQL injection (PDO prepared statements), XSS (output escaping), CSRF (verification tokens), and session security." }
-      },
-      {
-        name: { fr: "Modélisation de bases de données", en: "Database Modeling" },
-        description: { fr: "Conception d'un schéma relationnel normalisé, création de MCD/MLD, écriture de requêtes SQL complexes avec jointures et agrégations.", en: "Design of a normalized relational schema, CDM/LDM creation, writing complex SQL queries with joins and aggregations." }
-      }
-    ],
-    codeHighlights: [
-      {
-        title: { fr: "Modèle Product avec PDO", en: "Product Model with PDO" },
-        code: `class Product {
-    private PDO $db;
-
-    public function __construct(PDO $db) {
-        $this->db = $db;
-    }
-
-    public function findAll(array $filters = []): array {
-        $sql = "SELECT p.*, b.name as brand_name
-                FROM products p
-                JOIN brands b ON p.brand_id = b.id
-                WHERE 1=1";
-        $params = [];
-
-        if (!empty($filters['brand'])) {
-            $sql .= " AND p.brand_id = :brand";
-            $params[':brand'] = $filters['brand'];
-        }
-        if (!empty($filters['min_price'])) {
-            $sql .= " AND p.price >= :min_price";
-            $params[':min_price'] = $filters['min_price'];
-        }
-
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute($params);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-}`,
-        language: "php",
-        explanation: {
-          fr: "Ce modèle illustre l'utilisation de PDO avec des requêtes préparées pour sécuriser les accès à la base de données. Le système de filtrage dynamique construit la requête SQL de manière sécurisée en utilisant des paramètres nommés, évitant ainsi toute injection SQL. La jointure avec la table des marques enrichit les données produit en une seule requête.",
-          en: "This model illustrates the use of PDO with prepared statements to secure database access. The dynamic filtering system builds the SQL query securely using named parameters, thus avoiding SQL injection. The join with the brands table enriches product data in a single query."
-        }
-      }
-    ],
-    results: {
-      fr: `Le projet a été livré dans les délais avec l'ensemble des fonctionnalités demandées. L'application comprend un catalogue de plus de 50 produits, un système de panier fonctionnel, une authentification sécurisée et un panneau d'administration complet. Le projet a obtenu une note de 16/20, avec des retours positifs sur la qualité de l'architecture MVC et la sécurisation de l'application.`,
-      en: `The project was delivered on time with all required features. The application includes a catalog of over 50 products, a functional cart system, secure authentication, and a complete administration panel. The project received a grade of 16/20, with positive feedback on the MVC architecture quality and application security.`
-    },
-    reflection: {
-      fr: `Ce projet m'a permis de comprendre en profondeur le fonctionnement d'un framework web en implémentant ses mécanismes de zéro. Avant ce projet, j'utilisais les frameworks sans vraiment comprendre leur fonctionnement interne. Maintenant, je comprends comment fonctionne le routage, l'injection de dépendances, et la séparation des responsabilités.
-
-La principale difficulté a été la gestion du panier en session tout en maintenant la cohérence avec la base de données. J'ai appris l'importance de bien réfléchir à la gestion de l'état avant de coder, plutôt que de corriger les incohérences après coup.`,
-      en: `This project allowed me to deeply understand how a web framework works by implementing its mechanisms from scratch. Before this project, I used frameworks without really understanding their internal workings. Now I understand how routing, dependency injection, and separation of concerns work.
-
-The main difficulty was managing the cart in session while maintaining consistency with the database. I learned the importance of thinking carefully about state management before coding, rather than fixing inconsistencies after the fact.`
-    },
-    thumbnail: "/images/site-ecom_resize.webp",
-    images: ["/images/E-Commerce0.webp", "/images/E-Commerce1.webp", "/images/E-Commerce2.webp", "/images/E-Commerce3.webp", "/images/E-Commerce4.webp"],
-    links: { github: "https://github.com/killianrms/ecommerce-parfum" }
+    technologies: [],
+    duration: { fr: "TODO", en: "TODO" },
+    team: { fr: "TODO", en: "TODO" },
+    role: { fr: "TODO", en: "TODO" },
+    context: { fr: "TODO", en: "TODO" },
+    objectives: { fr: "TODO", en: "TODO" },
+    approach: { fr: "TODO", en: "TODO" },
+    architecture: { fr: "TODO", en: "TODO" },
+    skills: [],
+    codeHighlights: [],
+    results: { fr: "TODO", en: "TODO" },
+    reflection: { fr: "TODO", en: "TODO" },
+    thumbnail: "/images/photo.webp",
+    images: [],
+    links: { live: "https://kcnyx.com" }
   },
   {
     slug: "code-game-jam-2026",
@@ -1298,152 +1182,28 @@ The specificity of this edition was the diversity of challenges: going from a Ch
     links: { live: "https://killianrms.github.io/NDI2025/" }
   },
   {
-    slug: "autotweetvideouploader",
-    title: "AutoTweetVideoUploader",
-    category: "personal",
-    technologies: ["Python", "Twitter API v2", "OAuth 1.0a", "FFmpeg", "Web Scraping", "Cron", "Linux"],
-    duration: { fr: "Projet personnel (2024)", en: "Personal project (2024)" },
-    team: { fr: "Projet individuel", en: "Individual project" },
-    role: { fr: "Développeur unique", en: "Sole Developer" },
+    slug: "application-sauvegarde",
+    title: "Application de Sauvegarde",
+    category: "university",
     shortDescription: {
-      fr: "Outil open source d'automatisation de publication de vidéos et photos sur Twitter/X - alternative gratuite à la fonctionnalité payante de planification de Twitter. Scraping ou planification manuelle avec fichier de configuration.",
-      en: "Open source automation tool for publishing videos and photos on Twitter/X - free alternative to Twitter's paid scheduling feature. Scraping or manual scheduling with configuration file."
+      fr: "TODO - A remplir avec le contenu du projet de sauvegarde",
+      en: "TODO - To fill with backup application project content"
     },
-    context: {
-      fr: `La planification de publications sur Twitter/X est une fonctionnalité payante (Twitter Premium). J'ai développé AutoTweetVideoUploader comme une alternative open source et gratuite pour automatiser la publication de contenu sur Twitter.
-
-L'outil propose deux modes de fonctionnement :
-- **Mode scraping** : récupère automatiquement des vidéos d'autres utilisateurs et les reposte de manière planifiée.
-- **Mode manuel** : l'utilisateur place ses photos/vidéos dans un dossier, configure les dates et heures de publication dans un fichier de configuration, et le bot publie automatiquement aux moments définis.
-
-Le bot utilise l'API Twitter v2 avec authentification OAuth 1.0a, FFmpeg pour la conversion et l'optimisation des vidéos, et le système cron de Linux pour la planification. Le projet est open source sur GitHub.`,
-      en: `Scheduling posts on Twitter/X is a paid feature (Twitter Premium). I developed AutoTweetVideoUploader as a free, open source alternative to automate content publishing on Twitter.
-
-The tool offers two operating modes:
-- **Scraping mode**: automatically retrieves videos from other users and reposts them on a schedule.
-- **Manual mode**: the user places their photos/videos in a folder, configures publication dates and times in a configuration file, and the bot automatically publishes at the defined times.
-
-The bot uses the Twitter v2 API with OAuth 1.0a authentication, FFmpeg for video conversion and optimization, and Linux's cron system for scheduling. The project is open source on GitHub.`
-    },
-    objectives: {
-      fr: `1. **Alternative gratuite** à la planification payante de Twitter/X
-2. **Deux modes** : scraping automatique de vidéos d'autres utilisateurs ou planification manuelle via fichier de configuration
-3. Gérer la conversion vidéo avec FFmpeg (codec, résolution, taille)
-4. Respecter les limites de l'API Twitter (rate limiting)
-5. Publier automatiquement via cron aux dates/heures configurées`,
-      en: `1. **Free alternative** to Twitter/X paid scheduling
-2. **Two modes**: automatic video scraping from other users or manual scheduling via configuration file
-3. Handle video conversion with FFmpeg (codec, resolution, size)
-4. Respect Twitter API limits (rate limiting)
-5. Automatically publish via cron at configured dates/times`
-    },
-    approach: {
-      fr: `Le bot suit un pipeline en plusieurs étapes :
-
-**Mode scraping :**
-1. **Récupération** : Scraping de vidéos depuis des comptes Twitter ciblés.
-2. **Conversion** : Utilisation de FFmpeg pour convertir au format MP4 H.264 compatible Twitter.
-3. **Publication planifiée** : Publication automatique via cron à des heures configurées.
-
-**Mode manuel :**
-1. **Configuration** : L'utilisateur place ses photos/vidéos dans un dossier et renseigne dans un fichier de configuration les dates, heures et textes associés.
-2. **Conversion** : FFmpeg optimise le contenu pour Twitter.
-3. **Publication** : Le bot publie automatiquement aux moments définis.
-
-Le tout est orchestré par un script Python exécuté via cron, avec gestion du rate limiting et retry en cas d'erreur.`,
-      en: `The bot follows a multi-step pipeline:
-
-**Scraping mode:**
-1. **Retrieval**: Scraping videos from targeted Twitter accounts.
-2. **Conversion**: Using FFmpeg to convert to Twitter-compatible MP4 H.264 format.
-3. **Scheduled publication**: Automatic publication via cron at configured times.
-
-**Manual mode:**
-1. **Configuration**: The user places their photos/videos in a folder and fills in a configuration file with dates, times, and associated text.
-2. **Conversion**: FFmpeg optimizes content for Twitter.
-3. **Publication**: The bot automatically publishes at the defined times.
-
-Everything is orchestrated by a Python script executed via cron, with rate limiting management and retry on error.`
-    },
-    architecture: {
-      fr: `Pipeline automatisé :
-- **video_selector.py** : Sélection et file d'attente des vidéos
-- **video_converter.py** : Conversion FFmpeg avec paramètres optimisés
-- **twitter_client.py** : Client API Twitter v2 avec OAuth 1.0a et gestion du rate limiting
-- **scheduler.py** : Script principal orchestrant le pipeline, exécuté via cron`,
-      en: `Automated pipeline:
-- **video_selector.py**: Video selection and queue
-- **video_converter.py**: FFmpeg conversion with optimized parameters
-- **twitter_client.py**: Twitter v2 API client with OAuth 1.0a and rate limiting management
-- **scheduler.py**: Main script orchestrating the pipeline, executed via cron`
-    },
-    skills: [
-      {
-        name: { fr: "Intégration d'API tierces", en: "Third-party API Integration" },
-        description: { fr: "Maîtrise de l'API Twitter v2, gestion de l'authentification OAuth 1.0a, et respect des contraintes de rate limiting.", en: "Mastery of Twitter v2 API, OAuth 1.0a authentication management, and rate limiting constraints compliance." }
-      },
-      {
-        name: { fr: "Automatisation système", en: "System Automation" },
-        description: { fr: "Utilisation de cron, subprocess et FFmpeg pour créer un pipeline automatisé fiable sur Linux.", en: "Using cron, subprocess, and FFmpeg to create a reliable automated pipeline on Linux." }
-      }
-    ],
-    codeHighlights: [
-      {
-        title: { fr: "Upload chunked de vidéo sur Twitter", en: "Chunked Video Upload to Twitter" },
-        code: `import tweepy
-import os
-import time
-
-class TwitterUploader:
-    CHUNK_SIZE = 4 * 1024 * 1024  # 4MB chunks
-
-    def __init__(self, api: tweepy.API):
-        self.api = api
-
-    def upload_video(self, file_path: str) -> str:
-        file_size = os.path.getsize(file_path)
-
-        # INIT
-        media = self.api.chunked_upload(
-            filename=file_path,
-            file_type='video/mp4',
-            wait_for_async_finalize=True
-        )
-
-        # Wait for processing
-        while media.processing_info and \\
-              media.processing_info['state'] != 'succeeded':
-            wait = media.processing_info.get(
-                'check_after_secs', 5
-            )
-            time.sleep(wait)
-            media = self.api.get_media_upload_status(
-                media.media_id
-            )
-
-        return str(media.media_id)`,
-        language: "python",
-        explanation: {
-          fr: "Cette classe gère l'upload de vidéos volumineuses vers Twitter en utilisant le mécanisme d'upload chunked. La vidéo est envoyée par morceaux de 4MB, puis on attend que Twitter termine le traitement asynchrone de la vidéo avant de récupérer l'identifiant media. La boucle de polling avec wait adaptatif respecte les délais recommandés par l'API.",
-          en: "This class handles uploading large videos to Twitter using the chunked upload mechanism. The video is sent in 4MB chunks, then we wait for Twitter to finish asynchronous video processing before retrieving the media identifier. The polling loop with adaptive wait respects the delays recommended by the API."
-        }
-      }
-    ],
-    results: {
-      fr: `Le bot fonctionne de manière autonome et offre une alternative gratuite et open source à la fonctionnalité payante de Twitter. Il gère correctement les deux modes (scraping et planification manuelle), les erreurs d'API, les vidéos trop volumineuses (compression automatique via FFmpeg), et les limites de publication. Le code est open source sur GitHub.`,
-      en: `The bot runs autonomously and offers a free, open source alternative to Twitter's paid feature. It correctly handles both modes (scraping and manual scheduling), API errors, oversized videos (automatic compression via FFmpeg), and publication limits. The code is open source on GitHub.`
-    },
-    reflection: {
-      fr: `Ce projet m'a appris la réalité de l'automatisation : un bot qui fonctionne « la plupart du temps » n'est pas suffisant. La gestion robuste des erreurs, le logging détaillé, et les mécanismes de retry sont essentiels pour un système autonome fiable.
-
-L'idée de proposer en open source une fonctionnalité que Twitter fait payer m'a motivé à rendre le code propre et documenté pour que d'autres puissent l'utiliser. C'est aussi un bon exemple de projet où le scraping et l'API officielle cohabitent dans un même outil.`,
-      en: `This project taught me the reality of automation: a bot that works "most of the time" is not enough. Robust error handling, detailed logging, and retry mechanisms are essential for a reliable autonomous system.
-
-The idea of offering as open source a feature that Twitter charges for motivated me to keep the code clean and documented so others could use it. It's also a good example of a project where scraping and the official API coexist in the same tool.`
-    },
-    thumbnail: "/images/tweet.webp",
+    technologies: [],
+    duration: { fr: "TODO", en: "TODO" },
+    team: { fr: "TODO", en: "TODO" },
+    role: { fr: "TODO", en: "TODO" },
+    context: { fr: "TODO", en: "TODO" },
+    objectives: { fr: "TODO", en: "TODO" },
+    approach: { fr: "TODO", en: "TODO" },
+    architecture: { fr: "TODO", en: "TODO" },
+    skills: [],
+    codeHighlights: [],
+    results: { fr: "TODO", en: "TODO" },
+    reflection: { fr: "TODO", en: "TODO" },
+    thumbnail: "/images/photo.webp",
     images: [],
-    links: { github: "https://github.com/killianrms/AutoTweetVideoUploader" }
+    links: {}
   },
   {
     slug: "ancien-portfolio",

@@ -32,6 +32,7 @@ const technologies: Tech[] = [
   { name: "Linux", category: "DevOps" },
   { name: "PostgreSQL", category: "Database" },
   { name: "MySQL", category: "Database" },
+  { name: "Oracle", category: "Database" },
   { name: "MongoDB", category: "Database" },
   { name: "SonarQube", category: "Tools" },
   { name: "Jira", category: "Tools" },
