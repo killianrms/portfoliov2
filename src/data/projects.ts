@@ -1135,47 +1135,69 @@ The specificity of this edition was the diversity of challenges: going from a Ch
     slug: "autotweetvideouploader",
     title: "AutoTweetVideoUploader",
     category: "personal",
-    technologies: ["Python", "Twitter API v2", "OAuth 1.0a", "FFmpeg", "Cron", "Linux"],
+    technologies: ["Python", "Twitter API v2", "OAuth 1.0a", "FFmpeg", "Web Scraping", "Cron", "Linux"],
     duration: { fr: "Projet personnel (2024)", en: "Personal project (2024)" },
     team: { fr: "Projet individuel", en: "Individual project" },
     role: { fr: "Développeur unique", en: "Sole Developer" },
     shortDescription: {
-      fr: "Bot Python d'automatisation de publication de vidéos sur Twitter/X, avec planification, conversion vidéo et gestion des limites d'API.",
-      en: "Python bot for automating video publication on Twitter/X, with scheduling, video conversion, and API rate limit management."
+      fr: "Outil open source d'automatisation de publication de vidéos et photos sur Twitter/X — alternative gratuite à la fonctionnalité payante de planification de Twitter. Scraping ou planification manuelle avec fichier de configuration.",
+      en: "Open source automation tool for publishing videos and photos on Twitter/X — free alternative to Twitter's paid scheduling feature. Scraping or manual scheduling with configuration file."
     },
     context: {
-      fr: `Ce projet personnel est né du constat que la publication régulière de contenu vidéo sur Twitter/X est chronophage et répétitive. J'ai développé un bot Python qui automatise l'ensemble du processus : sélection de la vidéo, conversion au format compatible Twitter, rédaction du tweet, et publication planifiée.
+      fr: `La planification de publications sur Twitter/X est une fonctionnalité payante (Twitter Premium). J'ai développé AutoTweetVideoUploader comme une alternative open source et gratuite pour automatiser la publication de contenu sur Twitter.
 
-Le bot utilise l'API Twitter v2 avec authentification OAuth 1.0a, FFmpeg pour la conversion et l'optimisation des vidéos, et le système cron de Linux pour la planification des publications. Ce projet m'a permis d'explorer l'intégration de multiples API et outils système dans un pipeline automatisé.`,
-      en: `This personal project came from the observation that regularly publishing video content on Twitter/X is time-consuming and repetitive. I developed a Python bot that automates the entire process: video selection, conversion to Twitter-compatible format, tweet composition, and scheduled publication.
+L'outil propose deux modes de fonctionnement :
+- **Mode scraping** : récupère automatiquement des vidéos d'autres utilisateurs et les reposte de manière planifiée.
+- **Mode manuel** : l'utilisateur place ses photos/vidéos dans un dossier, configure les dates et heures de publication dans un fichier de configuration, et le bot publie automatiquement aux moments définis.
 
-The bot uses the Twitter v2 API with OAuth 1.0a authentication, FFmpeg for video conversion and optimization, and Linux's cron system for publication scheduling. This project allowed me to explore integrating multiple APIs and system tools into an automated pipeline.`
+Le bot utilise l'API Twitter v2 avec authentification OAuth 1.0a, FFmpeg pour la conversion et l'optimisation des vidéos, et le système cron de Linux pour la planification. Le projet est open source sur GitHub.`,
+      en: `Scheduling posts on Twitter/X is a paid feature (Twitter Premium). I developed AutoTweetVideoUploader as a free, open source alternative to automate content publishing on Twitter.
+
+The tool offers two operating modes:
+- **Scraping mode**: automatically retrieves videos from other users and reposts them on a schedule.
+- **Manual mode**: the user places their photos/videos in a folder, configures publication dates and times in a configuration file, and the bot automatically publishes at the defined times.
+
+The bot uses the Twitter v2 API with OAuth 1.0a authentication, FFmpeg for video conversion and optimization, and Linux's cron system for scheduling. The project is open source on GitHub.`
     },
     objectives: {
-      fr: `1. Automatiser la publication de vidéos sur Twitter/X
-2. Gérer la conversion vidéo avec FFmpeg (codec, résolution, taille)
-3. Respecter les limites de l'API Twitter (rate limiting)
-4. Planifier les publications via cron`,
-      en: `1. Automate video publication on Twitter/X
-2. Handle video conversion with FFmpeg (codec, resolution, size)
-3. Respect Twitter API limits (rate limiting)
-4. Schedule publications via cron`
+      fr: `1. **Alternative gratuite** à la planification payante de Twitter/X
+2. **Deux modes** : scraping automatique de vidéos d'autres utilisateurs ou planification manuelle via fichier de configuration
+3. Gérer la conversion vidéo avec FFmpeg (codec, résolution, taille)
+4. Respecter les limites de l'API Twitter (rate limiting)
+5. Publier automatiquement via cron aux dates/heures configurées`,
+      en: `1. **Free alternative** to Twitter/X paid scheduling
+2. **Two modes**: automatic video scraping from other users or manual scheduling via configuration file
+3. Handle video conversion with FFmpeg (codec, resolution, size)
+4. Respect Twitter API limits (rate limiting)
+5. Automatically publish via cron at configured dates/times`
     },
     approach: {
-      fr: `Le bot suit un pipeline en 4 étapes :
-1. **Sélection** : Parcours d'un dossier de vidéos en attente et sélection selon un ordre configuré.
-2. **Conversion** : Utilisation de FFmpeg via subprocess pour convertir la vidéo au format MP4 H.264 compatible Twitter, avec optimisation de la taille.
-3. **Upload** : Upload chunked via l'API Twitter v2 pour les vidéos volumineuses, avec gestion des erreurs et retry.
-4. **Publication** : Création du tweet avec le media attaché, gestion du rate limiting avec backoff exponentiel.
+      fr: `Le bot suit un pipeline en plusieurs étapes :
 
-Le tout est orchestré par un script Python exécuté via cron à des heures optimales pour maximiser l'engagement.`,
-      en: `The bot follows a 4-step pipeline:
-1. **Selection**: Browse a pending videos folder and select according to a configured order.
-2. **Conversion**: Use FFmpeg via subprocess to convert video to Twitter-compatible MP4 H.264 format, with size optimization.
-3. **Upload**: Chunked upload via Twitter v2 API for large videos, with error handling and retry.
-4. **Publication**: Tweet creation with attached media, rate limiting management with exponential backoff.
+**Mode scraping :**
+1. **Récupération** : Scraping de vidéos depuis des comptes Twitter ciblés.
+2. **Conversion** : Utilisation de FFmpeg pour convertir au format MP4 H.264 compatible Twitter.
+3. **Publication planifiée** : Publication automatique via cron à des heures configurées.
 
-Everything is orchestrated by a Python script executed via cron at optimal times to maximize engagement.`
+**Mode manuel :**
+1. **Configuration** : L'utilisateur place ses photos/vidéos dans un dossier et renseigne dans un fichier de configuration les dates, heures et textes associés.
+2. **Conversion** : FFmpeg optimise le contenu pour Twitter.
+3. **Publication** : Le bot publie automatiquement aux moments définis.
+
+Le tout est orchestré par un script Python exécuté via cron, avec gestion du rate limiting et retry en cas d'erreur.`,
+      en: `The bot follows a multi-step pipeline:
+
+**Scraping mode:**
+1. **Retrieval**: Scraping videos from targeted Twitter accounts.
+2. **Conversion**: Using FFmpeg to convert to Twitter-compatible MP4 H.264 format.
+3. **Scheduled publication**: Automatic publication via cron at configured times.
+
+**Manual mode:**
+1. **Configuration**: The user places their photos/videos in a folder and fills in a configuration file with dates, times, and associated text.
+2. **Conversion**: FFmpeg optimizes content for Twitter.
+3. **Publication**: The bot automatically publishes at the defined times.
+
+Everything is orchestrated by a Python script executed via cron, with rate limiting management and retry on error.`
     },
     architecture: {
       fr: `Pipeline automatisé :
@@ -1242,16 +1264,16 @@ class TwitterUploader:
       }
     ],
     results: {
-      fr: `Le bot fonctionne de manière autonome et a publié plus de 200 vidéos automatiquement. Il gère correctement les erreurs d'API, les vidéos trop volumineuses (compression automatique), et les limites de publication. Le code est open-source sur GitHub et a inspiré d'autres développeurs de la communauté.`,
-      en: `The bot runs autonomously and has published over 200 videos automatically. It correctly handles API errors, oversized videos (automatic compression), and publication limits. The code is open-source on GitHub and has inspired other community developers.`
+      fr: `Le bot fonctionne de manière autonome et offre une alternative gratuite et open source à la fonctionnalité payante de Twitter. Il gère correctement les deux modes (scraping et planification manuelle), les erreurs d'API, les vidéos trop volumineuses (compression automatique via FFmpeg), et les limites de publication. Le code est open source sur GitHub.`,
+      en: `The bot runs autonomously and offers a free, open source alternative to Twitter's paid feature. It correctly handles both modes (scraping and manual scheduling), API errors, oversized videos (automatic compression via FFmpeg), and publication limits. The code is open source on GitHub.`
     },
     reflection: {
       fr: `Ce projet m'a appris la réalité de l'automatisation : un bot qui fonctionne « la plupart du temps » n'est pas suffisant. La gestion robuste des erreurs, le logging détaillé, et les mécanismes de retry sont essentiels pour un système autonome fiable.
 
-J'ai également appris l'importance de respecter les conditions d'utilisation des API et les bonnes pratiques d'usage (rate limiting, contenu approprié).`,
+L'idée de proposer en open source une fonctionnalité que Twitter fait payer m'a motivé à rendre le code propre et documenté pour que d'autres puissent l'utiliser. C'est aussi un bon exemple de projet où le scraping et l'API officielle cohabitent dans un même outil.`,
       en: `This project taught me the reality of automation: a bot that works "most of the time" is not enough. Robust error handling, detailed logging, and retry mechanisms are essential for a reliable autonomous system.
 
-I also learned the importance of respecting API terms of use and usage best practices (rate limiting, appropriate content).`
+The idea of offering as open source a feature that Twitter charges for motivated me to keep the code clean and documented so others could use it. It's also a good example of a project where scraping and the official API coexist in the same tool.`
     },
     thumbnail: "/images/autotweetvideo.jpg",
     images: [],
@@ -1327,200 +1349,163 @@ The current version (v2) you are viewing is a complete redesign built with Next.
     links: { github: "https://github.com/killianrms/portfolio", live: "https://killianrms.com" }
   },
   {
-    slug: "code-game-jam-2023",
-    title: "Code Game Jam 2023",
+    slug: "nuit-info-2024",
+    title: "Nuit de l'Info 2024",
     category: "competition",
-    technologies: ["JavaScript", "HTML5 Canvas", "CSS3", "Game Design"],
-    duration: { fr: "Novembre 2023 (48h)", en: "November 2023 (48h)" },
-    team: { fr: "Équipe de 4 étudiants", en: "Team of 4 students" },
-    role: { fr: "Développeur Gameplay & Graphismes", en: "Gameplay & Graphics Developer" },
+    technologies: ["HTML", "CSS", "JavaScript", "Replit"],
+    duration: { fr: "Décembre 2024 (1 nuit)", en: "December 2024 (1 night)" },
+    team: { fr: "Équipe Le Buff Chinois", en: "Le Buff Chinois Team" },
+    role: { fr: "Développeur", en: "Developer" },
     shortDescription: {
-      fr: "Développement d'un jeu vidéo en 48 heures lors d'une compétition de game jam, utilisant HTML5 Canvas et JavaScript pur.",
-      en: "Video game development in 48 hours during a game jam competition, using HTML5 Canvas and pure JavaScript."
+      fr: "Compétition nationale de développement web en une nuit. Thème : le changement climatique (GIEC). Création d'un site web de sensibilisation aux enjeux climatiques avec l'équipe Le Buff Chinois.",
+      en: "National one-night web development competition. Theme: climate change (IPCC). Creation of a climate awareness website with the Le Buff Chinois team."
     },
     context: {
-      fr: `La Code Game Jam 2023 est une compétition de développement de jeux vidéo organisée sur 48 heures. Le thème, révélé au début de la compétition, devait être interprété et intégré dans le gameplay. Notre équipe a choisi de développer un jeu en JavaScript pur avec HTML5 Canvas, sans moteur de jeu, pour démontrer nos compétences en programmation fondamentale.
+      fr: `La Nuit de l'Info 2024 est ma deuxième participation à cette compétition nationale annuelle. Le thème de cette édition était le changement climatique, une problématique soulevée par le GIEC (Groupe d'experts intergouvernemental sur l'évolution du climat).
 
-Ce défi de créer un jeu complet en 48 heures nous a poussés à optimiser notre workflow, à prioriser les fonctionnalités essentielles, et à travailler de manière très coordonnée. J'étais responsable du moteur de rendu, de la boucle de jeu, et de la logique de gameplay principale.`,
-      en: `The Code Game Jam 2023 is a 48-hour video game development competition. The theme, revealed at the start of the competition, had to be interpreted and integrated into the gameplay. Our team chose to develop a game in pure JavaScript with HTML5 Canvas, without a game engine, to demonstrate our fundamental programming skills.
+Notre équipe "Le Buff Chinois" devait créer un site web innovant et pertinent pour sensibiliser aux enjeux climatiques et encourager l'action pour un avenir durable. Nous avons choisi une stack simple HTML/CSS/JavaScript, hébergée sur Replit, pour pouvoir itérer rapidement pendant la nuit.`,
+      en: `The Nuit de l'Info 2024 was my second participation in this annual national competition. The theme of this edition was climate change, a concern raised by the IPCC (Intergovernmental Panel on Climate Change).
 
-The challenge of creating a complete game in 48 hours pushed us to optimize our workflow, prioritize essential features, and work in a highly coordinated manner. I was responsible for the rendering engine, game loop, and main gameplay logic.`
+Our "Le Buff Chinois" team had to create an innovative and relevant website to raise awareness about climate issues and encourage action for a sustainable future. We chose a simple HTML/CSS/JavaScript stack, hosted on Replit, to iterate quickly during the night.`
     },
     objectives: {
-      fr: `1. Créer un jeu jouable et amusant en 48 heures
-2. Implémenter un moteur de rendu 2D avec HTML5 Canvas
-3. Intégrer le thème imposé de manière créative
-4. Optimiser les performances pour un gameplay fluide`,
-      en: `1. Create a playable and fun game in 48 hours
-2. Implement a 2D rendering engine with HTML5 Canvas
-3. Creatively integrate the imposed theme
-4. Optimize performance for smooth gameplay`
+      fr: `1. Créer un site web de sensibilisation au changement climatique en une nuit
+2. Présenter de manière claire et engageante les impacts du changement climatique
+3. Proposer des solutions concrètes pour réduire l'empreinte carbone
+4. Concevoir un design interactif pour capter l'attention des utilisateurs`,
+      en: `1. Create a climate change awareness website in one night
+2. Present climate change impacts in a clear and engaging way
+3. Propose concrete solutions to reduce carbon footprint
+4. Design an interactive layout to capture user attention`
     },
     approach: {
-      fr: `Le jeu a été développé entièrement en JavaScript vanilla avec HTML5 Canvas pour le rendu 2D. La boucle de jeu utilise requestAnimationFrame pour des animations fluides à 60 FPS. La détection de collisions est basée sur des AABB (Axis-Aligned Bounding Boxes) pour des performances optimales.
+      fr: `Le site a été développé en HTML, CSS et JavaScript, hébergé sur Replit pour un déploiement instantané. L'approche était pragmatique : utiliser des technologies maîtrisées par toute l'équipe pour maximiser la vitesse de développement.
 
-Mon approche a privilégié la simplicité et l'efficacité : un système d'entités léger, un gestionnaire d'input réactif, et un système de sprites simple mais efficace.`,
-      en: `The game was developed entirely in vanilla JavaScript with HTML5 Canvas for 2D rendering. The game loop uses requestAnimationFrame for smooth 60 FPS animations. Collision detection is based on AABBs (Axis-Aligned Bounding Boxes) for optimal performance.
+Le contenu du site couvrait les impacts du changement climatique avec des données du GIEC, et proposait des solutions concrètes pour s'adapter et réduire son empreinte carbone. Le design interactif visait à rendre le sujet accessible et engageant.`,
+      en: `The site was developed in HTML, CSS, and JavaScript, hosted on Replit for instant deployment. The approach was pragmatic: use technologies mastered by the entire team to maximize development speed.
 
-My approach favored simplicity and efficiency: a lightweight entity system, a responsive input manager, and a simple but effective sprite system.`
+The site's content covered climate change impacts with IPCC data, and proposed concrete solutions to adapt and reduce carbon footprint. The interactive design aimed to make the subject accessible and engaging.`
     },
     architecture: {
-      fr: `Moteur de jeu minimaliste :
-- **Game Loop** : requestAnimationFrame avec delta time pour une vitesse constante
-- **Entity System** : Classes d'entités (Player, Enemy, Projectile) avec update/render
-- **Collision** : Détection AABB optimisée
-- **Input** : Gestionnaire d'événements clavier/souris
-- **Renderer** : Abstraction Canvas 2D avec gestion de caméra`,
-      en: `Minimalist game engine:
-- **Game Loop**: requestAnimationFrame with delta time for constant speed
-- **Entity System**: Entity classes (Player, Enemy, Projectile) with update/render
-- **Collision**: Optimized AABB detection
-- **Input**: Keyboard/mouse event manager
-- **Renderer**: Canvas 2D abstraction with camera management`
+      fr: `Site web statique :
+- **Frontend** : HTML, CSS, JavaScript
+- **Hébergement** : Replit
+- **Contenu** : Données GIEC, impacts climatiques, solutions concrètes`,
+      en: `Static website:
+- **Frontend**: HTML, CSS, JavaScript
+- **Hosting**: Replit
+- **Content**: IPCC data, climate impacts, concrete solutions`
     },
     skills: [
       {
-        name: { fr: "Développement de jeu vidéo", en: "Video Game Development" },
-        description: { fr: "Conception de game loop, systèmes d'entités, détection de collisions, et rendu 2D avec HTML5 Canvas.", en: "Game loop design, entity systems, collision detection, and 2D rendering with HTML5 Canvas." }
+        name: { fr: "Développement web sous pression", en: "Web Development Under Pressure" },
+        description: { fr: "Livraison d'un site web fonctionnel et pertinent en une seule nuit, avec priorisation des fonctionnalités essentielles.", en: "Delivery of a functional and relevant website in a single night, with prioritization of essential features." }
       },
       {
-        name: { fr: "Optimisation des performances", en: "Performance Optimization" },
-        description: { fr: "Gestion du frame rate, optimisation du rendu Canvas, et minimisation des allocations mémoire pour un gameplay fluide.", en: "Frame rate management, Canvas rendering optimization, and memory allocation minimization for smooth gameplay." }
-      }
-    ],
-    codeHighlights: [
-      {
-        title: { fr: "Game Loop avec delta time", en: "Game Loop with Delta Time" },
-        code: `class Game {
-    constructor(canvas) {
-        this.ctx = canvas.getContext('2d');
-        this.entities = [];
-        this.lastTime = 0;
-        this.running = false;
-    }
-
-    start() {
-        this.running = true;
-        this.lastTime = performance.now();
-        requestAnimationFrame((t) => this.loop(t));
-    }
-
-    loop(timestamp) {
-        if (!this.running) return;
-
-        const dt = (timestamp - this.lastTime) / 1000;
-        this.lastTime = timestamp;
-
-        this.update(dt);
-        this.render();
-
-        requestAnimationFrame((t) => this.loop(t));
-    }
-
-    update(dt) {
-        for (const entity of this.entities) {
-            entity.update(dt);
-        }
-        this.checkCollisions();
-    }
-
-    render() {
-        this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
-        for (const entity of this.entities) {
-            entity.render(this.ctx);
-        }
-    }
-}`,
-        language: "javascript",
-        explanation: {
-          fr: "Cette classe implémente la boucle de jeu fondamentale. Le delta time (dt) garantit que la vitesse du jeu est constante quelle que soit la fréquence d'images de l'écran. La séparation entre update() et render() permet de gérer indépendamment la logique de jeu et l'affichage, un pattern classique en développement de jeux vidéo.",
-          en: "This class implements the fundamental game loop. The delta time (dt) ensures that game speed is constant regardless of the screen's frame rate. The separation between update() and render() allows independent management of game logic and display, a classic pattern in video game development."
-        }
-      }
-    ],
-    results: {
-      fr: `Le jeu a été livré fonctionnel et jouable à la fin des 48 heures. Il comprenait un gameplay complet avec un système de scoring, des ennemis avec IA basique, et des effets visuels. L'expérience a été extrêmement enrichissante sur le plan technique et humain.`,
-      en: `The game was delivered functional and playable at the end of the 48 hours. It included complete gameplay with a scoring system, enemies with basic AI, and visual effects. The experience was extremely enriching both technically and personally.`
-    },
-    reflection: {
-      fr: `La Game Jam m'a appris à gérer le rapport entre ambition et réalisme. Il est tentant de vouloir implémenter de nombreuses fonctionnalités, mais en 48 heures, il faut se concentrer sur le core gameplay et s'assurer qu'il est solide avant d'ajouter du contenu. Cette leçon de priorisation est transposable à tout projet de développement.`,
-      en: `The Game Jam taught me to manage the balance between ambition and realism. It's tempting to want to implement many features, but in 48 hours, you need to focus on core gameplay and make sure it's solid before adding content. This prioritization lesson is transferable to any development project.`
-    },
-    thumbnail: "/images/gamejam2023.jpg",
-    images: [],
-    links: {}
-  },
-  {
-    slug: "nuit-info-2023",
-    title: "Nuit de l'Info 2023",
-    category: "competition",
-    technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
-    duration: { fr: "Décembre 2023 (1 nuit)", en: "December 2023 (1 night)" },
-    team: { fr: "Équipe de 5 étudiants", en: "Team of 5 students" },
-    role: { fr: "Développeur Full-Stack", en: "Full-Stack Developer" },
-    shortDescription: {
-      fr: "Première participation à la Nuit de l'Info, compétition nationale de développement web en une nuit.",
-      en: "First participation in the Nuit de l'Info, a national one-night web development competition."
-    },
-    context: {
-      fr: `La Nuit de l'Info 2023 était ma première participation à cette compétition nationale. C'était également ma première expérience de développement en conditions de hackathon. Notre équipe de 5 étudiants en première année de BUT Informatique devait créer un site web en une nuit sur un thème imposé.
-
-Cette première expérience a été formatrice, notamment pour apprendre à travailler sous pression, à communiquer efficacement en équipe, et à prendre des décisions techniques rapides. Nous avons choisi une stack simple (HTML/CSS/JS/PHP) que nous maîtrisions tous, plutôt qu'une technologie plus moderne que nous aurions dû apprendre en même temps.`,
-      en: `The Nuit de l'Info 2023 was my first participation in this national competition. It was also my first development experience under hackathon conditions. Our team of 5 first-year Computer Science students had to create a website in one night on an imposed theme.
-
-This first experience was formative, especially for learning to work under pressure, communicate effectively as a team, and make quick technical decisions. We chose a simple stack (HTML/CSS/JS/PHP) that we all mastered, rather than a more modern technology we would have had to learn simultaneously.`
-    },
-    objectives: {
-      fr: `1. Livrer un site web fonctionnel en une nuit
-2. Travailler efficacement en équipe sous pression
-3. Appliquer les compétences acquises en cours dans un contexte réel`,
-      en: `1. Deliver a functional website in one night
-2. Work efficiently as a team under pressure
-3. Apply skills learned in class in a real context`
-    },
-    approach: {
-      fr: `Nous avons opté pour une approche pragmatique avec des technologies que nous maîtrisions tous. Le site a été développé en PHP avec une base MySQL, une interface en HTML/CSS responsive, et du JavaScript pour les interactions dynamiques.
-
-La répartition des tâches était claire : deux personnes sur le front-end, deux sur le back-end PHP/MySQL, et une personne sur l'intégration et les tests. Cette organisation nous a permis de travailler en parallèle efficacement malgré notre inexpérience en conditions de hackathon.`,
-      en: `We opted for a pragmatic approach with technologies we all mastered. The site was developed in PHP with a MySQL database, a responsive HTML/CSS interface, and JavaScript for dynamic interactions.
-
-Task distribution was clear: two people on front-end, two on PHP/MySQL back-end, and one person on integration and testing. This organization allowed us to work in parallel effectively despite our inexperience in hackathon conditions.`
-    },
-    architecture: {
-      fr: `Site web PHP classique :
-- **Front-end** : HTML/CSS responsive + JavaScript
-- **Back-end** : PHP procédural avec connexion MySQL
-- **Base de données** : MySQL pour le stockage des données`,
-      en: `Classic PHP website:
-- **Front-end**: Responsive HTML/CSS + JavaScript
-- **Back-end**: Procedural PHP with MySQL connection
-- **Database**: MySQL for data storage`
-    },
-    skills: [
-      {
-        name: { fr: "Développement web sous contrainte", en: "Constrained Web Development" },
-        description: { fr: "Capacité à livrer un produit fonctionnel dans un temps très limité avec des ressources restreintes.", en: "Ability to deliver a functional product in very limited time with restricted resources." }
-      },
-      {
-        name: { fr: "Collaboration en conditions extrêmes", en: "Collaboration Under Extreme Conditions" },
-        description: { fr: "Communication efficace, gestion des conflits de code, et coordination d'équipe dans un environnement de hackathon.", en: "Effective communication, code conflict management, and team coordination in a hackathon environment." }
+        name: { fr: "Travail d'équipe en hackathon", en: "Hackathon Teamwork" },
+        description: { fr: "Coordination efficace de l'équipe Le Buff Chinois sous pression, gestion du temps et répartition des tâches dans un délai extrêmement restreint.", en: "Efficient coordination of the Le Buff Chinois team under pressure, time management and task distribution within an extremely tight deadline." }
       }
     ],
     codeHighlights: [],
     results: {
-      fr: `Le site a été livré fonctionnel à la fin de la nuit. Bien que le résultat soit plus modeste que notre participation en 2025, cette première expérience a posé les bases de notre amélioration. L'essentiel était d'apprendre à collaborer efficacement sous pression.`,
-      en: `The site was delivered functional at the end of the night. Although the result was more modest than our 2025 participation, this first experience laid the groundwork for our improvement. The key was learning to collaborate effectively under pressure.`
+      fr: `Le site a été livré fonctionnel à la fin de la nuit avec une présentation claire des impacts du changement climatique, des solutions proposées, et un design interactif. Par rapport à ma première participation en 2023, cette édition montre une nette progression dans l'organisation et la qualité du livrable.`,
+      en: `The site was delivered functional at the end of the night with a clear presentation of climate change impacts, proposed solutions, and an interactive design. Compared to my first participation in 2023, this edition shows clear progression in organization and deliverable quality.`
     },
     reflection: {
-      fr: `Comparée à ma participation en 2025, cette première Nuit de l'Info montre clairement ma progression en deux ans. En 2023, nous nous battions avec les bases (merge Git, déploiement, structure du code). En 2025, ces problèmes étaient résolus et nous pouvions nous concentrer sur la qualité du produit.
+      fr: `Cette deuxième Nuit de l'Info confirme l'importance de choisir des technologies maîtrisées lors d'un hackathon. En optant pour HTML/CSS/JS sur Replit, nous avons pu nous concentrer sur le contenu et le design plutôt que sur des problèmes techniques.
 
-Cette progression illustre l'importance de la pratique répétée et de l'apprentissage par l'erreur dans le développement de compétences solides.`,
-      en: `Compared to my 2025 participation, this first Nuit de l'Info clearly shows my progression over two years. In 2023, we were struggling with basics (Git merging, deployment, code structure). In 2025, these problems were solved and we could focus on product quality.
+La thématique du changement climatique nous a poussés à aller au-delà du simple développement technique pour réfléchir à l'impact et au message que nous voulions transmettre.`,
+      en: `This second Nuit de l'Info confirms the importance of choosing mastered technologies during a hackathon. By opting for HTML/CSS/JS on Replit, we could focus on content and design rather than technical problems.
 
-This progression illustrates the importance of repeated practice and learning from mistakes in developing solid skills.`
+The climate change theme pushed us beyond simple technical development to think about the impact and message we wanted to convey.`
     },
-    thumbnail: "/images/nuitinfo2023.jpg",
+    thumbnail: "/images/nuitinfo2024.jpg",
     images: [],
     links: {}
+  },
+  {
+    slug: "code-game-jam-2024",
+    title: "Code Game Jam 2024 — Shadow Of Memory",
+    category: "competition",
+    technologies: ["Unreal Engine 5", "Blueprints", "Game Design", "3D Environment", "Sound Design"],
+    duration: { fr: "Janvier 2024 (30h)", en: "January 2024 (30h)" },
+    team: { fr: "Équipe de 4 étudiants — IUT de Montpellier-Sète", en: "Team of 4 students — IUT Montpellier-Sète" },
+    role: { fr: "Développeur — Game Design et développement Unreal Engine 5", en: "Developer — Game Design and Unreal Engine 5 development" },
+    shortDescription: {
+      fr: "Jeu vidéo \"Shadow Of Memory\" développé en 30h sur Unreal Engine 5 lors de la Code Game Jam 2024. Première expérience de développement sur un moteur de jeu AAA avec création d'environnements 3D.",
+      en: "\"Shadow Of Memory\" video game developed in 30h on Unreal Engine 5 during the Code Game Jam 2024. First development experience on an AAA game engine with 3D environment creation."
+    },
+    context: {
+      fr: `La Code Game Jam 2024 est une compétition nationale de développement de jeux vidéo sur 30 heures. Notre équipe de 4 étudiants en première année de BUT Informatique à l'IUT de Montpellier-Sète a relevé le défi de créer un jeu vidéo complet en utilisant Unreal Engine 5.
+
+Nous avons créé "Shadow Of Memory", un jeu développé sur UE5. C'était ma première expérience avec un moteur de jeu AAA, ce qui a représenté un défi technique important en si peu de temps. L'équipe était composée de Clément G., Galdric D., Nicolas L. et moi-même.`,
+      en: `The Code Game Jam 2024 is a national 30-hour video game development competition. Our team of 4 first-year Computer Science students at IUT Montpellier-Sète took on the challenge of creating a complete video game using Unreal Engine 5.
+
+We created "Shadow Of Memory", a game developed on UE5. It was my first experience with an AAA game engine, which represented a significant technical challenge in such a short time. The team consisted of Clément G., Galdric D., Nicolas L. and myself.`
+    },
+    objectives: {
+      fr: `1. **Créer un jeu complet en 30h** sur Unreal Engine 5
+2. **Apprendre UE5 en conditions réelles** : Blueprints, environnements 3D, système de caméra
+3. **Concevoir un gameplay cohérent** autour du thème imposé
+4. **Collaborer efficacement à 4** sous forte contrainte de temps`,
+      en: `1. **Create a complete game in 30h** on Unreal Engine 5
+2. **Learn UE5 in real conditions**: Blueprints, 3D environments, camera system
+3. **Design coherent gameplay** around the imposed theme
+4. **Collaborate effectively as a team of 4** under tight time constraints`
+    },
+    approach: {
+      fr: `Le jeu a été développé entièrement sur Unreal Engine 5. C'était un défi ambitieux pour des étudiants de première année : apprendre à utiliser un moteur de jeu professionnel en même temps que développer un jeu complet en 30h.
+
+Nous avons réparti les tâches entre game design, création d'environnements 3D, programmation via les Blueprints d'Unreal, et sound design. La coordination était essentielle car UE5 impose des contraintes de travail collaboratif spécifiques (gestion des assets, compilation).`,
+      en: `The game was developed entirely on Unreal Engine 5. It was an ambitious challenge for first-year students: learning to use a professional game engine while developing a complete game in 30h.
+
+We distributed tasks between game design, 3D environment creation, programming via Unreal Blueprints, and sound design. Coordination was essential as UE5 imposes specific collaborative work constraints (asset management, compilation).`
+    },
+    architecture: {
+      fr: `Jeu Unreal Engine 5 :
+- **Moteur** : Unreal Engine 5 avec Blueprints
+- **Environnements** : Création de scènes 3D et level design
+- **Gameplay** : Logique de jeu via Blueprints
+- **Audio** : Sound design intégré au moteur`,
+      en: `Unreal Engine 5 Game:
+- **Engine**: Unreal Engine 5 with Blueprints
+- **Environments**: 3D scene creation and level design
+- **Gameplay**: Game logic via Blueprints
+- **Audio**: Sound design integrated into the engine`
+    },
+    skills: [
+      {
+        name: { fr: "Unreal Engine 5", en: "Unreal Engine 5" },
+        description: { fr: "Première expérience avec un moteur de jeu AAA : utilisation des Blueprints, création d'environnements 3D, gestion des assets et compilation.", en: "First experience with an AAA game engine: Blueprints usage, 3D environment creation, asset management and compilation." }
+      },
+      {
+        name: { fr: "Game Design", en: "Game Design" },
+        description: { fr: "Conception du gameplay, des mécaniques de jeu et du level design dans un temps très contraint de 30h.", en: "Gameplay design, game mechanics and level design within a very tight 30h timeframe." }
+      },
+      {
+        name: { fr: "Travail d'équipe sous contrainte", en: "Teamwork Under Constraints" },
+        description: { fr: "Collaboration efficace à 4 étudiants sur 30h avec répartition des rôles (game design, 3D, programmation, audio) et gestion des contraintes d'UE5.", en: "Effective collaboration of 4 students over 30h with role distribution (game design, 3D, programming, audio) and UE5 constraints management." }
+      }
+    ],
+    codeHighlights: [],
+    results: {
+      fr: `Shadow Of Memory a été livré fonctionnel et jouable à la fin des 30 heures. Le jeu comprenait des environnements 3D, un gameplay cohérent, et une ambiance sonore immersive. C'était notre première expérience sur Unreal Engine 5, ce qui rend le résultat d'autant plus satisfaisant.
+
+Cette compétition m'a donné une première expérience concrète en développement de jeux vidéo sur un moteur professionnel, compétence que j'ai pu réutiliser lors de la Code Game Jam 2026 (cette fois sur Unity).`,
+      en: `Shadow Of Memory was delivered functional and playable at the end of the 30 hours. The game included 3D environments, coherent gameplay, and an immersive sound atmosphere. It was our first experience on Unreal Engine 5, making the result all the more satisfying.
+
+This competition gave me a first concrete experience in video game development on a professional engine, a skill I was able to reuse during the Code Game Jam 2026 (this time on Unity).`
+    },
+    reflection: {
+      fr: `La Code Game Jam 2024 a été ma première immersion dans le développement de jeux vidéo. Passer directement à Unreal Engine 5 — un moteur AAA utilisé par les studios professionnels — était ambitieux pour des étudiants de première année, mais c'est cette ambition qui a rendu l'expérience si formatrice.
+
+J'ai appris la conception d'environnements 3D, la programmation via Blueprints, et surtout la gestion de projet en conditions extrêmes. Cette expérience m'a donné le goût du game development, que j'ai poursuivi avec la Code Game Jam 2026 sur Unity.`,
+      en: `The Code Game Jam 2024 was my first immersion in video game development. Going directly to Unreal Engine 5 — an AAA engine used by professional studios — was ambitious for first-year students, but it's this ambition that made the experience so formative.
+
+I learned 3D environment design, Blueprint programming, and above all project management under extreme conditions. This experience gave me a taste for game development, which I continued with the Code Game Jam 2026 on Unity.`
+    },
+    thumbnail: "/images/gamejam2024.jpg",
+    images: [],
+    links: { video: "https://www.youtube.com/watch?v=OoIJkiQOXEQ" }
   }
 ];
