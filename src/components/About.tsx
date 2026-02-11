@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
+import { getProjectCount } from "@/data/projects";
 
 function getExperienceDuration(language: "fr" | "en"): string {
   const start = new Date(2025, 8, 1); // September 2025
@@ -28,7 +29,7 @@ export default function About() {
   const experienceDuration = useMemo(() => getExperienceDuration(language), [language]);
 
   const stats = [
-    { value: "12", label: { fr: "Projets", en: "Projects" } },
+    { value: getProjectCount().toString(), label: { fr: "Projets", en: "Projects" } },
     { value: "Bac+3", label: { fr: "BUT Info", en: "CS Degree" } },
     { value: experienceDuration, label: { fr: "Expérience", en: "Experience" } },
     { value: "21", label: { fr: "Ans", en: "Years old" } },
