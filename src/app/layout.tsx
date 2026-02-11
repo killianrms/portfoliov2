@@ -3,9 +3,9 @@ import "./globals.css";
 import ClientProviders from "@/components/ClientProviders";
 
 export const metadata: Metadata = {
-  title: "Killian RAMUS — Portfolio",
+  title: "Killian RAMUS - Portfolio",
   description:
-    "Portfolio de Killian RAMUS — Développeur Créatif & Passionné de Cybersécurité. Création d'expériences interactives et sécurisées.",
+    "Portfolio de Killian RAMUS - Développeur Créatif & Passionné de Cybersécurité. Création d'expériences interactives et sécurisées.",
   keywords: [
     "Killian RAMUS",
     "portfolio",

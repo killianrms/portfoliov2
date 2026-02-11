@@ -35,12 +35,12 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: "itesoft-assistant-ingenieur",
-    title: "ITESOFT — Assistant Ingénieur Développement et Projet",
+    title: "ITESOFT - Assistant Ingénieur Développement et Projet",
     category: "professional",
     technologies: ["Java", "Angular", "SQL", "PostgreSQL", "Maven", "IntelliJ IDEA", "Termius", "Postman", "Azure", "Git"],
-    duration: { fr: "Septembre 2024 — Présent (Alternance)", en: "September 2024 — Present (Work-Study)" },
-    team: { fr: "Équipe Delivery (~30 personnes) — l'équipe projet d'ITESOFT", en: "Delivery team (~30 people) — ITESOFT's project team" },
-    role: { fr: "Assistant Ingénieur Développement et Projet — Personnalisation, déploiement et support de Streamline Invoices", en: "Assistant Development & Project Engineer — Customization, deployment and support of Streamline Invoices" },
+    duration: { fr: "Septembre 2024 - Présent (Alternance)", en: "September 2024 - Present (Work-Study)" },
+    team: { fr: "Équipe Delivery (~30 personnes) - l'équipe projet d'ITESOFT", en: "Delivery team (~30 people) - ITESOFT's project team" },
+    role: { fr: "Assistant Ingénieur Développement et Projet - Personnalisation, déploiement et support de Streamline Invoices", en: "Assistant Development & Project Engineer - Customization, deployment and support of Streamline Invoices" },
     shortDescription: {
       fr: "Alternance au sein de l'équipe Delivery d'ITESOFT : personnalisation de la plateforme Streamline Invoices pour des grandes entreprises, développement d'outils internes et support client.",
       en: "Work-study in ITESOFT's Delivery team: customization of the Streamline Invoices platform for large enterprises, internal tool development and client support."
@@ -64,7 +64,7 @@ On a daily basis, I participate in the Delivery team's daily meetings to track p
     objectives: {
       fr: `Les objectifs de ma mission chez ITESOFT s'articulent autour de quatre axes principaux :
 
-1. **Personnalisation client** : Configurer et adapter Streamline Invoices pour chaque nouveau client — mise en place des VM de développement et de staging, installation de la plateforme, configuration des entreprises, holdings, utilisateurs et permissions, et développement des personnalisations spécifiques (endpoints, connexions ERP, filtres, boutons, fonctionnalités métier).
+1. **Personnalisation client** : Configurer et adapter Streamline Invoices pour chaque nouveau client - mise en place des VM de développement et de staging, installation de la plateforme, configuration des entreprises, holdings, utilisateurs et permissions, et développement des personnalisations spécifiques (endpoints, connexions ERP, filtres, boutons, fonctionnalités métier).
 
 2. **Développement d'outils internes** : Concevoir et développer des outils qui améliorent la productivité de l'équipe Delivery. Notamment l'amélioration majeure de l'outil interne CreatField, utilisé pour la gestion des champs personnalisés des clients.
 
@@ -73,7 +73,7 @@ On a daily basis, I participate in the Delivery team's daily meetings to track p
 4. **Recette et déploiement** : Exécuter les procédures de recette pour valider les personnalisations, gérer le cycle Dev → Staging → Production, et préparer les packages de déploiement pour l'équipe de mise en production.`,
       en: `The objectives of my mission at ITESOFT revolve around four main axes:
 
-1. **Client customization**: Configure and adapt Streamline Invoices for each new client — setting up development and staging VMs, installing the platform, configuring companies, holdings, users and permissions, and developing specific customizations (endpoints, ERP connections, filters, buttons, business features).
+1. **Client customization**: Configure and adapt Streamline Invoices for each new client - setting up development and staging VMs, installing the platform, configuring companies, holdings, users and permissions, and developing specific customizations (endpoints, ERP connections, filters, buttons, business features).
 
 2. **Internal tool development**: Design and develop tools that improve the Delivery team's productivity. Notably the major improvement of the internal CreatField tool, used for managing client custom fields.
 
@@ -84,18 +84,18 @@ On a daily basis, I participate in the Delivery team's daily meetings to track p
     approach: {
       fr: `Mon workflow de développement chez ITESOFT suit un cycle structuré en plusieurs étapes. Pour chaque nouveau client, je commence par créer une VM de développement sur laquelle j'installe Streamline Invoices, puis je configure l'environnement selon les spécifications du client (entreprises, holdings, utilisateurs, permissions, circuits de validation).
 
-Lorsque le client a besoin de fonctionnalités spécifiques — comme des endpoints supplémentaires pour se connecter à son ERP, des filtres personnalisés, ou des boutons métier — je développe ces personnalisations en Java (back-end) et Angular (front-end), en veillant à rester au maximum en dehors du code standard de la R&D. Cette contrainte est essentielle : elle permet de limiter les conflits lors des montées de version et de simplifier la maintenance à long terme.
+Lorsque le client a besoin de fonctionnalités spécifiques - comme des endpoints supplémentaires pour se connecter à son ERP, des filtres personnalisés, ou des boutons métier - je développe ces personnalisations en Java (back-end) et Angular (front-end), en veillant à rester au maximum en dehors du code standard de la R&D. Cette contrainte est essentielle : elle permet de limiter les conflits lors des montées de version et de simplifier la maintenance à long terme.
 
 Le code est compilé via Maven dans IntelliJ IDEA, l'outil utilisé par toute l'entreprise. J'utilise Termius pour la connexion SSH/SFTP aux machines virtuelles, Postman pour tester les endpoints et envoyer des fichiers JSON, et PostgreSQL comme base de données. Les VM de développement sont locales, tandis que les VM de staging sont hébergées sur Azure, ce qui permet au client de s'y connecter pour tester. Une fois les tests validés en staging avec le client, je prépare un package de déploiement que j'envoie à l'équipe de production.
 
-J'ai également contribué de manière significative à l'amélioration de CreatField, un outil interne permettant de créer des champs personnalisés en respectant les conventions de l'entreprise. Le problème initial était que lors des migrations, il fallait retélécharger et renvoyer les champs un par un, ce qui pouvait représenter 20 à 30 champs par client — un processus long et fastidieux. J'ai d'abord développé un script pour télécharger via API tous les champs d'un client d'un coup, puis j'ai intégré cette fonctionnalité directement dans l'application avec une barre de recherche (avant, il fallait chercher manuellement le client parmi plus de 200) et des cases à cocher permettant de sélectionner des champs spécifiques ou tous les champs d'un client.`,
+J'ai également contribué de manière significative à l'amélioration de CreatField, un outil interne permettant de créer des champs personnalisés en respectant les conventions de l'entreprise. Le problème initial était que lors des migrations, il fallait retélécharger et renvoyer les champs un par un, ce qui pouvait représenter 20 à 30 champs par client - un processus long et fastidieux. J'ai d'abord développé un script pour télécharger via API tous les champs d'un client d'un coup, puis j'ai intégré cette fonctionnalité directement dans l'application avec une barre de recherche (avant, il fallait chercher manuellement le client parmi plus de 200) et des cases à cocher permettant de sélectionner des champs spécifiques ou tous les champs d'un client.`,
       en: `My development workflow at ITESOFT follows a structured multi-step cycle. For each new client, I start by creating a development VM on which I install Streamline Invoices, then configure the environment according to client specifications (companies, holdings, users, permissions, validation circuits).
 
-When the client needs specific features — such as additional endpoints to connect to their ERP, custom filters, or business buttons — I develop these customizations in Java (back-end) and Angular (front-end), making sure to stay as much as possible outside the R&D's standard code. This constraint is essential: it limits conflicts during version upgrades and simplifies long-term maintenance.
+When the client needs specific features - such as additional endpoints to connect to their ERP, custom filters, or business buttons - I develop these customizations in Java (back-end) and Angular (front-end), making sure to stay as much as possible outside the R&D's standard code. This constraint is essential: it limits conflicts during version upgrades and simplifies long-term maintenance.
 
 Code is compiled via Maven in IntelliJ IDEA, the tool used across the entire company. I use Termius for SSH/SFTP connections to virtual machines, Postman for testing endpoints and sending JSON files, and PostgreSQL as the database. Development VMs are local, while staging VMs are hosted on Azure, allowing clients to connect and test. Once staging tests are validated with the client, I prepare a deployment package that I send to the production team.
 
-I also significantly contributed to improving CreatField, an internal tool for creating custom fields following company conventions. The initial problem was that during migrations, fields had to be re-downloaded and re-uploaded one by one, which could represent 20 to 30 fields per client — a long and tedious process. I first developed a script to download all client fields at once via API, then integrated this feature directly into the application with a search bar (previously, you had to manually search for the client among 200+) and checkboxes allowing selection of specific fields or all fields for a client.`
+I also significantly contributed to improving CreatField, an internal tool for creating custom fields following company conventions. The initial problem was that during migrations, fields had to be re-downloaded and re-uploaded one by one, which could represent 20 to 30 fields per client - a long and tedious process. I first developed a script to download all client fields at once via API, then integrated this feature directly into the application with a search bar (previously, you had to manually search for the client among 200+) and checkboxes allowing selection of specific fields or all fields for a client.`
     },
     architecture: {
       fr: `Streamline Invoices repose sur une architecture applicative structurée autour des composants suivants :
@@ -147,7 +147,7 @@ The deployment cycle follows the path: Local development → Azure staging VM (c
     ],
     codeHighlights: [
       {
-        title: { fr: "Amélioration de CreatField — Téléchargement en masse via API", en: "CreatField Improvement — Bulk Download via API" },
+        title: { fr: "Amélioration de CreatField - Téléchargement en masse via API", en: "CreatField Improvement - Bulk Download via API" },
         code: `// Principe de l'amélioration CreatField (code simplifié)
 // Avant : téléchargement manuel un par un parmi 200+ clients
 // Après : recherche + sélection multiple + téléchargement en lot
@@ -228,12 +228,12 @@ The main learnings I take away are:
   },
   {
     slug: "tamastat",
-    title: "TamaStat — TamaBox",
+    title: "TamaStat - TamaBox",
     category: "professional",
     technologies: ["JavaScript", "Chart.js", "HTML/CSS", "Vercel", "Git"],
-    duration: { fr: "Janvier — Avril 2025 (Stage)", en: "January — April 2025 (Internship)" },
+    duration: { fr: "Janvier - Avril 2025 (Stage)", en: "January - April 2025 (Internship)" },
     team: { fr: "Seul avec le gérant de l'entreprise", en: "Solo with the company owner" },
-    role: { fr: "Développeur Full-Stack — Conception, développement et déploiement complet de l'application", en: "Full-Stack Developer — Complete design, development and deployment of the application" },
+    role: { fr: "Développeur Full-Stack - Conception, développement et déploiement complet de l'application", en: "Full-Stack Developer - Complete design, development and deployment of the application" },
     shortDescription: {
       fr: "Outil de visualisation statistique développé pour TamaBox (Draguignan, 83) : analyse des données de location de box de stockage, personas marketing et outil de prévision.",
       en: "Statistical visualization tool developed for TamaBox (Draguignan, France): storage box rental data analysis, marketing personas and forecasting tool."
@@ -241,37 +241,37 @@ The main learnings I take away are:
     context: {
       fr: `TamaStat est un outil de visualisation statistique que j'ai conçu et développé dans le cadre de mon stage de deuxième année de BUT Informatique, réalisé chez TamaBox, une entreprise de location de box de stockage située à Draguignan dans le Var (83), de janvier à avril 2025.
 
-C'était ma toute première expérience professionnelle. J'étais seul avec le gérant de l'entreprise — pas d'équipe technique, pas de développeur senior pour me guider. Le gérant m'a donné carte blanche : il m'a expliqué son activité, ses données, et ce qu'il voulait comprendre à travers un tableau de bord. À partir de là, j'ai eu une autonomie totale sur la conception, le développement et le déploiement de l'outil.
+C'était ma toute première expérience professionnelle. J'étais seul avec le gérant de l'entreprise - pas d'équipe technique, pas de développeur senior pour me guider. Le gérant m'a donné carte blanche : il m'a expliqué son activité, ses données, et ce qu'il voulait comprendre à travers un tableau de bord. À partir de là, j'ai eu une autonomie totale sur la conception, le développement et le déploiement de l'outil.
 
 Le contexte métier était le suivant : TamaBox propose des box de stockage de différentes tailles à la location. Le gérant disposait de données brutes sur son activité (entrées/sorties de locataires, répartition par taille de box, taux d'occupation, chiffre d'affaires, surface totale louée) mais n'avait aucun outil pour les visualiser et les analyser. Son taux d'occupation oscillait entre 75% et 82%, et il souhaitait atteindre les 100%.
 
 Nos échanges se faisaient lors de réunions hebdomadaires où je présentais l'avancement et où il me faisait ses retours. Le reste du temps, je travaillais en totale autonomie.`,
       en: `TamaStat is a statistical visualization tool that I designed and developed during my second-year Computer Science internship at TamaBox, a storage box rental company located in Draguignan, Var (83), France, from January to April 2025.
 
-This was my very first professional experience. I was alone with the company owner — no technical team, no senior developer to guide me. The owner gave me full creative freedom: he explained his business, his data, and what he wanted to understand through a dashboard. From there, I had complete autonomy over the design, development, and deployment of the tool.
+This was my very first professional experience. I was alone with the company owner - no technical team, no senior developer to guide me. The owner gave me full creative freedom: he explained his business, his data, and what he wanted to understand through a dashboard. From there, I had complete autonomy over the design, development, and deployment of the tool.
 
 The business context was as follows: TamaBox offers storage boxes of various sizes for rent. The owner had raw data about his business (tenant entries/exits, box size distribution, occupancy rates, revenue, total rented surface area) but had no tool to visualize and analyze it. His occupancy rate fluctuated between 75% and 82%, and he wanted to reach 100%.
 
 Our exchanges took place during weekly meetings where I presented progress and he gave his feedback. The rest of the time, I worked with complete autonomy.`
     },
     objectives: {
-      fr: `1. **Tableau de bord statistique** : Créer un outil de visualisation complet permettant au gérant de comprendre en un coup d'œil l'état de son activité — entrées/sorties de locataires, répartition par taille de box, taux de boxes louées vs non louées, évolution du chiffre d'affaires, et surface totale louée.
+      fr: `1. **Tableau de bord statistique** : Créer un outil de visualisation complet permettant au gérant de comprendre en un coup d'œil l'état de son activité - entrées/sorties de locataires, répartition par taille de box, taux de boxes louées vs non louées, évolution du chiffre d'affaires, et surface totale louée.
 
 2. **Personas marketing** : Concevoir des profils types de clients (personas) à partir de l'analyse des données, afin de permettre au gérant de cibler ses campagnes publicitaires vers les bons segments de clientèle.
 
 3. **Outil de prévision (forecasting)** : Développer un module de projection permettant d'anticiper l'évolution du taux d'occupation et du chiffre d'affaires sur les mois à venir.
 
-4. **Autonomie complète** : Gérer l'intégralité du projet seul — de la conception à la mise en production — en tant que première expérience professionnelle.`,
-      en: `1. **Statistical dashboard**: Create a comprehensive visualization tool allowing the owner to understand his business at a glance — tenant entries/exits, box size distribution, rented vs unrented box rates, revenue evolution, and total rented surface area.
+4. **Autonomie complète** : Gérer l'intégralité du projet seul - de la conception à la mise en production - en tant que première expérience professionnelle.`,
+      en: `1. **Statistical dashboard**: Create a comprehensive visualization tool allowing the owner to understand his business at a glance - tenant entries/exits, box size distribution, rented vs unrented box rates, revenue evolution, and total rented surface area.
 
 2. **Marketing personas**: Design typical customer profiles (personas) from data analysis, enabling the owner to target his advertising campaigns towards the right customer segments.
 
 3. **Forecasting tool**: Develop a projection module to anticipate the evolution of occupancy rates and revenue in the coming months.
 
-4. **Complete autonomy**: Manage the entire project solo — from design to production deployment — as a first professional experience.`
+4. **Complete autonomy**: Manage the entire project solo - from design to production deployment - as a first professional experience.`
     },
     approach: {
-      fr: `C'était la première fois que je faisais du JavaScript — je l'ai appris sur le tas pendant le stage. J'ai choisi une approche front-end pure avec JavaScript et Chart.js pour les visualisations, ce qui permettait un déploiement simple et rapide sur Vercel.
+      fr: `C'était la première fois que je faisais du JavaScript - je l'ai appris sur le tas pendant le stage. J'ai choisi une approche front-end pure avec JavaScript et Chart.js pour les visualisations, ce qui permettait un déploiement simple et rapide sur Vercel.
 
 J'ai tout construit seul de A à Z : le design de l'interface, le développement des graphiques interactifs, la logique de traitement des données, les personas marketing, et le module de prévision. Pour chaque fonctionnalité, je partais des données brutes fournies par le gérant, que je structurais et transformais en visualisations exploitables.
 
@@ -287,7 +287,7 @@ Pour les personas, j'ai analysé les données clients pour identifier des profil
 Le module de forecasting utilise les tendances historiques pour projeter l'évolution du taux d'occupation et du CA sur les mois suivants, permettant au gérant d'anticiper et d'ajuster sa stratégie.
 
 Le tout a été déployé sur Vercel pour un accès simple et permanent.`,
-      en: `This was the first time I ever worked with JavaScript — I learned it on the job during the internship. I chose a pure front-end approach with JavaScript and Chart.js for visualizations, which allowed simple and fast deployment on Vercel.
+      en: `This was the first time I ever worked with JavaScript - I learned it on the job during the internship. I chose a pure front-end approach with JavaScript and Chart.js for visualizations, which allowed simple and fast deployment on Vercel.
 
 I built everything from scratch on my own: the interface design, interactive chart development, data processing logic, marketing personas, and the forecasting module. For each feature, I started from raw data provided by the owner, which I structured and transformed into actionable visualizations.
 
@@ -342,7 +342,7 @@ Everything was deployed on Vercel for simple and permanent access.`
         code: `// Les extraits de code seront ajoutés prochainement
 // Code excerpts will be added soon
 
-// TamaStat — TamaBox
+// TamaStat - TamaBox
 // Outil de visualisation statistique
 // Statistical visualization tool`,
         language: "javascript",
@@ -375,18 +375,18 @@ This was my very first professional experience and it was extremely formative. I
 
 1. **Apprendre un langage sur le tas** : C'était la première fois que je faisais du JavaScript. Devoir l'apprendre en conditions réelles, sans filet, avec un livrable attendu, m'a poussé à développer une vraie capacité d'auto-apprentissage. J'ai appris à chercher efficacement dans la documentation, à comprendre les erreurs, et à progresser vite par la pratique.
 
-2. **L'autonomie totale** : Être seul sur un projet sans équipe technique m'a obligé à prendre toutes les décisions moi-même — choix techniques, architecture, priorisation des fonctionnalités. C'est une responsabilité qui m'a beaucoup fait grandir et qui m'a donné confiance pour les projets suivants.
+2. **L'autonomie totale** : Être seul sur un projet sans équipe technique m'a obligé à prendre toutes les décisions moi-même - choix techniques, architecture, priorisation des fonctionnalités. C'est une responsabilité qui m'a beaucoup fait grandir et qui m'a donné confiance pour les projets suivants.
 
-3. **L'impact business concret** : Voir le gérant passer de 75-82% à 100% d'occupation grâce aux personas que j'avais développés a été extrêmement gratifiant. Cela m'a montré que le développement ne se limite pas au code — c'est un outil au service d'objectifs business concrets.
+3. **L'impact business concret** : Voir le gérant passer de 75-82% à 100% d'occupation grâce aux personas que j'avais développés a été extrêmement gratifiant. Cela m'a montré que le développement ne se limite pas au code - c'est un outil au service d'objectifs business concrets.
 
 4. **La relation directe avec le client** : Les réunions hebdomadaires m'ont appris à présenter mon travail de manière claire à un non-technicien, à recueillir et interpréter ses retours, et à adapter mes priorités en fonction de ses besoins réels plutôt que de mes intuitions techniques.`,
       en: `This internship at TamaBox was a foundational experience on several levels:
 
 1. **Learning a language on the job**: This was my first time working with JavaScript. Having to learn it in real conditions, without a safety net, with an expected deliverable, pushed me to develop a genuine self-learning ability. I learned to search documentation efficiently, understand errors, and progress quickly through practice.
 
-2. **Complete autonomy**: Being alone on a project without a technical team forced me to make all decisions myself — technical choices, architecture, feature prioritization. This responsibility helped me grow significantly and gave me confidence for subsequent projects.
+2. **Complete autonomy**: Being alone on a project without a technical team forced me to make all decisions myself - technical choices, architecture, feature prioritization. This responsibility helped me grow significantly and gave me confidence for subsequent projects.
 
-3. **Concrete business impact**: Seeing the owner go from 75-82% to 100% occupancy thanks to the personas I had developed was extremely rewarding. It showed me that development isn't just about code — it's a tool serving concrete business objectives.
+3. **Concrete business impact**: Seeing the owner go from 75-82% to 100% occupancy thanks to the personas I had developed was extremely rewarding. It showed me that development isn't just about code - it's a tool serving concrete business objectives.
 
 4. **Direct client relationship**: The weekly meetings taught me to present my work clearly to a non-technical person, to gather and interpret their feedback, and to adapt my priorities based on their actual needs rather than my technical intuitions.`
     },
@@ -396,12 +396,12 @@ This was my very first professional experience and it was extremely formative. I
   },
   {
     slug: "lobbybot-fortnite",
-    title: "LobbyBot 2.0 — Bots Fortnite",
+    title: "LobbyBot 2.0 - Bots Fortnite",
     category: "personal",
     technologies: ["Node.js", "Python", "Discord.js", "Express", "Socket.IO", "PostgreSQL", "Docker", "OAuth2", "WebSocket", "Asyncio"],
-    duration: { fr: "Projet personnel continu (2020 — Présent)", en: "Ongoing personal project (2020 — Present)" },
-    team: { fr: "Projet individuel — Communauté de 8 500+ membres Discord", en: "Individual project — Community of 8,500+ Discord members" },
-    role: { fr: "Développeur unique — Conception, développement, maintenance et gestion de communauté", en: "Sole Developer — Design, development, maintenance and community management" },
+    duration: { fr: "Projet personnel continu (2020 - Présent)", en: "Ongoing personal project (2020 - Present)" },
+    team: { fr: "Projet individuel - Communauté de 8 500+ membres Discord", en: "Individual project - Community of 8,500+ Discord members" },
+    role: { fr: "Développeur unique - Conception, développement, maintenance et gestion de communauté", en: "Sole Developer - Design, development, maintenance and community management" },
     shortDescription: {
       fr: "Système complet de bots Fortnite avec gestion multi-comptes, bot Discord central, dashboard web temps réel et communauté de 8 500+ membres. Projet initié pendant le COVID à 16 ans, devenu mon plus gros projet personnel.",
       en: "Complete Fortnite bot system with multi-account management, central Discord bot, real-time web dashboard and community of 8,500+ members. Project started during COVID at age 16, became my biggest personal project."
@@ -439,7 +439,7 @@ Major improvements include: automated creation of new bots when a bot reaches it
 
 - **Phase 1 (2020)** : Bots Python simples utilisant les API non-documentées d'Epic Games, avec authentification OAuth2 et gestion basique des amis et skins.
 - **Phase 2 (évolution)** : Migration vers une architecture Node.js pour le bot Discord central, avec Discord.js pour gérer les commandes de la communauté.
-- **Phase 3 (actuelle — LobbyBot 2.0)** : Architecture complète avec trois composants principaux orchestrés par Docker :
+- **Phase 3 (actuelle - LobbyBot 2.0)** : Architecture complète avec trois composants principaux orchestrés par Docker :
 
   1. **Discord Manager** (Node.js) : Le cœur du système. Gère tous les bots simultanément, le load balancing, les commandes Discord, et la communication avec la base de données PostgreSQL.
   2. **Dashboard Web** (Node.js/Express/Socket.IO) : Interface de contrôle en temps réel avec un design "Space/Starfield". Communication instantanée avec le Manager via Socket.IO.
@@ -450,7 +450,7 @@ Le système de load balancing sélectionne automatiquement le bot ayant le moins
 
 - **Phase 1 (2020)**: Simple Python bots using Epic Games' undocumented APIs, with OAuth2 authentication and basic friend/skin management.
 - **Phase 2 (evolution)**: Migration to Node.js architecture for the central Discord bot, using Discord.js to handle community commands.
-- **Phase 3 (current — LobbyBot 2.0)**: Complete architecture with three main components orchestrated by Docker:
+- **Phase 3 (current - LobbyBot 2.0)**: Complete architecture with three main components orchestrated by Docker:
 
   1. **Discord Manager** (Node.js): The system's core. Manages all bots simultaneously, load balancing, Discord commands, and PostgreSQL database communication.
   2. **Web Dashboard** (Node.js/Express/Socket.IO): Real-time control interface with a "Space/Starfield" design. Instant communication with the Manager via Socket.IO.
@@ -514,9 +514,9 @@ The load balancing system automatically selects the bot with the fewest friends 
         code: `// Les extraits de code seront ajoutés prochainement
 // Code excerpts will be added soon
 
-// LobbyBot 2.0 — Système de Bots Fortnite
+// LobbyBot 2.0 - Système de Bots Fortnite
 // Architecture: Discord Manager + Web Dashboard + PostgreSQL
-// LobbyBot 2.0 — Fortnite Bot System
+// LobbyBot 2.0 - Fortnite Bot System
 // Architecture: Discord Manager + Web Dashboard + PostgreSQL`,
         language: "javascript",
         explanation: {
@@ -579,12 +579,12 @@ This project proves that a passionate side project can become something signific
   },
   {
     slug: "referendum",
-    title: "Referendum — Application de Vote Sécurisée",
+    title: "Referendum - Application de Vote Sécurisée",
     category: "university",
     technologies: ["Java", "JavaFX", "ElGamal", "Zero Knowledge Proof", "DeepSeek API", "Cryptographie", "Sockets", "Scrum", "Git"],
     duration: { fr: "Toute la deuxième année de BUT 2 (Projet de fin d'année)", en: "Full second year of CS degree (Year-end project)" },
     team: { fr: "Groupe de 4 étudiants", en: "Group of 4 students" },
-    role: { fr: "Product Owner & Développeur Cryptographie — Chiffrement ElGamal, Preuve Zero Knowledge, ChatBot IA et sécurisation des sockets", en: "Product Owner & Cryptography Developer — ElGamal encryption, Zero Knowledge Proof, AI ChatBot and socket security" },
+    role: { fr: "Product Owner & Développeur Cryptographie - Chiffrement ElGamal, Preuve Zero Knowledge, ChatBot IA et sécurisation des sockets", en: "Product Owner & Cryptography Developer - ElGamal encryption, Zero Knowledge Proof, AI ChatBot and socket security" },
     shortDescription: {
       fr: "Application de vote sécurisée en Java/JavaFX avec chiffrement ElGamal, preuve Zero Knowledge non-interactive, chatbot IA (DeepSeek) et méthodologie Scrum sur toute une année universitaire.",
       en: "Secure voting application in Java/JavaFX with ElGamal encryption, non-interactive Zero Knowledge Proof, AI chatbot (DeepSeek) and Scrum methodology over a full academic year."
@@ -636,9 +636,9 @@ The project was divided into several phases: sprints with regular deliveries, th
     approach: {
       fr: `Le projet a suivi la méthodologie Scrum sur toute l'année. En tant que Product Owner, j'organisais les sprint plannings, maintenais le backlog, et présentais les démos au "client" (les enseignants) à chaque fin de sprint. À la fin de chaque cycle, nous recevions un nouveau contrat avec des exigences supplémentaires, simulant l'évolution des besoins d'un vrai client.
 
-Côté technique, l'application est développée en Java avec une interface JavaFX. Mon rôle technique principal était le chiffrement ElGamal — un système de cryptographie asymétrique à clé publique. Le principe : chaque vote est chiffré avec la clé publique du scrutin avant d'être envoyé au serveur. Seul le détenteur de la clé privée peut déchiffrer les votes à la clôture du scrutin. Cela garantit que personne — pas même le serveur — ne peut lire un vote individuel avant la fin du scrutin.
+Côté technique, l'application est développée en Java avec une interface JavaFX. Mon rôle technique principal était le chiffrement ElGamal - un système de cryptographie asymétrique à clé publique. Le principe : chaque vote est chiffré avec la clé publique du scrutin avant d'être envoyé au serveur. Seul le détenteur de la clé privée peut déchiffrer les votes à la clôture du scrutin. Cela garantit que personne - pas même le serveur - ne peut lire un vote individuel avant la fin du scrutin.
 
-**Preuve Zero Knowledge non-interactive** : Pour garantir l'intégrité des votes, le projet intègre une preuve Zero Knowledge. L'objectif est de prouver côté serveur que le vote d'un client est bien "oui" ou "non" (0 ou 1), sans révéler lequel. Si un utilisateur tente de voter une valeur invalide (par exemple 10 ou un nombre négatif), le vote est rejeté. La preuve est non-interactive : un seul échange entre le client et le serveur suffit — l'envoi de la preuve avec le message chiffré. Côté client, la fonction createZKProof génère deux preuves (une vraie, une simulée) via des engagements cryptographiques, un haché SHA-256 et de l'arithmétique modulaire. Côté serveur, verifyZKProof recalcule les valeurs et vérifie que la somme des challenges correspond au haché. Si c'est le cas, la preuve est valide — le vote est bien 0 ou 1, sans que le serveur ne sache lequel.
+**Preuve Zero Knowledge non-interactive** : Pour garantir l'intégrité des votes, le projet intègre une preuve Zero Knowledge. L'objectif est de prouver côté serveur que le vote d'un client est bien "oui" ou "non" (0 ou 1), sans révéler lequel. Si un utilisateur tente de voter une valeur invalide (par exemple 10 ou un nombre négatif), le vote est rejeté. La preuve est non-interactive : un seul échange entre le client et le serveur suffit - l'envoi de la preuve avec le message chiffré. Côté client, la fonction createZKProof génère deux preuves (une vraie, une simulée) via des engagements cryptographiques, un haché SHA-256 et de l'arithmétique modulaire. Côté serveur, verifyZKProof recalcule les valeurs et vérifie que la somme des challenges correspond au haché. Si c'est le cas, la preuve est valide - le vote est bien 0 ou 1, sans que le serveur ne sache lequel.
 
 **ChatBot FAQ (DeepSeek API)** : J'ai implémenté un chatbot FAQ intégré à l'application dont le but est de répondre aux questions fréquentes des utilisateurs. J'ai intégré l'API DeepSeek qui sert uniquement à comprendre la question de l'utilisateur pour lui fournir la réponse la plus pertinente parmi des réponses spécifiques pré-préparées, limitées aux questions relatives à l'application.
 
@@ -647,9 +647,9 @@ J'ai également sécurisé les communications par sockets entre le client et le 
 Le reste de l'équipe travaillait sur l'interface JavaFX, la gestion des utilisateurs, la base de données et la logique métier des scrutins. Nous faisions des revues de code régulières et utilisions Git pour la gestion du code source.`,
       en: `The project followed Scrum methodology throughout the year. As Product Owner, I organized sprint plannings, maintained the backlog, and presented demos to the "client" (instructors) at each sprint end. At the end of each cycle, we received a new contract with additional requirements, simulating the evolving needs of a real client.
 
-On the technical side, the application is developed in Java with a JavaFX interface. My main technical role was ElGamal encryption — an asymmetric public-key cryptography system. The principle: each vote is encrypted with the poll's public key before being sent to the server. Only the private key holder can decrypt votes when the poll closes. This ensures that nobody — not even the server — can read an individual vote before the poll ends.
+On the technical side, the application is developed in Java with a JavaFX interface. My main technical role was ElGamal encryption - an asymmetric public-key cryptography system. The principle: each vote is encrypted with the poll's public key before being sent to the server. Only the private key holder can decrypt votes when the poll closes. This ensures that nobody - not even the server - can read an individual vote before the poll ends.
 
-**Non-interactive Zero Knowledge Proof**: To guarantee vote integrity, the project integrates a Zero Knowledge Proof. The goal is to prove server-side that a client's vote is indeed "yes" or "no" (0 or 1), without revealing which one. If a user attempts to vote an invalid value (e.g., 10 or a negative number), the vote is rejected. The proof is non-interactive: a single exchange between client and server suffices — sending the proof along with the encrypted message. Client-side, the createZKProof function generates two proofs (one real, one simulated) via cryptographic commitments, a SHA-256 hash, and modular arithmetic. Server-side, verifyZKProof recalculates values and verifies that the sum of challenges matches the hash. If so, the proof is valid — the vote is indeed 0 or 1, without the server knowing which.
+**Non-interactive Zero Knowledge Proof**: To guarantee vote integrity, the project integrates a Zero Knowledge Proof. The goal is to prove server-side that a client's vote is indeed "yes" or "no" (0 or 1), without revealing which one. If a user attempts to vote an invalid value (e.g., 10 or a negative number), the vote is rejected. The proof is non-interactive: a single exchange between client and server suffices - sending the proof along with the encrypted message. Client-side, the createZKProof function generates two proofs (one real, one simulated) via cryptographic commitments, a SHA-256 hash, and modular arithmetic. Server-side, verifyZKProof recalculates values and verifies that the sum of challenges matches the hash. If so, the proof is valid - the vote is indeed 0 or 1, without the server knowing which.
 
 **FAQ ChatBot (DeepSeek API)**: I implemented a FAQ chatbot integrated into the application to answer users' frequently asked questions. I integrated the DeepSeek API which serves solely to understand the user's question and provide the most relevant answer from specific pre-prepared responses, limited to questions related to the application.
 
@@ -677,7 +677,7 @@ The rest of the team worked on the JavaFX interface, user management, database, 
     },
     skills: [
       {
-        name: { fr: "Cryptographie — ElGamal", en: "Cryptography — ElGamal" },
+        name: { fr: "Cryptographie - ElGamal", en: "Cryptography - ElGamal" },
         description: { fr: "Implémentation complète du protocole ElGamal : génération de clés asymétriques, chiffrement et déchiffrement des votes. Compréhension des fondements mathématiques (logarithme discret, arithmétique modulaire) et des enjeux de sécurité.", en: "Complete implementation of the ElGamal protocol: asymmetric key generation, vote encryption and decryption. Understanding of mathematical foundations (discrete logarithm, modular arithmetic) and security challenges." }
       },
       {
@@ -707,7 +707,7 @@ The rest of the team worked on the JavaFX interface, user management, database, 
         code: `// Les extraits de code seront ajoutés prochainement
 // Code excerpts will be added soon
 
-// Referendum — Application de Vote Sécurisée
+// Referendum - Application de Vote Sécurisée
 // Chiffrement ElGamal & Sécurisation des Sockets
 // ElGamal Encryption & Socket Security`,
         language: "java",
@@ -740,7 +740,7 @@ The rest of the team worked on the JavaFX interface, user management, database, 
     reflection: {
       fr: `Le projet Referendum est celui qui m'a le plus apporté sur le plan professionnel pendant ma formation :
 
-1. **Le rôle de Product Owner** m'a appris à voir un projet au-delà du code. Gérer un backlog, prioriser les fonctionnalités en fonction de la valeur métier, et présenter un produit à un client — ce sont des compétences que je n'aurais pas développées en restant uniquement développeur.
+1. **Le rôle de Product Owner** m'a appris à voir un projet au-delà du code. Gérer un backlog, prioriser les fonctionnalités en fonction de la valeur métier, et présenter un produit à un client - ce sont des compétences que je n'aurais pas développées en restant uniquement développeur.
 
 2. **La cryptographie ElGamal et la Preuve Zero Knowledge** m'ont confronté à un domaine que je ne connaissais pas du tout. Comprendre les fondements mathématiques (logarithme discret, arithmétique modulaire, SHA-256), implémenter un protocole de chiffrement asymétrique, et concevoir une preuve non-interactive garantissant l'intégrité des votes sans compromettre leur confidentialité m'a donné une vraie sensibilité à la cybersécurité et à la rigueur qu'elle exige.
 
@@ -751,7 +751,7 @@ The rest of the team worked on the JavaFX interface, user management, database, 
 5. **Les présentations orales et dossiers techniques** m'ont forcé à structurer ma pensée et à expliquer des concepts complexes de manière accessible. C'est une compétence essentielle que le code seul ne développe pas.`,
       en: `The Referendum project taught me the most on a professional level during my studies:
 
-1. **The Product Owner role** taught me to see a project beyond the code. Managing a backlog, prioritizing features based on business value, and presenting a product to a client — these are skills I wouldn't have developed by staying purely a developer.
+1. **The Product Owner role** taught me to see a project beyond the code. Managing a backlog, prioritizing features based on business value, and presenting a product to a client - these are skills I wouldn't have developed by staying purely a developer.
 
 2. **ElGamal cryptography and Zero Knowledge Proof** confronted me with a domain I knew nothing about. Understanding the mathematical foundations (discrete logarithm, modular arithmetic, SHA-256), implementing an asymmetric encryption protocol, and designing a non-interactive proof guaranteeing vote integrity without compromising confidentiality gave me a genuine sensitivity to cybersecurity and the rigor it demands.
 
@@ -770,9 +770,9 @@ The rest of the team worked on the JavaFX interface, user management, database, 
     title: "Site E-commerce de Parfums",
     category: "university",
     technologies: ["PHP", "MySQL", "HTML/CSS", "JavaScript", "Bootstrap", "MVC"],
-    duration: { fr: "Janvier — Mars 2024 (Projet universitaire)", en: "January — March 2024 (University project)" },
+    duration: { fr: "Janvier - Mars 2024 (Projet universitaire)", en: "January - March 2024 (University project)" },
     team: { fr: "Groupe de 4 étudiants", en: "Group of 4 students" },
-    role: { fr: "Développeur Back-End — Architecture MVC et base de données", en: "Back-End Developer — MVC Architecture and database" },
+    role: { fr: "Développeur Back-End - Architecture MVC et base de données", en: "Back-End Developer - MVC Architecture and database" },
     shortDescription: {
       fr: "Site e-commerce complet développé en PHP suivant l'architecture MVC, avec gestion de catalogue, panier, commandes et espace administrateur.",
       en: "Complete e-commerce website developed in PHP following MVC architecture, with catalog management, shopping cart, orders, and admin panel."
@@ -907,12 +907,12 @@ The main difficulty was managing the cart in session while maintaining consisten
   },
   {
     slug: "code-game-jam-2026",
-    title: "Code Game Jam 2026 — Scroll Party",
+    title: "Code Game Jam 2026 - Scroll Party",
     category: "competition",
     technologies: ["Unity", "C#", "Game Design", "Sound Design", "Trello"],
-    duration: { fr: "22 — 24 Janvier 2026 (48h)", en: "January 22 — 24, 2026 (48h)" },
-    team: { fr: "Équipe Golem Gang — 5 étudiants", en: "Golem Gang Team — 5 students" },
-    role: { fr: "Développeur — Game Design et développement Unity", en: "Developer — Game Design and Unity development" },
+    duration: { fr: "22 - 24 Janvier 2026 (48h)", en: "January 22 - 24, 2026 (48h)" },
+    team: { fr: "Équipe Golem Gang - 5 étudiants", en: "Golem Gang Team - 5 students" },
+    role: { fr: "Développeur - Game Design et développement Unity", en: "Developer - Game Design and Unity development" },
     shortDescription: {
       fr: "Jeu vidéo développé en 48h sur Unity lors de la Code Game Jam 2026. Thème : \"Fête des Clics\". Scroll Party est un jeu de sensibilisation à l'addiction aux réseaux sociaux où le joueur doit résister au scroll pendant une soirée.",
       en: "Video game developed in 48h on Unity during the Code Game Jam 2026. Theme: \"Fête des Clics\" (Click Party). Scroll Party is an awareness game about social media addiction where the player must resist scrolling during a party."
@@ -945,8 +945,8 @@ The concept: the player is at a party and scrolls on their phone like on TikTok.
 **Mécaniques de jeu :**
 - Le joueur est à une soirée et tient son téléphone, scrollant un fil façon TikTok avec des contenus qui défilent.
 - Des PNJ viennent régulièrement lui parler. Le joueur peut choisir de poser son téléphone pour répondre ou d'ignorer et continuer à scroller.
-- **Jauge de likes** : si le joueur continue à scroller sans écouter les PNJ, cette jauge augmente. Des voix dans sa tête l'encouragent ("wow c'est trop bien", "continue") pour conforter l'addiction. Si elle atteint 100%, le joueur perd — il est complètement absorbé par son écran.
-- **Jauge de sociabilisation** : si le joueur pose son téléphone pour parler aux PNJ, cette jauge augmente. L'écran commence à trembler, la vision devient floue — simulant le manque et l'addiction. Si elle atteint 100%, le joueur a le **DÉCLIC** (jeu de mots avec "des clics" du thème) : il réalise ce qu'il fait, pose définitivement son téléphone, et profite de sa soirée. Il gagne !
+- **Jauge de likes** : si le joueur continue à scroller sans écouter les PNJ, cette jauge augmente. Des voix dans sa tête l'encouragent ("wow c'est trop bien", "continue") pour conforter l'addiction. Si elle atteint 100%, le joueur perd - il est complètement absorbé par son écran.
+- **Jauge de sociabilisation** : si le joueur pose son téléphone pour parler aux PNJ, cette jauge augmente. L'écran commence à trembler, la vision devient floue - simulant le manque et l'addiction. Si elle atteint 100%, le joueur a le **DÉCLIC** (jeu de mots avec "des clics" du thème) : il réalise ce qu'il fait, pose définitivement son téléphone, et profite de sa soirée. Il gagne !
 
 Le jeu utilise ces mécaniques inversées pour créer une expérience de sensibilisation : gagner demande de résister à l'envie de scroller, ce qui reproduit la difficulté réelle de décrocher de son téléphone.`,
       en: `The game was developed on Unity in C#. Team organization was done via Trello to distribute tasks over the 48h.
@@ -954,8 +954,8 @@ Le jeu utilise ces mécaniques inversées pour créer une expérience de sensibi
 **Game mechanics:**
 - The player is at a party holding their phone, scrolling a TikTok-style feed with content flowing by.
 - NPCs regularly come to talk to them. The player can choose to put down their phone to respond or ignore them and keep scrolling.
-- **Likes gauge**: if the player keeps scrolling without listening to NPCs, this gauge increases. Voices in their head encourage them ("wow this is amazing", "keep going") to reinforce addiction. If it reaches 100%, the player loses — completely absorbed by their screen.
-- **Socialization gauge**: if the player puts down their phone to talk to NPCs, this gauge increases. The screen starts shaking, vision becomes blurry — simulating withdrawal and addiction. If it reaches 100%, the player has the **DÉCLIC** (wordplay with "des clics"/clicks from the theme): they realize what they're doing, permanently put down their phone, and enjoy their party. They win!
+- **Likes gauge**: if the player keeps scrolling without listening to NPCs, this gauge increases. Voices in their head encourage them ("wow this is amazing", "keep going") to reinforce addiction. If it reaches 100%, the player loses - completely absorbed by their screen.
+- **Socialization gauge**: if the player puts down their phone to talk to NPCs, this gauge increases. The screen starts shaking, vision becomes blurry - simulating withdrawal and addiction. If it reaches 100%, the player has the **DÉCLIC** (wordplay with "des clics"/clicks from the theme): they realize what they're doing, permanently put down their phone, and enjoy their party. They win!
 
 The game uses these inverted mechanics to create an awareness experience: winning requires resisting the urge to scroll, which reproduces the real difficulty of putting down one's phone.`
     },
@@ -1005,14 +1005,14 @@ Le concept du double sens "Fête des Clics" → fête + déclic a été le fil r
 The "Fête des Clics" double meaning concept → party + click moment was the game's common thread, combining addictive gameplay with an awareness message.`
     },
     reflection: {
-      fr: `La Code Game Jam 2026 m'a appris à développer un jeu vidéo complet en un temps très limité. Contrairement au développement web, le game development sur Unity impose de penser en termes de game loop, de physique, d'animations et de sound design — des compétences très différentes de mon quotidien.
+      fr: `La Code Game Jam 2026 m'a appris à développer un jeu vidéo complet en un temps très limité. Contrairement au développement web, le game development sur Unity impose de penser en termes de game loop, de physique, d'animations et de sound design - des compétences très différentes de mon quotidien.
 
-Le plus grand défi a été de transformer le thème "Fête des Clics" en une expérience de jeu significative. Le concept du déclic — où gagner consiste à arrêter de jouer avec son téléphone — crée un paradoxe intéressant qui fait réfléchir le joueur sur ses propres habitudes numériques.
+Le plus grand défi a été de transformer le thème "Fête des Clics" en une expérience de jeu significative. Le concept du déclic - où gagner consiste à arrêter de jouer avec son téléphone - crée un paradoxe intéressant qui fait réfléchir le joueur sur ses propres habitudes numériques.
 
 Travailler à 5 sur 48h avec Trello nous a appris à prioriser ce qui compte vraiment dans un jeu : les mécaniques de base doivent fonctionner avant de s'attaquer au polish visuel ou sonore.`,
-      en: `The Code Game Jam 2026 taught me to develop a complete video game in very limited time. Unlike web development, game development on Unity requires thinking in terms of game loops, physics, animations, and sound design — very different skills from my daily routine.
+      en: `The Code Game Jam 2026 taught me to develop a complete video game in very limited time. Unlike web development, game development on Unity requires thinking in terms of game loops, physics, animations, and sound design - very different skills from my daily routine.
 
-The biggest challenge was transforming the "Fête des Clics" theme into a meaningful game experience. The "click moment" concept — where winning consists of stopping phone use — creates an interesting paradox that makes the player reflect on their own digital habits.
+The biggest challenge was transforming the "Fête des Clics" theme into a meaningful game experience. The "click moment" concept - where winning consists of stopping phone use - creates an interesting paradox that makes the player reflect on their own digital habits.
 
 Working as a team of 5 over 48h with Trello taught us to prioritize what truly matters in a game: core mechanics must work before tackling visual or audio polish.`
     },
@@ -1026,8 +1026,8 @@ Working as a team of 5 over 48h with Trello taught us to prioritize what truly m
     category: "competition",
     technologies: ["TypeScript", "HTML/CSS", "Chrome Extension (Manifest V3)", "DeepSeek API", "GitHub Pages"],
     duration: { fr: "Décembre 2025 (1 nuit)", en: "December 2025 (1 night)" },
-    team: { fr: "Équipe Golem Gang — 7 étudiants", en: "Golem Gang Team — 7 students" },
-    role: { fr: "Développeur — Participation aux 3 défis", en: "Developer — Participation in all 3 challenges" },
+    team: { fr: "Équipe Golem Gang - 7 étudiants", en: "Golem Gang Team - 7 students" },
+    role: { fr: "Développeur - Participation aux 3 défis", en: "Developer - Participation in all 3 challenges" },
     shortDescription: {
       fr: "Compétition nationale de développement en une nuit. Sujet principal : \"Comment les établissements scolaires peuvent tenir tête aux Big Tech ?\". 3 défis relevés : extension de sécurité Chrome, chatbot IA et jeu d'ergonomie frustrante.",
       en: "National one-night development competition. Main subject: \"How can schools stand up to Big Tech?\". 3 challenges completed: Chrome security extension, AI chatbot, and frustrating ergonomics game."
@@ -1047,11 +1047,11 @@ Our "Golem Gang" team consisted of 7 students. We organized quickly to deliver a
     objectives: {
       fr: `1. **Défi principal** : Développer un site interactif sur le numérique responsable avec simulateur d'empreinte numérique, quiz de connaissances et système de badges
 2. **Défi "La Ligue des Extensions"** : Créer SafeLinks, une extension Chrome (Manifest V3) open source qui détecte la sécurité des liens avant de cliquer
-3. **Défi "Simplifier pour mieux vivre"** : Concevoir le Password Game, un champ de saisie volontairement frustrant avec des règles absurdes — un bouton esthétique mais délibérément compliqué à utiliser
+3. **Défi "Simplifier pour mieux vivre"** : Concevoir le Password Game, un champ de saisie volontairement frustrant avec des règles absurdes - un bouton esthétique mais délibérément compliqué à utiliser
 4. **Défi Chatbot "Chat'bruti"** : Développer un chatbot IA drôle et inutilement philosophique, intégré au site`,
       en: `1. **Main challenge**: Develop an interactive site about responsible digital with digital footprint simulator, knowledge quiz, and badge system
 2. **"La Ligue des Extensions" challenge**: Create SafeLinks, an open source Chrome extension (Manifest V3) that detects link safety before clicking
-3. **"Simplifier pour mieux vivre" challenge**: Design the Password Game, a deliberately frustrating input field with absurd rules — an aesthetic but deliberately complicated button to use
+3. **"Simplifier pour mieux vivre" challenge**: Design the Password Game, a deliberately frustrating input field with absurd rules - an aesthetic but deliberately complicated button to use
 4. **Chatbot challenge "Chat'bruti"**: Develop a funny and unnecessarily philosophical AI chatbot, integrated into the site`
     },
     approach: {
@@ -1059,7 +1059,7 @@ Our "Golem Gang" team consisted of 7 students. We organized quickly to deliver a
 
 - **Simulateur d'empreinte numérique** : Calcul de l'impact numérique de l'utilisateur avec un système de badges à débloquer.
 - **Quiz de connaissances** : Test sur le numérique responsable et la cybersécurité.
-- **Password Game** : Un jeu d'ergonomie volontairement frustrant où l'utilisateur doit créer un mot de passe en suivant des règles de plus en plus absurdes — le bouton est esthétique mais délibérément compliqué à utiliser.
+- **Password Game** : Un jeu d'ergonomie volontairement frustrant où l'utilisateur doit créer un mot de passe en suivant des règles de plus en plus absurdes - le bouton est esthétique mais délibérément compliqué à utiliser.
 
 Pour le défi extension, nous avons développé **SafeLinks**, une extension Chrome Manifest V3 qui analyse la sécurité des liens avant que l'utilisateur ne clique dessus. Le code est open source sur GitHub.
 
@@ -1068,7 +1068,7 @@ Pour le défi chatbot, nous avons créé **Chat'bruti**, un chatbot IA accessibl
 
 - **Digital footprint simulator**: Calculation of the user's digital impact with a badge system to unlock.
 - **Knowledge quiz**: Test on responsible digital and cybersecurity.
-- **Password Game**: A deliberately frustrating ergonomics game where the user must create a password following increasingly absurd rules — the button is aesthetic but deliberately complicated to use.
+- **Password Game**: A deliberately frustrating ergonomics game where the user must create a password following increasingly absurd rules - the button is aesthetic but deliberately complicated to use.
 
 For the extension challenge, we developed **SafeLinks**, a Chrome Manifest V3 extension that analyzes link safety before the user clicks. The code is open source on GitHub.
 
@@ -1076,12 +1076,12 @@ For the chatbot challenge, we created **Chat'bruti**, an AI chatbot accessible v
     },
     architecture: {
       fr: `Projet multi-composants développé en une nuit :
-- **Site principal** : TypeScript, HTML/CSS, déployé sur GitHub Pages — modules interactifs (simulateur, quiz, Password Game)
+- **Site principal** : TypeScript, HTML/CSS, déployé sur GitHub Pages - modules interactifs (simulateur, quiz, Password Game)
 - **Extension Chrome SafeLinks** : Manifest V3, détection de la sécurité des liens
 - **Chatbot Chat'bruti** : IA intégrée au site, personnalité humoristique et philosophique
 - **Hébergement** : GitHub Pages`,
       en: `Multi-component project developed in one night:
-- **Main site**: TypeScript, HTML/CSS, deployed on GitHub Pages — interactive modules (simulator, quiz, Password Game)
+- **Main site**: TypeScript, HTML/CSS, deployed on GitHub Pages - interactive modules (simulator, quiz, Password Game)
 - **SafeLinks Chrome Extension**: Manifest V3, link safety detection
 - **Chat'bruti Chatbot**: AI integrated into the site, humorous and philosophical personality
 - **Hosting**: GitHub Pages`
@@ -1106,7 +1106,7 @@ For the chatbot challenge, we created **Chat'bruti**, an AI chatbot accessible v
 
 - **Site principal** déployé sur GitHub Pages avec le simulateur d'empreinte numérique, le quiz et le système de badges
 - **SafeLinks** : extension Chrome fonctionnelle détectant la sécurité des liens, code open source publié sur GitHub
-- **Password Game** : jeu d'ergonomie volontairement frustrant avec un bouton esthétique mais compliqué — le défi d'ergonomie inversée est réussi
+- **Password Game** : jeu d'ergonomie volontairement frustrant avec un bouton esthétique mais compliqué - le défi d'ergonomie inversée est réussi
 - **Chat'bruti** : chatbot IA humoristique intégré au site, accessible en bas à droite
 
 Cette expérience m'a appris la valeur du prototypage rapide et de la priorisation des fonctionnalités essentielles (MVP) lorsque le temps est limité.`,
@@ -1114,7 +1114,7 @@ Cette expérience m'a appris la valeur du prototypage rapide et de la priorisati
 
 - **Main site** deployed on GitHub Pages with the digital footprint simulator, quiz, and badge system
 - **SafeLinks**: functional Chrome extension detecting link safety, open source code published on GitHub
-- **Password Game**: deliberately frustrating ergonomics game with an aesthetic but complicated button — the reverse ergonomics challenge is successful
+- **Password Game**: deliberately frustrating ergonomics game with an aesthetic but complicated button - the reverse ergonomics challenge is successful
 - **Chat'bruti**: humorous AI chatbot integrated into the site, accessible in the bottom right
 
 This experience taught me the value of rapid prototyping and prioritizing essential features (MVP) when time is limited.`
@@ -1140,8 +1140,8 @@ The specificity of this edition was the diversity of challenges: going from a Ch
     team: { fr: "Projet individuel", en: "Individual project" },
     role: { fr: "Développeur unique", en: "Sole Developer" },
     shortDescription: {
-      fr: "Outil open source d'automatisation de publication de vidéos et photos sur Twitter/X — alternative gratuite à la fonctionnalité payante de planification de Twitter. Scraping ou planification manuelle avec fichier de configuration.",
-      en: "Open source automation tool for publishing videos and photos on Twitter/X — free alternative to Twitter's paid scheduling feature. Scraping or manual scheduling with configuration file."
+      fr: "Outil open source d'automatisation de publication de vidéos et photos sur Twitter/X - alternative gratuite à la fonctionnalité payante de planification de Twitter. Scraping ou planification manuelle avec fichier de configuration.",
+      en: "Open source automation tool for publishing videos and photos on Twitter/X - free alternative to Twitter's paid scheduling feature. Scraping or manual scheduling with configuration file."
     },
     context: {
       fr: `La planification de publications sur Twitter/X est une fonctionnalité payante (Twitter Premium). J'ai développé AutoTweetVideoUploader comme une alternative open source et gratuite pour automatiser la publication de contenu sur Twitter.
@@ -1425,23 +1425,23 @@ The climate change theme pushed us beyond simple technical development to think 
   },
   {
     slug: "code-game-jam-2024",
-    title: "Code Game Jam 2024 — Shadow Of Memory",
+    title: "Code Game Jam 2024 - Shadow Of Memory",
     category: "competition",
     technologies: ["Unreal Engine 5", "Blueprints", "Game Design", "3D Environment", "Sound Design"],
     duration: { fr: "Janvier 2024 (30h)", en: "January 2024 (30h)" },
-    team: { fr: "Équipe de 4 étudiants — IUT de Montpellier-Sète", en: "Team of 4 students — IUT Montpellier-Sète" },
-    role: { fr: "Développeur — Game Design et développement Unreal Engine 5", en: "Developer — Game Design and Unreal Engine 5 development" },
+    team: { fr: "Équipe de 4 étudiants", en: "Team of 4 students" },
+    role: { fr: "Développeur - Game Design et développement Unreal Engine 5", en: "Developer - Game Design and Unreal Engine 5 development" },
     shortDescription: {
       fr: "Jeu vidéo \"Shadow Of Memory\" développé en 30h sur Unreal Engine 5 lors de la Code Game Jam 2024. Première expérience de développement sur un moteur de jeu AAA avec création d'environnements 3D.",
       en: "\"Shadow Of Memory\" video game developed in 30h on Unreal Engine 5 during the Code Game Jam 2024. First development experience on an AAA game engine with 3D environment creation."
     },
     context: {
-      fr: `La Code Game Jam 2024 est une compétition nationale de développement de jeux vidéo sur 30 heures. Notre équipe de 4 étudiants en première année de BUT Informatique à l'IUT de Montpellier-Sète a relevé le défi de créer un jeu vidéo complet en utilisant Unreal Engine 5.
+      fr: `La Code Game Jam 2024 est une compétition nationale de développement de jeux vidéo sur 30 heures. Notre équipe de 4 étudiants en première année de BUT Informatique a relevé le défi de créer un jeu vidéo complet en utilisant Unreal Engine 5.
 
-Nous avons créé "Shadow Of Memory", un jeu développé sur UE5. C'était ma première expérience avec un moteur de jeu AAA, ce qui a représenté un défi technique important en si peu de temps. L'équipe était composée de Clément G., Galdric D., Nicolas L. et moi-même.`,
-      en: `The Code Game Jam 2024 is a national 30-hour video game development competition. Our team of 4 first-year Computer Science students at IUT Montpellier-Sète took on the challenge of creating a complete video game using Unreal Engine 5.
+Nous avons créé "Shadow Of Memory", un jeu développé sur UE5. C'était ma première expérience avec un moteur de jeu AAA, ce qui a représenté un défi technique important en si peu de temps.`,
+      en: `The Code Game Jam 2024 is a national 30-hour video game development competition. Our team of 4 first-year Computer Science students took on the challenge of creating a complete video game using Unreal Engine 5.
 
-We created "Shadow Of Memory", a game developed on UE5. It was my first experience with an AAA game engine, which represented a significant technical challenge in such a short time. The team consisted of Clément G., Galdric D., Nicolas L. and myself.`
+We created "Shadow Of Memory", a game developed on UE5. It was my first experience with an AAA game engine, which represented a significant technical challenge in such a short time.`
     },
     objectives: {
       fr: `1. **Créer un jeu complet en 30h** sur Unreal Engine 5
@@ -1497,10 +1497,10 @@ Cette compétition m'a donné une première expérience concrète en développem
 This competition gave me a first concrete experience in video game development on a professional engine, a skill I was able to reuse during the Code Game Jam 2026 (this time on Unity).`
     },
     reflection: {
-      fr: `La Code Game Jam 2024 a été ma première immersion dans le développement de jeux vidéo. Passer directement à Unreal Engine 5 — un moteur AAA utilisé par les studios professionnels — était ambitieux pour des étudiants de première année, mais c'est cette ambition qui a rendu l'expérience si formatrice.
+      fr: `La Code Game Jam 2024 a été ma première immersion dans le développement de jeux vidéo. Passer directement à Unreal Engine 5 - un moteur AAA utilisé par les studios professionnels - était ambitieux pour des étudiants de première année, mais c'est cette ambition qui a rendu l'expérience si formatrice.
 
 J'ai appris la conception d'environnements 3D, la programmation via Blueprints, et surtout la gestion de projet en conditions extrêmes. Cette expérience m'a donné le goût du game development, que j'ai poursuivi avec la Code Game Jam 2026 sur Unity.`,
-      en: `The Code Game Jam 2024 was my first immersion in video game development. Going directly to Unreal Engine 5 — an AAA engine used by professional studios — was ambitious for first-year students, but it's this ambition that made the experience so formative.
+      en: `The Code Game Jam 2024 was my first immersion in video game development. Going directly to Unreal Engine 5 - an AAA engine used by professional studios - was ambitious for first-year students, but it's this ambition that made the experience so formative.
 
 I learned 3D environment design, Blueprint programming, and above all project management under extreme conditions. This experience gave me a taste for game development, which I continued with the Code Game Jam 2026 on Unity.`
     },

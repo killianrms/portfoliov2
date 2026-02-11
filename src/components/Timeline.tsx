@@ -13,10 +13,10 @@ interface TimelineItem {
 
 const timelineData: TimelineItem[] = [
   {
-    year: "2024 — Présent",
+    year: "2024 - Présent",
     title: {
-      fr: "Alternance — ITESOFT",
-      en: "Work-Study — ITESOFT",
+      fr: "Alternance - ITESOFT",
+      en: "Work-Study - ITESOFT",
     },
     subtitle: {
       fr: "Assistant Ingénieur Projet",
@@ -29,10 +29,10 @@ const timelineData: TimelineItem[] = [
     type: "experience",
   },
   {
-    year: "2023 — Présent",
+    year: "2023 - Présent",
     title: {
-      fr: "BUT Informatique — IUT Montpellier-Sète",
-      en: "Computer Science Degree — IUT Montpellier-Sète",
+      fr: "BUT Informatique - IUT Montpellier-Sète",
+      en: "Computer Science Degree - IUT Montpellier-Sète",
     },
     subtitle: {
       fr: "Parcours Réalisation d'applications : conception, développement, validation",
@@ -45,23 +45,23 @@ const timelineData: TimelineItem[] = [
     type: "education",
   },
   {
-    year: "Janvier — Avril 2025",
+    year: "Janvier - Avril 2025",
     title: {
-      fr: "Stage — TamaBox (Draguignan, 83)",
-      en: "Internship — TamaBox (Draguignan, France)",
+      fr: "Stage - TamaBox (Draguignan, 83)",
+      en: "Internship - TamaBox (Draguignan, France)",
     },
     subtitle: {
-      fr: "Développeur Full-Stack — Projet TamaStat",
-      en: "Full-Stack Developer — TamaStat Project",
+      fr: "Développeur Full-Stack - Projet TamaStat",
+      en: "Full-Stack Developer - TamaStat Project",
     },
     description: {
-      fr: "Conception et développement en autonomie totale d'un outil de visualisation statistique pour une entreprise de location de box. JavaScript/Chart.js, personas marketing, module de prévision. Première expérience professionnelle — le taux d'occupation du client est passé de 75-82% à 100%.",
-      en: "Fully autonomous design and development of a statistical visualization tool for a storage box rental company. JavaScript/Chart.js, marketing personas, forecasting module. First professional experience — client occupancy rate went from 75-82% to 100%.",
+      fr: "Conception et développement en autonomie totale d'un outil de visualisation statistique pour une entreprise de location de box. JavaScript/Chart.js, personas marketing, module de prévision. Première expérience professionnelle - le taux d'occupation du client est passé de 75-82% à 100%.",
+      en: "Fully autonomous design and development of a statistical visualization tool for a storage box rental company. JavaScript/Chart.js, marketing personas, forecasting module. First professional experience - client occupancy rate went from 75-82% to 100%.",
     },
     type: "experience",
   },
   {
-    year: "Mai 2024 — Avril 2026",
+    year: "Mai 2024 - Avril 2026",
     title: {
       fr: "BDE Informatique Montpellier",
       en: "BDE Informatique Montpellier (Student Association)",
