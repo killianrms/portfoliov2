@@ -906,6 +906,121 @@ The main difficulty was managing the cart in session while maintaining consisten
     links: { github: "https://github.com/killianrms/ecommerce-parfum" }
   },
   {
+    slug: "code-game-jam-2026",
+    title: "Code Game Jam 2026 — Scroll Party",
+    category: "competition",
+    technologies: ["Unity", "C#", "Game Design", "Sound Design", "Trello"],
+    duration: { fr: "22 — 24 Janvier 2026 (48h)", en: "January 22 — 24, 2026 (48h)" },
+    team: { fr: "Équipe Golem Gang — 5 étudiants", en: "Golem Gang Team — 5 students" },
+    role: { fr: "Développeur — Game Design et développement Unity", en: "Developer — Game Design and Unity development" },
+    shortDescription: {
+      fr: "Jeu vidéo développé en 48h sur Unity lors de la Code Game Jam 2026. Thème : \"Fête des Clics\". Scroll Party est un jeu de sensibilisation à l'addiction aux réseaux sociaux où le joueur doit résister au scroll pendant une soirée.",
+      en: "Video game developed in 48h on Unity during the Code Game Jam 2026. Theme: \"Fête des Clics\" (Click Party). Scroll Party is an awareness game about social media addiction where the player must resist scrolling during a party."
+    },
+    context: {
+      fr: `La Code Game Jam est une compétition nationale de développement de jeux vidéo. L'édition 2026 s'est déroulée du 22 au 24 janvier 2026 (48h non-stop). Le sujet a été révélé en direct sur Twitch et le brainstorming d'équipe s'est fait sur Discord.
+
+Le thème était "FÊTE DES CLICS". Notre équipe Golem Gang (5 membres) a créé **Scroll Party**, un jeu développé sur Unity qui joue sur le double sens du thème : la fête (une soirée) et les clics (le scroll sur un téléphone, façon TikTok).
+
+Le concept : le joueur est à une soirée et scroll sur son téléphone comme sur TikTok. Des PNJ viennent régulièrement lui parler. Le joueur a le choix : poser son téléphone pour répondre (augmenter sa jauge de sociabilisation) ou continuer à scroller (augmenter sa jauge de likes). Le jeu explore le thème de l'addiction aux réseaux sociaux de manière ludique et immersive.`,
+      en: `The Code Game Jam is a national video game development competition. The 2026 edition took place from January 22 to 24, 2026 (48h non-stop). The subject was revealed live on Twitch and team brainstorming was done on Discord.
+
+The theme was "FÊTE DES CLICS" (Click Party). Our Golem Gang team (5 members) created **Scroll Party**, a game developed on Unity that plays on the double meaning of the theme: the party (a social event) and the clicks (scrolling on a phone, TikTok-style).
+
+The concept: the player is at a party and scrolls on their phone like on TikTok. NPCs regularly come to talk to them. The player has a choice: put down their phone to respond (increase their socialization gauge) or keep scrolling (increase their likes gauge). The game explores the theme of social media addiction in a fun and immersive way.`
+    },
+    objectives: {
+      fr: `1. **Développer un jeu complet en 48h** sur Unity autour du thème "Fête des Clics"
+2. **Mécaniques de jeu à double jauge** : jauge de likes (scroll/addiction) vs jauge de sociabilisation (interactions avec les PNJ)
+3. **Sensibilisation à l'addiction** : montrer les effets du scroll compulsif (voix dans la tête, encouragements à continuer) vs le "déclic" de poser son téléphone
+4. **Ambiance sonore immersive** : création de musiques originales pour le jeu, publiées sur SoundCloud`,
+      en: `1. **Develop a complete game in 48h** on Unity around the "Fête des Clics" theme
+2. **Dual gauge game mechanics**: likes gauge (scroll/addiction) vs socialization gauge (NPC interactions)
+3. **Addiction awareness**: show the effects of compulsive scrolling (voices in the head, encouragement to continue) vs the "click moment" of putting down the phone
+4. **Immersive sound design**: creation of original music for the game, published on SoundCloud`
+    },
+    approach: {
+      fr: `Le jeu a été développé sur Unity en C#. L'organisation de l'équipe s'est faite via Trello pour répartir les tâches sur les 48h.
+
+**Mécaniques de jeu :**
+- Le joueur est à une soirée et tient son téléphone, scrollant un fil façon TikTok avec des contenus qui défilent.
+- Des PNJ viennent régulièrement lui parler. Le joueur peut choisir de poser son téléphone pour répondre ou d'ignorer et continuer à scroller.
+- **Jauge de likes** : si le joueur continue à scroller sans écouter les PNJ, cette jauge augmente. Des voix dans sa tête l'encouragent ("wow c'est trop bien", "continue") pour conforter l'addiction. Si elle atteint 100%, le joueur perd — il est complètement absorbé par son écran.
+- **Jauge de sociabilisation** : si le joueur pose son téléphone pour parler aux PNJ, cette jauge augmente. L'écran commence à trembler, la vision devient floue — simulant le manque et l'addiction. Si elle atteint 100%, le joueur a le **DÉCLIC** (jeu de mots avec "des clics" du thème) : il réalise ce qu'il fait, pose définitivement son téléphone, et profite de sa soirée. Il gagne !
+
+Le jeu utilise ces mécaniques inversées pour créer une expérience de sensibilisation : gagner demande de résister à l'envie de scroller, ce qui reproduit la difficulté réelle de décrocher de son téléphone.`,
+      en: `The game was developed on Unity in C#. Team organization was done via Trello to distribute tasks over the 48h.
+
+**Game mechanics:**
+- The player is at a party holding their phone, scrolling a TikTok-style feed with content flowing by.
+- NPCs regularly come to talk to them. The player can choose to put down their phone to respond or ignore them and keep scrolling.
+- **Likes gauge**: if the player keeps scrolling without listening to NPCs, this gauge increases. Voices in their head encourage them ("wow this is amazing", "keep going") to reinforce addiction. If it reaches 100%, the player loses — completely absorbed by their screen.
+- **Socialization gauge**: if the player puts down their phone to talk to NPCs, this gauge increases. The screen starts shaking, vision becomes blurry — simulating withdrawal and addiction. If it reaches 100%, the player has the **DÉCLIC** (wordplay with "des clics"/clicks from the theme): they realize what they're doing, permanently put down their phone, and enjoy their party. They win!
+
+The game uses these inverted mechanics to create an awareness experience: winning requires resisting the urge to scroll, which reproduces the real difficulty of putting down one's phone.`
+    },
+    architecture: {
+      fr: `Jeu Unity développé en 48h :
+- **Moteur** : Unity avec scripts C#
+- **Mécaniques** : Système de double jauge (likes vs sociabilisation), PNJ interactifs, effets visuels d'addiction (tremblement, flou)
+- **Audio** : Musiques originales créées pour le jeu (publiées sur SoundCloud), voix intérieures encourageant le scroll
+- **Organisation** : Trello pour la gestion des tâches en équipe sur 48h`,
+      en: `Unity game developed in 48h:
+- **Engine**: Unity with C# scripts
+- **Mechanics**: Dual gauge system (likes vs socialization), interactive NPCs, addiction visual effects (shaking, blur)
+- **Audio**: Original music created for the game (published on SoundCloud), inner voices encouraging scrolling
+- **Organization**: Trello for team task management over 48h`
+    },
+    skills: [
+      {
+        name: { fr: "Développement Unity / C#", en: "Unity / C# Development" },
+        description: { fr: "Développement d'un jeu complet sur Unity en C# en 48h : mécaniques de gameplay, système de jauges, effets visuels, intégration audio.", en: "Development of a complete Unity game in C# in 48h: gameplay mechanics, gauge system, visual effects, audio integration." }
+      },
+      {
+        name: { fr: "Game Design & Narration", en: "Game Design & Storytelling" },
+        description: { fr: "Conception de mécaniques de jeu à double jauge pour sensibiliser à l'addiction aux réseaux sociaux, avec un twist narratif (le \"déclic\") lié au thème de la compétition.", en: "Design of dual-gauge game mechanics to raise awareness about social media addiction, with a narrative twist (the \"click moment\") linked to the competition theme." }
+      },
+      {
+        name: { fr: "Travail d'équipe en 48h", en: "48h Teamwork" },
+        description: { fr: "Coordination d'une équipe de 5 sur 48h avec Trello, répartition efficace des tâches (développement, game design, sound design, graphisme).", en: "Coordination of a 5-person team over 48h with Trello, efficient task distribution (development, game design, sound design, graphics)." }
+      }
+    ],
+    codeHighlights: [],
+    results: {
+      fr: `Le jeu Scroll Party a été livré fonctionnel à la fin des 48h :
+
+- **Jeu complet et jouable** avec les deux mécaniques de jauge fonctionnelles, les PNJ interactifs, et les deux fins (victoire par déclic / défaite par addiction)
+- **Effets immersifs** : voix intérieures lors du scroll, tremblements et vision floue lors de la sociabilisation pour simuler l'addiction
+- **Bande-son originale** publiée sur SoundCloud avec les musiques du jeu
+- **Gestion de projet** via Trello avec une répartition claire des tâches sur les 48h
+
+Le concept du double sens "Fête des Clics" → fête + déclic a été le fil rouge du jeu, mêlant gameplay addictif et message de sensibilisation.`,
+      en: `The Scroll Party game was delivered functional at the end of the 48h:
+
+- **Complete and playable game** with both gauge mechanics functional, interactive NPCs, and two endings (victory by realization / defeat by addiction)
+- **Immersive effects**: inner voices during scrolling, shaking and blurred vision during socialization to simulate addiction
+- **Original soundtrack** published on SoundCloud with game music
+- **Project management** via Trello with clear task distribution over the 48h
+
+The "Fête des Clics" double meaning concept → party + click moment was the game's common thread, combining addictive gameplay with an awareness message.`
+    },
+    reflection: {
+      fr: `La Code Game Jam 2026 m'a appris à développer un jeu vidéo complet en un temps très limité. Contrairement au développement web, le game development sur Unity impose de penser en termes de game loop, de physique, d'animations et de sound design — des compétences très différentes de mon quotidien.
+
+Le plus grand défi a été de transformer le thème "Fête des Clics" en une expérience de jeu significative. Le concept du déclic — où gagner consiste à arrêter de jouer avec son téléphone — crée un paradoxe intéressant qui fait réfléchir le joueur sur ses propres habitudes numériques.
+
+Travailler à 5 sur 48h avec Trello nous a appris à prioriser ce qui compte vraiment dans un jeu : les mécaniques de base doivent fonctionner avant de s'attaquer au polish visuel ou sonore.`,
+      en: `The Code Game Jam 2026 taught me to develop a complete video game in very limited time. Unlike web development, game development on Unity requires thinking in terms of game loops, physics, animations, and sound design — very different skills from my daily routine.
+
+The biggest challenge was transforming the "Fête des Clics" theme into a meaningful game experience. The "click moment" concept — where winning consists of stopping phone use — creates an interesting paradox that makes the player reflect on their own digital habits.
+
+Working as a team of 5 over 48h with Trello taught us to prioritize what truly matters in a game: core mechanics must work before tackling visual or audio polish.`
+    },
+    thumbnail: "/images/codegamejam2026.jpg",
+    images: [],
+    links: { video: "https://youtu.be/LyqimFqbW04" }
+  },
+  {
     slug: "nuit-info-2025",
     title: "Nuit de l'Info 2025",
     category: "competition",
