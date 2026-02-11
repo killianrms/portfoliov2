@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import type { Project } from "@/data/projects";
@@ -36,14 +37,16 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
     >
       <Link href={`/projects/${project.slug}`}>
         <div className="group relative bg-surface border border-border rounded-xl overflow-hidden hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/5">
-          {/* Thumbnail placeholder */}
+          {/* Thumbnail */}
           <div className="relative h-48 bg-surface-hover overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-pink-500/20 group-hover:scale-110 transition-transform duration-500" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-4xl font-serif font-bold text-foreground/10 group-hover:text-foreground/20 transition-colors duration-300">
-                {project.title.charAt(0)}
-              </span>
-            </div>
+            <Image
+              src={project.thumbnail}
+              alt={project.title}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
             {/* Category badge */}
             <div className="absolute top-3 left-3">
               <span className={`text-xs font-medium px-2 py-1 rounded-full border ${categoryColors[project.category]}`}>

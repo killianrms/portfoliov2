@@ -222,7 +222,7 @@ The main learnings I take away are:
 
 5. **Deployment cycle rigor**: The mandatory path through Dev → Staging → Production made me understand the importance of test environments and client validation before any production deployment. An error in production for a client with billions in revenue is not an option.`
     },
-    thumbnail: "/images/itesoft.jpg",
+    thumbnail: "/images/itesoft.webp",
     images: [],
     links: {}
   },
@@ -390,7 +390,7 @@ This was my very first professional experience and it was extremely formative. I
 
 4. **Direct client relationship**: The weekly meetings taught me to present my work clearly to a non-technical person, to gather and interpret their feedback, and to adapt my priorities based on their actual needs rather than my technical intuitions.`
     },
-    thumbnail: "/images/tamastat.jpg",
+    thumbnail: "/images/tamastat.webp",
     images: [],
     links: { live: "https://tama-stat.vercel.app/" }
   },
@@ -573,7 +573,7 @@ Ce projet prouve qu'un side project passionné peut devenir quelque chose de sig
 
 This project proves that a passionate side project can become something significant with perseverance and continuous improvement.`
     },
-    thumbnail: "/images/fortnite-bot.jpg",
+    thumbnail: "/images/lobbybot.webp",
     images: [],
     links: { github: "https://github.com/killianrms/lobbybot2.0-discord", live: "https://github.com/killianrms/lobbybot2.0-website", video: "https://youtu.be/tja-34-FpnY", discord: "https://discord.gg/SarmtBh3Gu" }
   },
@@ -761,8 +761,8 @@ The rest of the team worked on the JavaFX interface, user management, database, 
 
 5. **Oral presentations and technical documents** forced me to structure my thinking and explain complex concepts in an accessible way. It's an essential skill that code alone doesn't develop.`
     },
-    thumbnail: "/images/referendum.jpg",
-    images: ["/images/referendum1.jpg", "/images/referendum2.jpg", "/images/referendum3.jpg", "/images/referendum4.jpg", "/images/referendum5.jpg"],
+    thumbnail: "/images/ref.webp",
+    images: ["/images/referendum1.webp", "/images/referendum2.webp", "/images/referendum3.webp", "/images/referendum4.webp", "/images/referendum5.webp"],
     links: { github: "https://github.com/killianrms/referendum", video: "https://youtu.be/F3I_4daMcuk", report: "https://docs.google.com/document/d/11MfYwfZin0VpMzFhqWLSZ3Y3LzQwRpnDo-VK7oX6jJ8/edit?usp=sharing" }
   },
   {
@@ -927,7 +927,7 @@ The bilingual system taught me to think about internationalization from the star
 
 This project also demonstrates my ability to document and communicate about my work, a skill as important as the code itself.`
     },
-    thumbnail: "/images/portfolio.jpg",
+    thumbnail: "/images/portfoliov2.webp",
     images: [],
     links: { github: "https://github.com/killianrms/portfoliov2", live: "https://killianrms.com" }
   },
@@ -1067,8 +1067,8 @@ La principale difficulté a été la gestion du panier en session tout en mainte
 
 The main difficulty was managing the cart in session while maintaining consistency with the database. I learned the importance of thinking carefully about state management before coding, rather than fixing inconsistencies after the fact.`
     },
-    thumbnail: "/images/ecommerce.jpg",
-    images: [],
+    thumbnail: "/images/site-ecom_resize.webp",
+    images: ["/images/E-Commerce0.webp", "/images/E-Commerce1.webp", "/images/E-Commerce2.webp", "/images/E-Commerce3.webp", "/images/E-Commerce4.webp"],
     links: { github: "https://github.com/killianrms/ecommerce-parfum" }
   },
   {
@@ -1182,7 +1182,7 @@ The biggest challenge was transforming the "Fête des Clics" theme into a meanin
 
 Working as a team of 5 over 48h with Trello taught us to prioritize what truly matters in a game: core mechanics must work before tackling visual or audio polish.`
     },
-    thumbnail: "/images/codegamejam2026.jpg",
+    thumbnail: "/images/ndi25.webp",
     images: [],
     links: { video: "https://youtu.be/LyqimFqbW04" }
   },
@@ -1293,7 +1293,7 @@ La particularité de cette édition était la diversité des défis : passer d'u
 
 The specificity of this edition was the diversity of challenges: going from a Chrome extension to an AI chatbot to a frustrating ergonomics game requires great technical adaptability. It's this versatility and ability to deliver quickly that make this competition valuable.`
     },
-    thumbnail: "/images/nuitinfo2025.jpg",
+    thumbnail: "/images/ndi2025.webp",
     images: [],
     links: { live: "https://killianrms.github.io/NDI2025/" }
   },
@@ -1441,7 +1441,7 @@ L'idée de proposer en open source une fonctionnalité que Twitter fait payer m'
 
 The idea of offering as open source a feature that Twitter charges for motivated me to keep the code clean and documented so others could use it. It's also a good example of a project where scraping and the official API coexist in the same tool.`
     },
-    thumbnail: "/images/autotweetvideo.jpg",
+    thumbnail: "/images/tweet.webp",
     images: [],
     links: { github: "https://github.com/killianrms/AutoTweetVideoUploader" }
   },
@@ -1510,7 +1510,7 @@ It has since been replaced by the current version (v2) developed with Next.js, R
       fr: `Ce premier portfolio m'a appris l'importance de la présentation dans la carrière d'un développeur. Au-delà du code, savoir communiquer sur son travail est une compétence essentielle. La v2 (le site actuel) représente une évolution naturelle, avec plus de profondeur analytique et une meilleure expérience utilisateur.`,
       en: `This first portfolio taught me the importance of presentation in a developer's career. Beyond code, knowing how to communicate about your work is an essential skill. V2 (the current site) represents a natural evolution, with more analytical depth and better user experience.`
     },
-    thumbnail: "/images/ancien-portfolio.jpg",
+    thumbnail: "/images/portfolio.webp",
     images: [],
     links: { github: "https://github.com/killianrms/portfolio", live: "https://old.killianrms.com" }
   },
@@ -1585,7 +1585,7 @@ La thématique du changement climatique nous a poussés à aller au-delà du sim
 
 The climate change theme pushed us beyond simple technical development to think about the impact and message we wanted to convey.`
     },
-    thumbnail: "/images/nuitinfo2024.jpg",
+    thumbnail: "/images/project-5.webp",
     images: [],
     links: {}
   },
@@ -1670,7 +1670,7 @@ J'ai appris la conception d'environnements 3D, la programmation via Blueprints, 
 
 I learned 3D environment design, Blueprint programming, and above all project management under extreme conditions. This experience gave me a taste for game development, which I continued with the Code Game Jam 2026 on Unity.`
     },
-    thumbnail: "/images/gamejam2024.jpg",
+    thumbnail: "/images/project-4.webp",
     images: [],
     links: { video: "https://www.youtube.com/watch?v=OoIJkiQOXEQ" }
   }
