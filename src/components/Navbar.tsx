@@ -11,9 +11,9 @@ export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
 
   const links = [
+    { href: "#about", label: t("nav.about") },
     { href: "#projects", label: t("nav.projects") },
     { href: "#timeline", label: t("nav.studies") },
-    { href: "#about", label: t("nav.about") },
     { href: "#contact", label: t("nav.contact") },
   ];
 

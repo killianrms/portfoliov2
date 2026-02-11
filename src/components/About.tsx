@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function About() {
@@ -36,15 +37,16 @@ export default function About() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"
         >
-          {/* Photo placeholder */}
+          {/* Photo */}
           <div className="flex justify-center md:justify-start">
             <div className="w-48 h-48 md:w-full md:h-64 rounded-2xl bg-surface border border-border overflow-hidden relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-pink-500/20" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-6xl font-serif font-bold text-foreground/10">
-                  K
-                </span>
-              </div>
+              <Image
+                src="/images/photo.webp"
+                alt="Killian Music"
+                fill
+                sizes="(max-width: 768px) 192px, 300px"
+                className="object-cover"
+              />
             </div>
           </div>
 

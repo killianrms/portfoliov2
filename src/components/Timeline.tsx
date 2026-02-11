@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 
 interface TimelineItem {
@@ -29,20 +30,20 @@ const timelineData: TimelineItem[] = [
     type: "experience",
   },
   {
-    year: "2023 - Présent",
+    year: "Mai 2024 - Avril 2026",
     title: {
-      fr: "BUT Informatique - IUT Montpellier-Sète",
-      en: "Computer Science Degree - IUT Montpellier-Sète",
+      fr: "BDE Informatique Montpellier",
+      en: "BDE Informatique Montpellier (Student Association)",
     },
     subtitle: {
-      fr: "Parcours Réalisation d'applications : conception, développement, validation",
-      en: "Specialization: Application Development: Design, Development, Validation",
+      fr: "Responsable Événementiel et Communication",
+      en: "Events & Communication Manager",
     },
     description: {
-      fr: "Formation approfondie en développement logiciel, bases de données, réseaux, sécurité informatique et gestion de projet. Apprentissage des méthodologies agiles et des bonnes pratiques de développement.",
-      en: "In-depth training in software development, databases, networks, IT security, and project management. Learning agile methodologies and development best practices.",
+      fr: "Organisation d'événements pour les étudiants en informatique de l'IUT de Montpellier. Gestion de la communication sur les réseaux sociaux (Discord, Instagram). Coordination logistique des soirées, sorties et activités étudiantes.",
+      en: "Organizing events for computer science students at IUT Montpellier. Managing social media communication (Discord, Instagram). Logistical coordination of parties, outings, and student activities.",
     },
-    type: "education",
+    type: "volunteer",
   },
   {
     year: "Janvier - Avril 2025",
@@ -61,20 +62,20 @@ const timelineData: TimelineItem[] = [
     type: "experience",
   },
   {
-    year: "Mai 2024 - Avril 2026",
+    year: "2023 - Présent",
     title: {
-      fr: "BDE Informatique Montpellier",
-      en: "BDE Informatique Montpellier (Student Association)",
+      fr: "BUT Informatique - IUT Montpellier-Sète",
+      en: "Computer Science Degree - IUT Montpellier-Sète",
     },
     subtitle: {
-      fr: "Responsable Événementiel et Communication",
-      en: "Events & Communication Manager",
+      fr: "Parcours Réalisation d'applications : conception, développement, validation",
+      en: "Specialization: Application Development: Design, Development, Validation",
     },
     description: {
-      fr: "Organisation d'événements pour les étudiants en informatique de l'IUT de Montpellier. Gestion de la communication sur les réseaux sociaux (Discord, Instagram). Coordination logistique des soirées, sorties et activités étudiantes.",
-      en: "Organizing events for computer science students at IUT Montpellier. Managing social media communication (Discord, Instagram). Logistical coordination of parties, outings, and student activities.",
+      fr: "Formation approfondie en développement logiciel, bases de données, réseaux, sécurité informatique et gestion de projet. Apprentissage des méthodologies agiles et des bonnes pratiques de développement.",
+      en: "In-depth training in software development, databases, networks, IT security, and project management. Learning agile methodologies and development best practices.",
     },
-    type: "volunteer",
+    type: "education",
   },
   {
     year: "2023",
@@ -94,8 +95,11 @@ const timelineData: TimelineItem[] = [
   },
 ];
 
+type TimelineFilter = "all" | "education" | "experience" | "volunteer";
+
 export default function Timeline() {
   const { language, t } = useLanguage();
+  const [filter, setFilter] = useState<TimelineFilter>("all");
 
   const typeColors: Record<string, string> = {
     education: "bg-blue-500",
@@ -108,6 +112,18 @@ export default function Timeline() {
     experience: t("timeline.experience"),
     volunteer: t("timeline.volunteer"),
   };
+
+  const filters: { key: TimelineFilter; label: string }[] = [
+    { key: "all", label: language === "fr" ? "Tout" : "All" },
+    { key: "education", label: typeLabels.education },
+    { key: "experience", label: typeLabels.experience },
+    { key: "volunteer", label: typeLabels.volunteer },
+  ];
+
+  const filteredData =
+    filter === "all"
+      ? timelineData
+      : timelineData.filter((item) => item.type === filter);
 
   return (
     <section id="timeline" className="py-24 md:py-32 px-6 md:px-12">
@@ -128,56 +144,82 @@ export default function Timeline() {
           </p>
         </motion.div>
 
-        {/* Legend */}
-        <div className="flex justify-center gap-6 mb-12">
-          {Object.entries(typeLabels).map(([key, label]) => (
-            <div key={key} className="flex items-center gap-2">
-              <div className={`w-3 h-3 rounded-full ${typeColors[key]}`} />
-              <span className="text-sm text-muted">{label}</span>
-            </div>
+        {/* Filter tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+          className="flex flex-wrap justify-center gap-3 mb-12"
+        >
+          {filters.map((f) => (
+            <button
+              key={f.key}
+              onClick={() => setFilter(f.key)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
+                filter === f.key
+                  ? "bg-accent text-white"
+                  : "bg-surface border border-border text-muted hover:text-foreground hover:border-accent/50"
+              }`}
+            >
+              {f.key !== "all" && (
+                <div className={`w-2.5 h-2.5 rounded-full ${typeColors[f.key]}`} />
+              )}
+              {f.label}
+            </button>
           ))}
-        </div>
+        </motion.div>
 
         {/* Timeline */}
         <div className="relative">
           {/* Center line */}
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-border -translate-x-1/2" />
 
-          {timelineData.map((item, i) => (
+          <AnimatePresence mode="wait">
             <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`relative flex items-start gap-8 mb-12 ${
-                i % 2 === 0
-                  ? "md:flex-row"
-                  : "md:flex-row-reverse"
-              }`}
+              key={filter}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
             >
-              {/* Dot */}
-              <div className="absolute left-4 md:left-1/2 -translate-x-1/2 z-10">
-                <div className={`w-4 h-4 rounded-full ${typeColors[item.type]} ring-4 ring-background`} />
-              </div>
+              {filteredData.map((item, i) => (
+                <motion.div
+                  key={`${item.type}-${item.year}`}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className={`relative flex items-start gap-8 mb-12 ${
+                    i % 2 === 0
+                      ? "md:flex-row"
+                      : "md:flex-row-reverse"
+                  }`}
+                >
+                  {/* Dot */}
+                  <div className="absolute left-4 md:left-1/2 -translate-x-1/2 z-10">
+                    <div className={`w-4 h-4 rounded-full ${typeColors[item.type]} ring-4 ring-background`} />
+                  </div>
 
-              {/* Content */}
-              <div className={`ml-12 md:ml-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
-                <span className="text-sm text-accent font-medium">
-                  {item.year}
-                </span>
-                <h3 className="text-lg font-semibold text-foreground mt-1">
-                  {item.title[language]}
-                </h3>
-                <p className="text-sm text-accent/80 mt-0.5">
-                  {item.subtitle[language]}
-                </p>
-                <p className="text-sm text-muted mt-2 leading-relaxed">
-                  {item.description[language]}
-                </p>
-              </div>
+                  {/* Content */}
+                  <div className={`ml-12 md:ml-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
+                    <span className="text-sm text-accent font-medium">
+                      {item.year}
+                    </span>
+                    <h3 className="text-lg font-semibold text-foreground mt-1">
+                      {item.title[language]}
+                    </h3>
+                    <p className="text-sm text-accent/80 mt-0.5">
+                      {item.subtitle[language]}
+                    </p>
+                    <p className="text-sm text-muted mt-2 leading-relaxed">
+                      {item.description[language]}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
             </motion.div>
-          ))}
+          </AnimatePresence>
         </div>
       </div>
     </section>

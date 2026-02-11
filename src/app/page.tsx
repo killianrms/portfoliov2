@@ -10,13 +10,13 @@ export default function Home() {
     <>
       <Hero />
       <div className="section-separator" />
+      <About />
+      <div className="section-separator" />
       <ProjectsSection />
       <div className="section-separator" />
       <Timeline />
       <div className="section-separator" />
       <TechStack />
-      <div className="section-separator" />
-      <About />
       <div className="section-separator" />
       <Contact />
     </>
