@@ -909,86 +909,112 @@ The main difficulty was managing the cart in session while maintaining consisten
     slug: "nuit-info-2025",
     title: "Nuit de l'Info 2025",
     category: "competition",
-    technologies: ["React", "Node.js", "Express", "MongoDB", "WebSocket", "CSS3"],
+    technologies: ["TypeScript", "HTML/CSS", "Chrome Extension (Manifest V3)", "DeepSeek API", "GitHub Pages"],
     duration: { fr: "Décembre 2025 (1 nuit)", en: "December 2025 (1 night)" },
-    team: { fr: "Équipe de 6 étudiants", en: "Team of 6 students" },
-    role: { fr: "Développeur Front-End & Intégrateur", en: "Front-End Developer & Integrator" },
+    team: { fr: "Équipe Golem Gang — 7 étudiants", en: "Golem Gang Team — 7 students" },
+    role: { fr: "Développeur — Participation aux 3 défis", en: "Developer — Participation in all 3 challenges" },
     shortDescription: {
-      fr: "Compétition nationale de développement web en une nuit sur le thème de l'informatique responsable et du numérique durable.",
-      en: "National one-night web development competition on the theme of responsible computing and sustainable digital."
+      fr: "Compétition nationale de développement en une nuit. Sujet principal : \"Comment les établissements scolaires peuvent tenir tête aux Big Tech ?\". 3 défis relevés : extension de sécurité Chrome, chatbot IA et jeu d'ergonomie frustrante.",
+      en: "National one-night development competition. Main subject: \"How can schools stand up to Big Tech?\". 3 challenges completed: Chrome security extension, AI chatbot, and frustrating ergonomics game."
     },
     context: {
-      fr: `La Nuit de l'Info est une compétition nationale annuelle qui rassemble des étudiants en informatique de toute la France pendant une nuit entière. L'édition 2025 portait sur le thème de l'informatique responsable et du numérique durable, nous invitant à réfléchir sur l'impact environnemental du numérique et à proposer des solutions concrètes.
+      fr: `La Nuit de l'Info est une compétition nationale annuelle qui rassemble des étudiants en informatique de toute la France pendant une nuit entière. L'objectif est de faire travailler ensemble les étudiants autour de défis informatiques portant sur des thématiques d'actualité, en utilisant des technologies modernes.
 
-Notre équipe de 6 étudiants de l'IUT de Montpellier s'est organisée rapidement en répartissant les tâches : deux développeurs front-end (dont moi), deux développeurs back-end, un designer/UX, et un chef de projet qui s'occupait également de la documentation. L'enjeu était de livrer un produit fonctionnel en moins de 12 heures, ce qui a nécessité une coordination efficace et des choix techniques rapides.`,
-      en: `The Nuit de l'Info is an annual national competition that brings together computer science students from all over France for an entire night. The 2025 edition focused on responsible computing and sustainable digital, inviting us to reflect on the environmental impact of digital technology and propose concrete solutions.
+L'édition 2025 portait sur le sujet : "Comment les établissements scolaires peuvent tenir tête aux Big Tech ?", nous invitant à réfléchir au numérique responsable et à l'indépendance numérique des écoles. En parallèle du défi principal, nous avons participé à 3 défis connexes proposés par les partenaires de l'événement.
 
-Our team of 6 students from IUT Montpellier organized quickly by distributing tasks: two front-end developers (including myself), two back-end developers, a designer/UX, and a project manager who also handled documentation. The challenge was to deliver a functional product in less than 12 hours, requiring efficient coordination and quick technical choices.`
+Notre équipe "Golem Gang" était composée de 7 étudiants. Nous nous sommes organisés rapidement pour livrer un site web interactif et 3 défis complémentaires en une seule nuit. Le site est développé en TypeScript et déployé sur GitHub Pages.`,
+      en: `The Nuit de l'Info is an annual national competition that brings together computer science students from all over France for an entire night. The goal is to have students work together on IT challenges around current topics, using modern technologies.
+
+The 2025 edition focused on the topic: "How can schools stand up to Big Tech?", inviting us to reflect on responsible digital and schools' digital independence. Alongside the main challenge, we participated in 3 related challenges proposed by event partners.
+
+Our "Golem Gang" team consisted of 7 students. We organized quickly to deliver an interactive website and 3 complementary challenges in a single night. The site is developed in TypeScript and deployed on GitHub Pages.`
     },
     objectives: {
-      fr: `1. Développer une application web sensibilisant aux enjeux du numérique responsable
-2. Implémenter des fonctionnalités interactives engageantes pour l'utilisateur
-3. Optimiser les performances et l'accessibilité de l'application
-4. Livrer un produit fonctionnel et présentable en moins de 12 heures`,
-      en: `1. Develop a web application raising awareness about responsible digital issues
-2. Implement engaging interactive features for the user
-3. Optimize application performance and accessibility
-4. Deliver a functional and presentable product in less than 12 hours`
+      fr: `1. **Défi principal** : Développer un site interactif sur le numérique responsable avec simulateur d'empreinte numérique, quiz de connaissances et système de badges
+2. **Défi "La Ligue des Extensions"** : Créer SafeLinks, une extension Chrome (Manifest V3) open source qui détecte la sécurité des liens avant de cliquer
+3. **Défi "Simplifier pour mieux vivre"** : Concevoir le Password Game, un champ de saisie volontairement frustrant avec des règles absurdes — un bouton esthétique mais délibérément compliqué à utiliser
+4. **Défi Chatbot "Chat'bruti"** : Développer un chatbot IA drôle et inutilement philosophique, intégré au site`,
+      en: `1. **Main challenge**: Develop an interactive site about responsible digital with digital footprint simulator, knowledge quiz, and badge system
+2. **"La Ligue des Extensions" challenge**: Create SafeLinks, an open source Chrome extension (Manifest V3) that detects link safety before clicking
+3. **"Simplifier pour mieux vivre" challenge**: Design the Password Game, a deliberately frustrating input field with absurd rules — an aesthetic but deliberately complicated button to use
+4. **Chatbot challenge "Chat'bruti"**: Develop a funny and unnecessarily philosophical AI chatbot, integrated into the site`
     },
     approach: {
-      fr: `Nous avons opté pour une stack React / Node.js / Express / MongoDB pour sa rapidité de mise en place. L'application proposait un calculateur d'empreinte carbone numérique personnalisé, avec des recommandations pour réduire son impact.
+      fr: `Le site principal est développé en TypeScript et déployé sur GitHub Pages. Il propose une plateforme interactive sur le numérique responsable avec plusieurs modules :
 
-Mon rôle de développeur front-end m'a amené à créer les composants React interactifs, les animations CSS pour rendre l'expérience engageante, et à intégrer les API back-end pour l'affichage des résultats en temps réel.
+- **Simulateur d'empreinte numérique** : Calcul de l'impact numérique de l'utilisateur avec un système de badges à débloquer.
+- **Quiz de connaissances** : Test sur le numérique responsable et la cybersécurité.
+- **Password Game** : Un jeu d'ergonomie volontairement frustrant où l'utilisateur doit créer un mot de passe en suivant des règles de plus en plus absurdes — le bouton est esthétique mais délibérément compliqué à utiliser.
 
-La communication en temps réel via WebSocket permettait d'afficher un compteur global agrégé de tous les utilisateurs, créant un effet de communauté et de prise de conscience collective.`,
-      en: `We chose a React / Node.js / Express / MongoDB stack for its quick setup. The application offered a personalized digital carbon footprint calculator, with recommendations to reduce impact.
+Pour le défi extension, nous avons développé **SafeLinks**, une extension Chrome Manifest V3 qui analyse la sécurité des liens avant que l'utilisateur ne clique dessus. Le code est open source sur GitHub.
 
-My role as front-end developer led me to create interactive React components, CSS animations to make the experience engaging, and integrate back-end APIs for real-time result display.
+Pour le défi chatbot, nous avons créé **Chat'bruti**, un chatbot IA accessible via un bouton en bas à droite du site, conçu pour être drôle et inutilement philosophique dans ses réponses.`,
+      en: `The main site is developed in TypeScript and deployed on GitHub Pages. It offers an interactive platform about responsible digital with several modules:
 
-Real-time communication via WebSocket displayed an aggregated global counter of all users, creating a community effect and collective awareness.`
+- **Digital footprint simulator**: Calculation of the user's digital impact with a badge system to unlock.
+- **Knowledge quiz**: Test on responsible digital and cybersecurity.
+- **Password Game**: A deliberately frustrating ergonomics game where the user must create a password following increasingly absurd rules — the button is aesthetic but deliberately complicated to use.
+
+For the extension challenge, we developed **SafeLinks**, a Chrome Manifest V3 extension that analyzes link safety before the user clicks. The code is open source on GitHub.
+
+For the chatbot challenge, we created **Chat'bruti**, an AI chatbot accessible via a button in the bottom right of the site, designed to be funny and unnecessarily philosophical in its responses.`
     },
     architecture: {
-      fr: `Stack MERN (MongoDB, Express, React, Node.js) :
-- **Front-end** : React avec composants fonctionnels et hooks, animations CSS3
-- **Back-end** : Express.js avec API REST et WebSocket (Socket.io)
-- **Base de données** : MongoDB pour le stockage flexible des profils utilisateurs
-- **Temps réel** : Socket.io pour le compteur communautaire en direct`,
-      en: `MERN Stack (MongoDB, Express, React, Node.js):
-- **Front-end**: React with functional components and hooks, CSS3 animations
-- **Back-end**: Express.js with REST API and WebSocket (Socket.io)
-- **Database**: MongoDB for flexible user profile storage
-- **Real-time**: Socket.io for live community counter`
+      fr: `Projet multi-composants développé en une nuit :
+- **Site principal** : TypeScript, HTML/CSS, déployé sur GitHub Pages — modules interactifs (simulateur, quiz, Password Game)
+- **Extension Chrome SafeLinks** : Manifest V3, détection de la sécurité des liens
+- **Chatbot Chat'bruti** : IA intégrée au site, personnalité humoristique et philosophique
+- **Hébergement** : GitHub Pages`,
+      en: `Multi-component project developed in one night:
+- **Main site**: TypeScript, HTML/CSS, deployed on GitHub Pages — interactive modules (simulator, quiz, Password Game)
+- **SafeLinks Chrome Extension**: Manifest V3, link safety detection
+- **Chat'bruti Chatbot**: AI integrated into the site, humorous and philosophical personality
+- **Hosting**: GitHub Pages`
     },
     skills: [
       {
         name: { fr: "Développement sous pression", en: "Development Under Pressure" },
-        description: { fr: "Capacité à produire du code de qualité dans un temps très limité, à prendre des décisions techniques rapides et à gérer le stress.", en: "Ability to produce quality code in very limited time, make quick technical decisions, and manage stress." }
+        description: { fr: "Capacité à produire du code de qualité dans un temps très limité (une nuit), à prendre des décisions techniques rapides et à livrer 3 défis complémentaires en parallèle.", en: "Ability to produce quality code in very limited time (one night), make quick technical decisions, and deliver 3 complementary challenges in parallel." }
       },
       {
         name: { fr: "Travail d'équipe intensif", en: "Intensive Teamwork" },
-        description: { fr: "Coordination efficace au sein d'une équipe de 6 personnes, communication constante, résolution rapide des conflits de merge Git.", en: "Efficient coordination within a 6-person team, constant communication, quick resolution of Git merge conflicts." }
+        description: { fr: "Coordination efficace au sein d'une équipe de 7 personnes, répartition rapide des tâches sur 3 défis simultanés, communication constante et résolution rapide des conflits.", en: "Efficient coordination within a 7-person team, quick task distribution across 3 simultaneous challenges, constant communication and quick conflict resolution." }
+      },
+      {
+        name: { fr: "Extension Chrome (Manifest V3)", en: "Chrome Extension (Manifest V3)" },
+        description: { fr: "Développement d'une extension Chrome open source avec le nouveau format Manifest V3 pour la détection de sécurité des liens.", en: "Development of an open source Chrome extension with the new Manifest V3 format for link safety detection." }
       }
     ],
     codeHighlights: [],
     results: {
-      fr: `Notre application a été livrée fonctionnelle à la fin de la nuit. Le calculateur d'empreinte carbone permettait aux utilisateurs de mesurer l'impact de leurs habitudes numériques et de recevoir des conseils personnalisés. Le compteur communautaire en temps réel a été particulièrement apprécié par le jury.
+      fr: `Le site et les 3 défis ont été livrés fonctionnels à la fin de la nuit :
+
+- **Site principal** déployé sur GitHub Pages avec le simulateur d'empreinte numérique, le quiz et le système de badges
+- **SafeLinks** : extension Chrome fonctionnelle détectant la sécurité des liens, code open source publié sur GitHub
+- **Password Game** : jeu d'ergonomie volontairement frustrant avec un bouton esthétique mais compliqué — le défi d'ergonomie inversée est réussi
+- **Chat'bruti** : chatbot IA humoristique intégré au site, accessible en bas à droite
 
 Cette expérience m'a appris la valeur du prototypage rapide et de la priorisation des fonctionnalités essentielles (MVP) lorsque le temps est limité.`,
-      en: `Our application was delivered functional by the end of the night. The carbon footprint calculator allowed users to measure the impact of their digital habits and receive personalized advice. The real-time community counter was particularly appreciated by the jury.
+      en: `The site and all 3 challenges were delivered functional by the end of the night:
+
+- **Main site** deployed on GitHub Pages with the digital footprint simulator, quiz, and badge system
+- **SafeLinks**: functional Chrome extension detecting link safety, open source code published on GitHub
+- **Password Game**: deliberately frustrating ergonomics game with an aesthetic but complicated button — the reverse ergonomics challenge is successful
+- **Chat'bruti**: humorous AI chatbot integrated into the site, accessible in the bottom right
 
 This experience taught me the value of rapid prototyping and prioritizing essential features (MVP) when time is limited.`
     },
     reflection: {
-      fr: `La Nuit de l'Info 2025 a été une expérience unique qui m'a appris énormément sur la gestion de projet en conditions extrêmes. En seulement 12 heures, il faut savoir identifier les priorités, abandonner les fonctionnalités secondaires, et se concentrer sur un MVP fonctionnel.
+      fr: `La Nuit de l'Info 2025 a été une expérience unique qui m'a appris énormément sur la gestion de projet en conditions extrêmes. En seulement une nuit, il faut savoir identifier les priorités, se répartir efficacement les tâches à 7, et se concentrer sur un MVP fonctionnel pour chaque défi.
 
-La principale difficulté a été la gestion des conflits Git lors des merges simultanés. Nous avons appris à mieux structurer notre code en modules indépendants pour minimiser les conflits. Cette leçon m'accompagne dans tous mes projets collaboratifs depuis.`,
-      en: `The Nuit de l'Info 2025 was a unique experience that taught me a lot about project management under extreme conditions. In just 12 hours, you need to identify priorities, abandon secondary features, and focus on a functional MVP.
+La particularité de cette édition était la diversité des défis : passer d'une extension Chrome à un chatbot IA en passant par un jeu d'ergonomie frustrante demande une grande adaptabilité technique. C'est cette polyvalence et cette capacité à livrer rapidement qui font la valeur de cette compétition.`,
+      en: `The Nuit de l'Info 2025 was a unique experience that taught me a lot about project management under extreme conditions. In just one night, you need to identify priorities, efficiently distribute tasks among 7 people, and focus on a functional MVP for each challenge.
 
-The main difficulty was managing Git conflicts during simultaneous merges. We learned to better structure our code into independent modules to minimize conflicts. This lesson has accompanied me in all my collaborative projects since.`
+The specificity of this edition was the diversity of challenges: going from a Chrome extension to an AI chatbot to a frustrating ergonomics game requires great technical adaptability. It's this versatility and ability to deliver quickly that make this competition valuable.`
     },
     thumbnail: "/images/nuitinfo2025.jpg",
     images: [],
-    links: {}
+    links: { live: "https://killianrms.github.io/NDI2025/" }
   },
   {
     slug: "autotweetvideouploader",
