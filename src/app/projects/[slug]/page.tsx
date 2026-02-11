@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { projects } from "@/data/projects";
 
@@ -10,6 +12,7 @@ export default function ProjectPage() {
   const params = useParams();
   const { language, t } = useLanguage();
   const project = projects.find((p) => p.slug === params.slug);
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   if (!project) {
     return (
@@ -178,6 +181,95 @@ export default function ProjectPage() {
             ))}
           </div>
         </motion.div>
+
+        {/* Image Gallery */}
+        {project.images.length > 0 && (
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-12"
+          >
+            <h2 className="text-2xl font-serif font-bold mb-6 flex items-center gap-3">
+              <span className="w-8 h-0.5 bg-accent" />
+              {language === "fr" ? "Captures d'écran" : "Screenshots"}
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              {project.images.map((img, i) => (
+                <motion.div
+                  key={i}
+                  whileHover={{ scale: 1.02 }}
+                  className="relative aspect-video rounded-lg overflow-hidden border border-border cursor-pointer"
+                  onClick={() => setSelectedImage(i)}
+                >
+                  <Image
+                    src={img}
+                    alt={`${project.title} - ${i + 1}`}
+                    fill
+                    sizes="(max-width: 768px) 50vw, 33vw"
+                    className="object-cover"
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </motion.section>
+        )}
+
+        {/* Lightbox */}
+        <AnimatePresence>
+          {selectedImage !== null && project.images.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+              onClick={() => setSelectedImage(null)}
+            >
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="absolute top-4 right-4 text-white/80 hover:text-white z-10"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"/>
+                  <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+              </button>
+              {selectedImage > 0 && (
+                <button
+                  onClick={(e) => { e.stopPropagation(); setSelectedImage(selectedImage - 1); }}
+                  className="absolute left-4 text-white/80 hover:text-white z-10"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="15 18 9 12 15 6"/>
+                  </svg>
+                </button>
+              )}
+              {selectedImage < project.images.length - 1 && (
+                <button
+                  onClick={(e) => { e.stopPropagation(); setSelectedImage(selectedImage + 1); }}
+                  className="absolute right-4 text-white/80 hover:text-white z-10"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="9 18 15 12 9 6"/>
+                  </svg>
+                </button>
+              )}
+              <div className="relative max-w-5xl max-h-[85vh] w-full h-full" onClick={(e) => e.stopPropagation()}>
+                <Image
+                  src={project.images[selectedImage]}
+                  alt={`${project.title} - ${selectedImage + 1}`}
+                  fill
+                  sizes="90vw"
+                  className="object-contain"
+                />
+              </div>
+              <div className="absolute bottom-4 text-white/60 text-sm">
+                {selectedImage + 1} / {project.images.length}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Context */}
         <motion.section

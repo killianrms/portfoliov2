@@ -51,8 +51,8 @@ const fr = {
   // About
   "about.title": "À Propos",
   "about.subtitle": "Qui suis-je ?",
-  "about.description": "Étudiant en informatique de 21 ans, passionné par la cybersécurité et le développement d'applications. Actuellement en alternance chez ITESOFT en tant qu'Assistant Ingénieur Projet, je combine mes études à l'IUT de Montpellier-Sète avec une expérience professionnelle enrichissante dans le domaine de l'édition logicielle.",
-  "about.description2": "Mon parcours m'a permis de développer une approche polyvalente du développement logiciel, allant du front-end au back-end, en passant par les méthodologies DevOps et la sécurité informatique. Je suis convaincu que la qualité logicielle passe par une compréhension globale de l'écosystème technique.",
+  "about.description": "Étudiant en BUT Informatique (parcours DACS - Sécurité) à l'IUT de Montpellier-Sète, je suis passionné par les défis de la cybersécurité. Actuellement Assistant Ingénieur Projet chez ITESOFT à Aimargues en alternance, je mets mes compétences au service du développement logiciel en environnement Agile. Mon objectif : intégrer le CNAM en cybersécurité ou Polytech Montpellier en DevOps tout en poursuivant mon alternance, pour évoluer vers la Sécurité IT.",
+  "about.description2": "Engagé depuis deux ans au BDE Informatique comme responsable événementiel et communication, j'ai développé des compétences en gestion de projet et coordination d'événements. Originaire du Var et étudiant à Montpellier, ma pratique passée du handball m'a transmis un solide esprit d'équipe et une grande persévérance, des qualités que j'applique au quotidien.",
 
   // Contact
   "contact.title": "Me Contacter",
@@ -128,8 +128,8 @@ const en: Record<string, string> = {
   // About
   "about.title": "About",
   "about.subtitle": "Who am I?",
-  "about.description": "A 21-year-old computer science student passionate about cybersecurity and application development. Currently working as an Assistant Project Engineer at ITESOFT in a work-study program, I combine my studies at IUT Montpellier-Sète with enriching professional experience in software publishing.",
-  "about.description2": "My journey has allowed me to develop a versatile approach to software development, from front-end to back-end, including DevOps methodologies and IT security. I believe that software quality comes from a comprehensive understanding of the technical ecosystem.",
+  "about.description": "Computer Science student (DACS - Security track) at IUT Montpellier-Sète, passionate about cybersecurity challenges. Currently working as an Assistant Project Engineer at ITESOFT in Aimargues through a work-study program, contributing to software development in an Agile environment. My goal: pursue CNAM Cybersecurity or Polytech Montpellier DevOps while continuing my apprenticeship, to transition into IT Security.",
+  "about.description2": "Actively involved for two years in the Student Association (BDE) as events and communication manager, I've developed project management and event coordination skills. Originally from the Var region and studying in Montpellier, my past handball experience gave me strong team spirit and perseverance, qualities I apply daily.",
 
   // Contact
   "contact.title": "Contact Me",

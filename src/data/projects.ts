@@ -222,7 +222,7 @@ The main learnings I take away are:
 
 5. **Deployment cycle rigor**: The mandatory path through Dev → Staging → Production made me understand the importance of test environments and client validation before any production deployment. An error in production for a client with billions in revenue is not an option.`
     },
-    thumbnail: "/images/itesoft.webp",
+    thumbnail: "/images/itesoft_projet.webp",
     images: [],
     links: {}
   },
@@ -1182,7 +1182,7 @@ The biggest challenge was transforming the "Fête des Clics" theme into a meanin
 
 Working as a team of 5 over 48h with Trello taught us to prioritize what truly matters in a game: core mechanics must work before tackling visual or audio polish.`
     },
-    thumbnail: "/images/ndi25.webp",
+    thumbnail: "/images/codegamejam2026.webp",
     images: [],
     links: { video: "https://youtu.be/LyqimFqbW04" }
   },

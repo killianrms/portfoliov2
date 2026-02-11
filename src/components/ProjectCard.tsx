@@ -38,15 +38,17 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       <Link href={`/projects/${project.slug}`}>
         <div className="group relative bg-surface border border-border rounded-xl overflow-hidden hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/5">
           {/* Thumbnail */}
-          <div className="relative h-48 bg-surface-hover overflow-hidden">
+          <div className={`relative h-48 overflow-hidden ${project.thumbnail.includes("itesoft") ? "bg-white" : "bg-surface-hover"}`}>
             <Image
               src={project.thumbnail}
               alt={project.title}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover group-hover:scale-110 transition-transform duration-500"
+              className={`group-hover:scale-110 transition-transform duration-500 ${project.thumbnail.includes("itesoft") ? "object-contain p-4" : "object-cover"}`}
             />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
+            {!project.thumbnail.includes("itesoft") && (
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
+            )}
             {/* Category badge */}
             <div className="absolute top-3 left-3">
               <span className={`text-xs font-medium px-2 py-1 rounded-full border ${categoryColors[project.category]}`}>

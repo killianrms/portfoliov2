@@ -1,16 +1,36 @@
 "use client";
 
+import { useMemo } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 
+function getExperienceDuration(language: "fr" | "en"): string {
+  const start = new Date(2025, 8, 1); // September 2025
+  const now = new Date();
+  const months =
+    (now.getFullYear() - start.getFullYear()) * 12 +
+    (now.getMonth() - start.getMonth());
+
+  if (months < 1) return language === "fr" ? "< 1 mois" : "< 1 month";
+  if (months < 12) {
+    return `${months} ${language === "fr" ? "mois" : (months === 1 ? "month" : "months")}`;
+  }
+  const years = Math.floor(months / 12);
+  const rem = months % 12;
+  const yearStr = `${years} ${language === "fr" ? "an" + (years > 1 ? "s" : "") : "year" + (years > 1 ? "s" : "")}`;
+  if (rem === 0) return yearStr;
+  return `${yearStr} ${rem} ${language === "fr" ? "mois" : (rem === 1 ? "month" : "months")}`;
+}
+
 export default function About() {
   const { language, t } = useLanguage();
+  const experienceDuration = useMemo(() => getExperienceDuration(language), [language]);
 
   const stats = [
-    { value: "10+", label: { fr: "Projets", en: "Projects" } },
-    { value: "2+", label: { fr: "Ans d'exp.", en: "Years exp." } },
-    { value: "8+", label: { fr: "Langages", en: "Languages" } },
+    { value: "12", label: { fr: "Projets", en: "Projects" } },
+    { value: "Bac+3", label: { fr: "BUT Info", en: "CS Degree" } },
+    { value: experienceDuration, label: { fr: "Expérience", en: "Experience" } },
     { value: "21", label: { fr: "Ans", en: "Years old" } },
   ];
 
@@ -42,7 +62,7 @@ export default function About() {
             <div className="w-48 h-48 md:w-full md:h-64 rounded-2xl bg-surface border border-border overflow-hidden relative">
               <Image
                 src="/images/photo.webp"
-                alt="Killian Music"
+                alt="Killian"
                 fill
                 sizes="(max-width: 768px) 192px, 300px"
                 className="object-cover"
