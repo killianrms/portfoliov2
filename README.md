@@ -1,4 +1,4 @@
-# Portfolio - Killian Music
+# Portfolio - Killian Ramus
 
 Portfolio personnel construit avec Next.js 15, React et TypeScript.
 
