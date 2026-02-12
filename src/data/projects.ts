@@ -29,6 +29,7 @@ export interface Project {
   reflection: { fr: string; en: string };
   thumbnail: string;
   images: string[];
+  poster?: string;
   links?: { github?: string; live?: string; video?: string; report?: string; discord?: string; download?: string };
 }
 
@@ -1451,7 +1452,8 @@ The biggest challenge was transforming the "Fête des Clics" theme into a meanin
 Working as a team of 5 over 48h with Trello taught us to prioritize what truly matters in a game: core mechanics must work before tackling visual or audio polish.`
     },
     thumbnail: "/images/codegamejam2026.webp",
-    images: ["/images/codegamejam2025.webp"],
+    images: [],
+    poster: "/images/codegamejam2025.webp",
     links: { video: "https://youtu.be/LyqimFqbW04" }
   },
   {

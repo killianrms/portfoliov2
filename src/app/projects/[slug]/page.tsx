@@ -223,6 +223,27 @@ export default function ProjectPage() {
           </div>
         </motion.div>
 
+        {/* Poster */}
+        {project.poster && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-12"
+          >
+            <div className="relative w-full max-w-2xl mx-auto rounded-xl overflow-hidden border border-border">
+              <Image
+                src={project.poster}
+                alt={`${project.title} - Affiche`}
+                width={800}
+                height={600}
+                className="w-full h-auto object-contain"
+              />
+            </div>
+          </motion.div>
+        )}
+
         {/* Image Gallery */}
         {project.images.length > 0 && (
           <motion.section
