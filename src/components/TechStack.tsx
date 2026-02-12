@@ -34,10 +34,6 @@ const technologies: Tech[] = [
   { name: "MySQL", category: "Database" },
   { name: "Oracle", category: "Database" },
   { name: "MongoDB", category: "Database" },
-  { name: "SonarQube", category: "Tools" },
-  { name: "Jira", category: "Tools" },
-  { name: "Figma", category: "Tools" },
-  { name: "VS Code", category: "Tools" },
 ];
 
 export default function TechStack() {
