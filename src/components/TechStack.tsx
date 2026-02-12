@@ -36,6 +36,13 @@ const technologies: Tech[] = [
   { name: "MongoDB", category: "Database" },
 ];
 
+const categoryMeta: Record<string, { icon: string; color: string }> = {
+  Languages: { icon: "{ }", color: "text-blue-400" },
+  Frameworks: { icon: "< />", color: "text-green-400" },
+  DevOps: { icon: ">>_", color: "text-orange-400" },
+  Database: { icon: "DB", color: "text-purple-400" },
+};
+
 export default function TechStack() {
   const { t } = useLanguage();
 
@@ -59,39 +66,46 @@ export default function TechStack() {
           </p>
         </motion.div>
 
-        <div className="space-y-10">
-          {categories.map((category) => (
-            <motion.div
-              key={category}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5 }}
-            >
-              <h3 className="text-sm font-medium text-muted uppercase tracking-wider mb-4">
-                {category}
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                {technologies
-                  .filter((t) => t.category === category)
-                  .map((tech, i) => (
-                    <motion.div
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {categories.map((category, catIndex) => {
+            const meta = categoryMeta[category] || { icon: "*", color: "text-accent" };
+            const techs = technologies.filter((t) => t.category === category);
+            return (
+              <motion.div
+                key={category}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: catIndex * 0.1 }}
+                className="bg-surface border border-border rounded-xl p-6 hover:border-accent/30 transition-colors duration-300"
+              >
+                <div className="flex items-center gap-3 mb-5">
+                  <span className={`text-lg font-mono font-bold ${meta.color}`}>
+                    {meta.icon}
+                  </span>
+                  <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider">
+                    {category}
+                  </h3>
+                  <span className="text-xs text-muted ml-auto">{techs.length}</span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {techs.map((tech, i) => (
+                    <motion.span
                       key={tech.name}
                       initial={{ opacity: 0, scale: 0.9 }}
                       whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true, margin: "-100px" }}
-                      transition={{ duration: 0.3, delay: i * 0.05 }}
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      className="flex items-center gap-2 bg-surface border border-border rounded-lg px-4 py-2.5 hover:border-accent/50 transition-colors duration-300 cursor-default"
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: i * 0.03 }}
+                      whileHover={{ scale: 1.05 }}
+                      className="text-sm font-medium text-muted bg-background border border-border/50 rounded-md px-3 py-1.5 hover:text-foreground hover:border-accent/40 transition-all duration-200 cursor-default"
                     >
-                      <span className="text-sm font-medium text-foreground">
-                        {tech.name}
-                      </span>
-                    </motion.div>
+                      {tech.name}
+                    </motion.span>
                   ))}
-              </div>
-            </motion.div>
-          ))}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
