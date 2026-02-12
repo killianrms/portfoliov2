@@ -198,14 +198,11 @@ export default function ProjectPage() {
                 {t("project.technologies")}
               </p>
               <div className="flex flex-wrap gap-1 mt-1">
-                {project.technologies.slice(0, 3).map((tech) => (
+                {project.technologies.map((tech) => (
                   <span key={tech} className="text-xs bg-accent/10 text-accent px-1.5 py-0.5 rounded">
                     {tech}
                   </span>
                 ))}
-                {project.technologies.length > 3 && (
-                  <span className="text-xs text-muted">+{project.technologies.length - 3}</span>
-                )}
               </div>
             </div>
           </div>
