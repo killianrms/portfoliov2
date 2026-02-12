@@ -29,7 +29,7 @@ export interface Project {
   reflection: { fr: string; en: string };
   thumbnail: string;
   images: string[];
-  links?: { github?: string; live?: string; video?: string; report?: string; discord?: string };
+  links?: { github?: string; live?: string; video?: string; report?: string; discord?: string; download?: string };
 }
 
 export const projects: Project[] = [
@@ -1451,7 +1451,7 @@ The biggest challenge was transforming the "Fête des Clics" theme into a meanin
 Working as a team of 5 over 48h with Trello taught us to prioritize what truly matters in a game: core mechanics must work before tackling visual or audio polish.`
     },
     thumbnail: "/images/codegamejam2026.webp",
-    images: [],
+    images: ["/images/codegamejam2025.webp"],
     links: { video: "https://youtu.be/LyqimFqbW04" }
   },
   {
@@ -1620,7 +1620,7 @@ The specificity of this edition was the diversity of challenges: going from a Ch
     },
     thumbnail: "/images/ndi2025.webp",
     images: [],
-    links: { live: "https://killianrms.github.io/NDI2025/" }
+    links: { live: "https://killianrms.github.io/NDI2025/", download: "/images/LaNuitDeLInfo2025-Sujet.pdf" }
   },
   {
     slug: "application-sauvegarde",

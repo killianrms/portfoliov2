@@ -482,7 +482,7 @@ export default function ProjectPage() {
         </div>
 
         {/* Links */}
-        {(project.links?.github || project.links?.live || project.links?.video) && (
+        {(project.links?.github || project.links?.live || project.links?.video || project.links?.download) && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -553,6 +553,21 @@ export default function ProjectPage() {
                   <polyline points="10 9 9 9 8 9"/>
                 </svg>
                 {language === "fr" ? "Rapport technique" : "Technical report"}
+              </a>
+            )}
+            {project.links.download && (
+              <a
+                href={project.links.download}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700 transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                {language === "fr" ? "Sujet / Énoncé" : "Subject / Brief"}
               </a>
             )}
           </motion.div>
