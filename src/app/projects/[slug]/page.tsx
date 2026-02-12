@@ -7,6 +7,8 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { projects } from "@/data/projects";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 export default function ProjectPage() {
   const params = useParams();
@@ -90,7 +92,7 @@ export default function ProjectPage() {
         }
         const content = line.replace(/^[\s]*-\s/, "");
         listItems.push(
-          <li key={i} className="text-sm text-muted leading-relaxed flex gap-2">
+          <li key={i} className="text-sm text-foreground/70 leading-relaxed flex gap-2">
             <span className="text-accent mt-1.5 shrink-0">&#8226;</span>
             <span>{parseInline(content)}</span>
           </li>
@@ -107,7 +109,7 @@ export default function ProjectPage() {
         const match = line.match(/^(\d+)\.\s(.+)$/);
         if (match) {
           listItems.push(
-            <li key={i} className="text-sm text-muted leading-relaxed flex gap-2">
+            <li key={i} className="text-sm text-foreground/70 leading-relaxed flex gap-2">
               <span className="text-accent font-semibold shrink-0">{match[1]}.</span>
               <span>{parseInline(match[2])}</span>
             </li>
@@ -126,7 +128,7 @@ export default function ProjectPage() {
       // Regular paragraph
       flushList();
       elements.push(
-        <p key={i} className="text-sm text-muted leading-relaxed mb-2">
+        <p key={i} className="text-sm text-foreground/70 leading-relaxed mb-2">
           {parseInline(line)}
         </p>
       );
@@ -417,7 +419,7 @@ export default function ProjectPage() {
                     <h3 className="text-sm font-semibold text-foreground mb-2">
                       {skill.name[language]}
                     </h3>
-                    <p className="text-xs text-muted leading-relaxed">
+                    <p className="text-xs text-foreground/60 leading-relaxed">
                       {skill.description[language]}
                     </p>
                   </div>
@@ -443,8 +445,8 @@ export default function ProjectPage() {
                   <h3 className="text-sm font-semibold text-foreground mb-3">
                     {highlight.title[language]}
                   </h3>
-                  <div className="bg-[#1e1e2e] rounded-xl overflow-hidden mb-4">
-                    <div className="flex items-center justify-between px-4 py-2 bg-[#181825] border-b border-[#313244]">
+                  <div className="rounded-xl overflow-hidden mb-4 border border-[#313244]">
+                    <div className="flex items-center justify-between px-4 py-2 bg-[#1e1e1e] border-b border-[#313244]">
                       <span className="text-xs text-[#a6adc8]">{highlight.language}</span>
                       <div className="flex gap-1.5">
                         <div className="w-3 h-3 rounded-full bg-[#f38ba8]" />
@@ -452,12 +454,18 @@ export default function ProjectPage() {
                         <div className="w-3 h-3 rounded-full bg-[#f9e2af]" />
                       </div>
                     </div>
-                    <pre className="p-4 overflow-x-auto text-xs leading-relaxed">
-                      <code className="text-[#cdd6f4]">{highlight.code}</code>
-                    </pre>
+                    <SyntaxHighlighter
+                      language={highlight.language === "csharp" ? "csharp" : highlight.language}
+                      style={vscDarkPlus}
+                      customStyle={{ margin: 0, padding: "1rem", fontSize: "0.75rem", lineHeight: "1.6", background: "#1e1e1e" }}
+                      showLineNumbers
+                      lineNumberStyle={{ color: "#555", fontSize: "0.65rem", minWidth: "2em" }}
+                    >
+                      {highlight.code}
+                    </SyntaxHighlighter>
                   </div>
                   <div className="bg-accent/5 border-l-2 border-accent rounded-r-lg p-4">
-                    <p className="text-xs text-muted leading-relaxed italic">
+                    <p className="text-xs text-foreground/60 leading-relaxed italic">
                       {highlight.explanation[language]}
                     </p>
                   </div>
