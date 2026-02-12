@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Hero() {
@@ -18,7 +18,7 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col h-full">
         {/* Top section - Name */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -28,7 +28,7 @@ export default function Hero() {
             <span className="block">Killian</span>
             <span className="block gradient-text">RAMUS</span>
           </h1>
-        </motion.div>
+        </m.div>
 
         {/* Center - spacer */}
         <div className="flex-1" />
@@ -36,7 +36,7 @@ export default function Hero() {
         {/* Bottom section */}
         <div className="pb-16 md:pb-16 flex flex-col md:flex-row items-start md:items-end justify-between gap-8">
           {/* Tagline */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
@@ -48,10 +48,10 @@ export default function Hero() {
             <p className="text-muted mt-2 text-sm md:text-base">
               {t("hero.subtitle")}
             </p>
-          </motion.div>
+          </m.div>
 
           {/* Social Links */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
@@ -67,25 +67,25 @@ export default function Hero() {
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
               CV
             </a>
-          </motion.div>
+          </m.div>
         </div>
 
         {/* Scroll indicator - hidden on mobile to avoid overlapping CV button */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
           className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
         >
           <span className="text-xs text-muted">{t("hero.scroll")}</span>
-          <motion.div
+          <m.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
             className="w-5 h-8 border-2 border-muted rounded-full flex justify-center pt-1"
           >
             <div className="w-1 h-2 bg-muted rounded-full" />
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </div>
     </section>
   );

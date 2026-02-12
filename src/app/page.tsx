@@ -1,8 +1,10 @@
+import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
-import ProjectsSection from "@/components/ProjectsSection";
-import { Suspense, lazy } from "react";
-import LazyComponents from "@/components/LazyComponents";
+
+// Below-fold sections: defer loading to reduce initial JS bundle
+const About = dynamic(() => import("@/components/About"));
+const ProjectsSection = dynamic(() => import("@/components/ProjectsSection"));
+const LazyComponents = dynamic(() => import("@/components/LazyComponents"));
 
 export default function Home() {
   return (
