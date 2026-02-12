@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -30,69 +30,110 @@ export default function ProjectPage() {
     );
   }
 
+  // Parse inline bold: **text** → <strong>
+  const parseInline = (text: string): ReactNode[] => {
+    const parts: ReactNode[] = [];
+    const regex = /\*\*(.+?)\*\*/g;
+    let lastIndex = 0;
+    let match;
+    let key = 0;
+    while ((match = regex.exec(text)) !== null) {
+      if (match.index > lastIndex) {
+        parts.push(text.slice(lastIndex, match.index));
+      }
+      parts.push(
+        <strong key={key++} className="text-foreground font-semibold">
+          {match[1]}
+        </strong>
+      );
+      lastIndex = regex.lastIndex;
+    }
+    if (lastIndex < text.length) {
+      parts.push(text.slice(lastIndex));
+    }
+    return parts;
+  };
+
   const renderMarkdown = (text: string) => {
-    return text.split("\n").map((line, i) => {
-      if (line.startsWith("- **")) {
-        const match = line.match(/^- \*\*(.+?)\*\*\s*[:：]\s*(.+)$/);
-        if (match) {
-          return (
-            <li key={i} className="mb-2">
-              <strong className="text-foreground">{match[1]}</strong>
-              <span className="text-muted"> : {match[2]}</span>
-            </li>
+    const lines = text.split("\n");
+    const elements: ReactNode[] = [];
+    let listItems: ReactNode[] = [];
+    let listType: "ul" | "ol" | null = null;
+    let listKey = 0;
+
+    const flushList = () => {
+      if (listItems.length > 0 && listType) {
+        if (listType === "ul") {
+          elements.push(
+            <ul key={`list-${listKey++}`} className="space-y-2 my-3">
+              {listItems}
+            </ul>
+          );
+        } else {
+          elements.push(
+            <ol key={`list-${listKey++}`} className="space-y-2 my-3 list-decimal list-inside">
+              {listItems}
+            </ol>
           );
         }
-        const matchSimple = line.match(/^- \*\*(.+?)\*\*(.*)$/);
-        if (matchSimple) {
-          return (
-            <li key={i} className="mb-2">
-              <strong className="text-foreground">{matchSimple[1]}</strong>
-              <span className="text-muted">{matchSimple[2]}</span>
-            </li>
-          );
-        }
+        listItems = [];
+        listType = null;
       }
-      if (line.startsWith("- ")) {
-        return (
-          <li key={i} className="mb-1 text-muted">
-            {line.substring(2)}
+    };
+
+    lines.forEach((line, i) => {
+      // Bullet list items: - **bold** : text  OR  - text
+      if (line.startsWith("- ") || line.startsWith("  - ")) {
+        if (listType !== "ul") {
+          flushList();
+          listType = "ul";
+        }
+        const content = line.replace(/^[\s]*-\s/, "");
+        listItems.push(
+          <li key={i} className="text-sm text-muted leading-relaxed flex gap-2">
+            <span className="text-accent mt-1.5 shrink-0">&#8226;</span>
+            <span>{parseInline(content)}</span>
           </li>
         );
+        return;
       }
-      if (/^\d+\.\s\*\*/.test(line)) {
-        const match = line.match(/^\d+\.\s\*\*(.+?)\*\*\s*[:：]\s*(.+)$/);
-        if (match) {
-          return (
-            <li key={i} className="mb-3 list-decimal ml-4">
-              <strong className="text-foreground">{match[1]}</strong>
-              <span className="text-muted"> : {match[2]}</span>
-            </li>
-          );
-        }
-        const matchSimple = line.match(/^\d+\.\s\*\*(.+?)\*\*(.*)$/);
-        if (matchSimple) {
-          return (
-            <li key={i} className="mb-3 list-decimal ml-4">
-              <strong className="text-foreground">{matchSimple[1]}</strong>
-              <span className="text-muted">{matchSimple[2]}</span>
-            </li>
-          );
-        }
-      }
+
+      // Numbered list items: 1. **bold** : text  OR  1. text
       if (/^\d+\.\s/.test(line)) {
-        return (
-          <li key={i} className="mb-2 list-decimal ml-4 text-muted">
-            {line.replace(/^\d+\.\s/, "")}
-          </li>
-        );
+        if (listType !== "ol") {
+          flushList();
+          listType = "ol";
+        }
+        const match = line.match(/^(\d+)\.\s(.+)$/);
+        if (match) {
+          listItems.push(
+            <li key={i} className="text-sm text-muted leading-relaxed flex gap-2">
+              <span className="text-accent font-semibold shrink-0">{match[1]}.</span>
+              <span>{parseInline(match[2])}</span>
+            </li>
+          );
+        }
+        return;
       }
-      if (line.trim() === "") return <br key={i} />;
-      return (
-        <p key={i} className="text-muted leading-relaxed mb-2">
-          {line}
+
+      // Empty line
+      if (line.trim() === "") {
+        flushList();
+        elements.push(<div key={i} className="h-2" />);
+        return;
+      }
+
+      // Regular paragraph
+      flushList();
+      elements.push(
+        <p key={i} className="text-sm text-muted leading-relaxed mb-2">
+          {parseInline(line)}
         </p>
       );
     });
+
+    flushList();
+    return elements;
   };
 
   return (
@@ -191,7 +232,7 @@ export default function ProjectPage() {
             transition={{ duration: 0.5 }}
             className="mb-12"
           >
-            <h2 className="text-2xl font-serif font-bold mb-6 flex items-center gap-3">
+            <h2 className="text-xl font-serif font-bold mb-6 flex items-center gap-3">
               <span className="w-8 h-0.5 bg-accent" />
               {language === "fr" ? "Captures d'écran" : "Screenshots"}
             </h2>
@@ -271,171 +312,174 @@ export default function ProjectPage() {
           )}
         </AnimatePresence>
 
-        {/* Context */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.4 }}
-          className="mb-12"
-        >
-          <h2 className="text-2xl font-serif font-bold mb-4 flex items-center gap-3">
-            <span className="w-8 h-0.5 bg-accent" />
-            {t("project.context")}
-          </h2>
-          <div className="prose-custom">{renderMarkdown(project.context[language])}</div>
-        </motion.section>
-
-        {/* Objectives */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.4 }}
-          className="mb-12"
-        >
-          <h2 className="text-2xl font-serif font-bold mb-4 flex items-center gap-3">
-            <span className="w-8 h-0.5 bg-accent" />
-            {t("project.objectives")}
-          </h2>
-          <div className="prose-custom">{renderMarkdown(project.objectives[language])}</div>
-        </motion.section>
-
-        {/* Technical Approach */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.4 }}
-          className="mb-12"
-        >
-          <h2 className="text-2xl font-serif font-bold mb-4 flex items-center gap-3">
-            <span className="w-8 h-0.5 bg-accent" />
-            {t("project.approach")}
-          </h2>
-          <div className="prose-custom">{renderMarkdown(project.approach[language])}</div>
-        </motion.section>
-
-        {/* Architecture */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.4 }}
-          className="mb-12"
-        >
-          <h2 className="text-2xl font-serif font-bold mb-4 flex items-center gap-3">
-            <span className="w-8 h-0.5 bg-accent" />
-            {t("project.architecture")}
-          </h2>
-          <div className="bg-surface border border-border rounded-xl p-6">
-            {renderMarkdown(project.architecture[language])}
-          </div>
-        </motion.section>
-
-        {/* Skills Developed */}
-        {project.skills.length > 0 && (
+        {/* Content sections in cards */}
+        <div className="space-y-8">
+          {/* Context */}
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-12"
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.4 }}
           >
-            <h2 className="text-2xl font-serif font-bold mb-6 flex items-center gap-3">
-              <span className="w-8 h-0.5 bg-accent" />
-              {t("project.skills")}
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {project.skills.map((skill, i) => (
-                <div
-                  key={i}
-                  className="bg-surface border border-border rounded-xl p-5 hover:border-accent/30 transition-colors duration-300"
-                >
-                  <h3 className="font-semibold text-foreground mb-2">
-                    {skill.name[language]}
-                  </h3>
-                  <p className="text-sm text-muted leading-relaxed">
-                    {skill.description[language]}
-                  </p>
-                </div>
-              ))}
+            <div className="bg-surface border border-border rounded-xl p-6 md:p-8">
+              <h2 className="text-lg font-serif font-bold mb-4 flex items-center gap-3 text-foreground">
+                <span className="w-6 h-0.5 bg-accent" />
+                {t("project.context")}
+              </h2>
+              <div>{renderMarkdown(project.context[language])}</div>
             </div>
           </motion.section>
-        )}
 
-        {/* Code Highlights */}
-        {project.codeHighlights.length > 0 && (
+          {/* Objectives */}
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-12"
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.4 }}
           >
-            <h2 className="text-2xl font-serif font-bold mb-6 flex items-center gap-3">
-              <span className="w-8 h-0.5 bg-accent" />
-              {t("project.codeHighlights")}
-            </h2>
-            {project.codeHighlights.map((highlight, i) => (
-              <div key={i} className="mb-8">
-                <h3 className="text-lg font-semibold text-foreground mb-3">
-                  {highlight.title[language]}
-                </h3>
-                <div className="bg-[#1e1e2e] rounded-xl overflow-hidden mb-4">
-                  <div className="flex items-center justify-between px-4 py-2 bg-[#181825] border-b border-[#313244]">
-                    <span className="text-xs text-[#a6adc8]">{highlight.language}</span>
-                    <div className="flex gap-1.5">
-                      <div className="w-3 h-3 rounded-full bg-[#f38ba8]" />
-                      <div className="w-3 h-3 rounded-full bg-[#a6e3a1]" />
-                      <div className="w-3 h-3 rounded-full bg-[#f9e2af]" />
-                    </div>
-                  </div>
-                  <pre className="p-4 overflow-x-auto text-sm leading-relaxed">
-                    <code className="text-[#cdd6f4]">{highlight.code}</code>
-                  </pre>
-                </div>
-                <div className="bg-accent/5 border-l-2 border-accent rounded-r-lg p-4">
-                  <p className="text-sm text-muted leading-relaxed italic">
-                    {highlight.explanation[language]}
-                  </p>
-                </div>
-              </div>
-            ))}
+            <div className="bg-surface border border-border rounded-xl p-6 md:p-8">
+              <h2 className="text-lg font-serif font-bold mb-4 flex items-center gap-3 text-foreground">
+                <span className="w-6 h-0.5 bg-accent" />
+                {t("project.objectives")}
+              </h2>
+              <div>{renderMarkdown(project.objectives[language])}</div>
+            </div>
           </motion.section>
-        )}
 
-        {/* Results */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.4 }}
-          className="mb-12"
-        >
-          <h2 className="text-2xl font-serif font-bold mb-4 flex items-center gap-3">
-            <span className="w-8 h-0.5 bg-accent" />
-            {t("project.results")}
-          </h2>
-          <div className="prose-custom">{renderMarkdown(project.results[language])}</div>
-        </motion.section>
+          {/* Technical Approach */}
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.4 }}
+          >
+            <div className="bg-surface border border-border rounded-xl p-6 md:p-8">
+              <h2 className="text-lg font-serif font-bold mb-4 flex items-center gap-3 text-foreground">
+                <span className="w-6 h-0.5 bg-accent" />
+                {t("project.approach")}
+              </h2>
+              <div>{renderMarkdown(project.approach[language])}</div>
+            </div>
+          </motion.section>
 
-        {/* Reflection */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.4 }}
-          className="mb-12"
-        >
-          <h2 className="text-2xl font-serif font-bold mb-4 flex items-center gap-3">
-            <span className="w-8 h-0.5 bg-accent" />
-            {t("project.reflection")}
-          </h2>
-          <div className="bg-surface border border-border rounded-xl p-6">
-            {renderMarkdown(project.reflection[language])}
-          </div>
-        </motion.section>
+          {/* Architecture */}
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.4 }}
+          >
+            <div className="bg-surface border border-border rounded-xl p-6 md:p-8">
+              <h2 className="text-lg font-serif font-bold mb-4 flex items-center gap-3 text-foreground">
+                <span className="w-6 h-0.5 bg-accent" />
+                {t("project.architecture")}
+              </h2>
+              <div>{renderMarkdown(project.architecture[language])}</div>
+            </div>
+          </motion.section>
+
+          {/* Skills Developed */}
+          {project.skills.length > 0 && (
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.4 }}
+            >
+              <h2 className="text-lg font-serif font-bold mb-4 flex items-center gap-3 text-foreground">
+                <span className="w-6 h-0.5 bg-accent" />
+                {t("project.skills")}
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {project.skills.map((skill, i) => (
+                  <div
+                    key={i}
+                    className="bg-surface border border-border rounded-xl p-5 hover:border-accent/30 transition-colors duration-300"
+                  >
+                    <h3 className="text-sm font-semibold text-foreground mb-2">
+                      {skill.name[language]}
+                    </h3>
+                    <p className="text-xs text-muted leading-relaxed">
+                      {skill.description[language]}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </motion.section>
+          )}
+
+          {/* Code Highlights */}
+          {project.codeHighlights.length > 0 && (
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.4 }}
+            >
+              <h2 className="text-lg font-serif font-bold mb-6 flex items-center gap-3 text-foreground">
+                <span className="w-6 h-0.5 bg-accent" />
+                {t("project.codeHighlights")}
+              </h2>
+              {project.codeHighlights.map((highlight, i) => (
+                <div key={i} className="mb-8">
+                  <h3 className="text-sm font-semibold text-foreground mb-3">
+                    {highlight.title[language]}
+                  </h3>
+                  <div className="bg-[#1e1e2e] rounded-xl overflow-hidden mb-4">
+                    <div className="flex items-center justify-between px-4 py-2 bg-[#181825] border-b border-[#313244]">
+                      <span className="text-xs text-[#a6adc8]">{highlight.language}</span>
+                      <div className="flex gap-1.5">
+                        <div className="w-3 h-3 rounded-full bg-[#f38ba8]" />
+                        <div className="w-3 h-3 rounded-full bg-[#a6e3a1]" />
+                        <div className="w-3 h-3 rounded-full bg-[#f9e2af]" />
+                      </div>
+                    </div>
+                    <pre className="p-4 overflow-x-auto text-xs leading-relaxed">
+                      <code className="text-[#cdd6f4]">{highlight.code}</code>
+                    </pre>
+                  </div>
+                  <div className="bg-accent/5 border-l-2 border-accent rounded-r-lg p-4">
+                    <p className="text-xs text-muted leading-relaxed italic">
+                      {highlight.explanation[language]}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </motion.section>
+          )}
+
+          {/* Results */}
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.4 }}
+          >
+            <div className="bg-surface border border-border rounded-xl p-6 md:p-8">
+              <h2 className="text-lg font-serif font-bold mb-4 flex items-center gap-3 text-foreground">
+                <span className="w-6 h-0.5 bg-accent" />
+                {t("project.results")}
+              </h2>
+              <div>{renderMarkdown(project.results[language])}</div>
+            </div>
+          </motion.section>
+
+          {/* Reflection */}
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.4 }}
+          >
+            <div className="bg-surface border border-border rounded-xl p-6 md:p-8 border-l-2 border-l-accent">
+              <h2 className="text-lg font-serif font-bold mb-4 flex items-center gap-3 text-foreground">
+                <span className="w-6 h-0.5 bg-accent" />
+                {t("project.reflection")}
+              </h2>
+              <div>{renderMarkdown(project.reflection[language])}</div>
+            </div>
+          </motion.section>
+        </div>
 
         {/* Links */}
         {(project.links?.github || project.links?.live || project.links?.video) && (
@@ -444,7 +488,7 @@ export default function ProjectPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="flex flex-wrap gap-3 pt-4"
+            className="flex flex-wrap gap-3 pt-8"
           >
             {project.links.github && (
               <a
