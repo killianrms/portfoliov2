@@ -34,10 +34,6 @@ const technologies: Tech[] = [
   { name: "MySQL", category: "Database" },
   { name: "Oracle", category: "Database" },
   { name: "MongoDB", category: "Database" },
-  { name: "SonarQube", category: "Tools" },
-  { name: "Jira", category: "Tools" },
-  { name: "Figma", category: "Tools" },
-  { name: "VS Code", category: "Tools" },
 ];
 
 export default function TechStack() {
@@ -46,7 +42,7 @@ export default function TechStack() {
   const categories = [...new Set(technologies.map((t) => t.category))];
 
   return (
-    <section className="py-24 md:py-32 px-6 md:px-12 bg-surface/50">
+    <section id="skills" className="py-24 md:py-32 px-6 md:px-12 bg-surface/50">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

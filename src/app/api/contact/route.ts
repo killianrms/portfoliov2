@@ -20,7 +20,7 @@ export async function POST(req: Request) {
 
     await resend.emails.send({
       from: "Portfolio <onboarding@resend.dev>",
-      to: "killian.ramus@outlook.fr",
+      to: "killian.ramus@gmail.com",
       replyTo: email,
       subject: `[Portfolio] Message de ${name}`,
       html: `
