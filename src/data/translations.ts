@@ -4,6 +4,7 @@ const fr = {
   "nav.studies": "Parcours",
   "nav.about": "À propos",
   "nav.contact": "Contact",
+  "nav.skills": "Compétences",
   "nav.experience": "Expérience",
 
   // Hero
@@ -81,6 +82,7 @@ const en: Record<string, string> = {
   "nav.studies": "Journey",
   "nav.about": "About",
   "nav.contact": "Contact",
+  "nav.skills": "Skills",
   "nav.experience": "Experience",
 
   // Hero
