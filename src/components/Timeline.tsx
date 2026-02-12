@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { m, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 
 interface TimelineItem {
@@ -129,7 +129,7 @@ export default function Timeline() {
     <section id="timeline" className="py-24 md:py-32 px-6 md:px-12">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <m.div
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -142,10 +142,10 @@ export default function Timeline() {
           <p className="mt-4 text-muted max-w-2xl mx-auto">
             {t("timeline.subtitle")}
           </p>
-        </m.div>
+        </motion.div>
 
         {/* Filter tabs */}
-        <m.div
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -168,7 +168,7 @@ export default function Timeline() {
               {f.label}
             </button>
           ))}
-        </m.div>
+        </motion.div>
 
         {/* Timeline */}
         <div className="relative">
@@ -176,7 +176,7 @@ export default function Timeline() {
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-border -translate-x-1/2" />
 
           <AnimatePresence mode="wait">
-            <m.div
+            <motion.div
               key={filter}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -184,7 +184,7 @@ export default function Timeline() {
               transition={{ duration: 0.3 }}
             >
               {filteredData.map((item, i) => (
-                <m.div
+                <motion.div
                   key={`${item.type}-${item.year}`}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -216,9 +216,9 @@ export default function Timeline() {
                       {item.description[language]}
                     </p>
                   </div>
-                </m.div>
+                </motion.div>
               ))}
-            </m.div>
+            </motion.div>
           </AnimatePresence>
         </div>
       </div>

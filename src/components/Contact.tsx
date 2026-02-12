@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { m } from "framer-motion";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Contact() {
@@ -32,7 +32,7 @@ export default function Contact() {
   return (
     <section id="contact" className="py-24 md:py-32 px-6 md:px-12 bg-surface/50">
       <div className="max-w-2xl mx-auto">
-        <m.div
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -45,9 +45,9 @@ export default function Contact() {
           <p className="mt-4 text-muted">
             {t("contact.subtitle")}
           </p>
-        </m.div>
+        </motion.div>
 
-        <m.form
+        <motion.form
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -112,28 +112,28 @@ export default function Contact() {
             </button>
 
             {status === "success" && (
-              <m.span
+              <motion.span
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 className="text-green-500 text-sm"
               >
                 {t("contact.success")}
-              </m.span>
+              </motion.span>
             )}
             {status === "error" && (
-              <m.span
+              <motion.span
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 className="text-red-500 text-sm"
               >
                 {t("contact.error")}
-              </m.span>
+              </motion.span>
             )}
           </div>
-        </m.form>
+        </motion.form>
 
         {/* Download CV */}
-        <m.div
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -155,7 +155,7 @@ export default function Contact() {
             </svg>
             {t("contact.downloadCV")}
           </a>
-        </m.div>
+        </motion.div>
       </div>
     </section>
   );

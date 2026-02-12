@@ -1,6 +1,6 @@
 "use client";
 
-import { m } from "framer-motion";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 
 interface Tech {
@@ -51,7 +51,7 @@ export default function TechStack() {
   return (
     <section id="skills" className="py-24 md:py-32 px-6 md:px-12 bg-surface/50">
       <div className="max-w-5xl mx-auto">
-        <m.div
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -64,14 +64,14 @@ export default function TechStack() {
           <p className="mt-4 text-muted max-w-2xl mx-auto">
             {t("tech.subtitle")}
           </p>
-        </m.div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {categories.map((category, catIndex) => {
             const meta = categoryMeta[category] || { icon: "*", color: "text-accent" };
             const techs = technologies.filter((t) => t.category === category);
             return (
-              <m.div
+              <motion.div
                 key={category}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -90,7 +90,7 @@ export default function TechStack() {
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {techs.map((tech, i) => (
-                    <m.span
+                    <motion.span
                       key={tech.name}
                       initial={{ opacity: 0, scale: 0.9 }}
                       whileInView={{ opacity: 1, scale: 1 }}
@@ -100,10 +100,10 @@ export default function TechStack() {
                       className="text-sm font-medium text-muted bg-background border border-border/50 rounded-md px-3 py-1.5 hover:text-foreground hover:border-accent/40 transition-all duration-200 cursor-default"
                     >
                       {tech.name}
-                    </m.span>
+                    </motion.span>
                   ))}
                 </div>
-              </m.div>
+              </motion.div>
             );
           })}
         </div>

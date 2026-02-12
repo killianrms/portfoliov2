@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { m, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
 
@@ -81,15 +81,15 @@ export default function Navbar() {
           aria-label="Toggle menu"
         >
           <div className="flex flex-col gap-1.5">
-            <m.span
+            <motion.span
               animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
               className="block h-0.5 w-6 bg-foreground"
             />
-            <m.span
+            <motion.span
               animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
               className="block h-0.5 w-6 bg-foreground"
             />
-            <m.span
+            <motion.span
               animate={isOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
               className="block h-0.5 w-6 bg-foreground"
             />
@@ -100,7 +100,7 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <m.div
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -148,7 +148,7 @@ export default function Navbar() {
                 )}
               </button>
             </div>
-          </m.div>
+          </motion.div>
         )}
       </AnimatePresence>
     </nav>
