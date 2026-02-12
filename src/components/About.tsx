@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { m } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { getProjectCount } from "@/data/projects";
@@ -38,7 +38,7 @@ export default function About() {
   return (
     <section id="about" className="py-24 md:py-32 px-6 md:px-12">
       <div className="max-w-4xl mx-auto">
-        <m.div
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -49,9 +49,9 @@ export default function About() {
             {t("about.title")}
           </h2>
           <p className="mt-2 text-accent font-medium">{t("about.subtitle")}</p>
-        </m.div>
+        </motion.div>
 
-        <m.div
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -83,7 +83,7 @@ export default function About() {
             {/* Quick stats */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6">
               {stats.map((stat, i) => (
-                <m.div
+                <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -97,11 +97,11 @@ export default function About() {
                   <div className="text-xs text-muted mt-1">
                     {stat.label[language]}
                   </div>
-                </m.div>
+                </motion.div>
               ))}
             </div>
           </div>
-        </m.div>
+        </motion.div>
       </div>
     </section>
   );
