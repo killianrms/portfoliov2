@@ -51,7 +51,7 @@ export default function TechStack() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
@@ -69,7 +69,7 @@ export default function TechStack() {
               key={category}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5 }}
             >
               <h3 className="text-sm font-medium text-muted uppercase tracking-wider mb-4">
@@ -83,7 +83,7 @@ export default function TechStack() {
                       key={tech.name}
                       initial={{ opacity: 0, scale: 0.9 }}
                       whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
+                      viewport={{ once: true, margin: "-100px" }}
                       transition={{ duration: 0.3, delay: i * 0.05 }}
                       whileHover={{ scale: 1.05, y: -2 }}
                       className="flex items-center gap-2 bg-surface border border-border rounded-lg px-4 py-2.5 hover:border-accent/50 transition-colors duration-300 cursor-default"

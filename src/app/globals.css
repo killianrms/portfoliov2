@@ -149,3 +149,27 @@ code {
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--border-color), transparent);
 }
+
+/* Mobile performance: reduce animations */
+@media (max-width: 768px) {
+  .stagger-children > * {
+    opacity: 1;
+    animation: none;
+  }
+
+  .grid-bg {
+    display: none;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .stagger-children > * {
+    opacity: 1;
+    animation: none;
+  }
+}
