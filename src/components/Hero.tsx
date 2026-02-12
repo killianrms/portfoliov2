@@ -1,40 +1,15 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { gsap } from "gsap";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Hero() {
   const { t } = useLanguage();
-  const gridRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const grid = gridRef.current;
-    if (!grid || window.matchMedia("(max-width: 768px)").matches) return;
-
-    const onMouseMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 20;
-      const y = (e.clientY / window.innerHeight - 0.5) * 20;
-      gsap.to(grid, {
-        x,
-        y,
-        duration: 1,
-        ease: "power2.out",
-      });
-    };
-
-    window.addEventListener("mousemove", onMouseMove);
-    return () => window.removeEventListener("mousemove", onMouseMove);
-  }, []);
 
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       {/* Animated grid background */}
-      <div
-        ref={gridRef}
-        className="grid-bg absolute inset-[-50px] pointer-events-none"
-      />
+      <div className="grid-bg absolute inset-[-50px] pointer-events-none" />
 
       {/* Gradient orbs */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-accent/10 blur-[120px] pointer-events-none" />
@@ -59,7 +34,7 @@ export default function Hero() {
         <div className="flex-1" />
 
         {/* Bottom section */}
-        <div className="pb-12 md:pb-16 flex flex-col md:flex-row items-start md:items-end justify-between gap-8">
+        <div className="pb-16 md:pb-16 flex flex-col md:flex-row items-start md:items-end justify-between gap-8">
           {/* Tagline */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -95,12 +70,12 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
+        {/* Scroll indicator - hidden on mobile to avoid overlapping CV button */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
         >
           <span className="text-xs text-muted">{t("hero.scroll")}</span>
           <motion.div

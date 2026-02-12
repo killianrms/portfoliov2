@@ -1,9 +1,8 @@
 import Hero from "@/components/Hero";
-import ProjectsSection from "@/components/ProjectsSection";
-import Timeline from "@/components/Timeline";
-import TechStack from "@/components/TechStack";
 import About from "@/components/About";
-import Contact from "@/components/Contact";
+import ProjectsSection from "@/components/ProjectsSection";
+import { Suspense, lazy } from "react";
+import LazyComponents from "@/components/LazyComponents";
 
 export default function Home() {
   return (
@@ -14,11 +13,7 @@ export default function Home() {
       <div className="section-separator" />
       <ProjectsSection />
       <div className="section-separator" />
-      <Timeline />
-      <div className="section-separator" />
-      <TechStack />
-      <div className="section-separator" />
-      <Contact />
+      <LazyComponents />
     </>
   );
 }
