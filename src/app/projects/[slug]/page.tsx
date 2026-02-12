@@ -275,8 +275,8 @@ export default function ProjectPage() {
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.4 }}
           className="mb-12"
         >
           <h2 className="text-2xl font-serif font-bold mb-4 flex items-center gap-3">
@@ -290,8 +290,8 @@ export default function ProjectPage() {
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.4 }}
           className="mb-12"
         >
           <h2 className="text-2xl font-serif font-bold mb-4 flex items-center gap-3">
@@ -305,8 +305,8 @@ export default function ProjectPage() {
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.4 }}
           className="mb-12"
         >
           <h2 className="text-2xl font-serif font-bold mb-4 flex items-center gap-3">
@@ -320,8 +320,8 @@ export default function ProjectPage() {
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.4 }}
           className="mb-12"
         >
           <h2 className="text-2xl font-serif font-bold mb-4 flex items-center gap-3">
@@ -409,8 +409,8 @@ export default function ProjectPage() {
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.4 }}
           className="mb-12"
         >
           <h2 className="text-2xl font-serif font-bold mb-4 flex items-center gap-3">
@@ -424,8 +424,8 @@ export default function ProjectPage() {
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.4 }}
           className="mb-12"
         >
           <h2 className="text-2xl font-serif font-bold mb-4 flex items-center gap-3">
@@ -444,7 +444,7 @@ export default function ProjectPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="flex gap-4 pt-4"
+            className="flex flex-wrap gap-3 pt-4"
           >
             {project.links.github && (
               <a
