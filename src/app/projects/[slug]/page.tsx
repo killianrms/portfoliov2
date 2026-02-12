@@ -4,7 +4,7 @@ import { useState, ReactNode } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { projects } from "@/data/projects";
 import dynamic from "next/dynamic";
@@ -147,7 +147,7 @@ export default function ProjectPage() {
     <div className="min-h-screen pt-24 pb-16 px-6 md:px-12">
       <div className="max-w-4xl mx-auto">
         {/* Back button */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.4 }}
@@ -162,10 +162,10 @@ export default function ProjectPage() {
             </svg>
             {t("project.back")}
           </Link>
-        </motion.div>
+        </m.div>
 
         {/* Header */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -225,11 +225,11 @@ export default function ProjectPage() {
               </span>
             ))}
           </div>
-        </motion.div>
+        </m.div>
 
         {/* Poster */}
         {project.poster && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -245,12 +245,12 @@ export default function ProjectPage() {
                 className="w-full h-auto object-contain"
               />
             </div>
-          </motion.div>
+          </m.div>
         )}
 
         {/* Image Gallery */}
         {project.images.length > 0 && (
-          <motion.section
+          <m.section
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -263,7 +263,7 @@ export default function ProjectPage() {
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {project.images.map((img, i) => (
-                <motion.div
+                <m.div
                   key={i}
                   whileHover={{ scale: 1.02 }}
                   className="relative aspect-video rounded-lg overflow-hidden border border-border cursor-pointer"
@@ -276,16 +276,16 @@ export default function ProjectPage() {
                     sizes="(max-width: 768px) 50vw, 33vw"
                     className="object-cover"
                   />
-                </motion.div>
+                </m.div>
               ))}
             </div>
-          </motion.section>
+          </m.section>
         )}
 
         {/* Lightbox */}
         <AnimatePresence>
           {selectedImage !== null && project.images.length > 0 && (
-            <motion.div
+            <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -333,14 +333,14 @@ export default function ProjectPage() {
               <div className="absolute bottom-4 text-white/60 text-sm">
                 {selectedImage + 1} / {project.images.length}
               </div>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
 
         {/* Content sections in cards */}
         <div className="space-y-8">
           {/* Context */}
-          <motion.section
+          <m.section
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -353,10 +353,10 @@ export default function ProjectPage() {
               </h2>
               <div>{renderMarkdown(project.context[language])}</div>
             </div>
-          </motion.section>
+          </m.section>
 
           {/* Objectives */}
-          <motion.section
+          <m.section
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -369,10 +369,10 @@ export default function ProjectPage() {
               </h2>
               <div>{renderMarkdown(project.objectives[language])}</div>
             </div>
-          </motion.section>
+          </m.section>
 
           {/* Technical Approach */}
-          <motion.section
+          <m.section
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -385,10 +385,10 @@ export default function ProjectPage() {
               </h2>
               <div>{renderMarkdown(project.approach[language])}</div>
             </div>
-          </motion.section>
+          </m.section>
 
           {/* Architecture */}
-          <motion.section
+          <m.section
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -401,11 +401,11 @@ export default function ProjectPage() {
               </h2>
               <div>{renderMarkdown(project.architecture[language])}</div>
             </div>
-          </motion.section>
+          </m.section>
 
           {/* Skills Developed */}
           {project.skills.length > 0 && (
-            <motion.section
+            <m.section
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
@@ -430,12 +430,12 @@ export default function ProjectPage() {
                   </div>
                 ))}
               </div>
-            </motion.section>
+            </m.section>
           )}
 
           {/* Code Highlights */}
           {project.codeHighlights.length > 0 && (
-            <motion.section
+            <m.section
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
@@ -476,11 +476,11 @@ export default function ProjectPage() {
                   </div>
                 </div>
               ))}
-            </motion.section>
+            </m.section>
           )}
 
           {/* Results */}
-          <motion.section
+          <m.section
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -493,10 +493,10 @@ export default function ProjectPage() {
               </h2>
               <div>{renderMarkdown(project.results[language])}</div>
             </div>
-          </motion.section>
+          </m.section>
 
           {/* Reflection */}
-          <motion.section
+          <m.section
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -509,12 +509,12 @@ export default function ProjectPage() {
               </h2>
               <div>{renderMarkdown(project.reflection[language])}</div>
             </div>
-          </motion.section>
+          </m.section>
         </div>
 
         {/* Links */}
         {(project.links?.github || project.links?.live || project.links?.video || project.links?.download) && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -601,7 +601,7 @@ export default function ProjectPage() {
                 {language === "fr" ? "Sujet / Énoncé" : "Subject / Brief"}
               </a>
             )}
-          </motion.div>
+          </m.div>
         )}
 
         {/* Back to projects */}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { projects } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
@@ -27,7 +27,7 @@ export default function ProjectsSection() {
     <section id="projects" className="py-24 md:py-32 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -40,10 +40,10 @@ export default function ProjectsSection() {
           <p className="mt-4 text-muted max-w-2xl mx-auto">
             {t("projects.subtitle")}
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Filters */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -63,7 +63,7 @@ export default function ProjectsSection() {
               {f.label}
             </button>
           ))}
-        </motion.div>
+        </m.div>
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
