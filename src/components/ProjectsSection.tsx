@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { projects } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
+import FadeIn from "./FadeIn";
 
 type Filter = "all" | "professional" | "personal" | "university" | "competition";
 
@@ -27,29 +27,17 @@ export default function ProjectsSection() {
     <section id="projects" className="py-24 md:py-32 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <FadeIn className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-serif font-bold">
             {t("projects.title")}
           </h2>
           <p className="mt-4 text-muted max-w-2xl mx-auto">
             {t("projects.subtitle")}
           </p>
-        </motion.div>
+        </FadeIn>
 
         {/* Filters */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
-        >
+        <FadeIn delay={0.2} className="flex flex-wrap justify-center gap-3 mb-12">
           {filters.map((f) => (
             <button
               key={f.key}
@@ -63,7 +51,7 @@ export default function ProjectsSection() {
               {f.label}
             </button>
           ))}
-        </motion.div>
+        </FadeIn>
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

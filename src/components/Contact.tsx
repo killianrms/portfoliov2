@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import FadeIn from "./FadeIn";
 
 export default function Contact() {
   const { t } = useLanguage();
@@ -32,114 +32,90 @@ export default function Contact() {
   return (
     <section id="contact" className="py-24 md:py-32 px-6 md:px-12 bg-surface/50">
       <div className="max-w-2xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
+        <FadeIn className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-serif font-bold">
             {t("contact.title")}
           </h2>
           <p className="mt-4 text-muted">
             {t("contact.subtitle")}
           </p>
-        </motion.div>
+        </FadeIn>
 
-        <motion.form
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          onSubmit={handleSubmit}
-          className="space-y-6"
-        >
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                {t("contact.name")}
-              </label>
-              <input
-                type="text"
-                id="name"
-                required
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-3 bg-surface border border-border rounded-lg text-foreground placeholder-muted/50 focus:outline-none focus:border-accent transition-colors"
-                placeholder="John Doe"
-              />
+        <FadeIn delay={0.2}>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                  {t("contact.name")}
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full px-4 py-3 bg-surface border border-border rounded-lg text-foreground placeholder-muted/50 focus:outline-none focus:border-accent transition-colors"
+                  placeholder="John Doe"
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                  {t("contact.email")}
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full px-4 py-3 bg-surface border border-border rounded-lg text-foreground placeholder-muted/50 focus:outline-none focus:border-accent transition-colors"
+                  placeholder="john@example.com"
+                />
+              </div>
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                {t("contact.email")}
+              <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                {t("contact.message")}
               </label>
-              <input
-                type="email"
-                id="email"
+              <textarea
+                id="message"
                 required
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-3 bg-surface border border-border rounded-lg text-foreground placeholder-muted/50 focus:outline-none focus:border-accent transition-colors"
-                placeholder="john@example.com"
+                rows={6}
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                className="w-full px-4 py-3 bg-surface border border-border rounded-lg text-foreground placeholder-muted/50 focus:outline-none focus:border-accent transition-colors resize-none"
+                placeholder={
+                  t("contact.message") + "..."
+                }
               />
             </div>
-          </div>
-          <div>
-            <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-              {t("contact.message")}
-            </label>
-            <textarea
-              id="message"
-              required
-              rows={6}
-              value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className="w-full px-4 py-3 bg-surface border border-border rounded-lg text-foreground placeholder-muted/50 focus:outline-none focus:border-accent transition-colors resize-none"
-              placeholder={
-                t("contact.message") + "..."
-              }
-            />
-          </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4">
-            <button
-              type="submit"
-              disabled={status === "sending"}
-              className="w-full sm:w-auto px-8 py-3 bg-accent text-white rounded-lg font-medium hover:bg-accent-hover transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {status === "sending" ? t("contact.sending") : t("contact.send")}
-            </button>
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              <button
+                type="submit"
+                disabled={status === "sending"}
+                className="w-full sm:w-auto px-8 py-3 bg-accent text-white rounded-lg font-medium hover:bg-accent-hover transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {status === "sending" ? t("contact.sending") : t("contact.send")}
+              </button>
 
-            {status === "success" && (
-              <motion.span
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="text-green-500 text-sm"
-              >
-                {t("contact.success")}
-              </motion.span>
-            )}
-            {status === "error" && (
-              <motion.span
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="text-red-500 text-sm"
-              >
-                {t("contact.error")}
-              </motion.span>
-            )}
-          </div>
-        </motion.form>
+              {status === "success" && (
+                <span className="text-green-500 text-sm animate-fade-in-up">
+                  {t("contact.success")}
+                </span>
+              )}
+              {status === "error" && (
+                <span className="text-red-500 text-sm animate-fade-in-up">
+                  {t("contact.error")}
+                </span>
+              )}
+            </div>
+          </form>
+        </FadeIn>
+
 
         {/* Download CV */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ delay: 0.4 }}
-          className="text-center mt-10"
-        >
+        <FadeIn delay={0.4} className="text-center mt-10">
           <a
             href="/cv.pdf"
             target="_blank"
@@ -155,7 +131,7 @@ export default function Contact() {
             </svg>
             {t("contact.downloadCV")}
           </a>
-        </motion.div>
+        </FadeIn>
       </div>
     </section>
   );
