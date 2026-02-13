@@ -5,23 +5,11 @@ import { useRef, useEffect, type ReactNode, type CSSProperties } from "react";
 interface FadeInProps {
   children: ReactNode;
   className?: string;
-  /** Delay in seconds before the animation starts */
   delay?: number;
-  /** Root margin for IntersectionObserver */
   margin?: string;
-  /** HTML tag to render */
   as?: "div" | "form" | "span";
 }
 
-/**
- * Lightweight scroll-triggered fade-in using native IntersectionObserver + CSS.
- * Replaces framer-motion's `motion.div whileInView` with zero JS animation overhead.
- *
- * - No React state updates (class toggle only via DOM API)
- * - No animation frame callbacks
- * - GPU-accelerated CSS transitions
- * - ~0.5KB vs ~40KB for framer-motion equivalent
- */
 export default function FadeIn({
   children,
   className = "",
@@ -34,6 +22,9 @@ export default function FadeIn({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    // On mobile: skip IO entirely — CSS already shows content instantly
+    if (window.innerWidth <= 768) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {

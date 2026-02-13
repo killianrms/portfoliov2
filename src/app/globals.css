@@ -164,13 +164,7 @@ code {
 .hero-delay-4 { animation-delay: 1.2s; animation-name: heroFadeIn; }
 .hero-scroll-bounce { animation: heroScrollBounce 1.5s ease-in-out infinite; }
 
-/* On mobile: show hero content instantly (no animation delay for LCP) */
-@media (max-width: 768px) {
-  .hero-fade-in {
-    opacity: 1;
-    animation: none;
-  }
-}
+/* Hero mobile rules moved to consolidated mobile block below */
 
 /* Hero gradient text */
 .gradient-text {
@@ -185,19 +179,36 @@ code {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-  will-change: opacity, transform;
 }
 .fade-in-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* On mobile: skip fade-in animations entirely for instant content display */
+/* On mobile: skip ALL animations — instant content display, zero overhead */
 @media (max-width: 768px) {
   .fade-in-hidden {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  .hero-fade-in {
+    opacity: 1;
+    animation: none;
+  }
+  .hero-scroll-bounce {
+    animation: none;
+  }
+  .stagger-children > * {
+    opacity: 1;
+    animation: none;
+  }
+  .grid-bg {
+    display: none;
+  }
+  .animate-fade-in-up {
+    animation: none;
+    opacity: 1;
   }
 }
 
@@ -215,17 +226,7 @@ code {
   background: linear-gradient(90deg, transparent, var(--border-color), transparent);
 }
 
-/* Mobile performance: reduce animations */
-@media (max-width: 768px) {
-  .stagger-children > * {
-    opacity: 1;
-    animation: none;
-  }
-
-  .grid-bg {
-    display: none;
-  }
-}
+/* (mobile rules consolidated above) */
 
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
