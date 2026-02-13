@@ -4,16 +4,58 @@ import { useState, ReactNode } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { projects } from "@/data/projects";
+import FadeIn from "@/components/FadeIn";
 import dynamic from "next/dynamic";
 
 const SyntaxHighlighter = dynamic(
   () => import("react-syntax-highlighter").then((mod) => mod.Prism),
   { ssr: false, loading: () => <pre className="p-4 bg-[#1e1e1e] text-[#cdd6f4] text-xs">Loading...</pre> }
 );
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+
+const vscDarkPlusPromise = import("react-syntax-highlighter/dist/esm/styles/prism").then((mod) => mod.vscDarkPlus);
+
+function CodeBlock({ highlight, language: lang }: { highlight: { code: string; language: string; title: Record<string, string>; explanation: Record<string, string> }; language: string }) {
+  const [style, setStyle] = useState<Record<string, React.CSSProperties> | null>(null);
+  if (!style) {
+    vscDarkPlusPromise.then(setStyle);
+  }
+
+  return (
+    <div className="mb-8">
+      <h3 className="text-sm font-semibold text-foreground mb-3">
+        {highlight.title[lang]}
+      </h3>
+      <div className="rounded-xl overflow-hidden mb-4 border border-[#313244]">
+        <div className="flex items-center justify-between px-4 py-2 bg-[#1e1e1e] border-b border-[#313244]">
+          <span className="text-xs text-[#a6adc8]">{highlight.language}</span>
+          <div className="flex gap-1.5">
+            <div className="w-3 h-3 rounded-full bg-[#f38ba8]" />
+            <div className="w-3 h-3 rounded-full bg-[#a6e3a1]" />
+            <div className="w-3 h-3 rounded-full bg-[#f9e2af]" />
+          </div>
+        </div>
+        {style && (
+          <SyntaxHighlighter
+            language={highlight.language === "csharp" ? "csharp" : highlight.language}
+            style={style}
+            customStyle={{ margin: 0, padding: "1rem", fontSize: "0.75rem", lineHeight: "1.6", background: "#1e1e1e" }}
+            showLineNumbers
+            lineNumberStyle={{ color: "#555", fontSize: "0.65rem", minWidth: "2em" }}
+          >
+            {highlight.code}
+          </SyntaxHighlighter>
+        )}
+      </div>
+      <div className="bg-accent/5 border-l-2 border-accent rounded-r-lg p-4">
+        <p className="text-xs text-foreground/60 leading-relaxed italic">
+          {highlight.explanation[lang]}
+        </p>
+      </div>
+    </div>
+  );
+}
 
 export default function ProjectPage() {
   const params = useParams();
@@ -147,11 +189,7 @@ export default function ProjectPage() {
     <div className="min-h-screen pt-24 pb-16 px-6 md:px-12">
       <div className="max-w-4xl mx-auto">
         {/* Back button */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.4 }}
-        >
+        <FadeIn>
           <Link
             href="/#projects"
             className="inline-flex items-center gap-2 text-muted hover:text-foreground transition-colors mb-8"
@@ -162,14 +200,10 @@ export default function ProjectPage() {
             </svg>
             {t("project.back")}
           </Link>
-        </motion.div>
+        </FadeIn>
 
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
+        <FadeIn delay={0.1}>
           <h1 className="text-3xl md:text-5xl font-serif font-bold mb-6">
             {project.title}
           </h1>
@@ -225,17 +259,11 @@ export default function ProjectPage() {
               </span>
             ))}
           </div>
-        </motion.div>
+        </FadeIn>
 
         {/* Poster */}
         {project.poster && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-12"
-          >
+          <FadeIn className="mb-12">
             <div className="relative w-full max-w-2xl mx-auto rounded-xl overflow-hidden border border-border">
               <Image
                 src={project.poster}
@@ -245,28 +273,21 @@ export default function ProjectPage() {
                 className="w-full h-auto object-contain"
               />
             </div>
-          </motion.div>
+          </FadeIn>
         )}
 
         {/* Image Gallery */}
         {project.images.length > 0 && (
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-12"
-          >
+          <FadeIn className="mb-12">
             <h2 className="text-xl font-serif font-bold mb-6 flex items-center gap-3">
               <span className="w-8 h-0.5 bg-accent" />
               {language === "fr" ? "Captures d'écran" : "Screenshots"}
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {project.images.map((img, i) => (
-                <motion.div
+                <div
                   key={i}
-                  whileHover={{ scale: 1.02 }}
-                  className="relative aspect-video rounded-lg overflow-hidden border border-border cursor-pointer"
+                  className="relative aspect-video rounded-lg overflow-hidden border border-border cursor-pointer hover:scale-[1.02] transition-transform duration-300"
                   onClick={() => setSelectedImage(i)}
                 >
                   <Image
@@ -276,76 +297,66 @@ export default function ProjectPage() {
                     sizes="(max-width: 768px) 50vw, 33vw"
                     className="object-cover"
                   />
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.section>
+          </FadeIn>
         )}
 
-        {/* Lightbox */}
-        <AnimatePresence>
-          {selectedImage !== null && project.images.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+        {/* Lightbox — pure CSS transition, no AnimatePresence */}
+        {selectedImage !== null && project.images.length > 0 && (
+          <div
+            className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 animate-fade-in-up"
+            onClick={() => setSelectedImage(null)}
+          >
+            <button
               onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 text-white/80 hover:text-white z-10"
             >
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
+            {selectedImage > 0 && (
               <button
-                onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 text-white/80 hover:text-white z-10"
+                onClick={(e) => { e.stopPropagation(); setSelectedImage(selectedImage - 1); }}
+                className="absolute left-4 text-white/80 hover:text-white z-10"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="18" y1="6" x2="6" y2="18"/>
-                  <line x1="6" y1="6" x2="18" y2="18"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="15 18 9 12 15 6"/>
                 </svg>
               </button>
-              {selectedImage > 0 && (
-                <button
-                  onClick={(e) => { e.stopPropagation(); setSelectedImage(selectedImage - 1); }}
-                  className="absolute left-4 text-white/80 hover:text-white z-10"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="15 18 9 12 15 6"/>
-                  </svg>
-                </button>
-              )}
-              {selectedImage < project.images.length - 1 && (
-                <button
-                  onClick={(e) => { e.stopPropagation(); setSelectedImage(selectedImage + 1); }}
-                  className="absolute right-4 text-white/80 hover:text-white z-10"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="9 18 15 12 9 6"/>
-                  </svg>
-                </button>
-              )}
-              <div className="relative max-w-5xl max-h-[85vh] w-full h-full" onClick={(e) => e.stopPropagation()}>
-                <Image
-                  src={project.images[selectedImage]}
-                  alt={`${project.title} - ${selectedImage + 1}`}
-                  fill
-                  sizes="90vw"
-                  className="object-contain"
-                />
-              </div>
-              <div className="absolute bottom-4 text-white/60 text-sm">
-                {selectedImage + 1} / {project.images.length}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            )}
+            {selectedImage < project.images.length - 1 && (
+              <button
+                onClick={(e) => { e.stopPropagation(); setSelectedImage(selectedImage + 1); }}
+                className="absolute right-4 text-white/80 hover:text-white z-10"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="9 18 15 12 9 6"/>
+                </svg>
+              </button>
+            )}
+            <div className="relative max-w-5xl max-h-[85vh] w-full h-full" onClick={(e) => e.stopPropagation()}>
+              <Image
+                src={project.images[selectedImage]}
+                alt={`${project.title} - ${selectedImage + 1}`}
+                fill
+                sizes="90vw"
+                className="object-contain"
+              />
+            </div>
+            <div className="absolute bottom-4 text-white/60 text-sm">
+              {selectedImage + 1} / {project.images.length}
+            </div>
+          </div>
+        )}
 
         {/* Content sections in cards */}
         <div className="space-y-8">
           {/* Context */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.4 }}
-          >
+          <FadeIn>
             <div className="bg-surface border border-border rounded-xl p-6 md:p-8">
               <h2 className="text-lg font-serif font-bold mb-4 flex items-center gap-3 text-foreground">
                 <span className="w-6 h-0.5 bg-accent" />
@@ -353,15 +364,10 @@ export default function ProjectPage() {
               </h2>
               <div>{renderMarkdown(project.context[language])}</div>
             </div>
-          </motion.section>
+          </FadeIn>
 
           {/* Objectives */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.4 }}
-          >
+          <FadeIn>
             <div className="bg-surface border border-border rounded-xl p-6 md:p-8">
               <h2 className="text-lg font-serif font-bold mb-4 flex items-center gap-3 text-foreground">
                 <span className="w-6 h-0.5 bg-accent" />
@@ -369,15 +375,10 @@ export default function ProjectPage() {
               </h2>
               <div>{renderMarkdown(project.objectives[language])}</div>
             </div>
-          </motion.section>
+          </FadeIn>
 
           {/* Technical Approach */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.4 }}
-          >
+          <FadeIn>
             <div className="bg-surface border border-border rounded-xl p-6 md:p-8">
               <h2 className="text-lg font-serif font-bold mb-4 flex items-center gap-3 text-foreground">
                 <span className="w-6 h-0.5 bg-accent" />
@@ -385,15 +386,10 @@ export default function ProjectPage() {
               </h2>
               <div>{renderMarkdown(project.approach[language])}</div>
             </div>
-          </motion.section>
+          </FadeIn>
 
           {/* Architecture */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.4 }}
-          >
+          <FadeIn>
             <div className="bg-surface border border-border rounded-xl p-6 md:p-8">
               <h2 className="text-lg font-serif font-bold mb-4 flex items-center gap-3 text-foreground">
                 <span className="w-6 h-0.5 bg-accent" />
@@ -401,16 +397,11 @@ export default function ProjectPage() {
               </h2>
               <div>{renderMarkdown(project.architecture[language])}</div>
             </div>
-          </motion.section>
+          </FadeIn>
 
           {/* Skills Developed */}
           {project.skills.length > 0 && (
-            <motion.section
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.4 }}
-            >
+            <FadeIn>
               <h2 className="text-lg font-serif font-bold mb-4 flex items-center gap-3 text-foreground">
                 <span className="w-6 h-0.5 bg-accent" />
                 {t("project.skills")}
@@ -430,62 +421,24 @@ export default function ProjectPage() {
                   </div>
                 ))}
               </div>
-            </motion.section>
+            </FadeIn>
           )}
 
           {/* Code Highlights */}
           {project.codeHighlights.length > 0 && (
-            <motion.section
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.4 }}
-            >
+            <FadeIn>
               <h2 className="text-lg font-serif font-bold mb-6 flex items-center gap-3 text-foreground">
                 <span className="w-6 h-0.5 bg-accent" />
                 {t("project.codeHighlights")}
               </h2>
               {project.codeHighlights.map((highlight, i) => (
-                <div key={i} className="mb-8">
-                  <h3 className="text-sm font-semibold text-foreground mb-3">
-                    {highlight.title[language]}
-                  </h3>
-                  <div className="rounded-xl overflow-hidden mb-4 border border-[#313244]">
-                    <div className="flex items-center justify-between px-4 py-2 bg-[#1e1e1e] border-b border-[#313244]">
-                      <span className="text-xs text-[#a6adc8]">{highlight.language}</span>
-                      <div className="flex gap-1.5">
-                        <div className="w-3 h-3 rounded-full bg-[#f38ba8]" />
-                        <div className="w-3 h-3 rounded-full bg-[#a6e3a1]" />
-                        <div className="w-3 h-3 rounded-full bg-[#f9e2af]" />
-                      </div>
-                    </div>
-                    <SyntaxHighlighter
-                      language={highlight.language === "csharp" ? "csharp" : highlight.language}
-                      style={vscDarkPlus}
-                      customStyle={{ margin: 0, padding: "1rem", fontSize: "0.75rem", lineHeight: "1.6", background: "#1e1e1e" }}
-                      showLineNumbers
-                      lineNumberStyle={{ color: "#555", fontSize: "0.65rem", minWidth: "2em" }}
-                    >
-                      {highlight.code}
-                    </SyntaxHighlighter>
-                  </div>
-                  <div className="bg-accent/5 border-l-2 border-accent rounded-r-lg p-4">
-                    <p className="text-xs text-foreground/60 leading-relaxed italic">
-                      {highlight.explanation[language]}
-                    </p>
-                  </div>
-                </div>
+                <CodeBlock key={i} highlight={highlight} language={language} />
               ))}
-            </motion.section>
+            </FadeIn>
           )}
 
           {/* Results */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.4 }}
-          >
+          <FadeIn>
             <div className="bg-surface border border-border rounded-xl p-6 md:p-8">
               <h2 className="text-lg font-serif font-bold mb-4 flex items-center gap-3 text-foreground">
                 <span className="w-6 h-0.5 bg-accent" />
@@ -493,15 +446,10 @@ export default function ProjectPage() {
               </h2>
               <div>{renderMarkdown(project.results[language])}</div>
             </div>
-          </motion.section>
+          </FadeIn>
 
           {/* Reflection */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.4 }}
-          >
+          <FadeIn>
             <div className="bg-surface border border-border rounded-xl p-6 md:p-8 border-l-2 border-l-accent">
               <h2 className="text-lg font-serif font-bold mb-4 flex items-center gap-3 text-foreground">
                 <span className="w-6 h-0.5 bg-accent" />
@@ -509,18 +457,12 @@ export default function ProjectPage() {
               </h2>
               <div>{renderMarkdown(project.reflection[language])}</div>
             </div>
-          </motion.section>
+          </FadeIn>
         </div>
 
         {/* Links */}
         {(project.links?.github || project.links?.live || project.links?.video || project.links?.download) && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-wrap gap-3 pt-8"
-          >
+          <FadeIn className="flex flex-wrap gap-3 pt-8">
             {project.links.github && (
               <a
                 href={project.links.github}
@@ -601,7 +543,7 @@ export default function ProjectPage() {
                 {language === "fr" ? "Sujet / Énoncé" : "Subject / Brief"}
               </a>
             )}
-          </motion.div>
+          </FadeIn>
         )}
 
         {/* Back to projects */}

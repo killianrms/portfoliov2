@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
 
 export default function SpotlightCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
+  const posRef = useRef({ x: 0, y: 0 });
+  const targetRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const cursor = cursorRef.current;
@@ -16,31 +17,39 @@ export default function SpotlightCursor() {
       return;
     }
 
+    let rafId: number;
+    const ease = 0.12;
+
+    const animate = () => {
+      posRef.current.x += (targetRef.current.x - posRef.current.x) * ease;
+      posRef.current.y += (targetRef.current.y - posRef.current.y) * ease;
+      cursor.style.transform = `translate(${posRef.current.x - 150}px, ${posRef.current.y - 150}px)`;
+      rafId = requestAnimationFrame(animate);
+    };
+
     const onMouseMove = (e: MouseEvent) => {
-      gsap.to(cursor, {
-        x: e.clientX,
-        y: e.clientY,
-        duration: 0.6,
-        ease: "power2.out",
-      });
+      targetRef.current.x = e.clientX;
+      targetRef.current.y = e.clientY;
     };
 
     const onMouseEnter = () => {
-      gsap.to(cursor, { opacity: 1, duration: 0.3 });
+      cursor.style.opacity = "1";
     };
 
     const onMouseLeave = () => {
-      gsap.to(cursor, { opacity: 0, duration: 0.3 });
+      cursor.style.opacity = "0";
     };
 
     window.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mouseenter", onMouseEnter);
     document.addEventListener("mouseleave", onMouseLeave);
+    rafId = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseenter", onMouseEnter);
       document.removeEventListener("mouseleave", onMouseLeave);
+      cancelAnimationFrame(rafId);
     };
   }, []);
 

@@ -74,9 +74,9 @@ body {
   height: 300px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(167, 139, 250, 0.15) 0%, transparent 70%);
-  transform: translate(-50%, -50%);
   z-index: 50;
   transition: opacity 0.3s ease;
+  will-change: transform;
   mix-blend-mode: screen;
 }
 
