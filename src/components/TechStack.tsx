@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import FadeIn from "./FadeIn";
 
 interface Tech {
   name: string;
@@ -51,32 +51,23 @@ export default function TechStack() {
   return (
     <section id="skills" className="py-24 md:py-32 px-6 md:px-12 bg-surface/50">
       <div className="max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <FadeIn className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-serif font-bold">
             {t("tech.title")}
           </h2>
           <p className="mt-4 text-muted max-w-2xl mx-auto">
             {t("tech.subtitle")}
           </p>
-        </motion.div>
+        </FadeIn>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {categories.map((category, catIndex) => {
             const meta = categoryMeta[category] || { icon: "*", color: "text-accent" };
             const techs = technologies.filter((t) => t.category === category);
             return (
-              <motion.div
+              <FadeIn
                 key={category}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: catIndex * 0.1 }}
+                delay={catIndex * 0.1}
                 className="bg-surface border border-border rounded-xl p-6 hover:border-accent/30 transition-colors duration-300"
               >
                 <div className="flex items-center gap-3 mb-5">
@@ -89,21 +80,16 @@ export default function TechStack() {
                   <span className="text-xs text-muted ml-auto">{techs.length}</span>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {techs.map((tech, i) => (
-                    <motion.span
+                  {techs.map((tech) => (
+                    <span
                       key={tech.name}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.3, delay: i * 0.03 }}
-                      whileHover={{ scale: 1.05 }}
-                      className="text-sm font-medium text-muted bg-background border border-border/50 rounded-md px-3 py-1.5 hover:text-foreground hover:border-accent/40 transition-all duration-200 cursor-default"
+                      className="text-sm font-medium text-muted bg-background border border-border/50 rounded-md px-3 py-1.5 hover:text-foreground hover:border-accent/40 hover:scale-105 transition-all duration-200 cursor-default"
                     >
                       {tech.name}
-                    </motion.span>
+                    </span>
                   ))}
                 </div>
-              </motion.div>
+              </FadeIn>
             );
           })}
         </div>

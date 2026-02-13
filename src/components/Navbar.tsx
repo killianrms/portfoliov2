@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
 
@@ -81,76 +80,70 @@ export default function Navbar() {
           aria-label="Toggle menu"
         >
           <div className="flex flex-col gap-1.5">
-            <motion.span
-              animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-              className="block h-0.5 w-6 bg-foreground"
+            <span
+              className="block h-0.5 w-6 bg-foreground transition-all duration-300 origin-center"
+              style={isOpen ? { transform: "rotate(45deg) translate(2.5px, 2.5px)" } : undefined}
             />
-            <motion.span
-              animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
-              className="block h-0.5 w-6 bg-foreground"
+            <span
+              className="block h-0.5 w-6 bg-foreground transition-all duration-300"
+              style={isOpen ? { opacity: 0 } : undefined}
             />
-            <motion.span
-              animate={isOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-              className="block h-0.5 w-6 bg-foreground"
+            <span
+              className="block h-0.5 w-6 bg-foreground transition-all duration-300 origin-center"
+              style={isOpen ? { transform: "rotate(-45deg) translate(2.5px, -2.5px)" } : undefined}
             />
           </div>
         </button>
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-background/95 backdrop-blur-lg flex flex-col items-center justify-center gap-8 md:hidden"
+      <div
+        className={`fixed inset-0 z-40 bg-background/95 backdrop-blur-lg flex flex-col items-center justify-center gap-8 md:hidden transition-all duration-300 ${
+          isOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
+        }`}
+      >
+        {links.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            onClick={() => setIsOpen(false)}
+            className="text-2xl font-medium text-foreground hover:text-accent transition-colors duration-300"
           >
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="text-2xl font-medium text-foreground hover:text-accent transition-colors duration-300"
-              >
-                {link.label}
-              </a>
-            ))}
-            <div className="flex items-center gap-6 mt-4">
-              <button
-                onClick={toggleLanguage}
-                className="text-lg font-medium text-muted hover:text-foreground transition-colors border border-border px-3 py-1.5 rounded"
-              >
-                {language === "fr" ? "EN" : "FR"}
-              </button>
-              <button
-                onClick={toggleTheme}
-                className="text-muted hover:text-foreground transition-colors"
-                aria-label="Toggle theme"
-              >
-                {theme === "dark" ? (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="5"/>
-                    <line x1="12" y1="1" x2="12" y2="3"/>
-                    <line x1="12" y1="21" x2="12" y2="23"/>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                    <line x1="1" y1="12" x2="3" y2="12"/>
-                    <line x1="21" y1="12" x2="23" y2="12"/>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-                  </svg>
-                ) : (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                  </svg>
-                )}
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            {link.label}
+          </a>
+        ))}
+        <div className="flex items-center gap-6 mt-4">
+          <button
+            onClick={toggleLanguage}
+            className="text-lg font-medium text-muted hover:text-foreground transition-colors border border-border px-3 py-1.5 rounded"
+          >
+            {language === "fr" ? "EN" : "FR"}
+          </button>
+          <button
+            onClick={toggleTheme}
+            className="text-muted hover:text-foreground transition-colors"
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? (
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/>
+                <line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+              </svg>
+            )}
+          </button>
+        </div>
+      </div>
     </nav>
   );
 }

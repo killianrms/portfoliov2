@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import FadeIn from "./FadeIn";
 
 interface TimelineItem {
   year: string;
@@ -129,29 +129,17 @@ export default function Timeline() {
     <section id="timeline" className="py-24 md:py-32 px-6 md:px-12">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <FadeIn className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-serif font-bold">
             {t("timeline.title")}
           </h2>
           <p className="mt-4 text-muted max-w-2xl mx-auto">
             {t("timeline.subtitle")}
           </p>
-        </motion.div>
+        </FadeIn>
 
         {/* Filter tabs */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
-        >
+        <FadeIn delay={0.2} className="flex flex-wrap justify-center gap-3 mb-12">
           {filters.map((f) => (
             <button
               key={f.key}
@@ -168,58 +156,45 @@ export default function Timeline() {
               {f.label}
             </button>
           ))}
-        </motion.div>
+        </FadeIn>
 
         {/* Timeline */}
         <div className="relative">
           {/* Center line */}
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-border -translate-x-1/2" />
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={filter}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
+          {filteredData.map((item, i) => (
+            <FadeIn
+              key={`${item.type}-${item.year}`}
+              delay={i * 0.1}
+              className={`relative flex items-start gap-8 mb-12 ${
+                i % 2 === 0
+                  ? "md:flex-row"
+                  : "md:flex-row-reverse"
+              }`}
             >
-              {filteredData.map((item, i) => (
-                <motion.div
-                  key={`${item.type}-${item.year}`}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className={`relative flex items-start gap-8 mb-12 ${
-                    i % 2 === 0
-                      ? "md:flex-row"
-                      : "md:flex-row-reverse"
-                  }`}
-                >
-                  {/* Dot */}
-                  <div className="absolute left-4 md:left-1/2 -translate-x-1/2 z-10">
-                    <div className={`w-4 h-4 rounded-full ${typeColors[item.type]} ring-4 ring-background`} />
-                  </div>
+              {/* Dot */}
+              <div className="absolute left-4 md:left-1/2 -translate-x-1/2 z-10">
+                <div className={`w-4 h-4 rounded-full ${typeColors[item.type]} ring-4 ring-background`} />
+              </div>
 
-                  {/* Content */}
-                  <div className={`ml-12 md:ml-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
-                    <span className="text-sm text-accent font-medium">
-                      {item.year}
-                    </span>
-                    <h3 className="text-lg font-semibold text-foreground mt-1">
-                      {item.title[language]}
-                    </h3>
-                    <p className="text-sm text-accent/80 mt-0.5">
-                      {item.subtitle[language]}
-                    </p>
-                    <p className="text-sm text-muted mt-2 leading-relaxed">
-                      {item.description[language]}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </AnimatePresence>
+              {/* Content */}
+              <div className={`ml-12 md:ml-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
+                <span className="text-sm text-accent font-medium">
+                  {item.year}
+                </span>
+                <h3 className="text-lg font-semibold text-foreground mt-1">
+                  {item.title[language]}
+                </h3>
+                <p className="text-sm text-accent/80 mt-0.5">
+                  {item.subtitle[language]}
+                </p>
+                <p className="text-sm text-muted mt-2 leading-relaxed">
+                  {item.description[language]}
+                </p>
+              </div>
+            </FadeIn>
+          ))}
         </div>
       </div>
     </section>
