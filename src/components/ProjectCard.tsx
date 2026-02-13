@@ -30,7 +30,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
   return (
     <FadeIn delay={index * 0.1}>
-      <Link href={`/projects/${project.slug}`}>
+      <Link href={`/projects/${project.slug}`} prefetch={false}>
         <div className="group relative bg-surface border border-border rounded-xl overflow-hidden hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/5">
           {/* Thumbnail */}
           <div className={`relative h-48 overflow-hidden ${project.thumbnail.includes("itesoft") ? "bg-white" : "bg-surface-hover"}`}>
@@ -38,7 +38,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
               src={project.thumbnail}
               alt={project.title}
               fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              sizes="(max-width: 640px) 92vw, (max-width: 768px) 95vw, (max-width: 1200px) 45vw, 30vw"
               className={`group-hover:scale-110 transition-transform duration-500 ${project.thumbnail.includes("itesoft") ? "object-contain p-4" : "object-cover"}`}
             />
             {!project.thumbnail.includes("itesoft") && (
