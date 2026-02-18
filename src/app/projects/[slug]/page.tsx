@@ -7,6 +7,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { projects } from "@/data/projects";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import dynamic from "next/dynamic";
 
 const SyntaxHighlighter = dynamic(
@@ -18,6 +19,7 @@ import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 export default function ProjectPage() {
   const params = useParams();
   const { language, t } = useLanguage();
+  const isMobile = useIsMobile();
   const project = projects.find((p) => p.slug === params.slug);
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
@@ -143,12 +145,21 @@ export default function ProjectPage() {
     return elements;
   };
 
+  // Helper for scroll-triggered animation props
+  const inViewProps = (options?: { delay?: number; y?: number }) =>
+    isMobile ? {} : {
+      initial: { opacity: 0, y: options?.y ?? 20 },
+      whileInView: { opacity: 1, y: 0 },
+      viewport: { once: true, margin: "-50px" },
+      transition: { duration: 0.4, delay: options?.delay ?? 0 },
+    };
+
   return (
     <div className="min-h-screen pt-24 pb-16 px-6 md:px-12">
       <div className="max-w-4xl mx-auto">
         {/* Back button */}
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
+          initial={isMobile ? undefined : { opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.4 }}
         >
@@ -166,7 +177,7 @@ export default function ProjectPage() {
 
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={isMobile ? undefined : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
@@ -230,10 +241,7 @@ export default function ProjectPage() {
         {/* Poster */}
         {project.poster && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            {...inViewProps()}
             className="mb-12"
           >
             <div className="relative w-full max-w-2xl mx-auto rounded-xl overflow-hidden border border-border">
@@ -251,10 +259,7 @@ export default function ProjectPage() {
         {/* Image Gallery */}
         {project.images.length > 0 && (
           <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            {...inViewProps()}
             className="mb-12"
           >
             <h2 className="text-xl font-serif font-bold mb-6 flex items-center gap-3">
@@ -263,10 +268,9 @@ export default function ProjectPage() {
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {project.images.map((img, i) => (
-                <motion.div
+                <div
                   key={i}
-                  whileHover={{ scale: 1.02 }}
-                  className="relative aspect-video rounded-lg overflow-hidden border border-border cursor-pointer"
+                  className="relative aspect-video rounded-lg overflow-hidden border border-border cursor-pointer hover:border-accent/50 transition-colors"
                   onClick={() => setSelectedImage(i)}
                 >
                   <Image
@@ -276,7 +280,7 @@ export default function ProjectPage() {
                     sizes="(max-width: 768px) 50vw, 33vw"
                     className="object-cover"
                   />
-                </motion.div>
+                </div>
               ))}
             </div>
           </motion.section>
@@ -340,12 +344,7 @@ export default function ProjectPage() {
         {/* Content sections in cards */}
         <div className="space-y-8">
           {/* Context */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.4 }}
-          >
+          <motion.section {...inViewProps()}>
             <div className="bg-surface border border-border rounded-xl p-6 md:p-8">
               <h2 className="text-lg font-serif font-bold mb-4 flex items-center gap-3 text-foreground">
                 <span className="w-6 h-0.5 bg-accent" />
@@ -356,12 +355,7 @@ export default function ProjectPage() {
           </motion.section>
 
           {/* Objectives */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.4 }}
-          >
+          <motion.section {...inViewProps()}>
             <div className="bg-surface border border-border rounded-xl p-6 md:p-8">
               <h2 className="text-lg font-serif font-bold mb-4 flex items-center gap-3 text-foreground">
                 <span className="w-6 h-0.5 bg-accent" />
@@ -372,12 +366,7 @@ export default function ProjectPage() {
           </motion.section>
 
           {/* Technical Approach */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.4 }}
-          >
+          <motion.section {...inViewProps()}>
             <div className="bg-surface border border-border rounded-xl p-6 md:p-8">
               <h2 className="text-lg font-serif font-bold mb-4 flex items-center gap-3 text-foreground">
                 <span className="w-6 h-0.5 bg-accent" />
@@ -388,12 +377,7 @@ export default function ProjectPage() {
           </motion.section>
 
           {/* Architecture */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.4 }}
-          >
+          <motion.section {...inViewProps()}>
             <div className="bg-surface border border-border rounded-xl p-6 md:p-8">
               <h2 className="text-lg font-serif font-bold mb-4 flex items-center gap-3 text-foreground">
                 <span className="w-6 h-0.5 bg-accent" />
@@ -405,12 +389,7 @@ export default function ProjectPage() {
 
           {/* Skills Developed */}
           {project.skills.length > 0 && (
-            <motion.section
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.4 }}
-            >
+            <motion.section {...inViewProps()}>
               <h2 className="text-lg font-serif font-bold mb-4 flex items-center gap-3 text-foreground">
                 <span className="w-6 h-0.5 bg-accent" />
                 {t("project.skills")}
@@ -435,12 +414,7 @@ export default function ProjectPage() {
 
           {/* Code Highlights */}
           {project.codeHighlights.length > 0 && (
-            <motion.section
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.4 }}
-            >
+            <motion.section {...inViewProps()}>
               <h2 className="text-lg font-serif font-bold mb-6 flex items-center gap-3 text-foreground">
                 <span className="w-6 h-0.5 bg-accent" />
                 {t("project.codeHighlights")}
@@ -480,12 +454,7 @@ export default function ProjectPage() {
           )}
 
           {/* Results */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.4 }}
-          >
+          <motion.section {...inViewProps()}>
             <div className="bg-surface border border-border rounded-xl p-6 md:p-8">
               <h2 className="text-lg font-serif font-bold mb-4 flex items-center gap-3 text-foreground">
                 <span className="w-6 h-0.5 bg-accent" />
@@ -496,12 +465,7 @@ export default function ProjectPage() {
           </motion.section>
 
           {/* Reflection */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.4 }}
-          >
+          <motion.section {...inViewProps()}>
             <div className="bg-surface border border-border rounded-xl p-6 md:p-8 border-l-2 border-l-accent">
               <h2 className="text-lg font-serif font-bold mb-4 flex items-center gap-3 text-foreground">
                 <span className="w-6 h-0.5 bg-accent" />
@@ -515,10 +479,7 @@ export default function ProjectPage() {
         {/* Links */}
         {(project.links?.github || project.links?.live || project.links?.video || project.links?.download) && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            {...inViewProps()}
             className="flex flex-wrap gap-3 pt-8"
           >
             {project.links.github && (

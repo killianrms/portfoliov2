@@ -150,8 +150,12 @@ code {
   background: linear-gradient(90deg, transparent, var(--border-color), transparent);
 }
 
-/* Mobile performance: reduce animations */
+/* Mobile performance: reduce animations and heavy effects */
 @media (max-width: 768px) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .stagger-children > * {
     opacity: 1;
     animation: none;
@@ -159,6 +163,10 @@ code {
 
   .grid-bg {
     display: none;
+  }
+
+  .spotlight-cursor {
+    display: none !important;
   }
 }
 

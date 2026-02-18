@@ -3,9 +3,11 @@
 import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export default function Contact() {
   const { t } = useLanguage();
+  const isMobile = useIsMobile();
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
@@ -33,10 +35,12 @@ export default function Contact() {
     <section id="contact" className="py-24 md:py-32 px-6 md:px-12 bg-surface/50">
       <div className="max-w-2xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          {...(isMobile ? {} : {
+            initial: { opacity: 0, y: 20 },
+            whileInView: { opacity: 1, y: 0 },
+            viewport: { once: true, margin: "-100px" },
+            transition: { duration: 0.6 },
+          })}
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-5xl font-serif font-bold">
@@ -48,10 +52,12 @@ export default function Contact() {
         </motion.div>
 
         <motion.form
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          {...(isMobile ? {} : {
+            initial: { opacity: 0, y: 20 },
+            whileInView: { opacity: 1, y: 0 },
+            viewport: { once: true, margin: "-100px" },
+            transition: { duration: 0.6, delay: 0.2 },
+          })}
           onSubmit={handleSubmit}
           className="space-y-6"
         >
@@ -134,10 +140,12 @@ export default function Contact() {
 
         {/* Download CV */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ delay: 0.4 }}
+          {...(isMobile ? {} : {
+            initial: { opacity: 0 },
+            whileInView: { opacity: 1 },
+            viewport: { once: true, margin: "-100px" },
+            transition: { delay: 0.4 },
+          })}
           className="text-center mt-10"
         >
           <a

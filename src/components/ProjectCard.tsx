@@ -9,9 +9,10 @@ import type { Project } from "@/data/projects";
 interface ProjectCardProps {
   project: Project;
   index: number;
+  isMobile?: boolean;
 }
 
-export default function ProjectCard({ project, index }: ProjectCardProps) {
+export default function ProjectCard({ project, index, isMobile }: ProjectCardProps) {
   const { language, t } = useLanguage();
 
   const categoryColors: Record<string, string> = {
@@ -30,10 +31,12 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      {...(isMobile ? {} : {
+        initial: { opacity: 0, y: 30 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, margin: "-50px" },
+        transition: { duration: 0.5, delay: index * 0.1 },
+      })}
     >
       <Link href={`/projects/${project.slug}`}>
         <div className="group relative bg-surface border border-border rounded-xl overflow-hidden hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/5">

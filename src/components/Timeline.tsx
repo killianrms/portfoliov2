@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 interface TimelineItem {
   year: string;
@@ -99,6 +100,7 @@ type TimelineFilter = "all" | "education" | "experience" | "volunteer";
 
 export default function Timeline() {
   const { language, t } = useLanguage();
+  const isMobile = useIsMobile();
   const [filter, setFilter] = useState<TimelineFilter>("all");
 
   const typeColors: Record<string, string> = {
@@ -130,10 +132,12 @@ export default function Timeline() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          {...(isMobile ? {} : {
+            initial: { opacity: 0, y: 20 },
+            whileInView: { opacity: 1, y: 0 },
+            viewport: { once: true, margin: "-100px" },
+            transition: { duration: 0.6 },
+          })}
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-serif font-bold">
@@ -146,10 +150,12 @@ export default function Timeline() {
 
         {/* Filter tabs */}
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.4, delay: 0.2 }}
+          {...(isMobile ? {} : {
+            initial: { opacity: 0, y: 10 },
+            whileInView: { opacity: 1, y: 0 },
+            viewport: { once: true, margin: "-100px" },
+            transition: { duration: 0.4, delay: 0.2 },
+          })}
           className="flex flex-wrap justify-center gap-3 mb-12"
         >
           {filters.map((f) => (
@@ -178,18 +184,20 @@ export default function Timeline() {
           <AnimatePresence mode="wait">
             <motion.div
               key={filter}
-              initial={{ opacity: 0 }}
+              initial={isMobile ? undefined : { opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              exit={isMobile ? undefined : { opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
               {filteredData.map((item, i) => (
                 <motion.div
                   key={`${item.type}-${item.year}`}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  {...(isMobile ? {} : {
+                    initial: { opacity: 0, y: 30 },
+                    whileInView: { opacity: 1, y: 0 },
+                    viewport: { once: true, margin: "-50px" },
+                    transition: { duration: 0.5, delay: i * 0.1 },
+                  })}
                   className={`relative flex items-start gap-8 mb-12 ${
                     i % 2 === 0
                       ? "md:flex-row"

@@ -2,18 +2,20 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export default function Hero() {
   const { t } = useLanguage();
+  const isMobile = useIsMobile();
 
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-      {/* Animated grid background */}
-      <div className="grid-bg absolute inset-[-50px] pointer-events-none" />
+      {/* Animated grid background - hidden on mobile for perf */}
+      <div className="grid-bg absolute inset-[-50px] pointer-events-none hidden md:block" />
 
-      {/* Gradient orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-accent/10 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-pink-500/10 blur-[100px] pointer-events-none" />
+      {/* Gradient orbs - hidden on mobile (blur is very expensive on mobile GPU) */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-accent/10 blur-[120px] pointer-events-none hidden md:block" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-pink-500/10 blur-[100px] pointer-events-none hidden md:block" />
 
       {/* Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col h-full">
@@ -21,7 +23,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: isMobile ? 0.4 : 0.8, delay: 0.2 }}
           className="pt-24 md:pt-32"
         >
           <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-none tracking-tight">
@@ -39,7 +41,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: isMobile ? 0.4 : 0.8, delay: isMobile ? 0.3 : 0.5 }}
             className="max-w-lg"
           >
             <p className="text-lg md:text-xl font-medium text-foreground">
@@ -54,7 +56,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
+            transition={{ duration: isMobile ? 0.4 : 0.8, delay: isMobile ? 0.4 : 0.7 }}
             className="flex items-center gap-5"
           >
             <a href="https://github.com/killianrms" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-foreground transition-colors duration-300" aria-label="GitHub">
@@ -70,7 +72,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Scroll indicator - hidden on mobile to avoid overlapping CV button */}
+        {/* Scroll indicator - hidden on mobile */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

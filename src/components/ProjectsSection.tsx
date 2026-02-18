@@ -5,11 +5,13 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { projects } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 type Filter = "all" | "professional" | "personal" | "university" | "competition";
 
 export default function ProjectsSection() {
   const { t } = useLanguage();
+  const isMobile = useIsMobile();
   const [filter, setFilter] = useState<Filter>("all");
 
   const filters: { key: Filter; label: string }[] = [
@@ -28,10 +30,12 @@ export default function ProjectsSection() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          {...(isMobile ? {} : {
+            initial: { opacity: 0, y: 20 },
+            whileInView: { opacity: 1, y: 0 },
+            viewport: { once: true, margin: "-100px" },
+            transition: { duration: 0.6 },
+          })}
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-serif font-bold">
@@ -44,10 +48,12 @@ export default function ProjectsSection() {
 
         {/* Filters */}
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.4, delay: 0.2 }}
+          {...(isMobile ? {} : {
+            initial: { opacity: 0, y: 10 },
+            whileInView: { opacity: 1, y: 0 },
+            viewport: { once: true, margin: "-100px" },
+            transition: { duration: 0.4, delay: 0.2 },
+          })}
           className="flex flex-wrap justify-center gap-3 mb-12"
         >
           {filters.map((f) => (
@@ -68,7 +74,7 @@ export default function ProjectsSection() {
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((project, index) => (
-            <ProjectCard key={project.slug} project={project} index={index} />
+            <ProjectCard key={project.slug} project={project} index={index} isMobile={isMobile} />
           ))}
         </div>
       </div>

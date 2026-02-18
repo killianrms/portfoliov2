@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { getProjectCount } from "@/data/projects";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 function getExperienceDuration(language: "fr" | "en"): string {
   const start = new Date(2025, 8, 1); // September 2025
@@ -26,6 +27,7 @@ function getExperienceDuration(language: "fr" | "en"): string {
 
 export default function About() {
   const { language, t } = useLanguage();
+  const isMobile = useIsMobile();
   const experienceDuration = useMemo(() => getExperienceDuration(language), [language]);
 
   const stats = [
@@ -39,10 +41,12 @@ export default function About() {
     <section id="about" className="py-24 md:py-32 px-6 md:px-12">
       <div className="max-w-4xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          {...(isMobile ? {} : {
+            initial: { opacity: 0, y: 20 },
+            whileInView: { opacity: 1, y: 0 },
+            viewport: { once: true, margin: "-100px" },
+            transition: { duration: 0.6 },
+          })}
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-5xl font-serif font-bold">
@@ -52,10 +56,12 @@ export default function About() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          {...(isMobile ? {} : {
+            initial: { opacity: 0, y: 20 },
+            whileInView: { opacity: 1, y: 0 },
+            viewport: { once: true, margin: "-100px" },
+            transition: { duration: 0.6, delay: 0.2 },
+          })}
           className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"
         >
           {/* Photo */}
@@ -85,10 +91,12 @@ export default function About() {
               {stats.map((stat, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ delay: 0.3 + i * 0.1 }}
+                  {...(isMobile ? {} : {
+                    initial: { opacity: 0, y: 10 },
+                    whileInView: { opacity: 1, y: 0 },
+                    viewport: { once: true, margin: "-100px" },
+                    transition: { delay: 0.3 + i * 0.1 },
+                  })}
                   className="text-center p-3 bg-surface border border-border rounded-xl"
                 >
                   <div className="text-2xl font-bold gradient-text">
