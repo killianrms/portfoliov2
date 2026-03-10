@@ -25,6 +25,21 @@ export const metadata: Metadata = {
     "React",
     "Next.js",
   ],
+  openGraph: {
+    type: "website",
+    url: "https://killianrms.com",
+    title: "Killian RAMUS - Portfolio",
+    description: "Développeur Créatif & Passionné de Cybersécurité. Création d'expériences interactives et sécurisées.",
+    siteName: "Killian RAMUS",
+    images: [{ url: "https://killianrms.com/og-image.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Killian RAMUS - Portfolio",
+    description: "Développeur Créatif & Passionné de Cybersécurité.",
+    images: ["https://killianrms.com/og-image.png"],
+  },
+  metadataBase: new URL("https://killianrms.com"),
 };
 
 export default function RootLayout({
