@@ -10,18 +10,18 @@ export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
 
   const links = [
-    { href: "#about", label: t("nav.about") },
-    { href: "#projects", label: t("nav.projects") },
-    { href: "#timeline", label: t("nav.studies") },
-    { href: "#skills", label: t("nav.skills") },
-    { href: "#contact", label: t("nav.contact") },
+    { href: "/#about", label: t("nav.about") },
+    { href: "/#projects", label: t("nav.projects") },
+    { href: "/#timeline", label: t("nav.studies") },
+    { href: "/#skills", label: t("nav.skills") },
+    { href: "/#contact", label: t("nav.contact") },
   ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-40 px-6 py-4 md:px-12">
       <div className="flex items-center justify-between">
         {/* Logo / Name */}
-        <a href="#" className="relative z-50">
+        <a href="/" className="relative z-50">
           <span className="font-serif text-xl font-bold tracking-wide text-foreground">
             K<span className="text-accent">.</span>R
           </span>
