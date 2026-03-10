@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import FadeIn from "./FadeIn";
 
@@ -14,7 +13,7 @@ interface TimelineItem {
 
 const timelineData: TimelineItem[] = [
   {
-    year: "2024 - Présent",
+    year: "2025 - Présent",
     title: {
       fr: "Alternance - ITESOFT",
       en: "Work-Study - ITESOFT",
@@ -80,50 +79,61 @@ const timelineData: TimelineItem[] = [
   {
     year: "2023",
     title: {
-      fr: "Baccalauréat Général",
-      en: "High School Diploma (Baccalauréat)",
+      fr: "Baccalauréat STI2D - Lycée Thomas Edison, Lorgues (83)",
+      en: "STI2D High School Diploma - Lycée Thomas Edison, Lorgues (83)",
     },
     subtitle: {
-      fr: "Spécialités Mathématiques et NSI",
-      en: "Mathematics and Computer Science Specializations",
+      fr: "Spécialité SIN — Sciences de l'Ingénieur et du Numérique, et Mathématiques",
+      en: "Specialization: SIN — Engineering and Digital Sciences, and Mathematics",
     },
     description: {
-      fr: "Obtention du baccalauréat général avec les spécialités Mathématiques et Numérique et Sciences Informatiques (NSI). Première découverte de la programmation avec Python et des algorithmes fondamentaux.",
-      en: "Obtained the general baccalaureate with Mathematics and Digital & Computer Science (NSI) specializations. First introduction to programming with Python and fundamental algorithms.",
+      fr: "Obtention du baccalauréat technologique STI2D avec la spécialité SIN (Sciences de l'Ingénieur et du Numérique). Première découverte de la programmation et des systèmes numériques.",
+      en: "Obtained the STI2D technological baccalaureate with the SIN (Engineering and Digital Sciences) specialization. First introduction to programming and digital systems.",
     },
     type: "education",
   },
 ];
 
-type TimelineFilter = "all" | "education" | "experience" | "volunteer";
+const typeConfig = {
+  education: {
+    border: "border-l-blue-500",
+    badge: "bg-blue-500/10 text-blue-400 border border-blue-500/20",
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+        <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+      </svg>
+    ),
+    iconBg: "bg-blue-500/10 text-blue-400",
+    label: { fr: "Formation", en: "Education" },
+  },
+  experience: {
+    border: "border-l-green-500",
+    badge: "bg-green-500/10 text-green-400 border border-green-500/20",
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+      </svg>
+    ),
+    iconBg: "bg-green-500/10 text-green-400",
+    label: { fr: "Expérience", en: "Experience" },
+  },
+  volunteer: {
+    border: "border-l-amber-500",
+    badge: "bg-amber-500/10 text-amber-400 border border-amber-500/20",
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>
+    ),
+    iconBg: "bg-amber-500/10 text-amber-400",
+    label: { fr: "Bénévolat", en: "Volunteer" },
+  },
+};
 
 export default function Timeline() {
   const { language, t } = useLanguage();
-  const [filter, setFilter] = useState<TimelineFilter>("all");
-
-  const typeColors: Record<string, string> = {
-    education: "bg-blue-500",
-    experience: "bg-green-500",
-    volunteer: "bg-amber-500",
-  };
-
-  const typeLabels: Record<string, string> = {
-    education: t("timeline.education"),
-    experience: t("timeline.experience"),
-    volunteer: t("timeline.volunteer"),
-  };
-
-  const filters: { key: TimelineFilter; label: string }[] = [
-    { key: "all", label: language === "fr" ? "Tout" : "All" },
-    { key: "education", label: typeLabels.education },
-    { key: "experience", label: typeLabels.experience },
-    { key: "volunteer", label: typeLabels.volunteer },
-  ];
-
-  const filteredData =
-    filter === "all"
-      ? timelineData
-      : timelineData.filter((item) => item.type === filter);
 
   return (
     <section id="timeline" className="py-24 md:py-32 px-6 md:px-12">
@@ -138,63 +148,40 @@ export default function Timeline() {
           </p>
         </FadeIn>
 
-        {/* Filter tabs */}
-        <FadeIn delay={0.2} className="flex flex-wrap justify-center gap-3 mb-12">
-          {filters.map((f) => (
-            <button
-              key={f.key}
-              onClick={() => setFilter(f.key)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
-                filter === f.key
-                  ? "bg-accent text-white"
-                  : "bg-surface border border-border text-muted hover:text-foreground hover:border-accent/50"
-              }`}
-            >
-              {f.key !== "all" && (
-                <div className={`w-2.5 h-2.5 rounded-full ${typeColors[f.key]}`} />
-              )}
-              {f.label}
-            </button>
-          ))}
-        </FadeIn>
+        {/* Timeline cards */}
+        <div className="space-y-5">
+          {timelineData.map((item, i) => {
+            const config = typeConfig[item.type];
+            return (
+              <FadeIn key={`${item.type}-${item.year}`} delay={i * 0.1}>
+                <div className={`flex gap-5 p-5 md:p-6 bg-surface border border-border border-l-4 ${config.border} rounded-r-2xl rounded-tl-2xl hover:shadow-lg hover:shadow-accent/5 transition-shadow duration-300`}>
+                  {/* Icon */}
+                  <div className={`shrink-0 w-11 h-11 rounded-xl ${config.iconBg} flex items-center justify-center`}>
+                    {config.icon}
+                  </div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Center line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-border -translate-x-1/2" />
-
-          {filteredData.map((item, i) => (
-            <FadeIn
-              key={`${item.type}-${item.year}`}
-              delay={i * 0.1}
-              className={`relative flex items-start gap-8 mb-12 ${
-                i % 2 === 0
-                  ? "md:flex-row"
-                  : "md:flex-row-reverse"
-              }`}
-            >
-              {/* Dot */}
-              <div className="absolute left-4 md:left-1/2 -translate-x-1/2 z-10">
-                <div className={`w-4 h-4 rounded-full ${typeColors[item.type]} ring-4 ring-background`} />
-              </div>
-
-              {/* Content */}
-              <div className={`ml-12 md:ml-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
-                <span className="text-sm text-accent font-medium">
-                  {item.year}
-                </span>
-                <h3 className="text-lg font-semibold text-foreground mt-1">
-                  {item.title[language]}
-                </h3>
-                <p className="text-sm text-accent/80 mt-0.5">
-                  {item.subtitle[language]}
-                </p>
-                <p className="text-sm text-muted mt-2 leading-relaxed">
-                  {item.description[language]}
-                </p>
-              </div>
-            </FadeIn>
-          ))}
+                  {/* Content */}
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                      <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full ${config.badge}`}>
+                        {config.label[language]}
+                      </span>
+                      <span className="text-xs text-muted">{item.year}</span>
+                    </div>
+                    <h3 className="text-base md:text-lg font-semibold text-foreground leading-snug">
+                      {item.title[language]}
+                    </h3>
+                    <p className="text-sm text-accent/80 mt-0.5 font-medium">
+                      {item.subtitle[language]}
+                    </p>
+                    <p className="text-sm text-muted mt-2 leading-relaxed">
+                      {item.description[language]}
+                    </p>
+                  </div>
+                </div>
+              </FadeIn>
+            );
+          })}
         </div>
       </div>
     </section>

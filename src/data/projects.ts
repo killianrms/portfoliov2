@@ -12,7 +12,10 @@ export interface Skill {
 
 export interface Project {
   slug: string;
-  title: string;
+  year: string;
+  featured?: boolean;
+  archived?: boolean;
+  title: { fr: string; en: string };
   category: "professional" | "personal" | "university" | "competition";
   technologies: string[];
   duration: { fr: string; en: string };
@@ -36,7 +39,9 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: "itesoft-assistant-ingenieur",
-    title: "ITESOFT - Assistant Ingénieur Développement et Projet",
+    year: "2025",
+    featured: true,
+    title: { fr: "ITESOFT - Assistant Ingénieur Développement et Projet", en: "ITESOFT - Assistant Development & Project Engineer" },
     category: "professional",
     technologies: ["Java", "Angular", "SQL", "PostgreSQL", "Maven", "IntelliJ IDEA", "Termius", "Postman", "Azure", "Git"],
     duration: { fr: "Septembre 2024 - Présent (Alternance)", en: "September 2024 - Present (Work-Study)" },
@@ -229,7 +234,8 @@ The main learnings I take away are:
   },
   {
     slug: "tamastat",
-    title: "TamaStat - TamaBox",
+    year: "2025",
+    title: { fr: "TamaStat - TamaBox", en: "TamaStat - TamaBox" },
     category: "professional",
     technologies: ["JavaScript", "Chart.js", "HTML/CSS", "Vercel", "Git"],
     duration: { fr: "Janvier - Avril 2025 (Stage)", en: "January - April 2025 (Internship)" },
@@ -385,7 +391,9 @@ function renderChart(data) {
   },
   {
     slug: "lobbybot-fortnite",
-    title: "LobbyBot 2.0 - Bots Fortnite",
+    year: "2020",
+    featured: true,
+    title: { fr: "LobbyBot 2.0 - Bots Fortnite", en: "LobbyBot 2.0 - Fortnite Bots" },
     category: "personal",
     technologies: ["Node.js", "Python", "Discord.js", "Express", "Socket.IO", "PostgreSQL", "Docker", "OAuth2", "WebSocket", "Asyncio"],
     duration: { fr: "Projet personnel continu (2020 - Présent)", en: "Ongoing personal project (2020 - Present)" },
@@ -651,7 +659,9 @@ This project proves that a passionate side project can become something signific
   },
   {
     slug: "referendum",
-    title: "Referendum - Application de Vote Sécurisée",
+    year: "2024",
+    featured: true,
+    title: { fr: "Referendum - Application de Vote Sécurisée", en: "Referendum - Secure Voting Application" },
     category: "university",
     technologies: ["Java", "JavaFX", "ElGamal", "Zero Knowledge Proof", "DeepSeek API", "Cryptographie", "Sockets", "Scrum", "Git"],
     duration: { fr: "Toute la deuxième année de BUT 2 (Projet de fin d'année)", en: "Full second year of CS degree (Year-end project)" },
@@ -916,130 +926,9 @@ public class VoteController {
     links: { github: "https://github.com/killianrms/referendum", video: "https://youtu.be/F3I_4daMcuk", report: "https://docs.google.com/document/d/11MfYwfZin0VpMzFhqWLSZ3Y3LzQwRpnDo-VK7oX6jJ8/edit?usp=sharing" }
   },
   {
-    slug: "portfolio",
-    title: "Portfolio",
-    category: "personal",
-    technologies: ["Next.js", "React", "TypeScript", "Framer Motion", "CSS Modules", "Vercel"],
-    duration: { fr: "Projet personnel (2025)", en: "Personal project (2025)" },
-    team: { fr: "Projet individuel", en: "Individual project" },
-    role: { fr: "Développeur & Designer", en: "Developer & Designer" },
-    shortDescription: {
-      fr: "Portfolio personnel développé avec Next.js 15, React et TypeScript. Système bilingue FR/EN, animations Framer Motion, analyses de projets détaillées et design responsive.",
-      en: "Personal portfolio developed with Next.js 15, React and TypeScript. Bilingual FR/EN system, Framer Motion animations, detailed project analyses and responsive design."
-    },
-    context: {
-      fr: `Ce portfolio est la refonte complète de mon ancien site personnel (HTML/CSS/JS vanilla). L'objectif était de créer une vitrine professionnelle moderne avec des analyses de projets détaillées, répondant aux attentes académiques de mon parcours BUT Informatique.
-
-Le site est développé avec Next.js 15, React et TypeScript, et intègre des fonctionnalités avancées : un système bilingue français/anglais avec context React, des animations fluides avec Framer Motion, un routage dynamique pour les pages de projets, et un design responsive soigné. Chaque projet est documenté en profondeur avec contexte, objectifs, approche technique, architecture, compétences acquises et réflexion personnelle.`,
-      en: `This portfolio is a complete redesign of my old personal site (vanilla HTML/CSS/JS). The goal was to create a modern professional showcase with detailed project analyses, meeting the academic expectations of my Computer Science degree.
-
-The site is developed with Next.js 15, React and TypeScript, and integrates advanced features: a French/English bilingual system with React context, smooth animations with Framer Motion, dynamic routing for project pages, and a polished responsive design. Each project is documented in depth with context, objectives, technical approach, architecture, acquired skills, and personal reflection.`
-    },
-    objectives: {
-      fr: `1. **Refonte complète** de l'ancien portfolio HTML/CSS en une application Next.js moderne
-2. **Système bilingue** FR/EN avec context React et traductions type-safe
-3. **Animations fluides** avec Framer Motion (scroll-triggered, staggered)
-4. **Analyses de projets détaillées** avec code highlights et réflexions
-5. **Design responsive** avec thème sombre et typographie soignée`,
-      en: `1. **Complete redesign** of the old HTML/CSS portfolio into a modern Next.js application
-2. **Bilingual system** FR/EN with React context and type-safe translations
-3. **Smooth animations** with Framer Motion (scroll-triggered, staggered)
-4. **Detailed project analyses** with code highlights and reflections
-5. **Responsive design** with dark theme and polished typography`
-    },
-    approach: {
-      fr: `Le portfolio est développé avec Next.js 15 (App Router) en TypeScript. L'architecture suit les conventions Next.js avec des composants React modulaires.
-
-- **Système bilingue** : Un LanguageContext React fournit une fonction 't(key)' type-safe via 'useCallback' pour les traductions, avec toggle FR/EN. Le contenu des projets utilise des objets '{ fr, en }' pour le bilingue inline.
-- **Animations** : Framer Motion avec 'whileInView' pour les animations au scroll, et un système de stagger via 'delay: index * 0.1' pour les cartes de projets.
-- **Routage dynamique** : Les pages de projets utilisent '/projects/[slug]' avec lookup dans le tableau de données.
-- **Design** : Thème sombre avec variables CSS, typographie serif/sans-serif, et composants réutilisables (ProjectCard, Timeline, etc.).`,
-      en: `The portfolio is developed with Next.js 15 (App Router) in TypeScript. The architecture follows Next.js conventions with modular React components.
-
-- **Bilingual system**: A React LanguageContext provides a type-safe 't(key)' function via 'useCallback' for translations, with FR/EN toggle. Project content uses '{ fr, en }' objects for inline bilingual support.
-- **Animations**: Framer Motion with 'whileInView' for scroll-triggered animations, and a stagger system via 'delay: index * 0.1' for project cards.
-- **Dynamic routing**: Project pages use '/projects/[slug]' with lookup in the data array.
-- **Design**: Dark theme with CSS variables, serif/sans-serif typography, and reusable components (ProjectCard, Timeline, etc.).`
-    },
-    architecture: {
-      fr: `Application Next.js 15 (App Router) :
-- **src/app/** : Pages et layout (page d'accueil, pages projets dynamiques)
-- **src/components/** : Composants React (ProjectCard, ProjectsSection, Timeline, Header, etc.)
-- **src/context/** : LanguageContext pour le système bilingue
-- **src/data/** : Données des projets et traductions (TypeScript)
-- **public/** : Assets statiques (images, icônes)
-- **Déploiement** : Vercel`,
-      en: `Next.js 15 Application (App Router):
-- **src/app/**: Pages and layout (homepage, dynamic project pages)
-- **src/components/**: React components (ProjectCard, ProjectsSection, Timeline, Header, etc.)
-- **src/context/**: LanguageContext for the bilingual system
-- **src/data/**: Project data and translations (TypeScript)
-- **public/**: Static assets (images, icons)
-- **Deployment**: Vercel`
-    },
-    skills: [
-      {
-        name: { fr: "Next.js & React avancé", en: "Advanced Next.js & React" },
-        description: { fr: "Utilisation de Next.js 15 App Router, composants React modulaires, context API pour la gestion d'état, et routage dynamique avec [slug].", en: "Usage of Next.js 15 App Router, modular React components, context API for state management, and dynamic routing with [slug]." }
-      },
-      {
-        name: { fr: "TypeScript", en: "TypeScript" },
-        description: { fr: "Typage strict des interfaces (Project, Skill, CodeHighlight), des traductions (TranslationKey), et des props de composants pour la fiabilité du code.", en: "Strict typing of interfaces (Project, Skill, CodeHighlight), translations (TranslationKey), and component props for code reliability." }
-      },
-      {
-        name: { fr: "Framer Motion", en: "Framer Motion" },
-        description: { fr: "Animations au scroll (whileInView), transitions staggered pour les listes, et animations de page pour une expérience utilisateur fluide.", en: "Scroll-triggered animations (whileInView), staggered transitions for lists, and page animations for a smooth user experience." }
-      }
-    ],
-    codeHighlights: [
-      {
-        title: { fr: "Système bilingue avec Context React", en: "Bilingual System with React Context" },
-        code: `"use client";
-import { createContext, useContext, useState, useCallback } from "react";
-import { translations, type TranslationKey } from "@/data/translations";
-
-type Language = "fr" | "en";
-
-export function LanguageProvider({ children }) {
-  const [language, setLanguage] = useState<Language>("fr");
-
-  const toggleLanguage = () => {
-    setLanguage((prev) => (prev === "fr" ? "en" : "fr"));
-  };
-
-  const t = useCallback(
-    (key: TranslationKey) => translations[language][key],
-    [language]
-  );
-
-  return (
-    <LanguageContext.Provider value={{ language, toggleLanguage, t }}>
-      {children}
-    </LanguageContext.Provider>
-  );
-}`,
-        language: "typescript",
-        explanation: {
-          fr: "Système bilingue avec Context React et useCallback pour les traductions type-safe. Le LanguageProvider enveloppe l'application et fournit la langue courante, la fonction toggle, et la fonction de traduction t(key) à tous les composants.",
-          en: "Bilingual system with React Context and useCallback for type-safe translations. The LanguageProvider wraps the application and provides the current language, toggle function, and t(key) translation function to all components."
-        }
-      }
-    ],
-    results: {
-      fr: `Portfolio professionnel moderne et fonctionnel, déployé sur Vercel. Le site présente mes projets avec des analyses détaillées, un système bilingue FR/EN complet, des animations fluides, et un design responsive soigné.`,
-      en: `Modern and functional professional portfolio, deployed on Vercel. The site showcases my projects with detailed analyses, a complete FR/EN bilingual system, smooth animations, and a polished responsive design.`
-    },
-    reflection: {
-      fr: `Ce projet m'a permis de consolider mes compétences en Next.js, React et TypeScript. La mise en place du système bilingue et des animations Framer Motion m'a appris à gérer l'état global et les transitions fluides dans une application React.`,
-      en: `This project allowed me to consolidate my skills in Next.js, React, and TypeScript. Setting up the bilingual system and Framer Motion animations taught me to manage global state and smooth transitions in a React application.`
-    },
-    thumbnail: "/images/portfoliov2.webp",
-    images: [],
-    links: {}
-  },
-  {
     slug: "kcnyx",
-    title: "Kcnyx - Plateforme E-Commerce SaaS",
+    year: "2026",
+    title: { fr: "Kcnyx - Plateforme E-Commerce SaaS", en: "Kcnyx - E-Commerce SaaS Platform" },
     category: "personal",
     shortDescription: {
       fr: "Plateforme e-commerce full-stack haute performance avec authentification sécurisée, paiements multi-méthodes (Revolut + Crypto), gestion administrative complète et système d'avis clients. Déployée sur Vercel avec MySQL AWS RDS.",
@@ -1281,7 +1170,8 @@ export async function verifyCryptoPayment(
   },
   {
     slug: "code-game-jam-2026",
-    title: "Code Game Jam 2026 - Scroll Party",
+    year: "2026",
+    title: { fr: "Code Game Jam 2026 - Scroll Party", en: "Code Game Jam 2026 - Scroll Party" },
     category: "competition",
     technologies: ["Unity", "C#", "Game Design", "Sound Design", "Trello"],
     duration: { fr: "22 - 24 Janvier 2026 (48h)", en: "January 22 - 24, 2026 (48h)" },
@@ -1458,7 +1348,8 @@ Working as a team of 5 over 48h with Trello taught us to prioritize what truly m
   },
   {
     slug: "nuit-info-2025",
-    title: "Nuit de l'Info 2025",
+    year: "2025",
+    title: { fr: "Nuit de l'Info 2025", en: "Nuit de l'Info 2025" },
     category: "competition",
     technologies: ["TypeScript", "HTML/CSS", "Chrome Extension (Manifest V3)", "DeepSeek API", "GitHub Pages"],
     duration: { fr: "Décembre 2025 (1 nuit)", en: "December 2025 (1 night)" },
@@ -1626,7 +1517,8 @@ The specificity of this edition was the diversity of challenges: going from a Ch
   },
   {
     slug: "application-sauvegarde",
-    title: "Application de Sauvegarde",
+    year: "2025",
+    title: { fr: "Application de Sauvegarde", en: "Backup Application" },
     category: "university",
     shortDescription: {
       fr: "Systeme de sauvegarde automatique client-serveur avec gestion de versions, chiffrement AES-256-GCM et interface web Flask",
@@ -1825,9 +1717,38 @@ def restore_file():
     images: [],
     links: { github: "https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g2a8" }
   },
+
+  {
+    slug: "portfolio",
+    year: "2026",
+    archived: true,
+    title: { fr: "Portfolio v2", en: "Portfolio v2" },
+    category: "personal",
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"],
+    duration: { fr: "Février 2026 - Présent", en: "February 2026 - Present" },
+    team: { fr: "Projet individuel", en: "Individual project" },
+    role: { fr: "Développeur & Designer", en: "Developer & Designer" },
+    shortDescription: {
+      fr: "Ce portfolio — développé avec Next.js, React et TypeScript. Système bilingue FR/EN, animations CSS, analyses de projets détaillées et design responsive.",
+      en: "This portfolio — developed with Next.js, React and TypeScript. FR/EN bilingual system, CSS animations, detailed project analyses and responsive design."
+    },
+    context: { fr: "Refonte complète du portfolio v1 en Next.js 15 avec TypeScript, système bilingue, thème sombre et analyses de projets détaillées.", en: "Complete redesign of portfolio v1 in Next.js 15 with TypeScript, bilingual system, dark theme and detailed project analyses." },
+    objectives: { fr: "Créer une vitrine professionnelle moderne avec des analyses de projets détaillées.", en: "Create a modern professional showcase with detailed project analyses." },
+    approach: { fr: "Next.js 15 App Router, TypeScript, Tailwind CSS, animations CSS pures pour la performance.", en: "Next.js 15 App Router, TypeScript, Tailwind CSS, pure CSS animations for performance." },
+    architecture: { fr: "src/app/ (pages), src/components/ (React), src/data/ (projets + traductions), public/ (assets). Déployé sur Vercel.", en: "src/app/ (pages), src/components/ (React), src/data/ (projects + translations), public/ (assets). Deployed on Vercel." },
+    skills: [],
+    codeHighlights: [],
+    results: { fr: "Portfolio moderne déployé sur Vercel, présentant tous mes projets avec analyses détaillées.", en: "Modern portfolio deployed on Vercel, showcasing all projects with detailed analyses." },
+    reflection: { fr: "Ce projet m'a permis de consolider mes compétences Next.js, React et TypeScript.", en: "This project consolidated my Next.js, React and TypeScript skills." },
+    thumbnail: "/images/portfoliov2.webp",
+    images: [],
+    links: {}
+  },
   {
     slug: "ancien-portfolio",
-    title: "Ancien Portfolio",
+    year: "2024",
+    archived: true,
+    title: { fr: "Ancien Portfolio", en: "Former Portfolio" },
     category: "personal",
     technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"],
     duration: { fr: "Projet personnel (2024)", en: "Personal project (2024)" },
@@ -1837,553 +1758,44 @@ def restore_file():
       fr: "Première version de mon portfolio personnel, développé en HTML/CSS/JS vanilla. Remplacé par la version actuelle en Next.js/React/TypeScript.",
       en: "First version of my personal portfolio, developed in vanilla HTML/CSS/JS. Replaced by the current Next.js/React/TypeScript version."
     },
-    context: {
-      fr: `Ce portfolio (v1) a été mon premier projet de vitrine personnelle en ligne. Développé en HTML, CSS et JavaScript sans framework, il m'a permis d'apprendre les fondamentaux du développement web front-end et les principes du responsive design.
-
-Il a depuis été remplacé par la version actuelle (v2) développée avec Next.js, React et TypeScript, qui intègre des animations avancées, un système bilingue, et des analyses de projets détaillées. L'ancienne version reste accessible sur old.killianrms.com.`,
-      en: `This portfolio (v1) was my first personal online showcase project. Developed in HTML, CSS, and JavaScript without a framework, it allowed me to learn the fundamentals of front-end web development and responsive design principles.
-
-It has since been replaced by the current version (v2) developed with Next.js, React and TypeScript, which integrates advanced animations, a bilingual system, and detailed project analyses. The old version remains accessible at old.killianrms.com.`
-    },
-    objectives: {
-      fr: `1. Créer une présence en ligne professionnelle
-2. Apprendre les fondamentaux HTML/CSS/JS
-3. Mettre en pratique le responsive design
-4. Présenter mes projets de manière claire et accessible`,
-      en: `1. Create a professional online presence
-2. Learn HTML/CSS/JS fundamentals
-3. Practice responsive design
-4. Present my projects clearly and accessibly`
-    },
-    approach: {
-      fr: `Développement en vanilla HTML/CSS/JS avec une approche mobile-first. Utilisation de CSS Grid et Flexbox pour la mise en page responsive, JavaScript pour les interactions (navigation, filtres, animations). Le site est hébergé et déployé via GitHub Pages.`,
-      en: `Development in vanilla HTML/CSS/JS with a mobile-first approach. Using CSS Grid and Flexbox for responsive layout, JavaScript for interactions (navigation, filters, animations). The site is hosted and deployed via GitHub Pages.`
-    },
-    architecture: {
-      fr: `Site statique simple :
-- **index.html** : Structure du site avec sections (biographie, parcours, projets, contact)
-- **styles/** : Fichiers CSS organisés par section
-- **scripts/** : JavaScript pour les interactions et animations
-- **assets/** : Images, icônes et fichiers statiques`,
-      en: `Simple static site:
-- **index.html**: Site structure with sections (biography, journey, projects, contact)
-- **styles/**: CSS files organized by section
-- **scripts/**: JavaScript for interactions and animations
-- **assets/**: Images, icons, and static files`
-    },
-    skills: [
-      {
-        name: { fr: "HTML/CSS avancé", en: "Advanced HTML/CSS" },
-        description: { fr: "Maîtrise de CSS Grid, Flexbox, animations CSS, media queries et approche mobile-first.", en: "Mastery of CSS Grid, Flexbox, CSS animations, media queries, and mobile-first approach." }
-      },
-      {
-        name: { fr: "JavaScript vanilla", en: "Vanilla JavaScript" },
-        description: { fr: "Manipulation du DOM, gestion des événements, animations et interactions sans dépendance à un framework.", en: "DOM manipulation, event handling, animations, and interactions without framework dependency." }
-      }
-    ],
-    codeHighlights: [
-     {
-        title: { fr: "Gestion etat TypeScript avec Context API", en: "TypeScript state management with Context API" },
-        code: `// Nuit de l'Info 2025 - Game State Context
-import React, { createContext, useContext, useState, ReactNode } from 'react';
-
-interface GameState {
-  score: number;
-  level: number;
-  lives: number;
-  isPaused: boolean;
-  gameOver: boolean;
-}
-
-interface GameContextType {
-  state: GameState;
-  incrementScore: (points: number) => void;
-  loseLife: () => void;
-  nextLevel: () => void;
-  togglePause: () => void;
-  resetGame: () => void;
-}
-
-const GameContext = createContext<GameContextType | undefined>(undefined);
-
-export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [state, setState] = useState<GameState>({
-    score: 0,
-    level: 1,
-    lives: 3,
-    isPaused: false,
-    gameOver: false
-  });
-
-  const incrementScore = (points: number) => {
-    setState(prev => ({
-      ...prev,
-      score: prev.score + points
-    }));
-  };
-
-  const loseLife = () => {
-    setState(prev => {
-      const newLives = prev.lives - 1;
-      return {
-        ...prev,
-        lives: newLives,
-        gameOver: newLives <= 0
-      };
-    });
-  };
-
-  const nextLevel = () => {
-    setState(prev => ({
-      ...prev,
-      level: prev.level + 1,
-      lives: Math.min(prev.lives + 1, 5)  // Bonus vie (max 5)
-    }));
-  };
-
-  const togglePause = () => {
-    setState(prev => ({
-      ...prev,
-      isPaused: !prev.isPaused
-    }));
-  };
-
-  const resetGame = () => {
-    setState({
-      score: 0,
-      level: 1,
-      lives: 3,
-      isPaused: false,
-      gameOver: false
-    });
-  };
-
-  return (
-    <GameContext.Provider value={{
-      state,
-      incrementScore,
-      loseLife,
-      nextLevel,
-      togglePause,
-      resetGame
-    }}>
-      {children}
-    </GameContext.Provider>
-  );
-};
-
-export const useGame = () => {
-  const context = useContext(GameContext);
-  if (!context) {
-    throw new Error('useGame must be used within GameProvider');
-  }
-  return context;
-};
-
-// Utilisation dans composant:
-// const { state, incrementScore, loseLife } = useGame();`,
-        language: "typescript",
-        explanation: {
-          fr: "Ce Context API TypeScript gere l'etat global du jeu (score, niveau, vies) de maniere type-safe. Le GameProvider encapsule la logique metier (incrementScore, loseLife, nextLevel) et expose un hook useGame() pour consommer l'etat. L'approche immutable (spread operator) garantit les re-renders React. Parfait pour prototypage rapide en game jam.",
-          en: "This TypeScript Context API manages global game state (score, level, lives) in a type-safe manner. GameProvider encapsulates business logic (incrementScore, loseLife, nextLevel) and exposes useGame() hook to consume state. Immutable approach (spread operator) ensures React re-renders. Perfect for rapid prototyping in game jams."
-        }
-      },
-      {
-        title: { fr: "Animation canvas HTML5 avec requestAnimationFrame", en: "HTML5 canvas animation with requestAnimationFrame" },
-        code: `// Nuit de l'Info 2025 - Canvas Game Loop
-class GameCanvas {
-  private canvas: HTMLCanvasElement;
-  private ctx: CanvasRenderingContext2D;
-  private animationId: number | null = null;
-  private lastFrameTime: number = 0;
-  private entities: Entity[] = [];
-
-  constructor(canvasId: string) {
-    this.canvas = document.getElementById(canvasId) as HTMLCanvasElement;
-    this.ctx = this.canvas.getContext('2d')!;
-    this.resizeCanvas();
-    window.addEventListener('resize', () => this.resizeCanvas());
-  }
-
-  private resizeCanvas() {
-    this.canvas.width = window.innerWidth;
-    this.canvas.height = window.innerHeight;
-  }
-
-  start() {
-    this.lastFrameTime = performance.now();
-    this.gameLoop(this.lastFrameTime);
-  }
-
-  private gameLoop = (currentTime: number) => {
-    // 1. Calculer delta time (temps ecoule depuis derniere frame)
-    const deltaTime = (currentTime - this.lastFrameTime) / 1000;
-    this.lastFrameTime = currentTime;
-
-    // 2. Update: Mettre a jour logique du jeu
-    this.update(deltaTime);
-
-    // 3. Render: Dessiner la frame
-    this.render();
-
-    // 4. Boucle infinie (60 FPS cible)
-    this.animationId = requestAnimationFrame(this.gameLoop);
-  };
-
-  private update(deltaTime: number) {
-    // Update toutes les entites du jeu
-    this.entities.forEach(entity => {
-      entity.update(deltaTime);
-
-      // Collision detection
-      this.entities.forEach(other => {
-        if (entity !== other && entity.collidesWith(other)) {
-          entity.onCollision(other);
-        }
-      });
-    });
-
-    // Nettoyer entites mortes
-    this.entities = this.entities.filter(e => !e.isDead);
-  }
-
-  private render() {
-    // 1. Clear canvas
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-    // 2. Background
-    this.ctx.fillStyle = '#0a0a0a';
-    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-
-    // 3. Render entites (tri par z-index)
-    this.entities
-      .sort((a, b) => a.zIndex - b.zIndex)
-      .forEach(entity => entity.render(this.ctx));
-
-    // 4. UI overlay (score, vies, etc)
-    this.renderUI();
-  }
-
-  private renderUI() {
-    this.ctx.fillStyle = '#ffffff';
-    this.ctx.font = '24px Arial';
-    this.ctx.fillText('Score: \${gameState.score}', 20, 40);
-    this.ctx.fillText('Niveau: \${gameState.level}', 20, 70);
-
-    // Afficher vies (coeurs)
-    for (let i = 0; i < gameState.lives; i++) {
-      this.ctx.fillText('❤️', 20 + i * 30, 100);
-    }
-  }
-
-  addEntity(entity: Entity) {
-    this.entities.push(entity);
-  }
-
-  stop() {
-    if (this.animationId) {
-      cancelAnimationFrame(this.animationId);
-      this.animationId = null;
-    }
-  }
-}`,
-        language: "typescript",
-        explanation: {
-          fr: "Cette game loop Canvas HTML5 utilise requestAnimationFrame pour un rendu 60 FPS fluide. Le deltaTime calcule le temps ecoule entre frames pour une physique frame-independent. La boucle update() gere la logique (mouvements, collisions), render() dessine (clear, background, entites triees par z-index, UI). Architecture modulaire avec systeme d'entites permettant rapide prototypage.",
-          en: "This HTML5 Canvas game loop uses requestAnimationFrame for smooth 60 FPS rendering. DeltaTime calculates elapsed time between frames for frame-independent physics. The update() loop handles logic (movement, collisions), render() draws (clear, background, z-index sorted entities, UI). Modular architecture with entity system enabling rapid prototyping."
-        }
-      }
-    ],
-    results: {
-      fr: `Le portfolio v1 a rempli son rôle de vitrine en ligne pendant un an, me permettant de partager mes projets avec des recruteurs et des pairs. Son principal défaut était le manque de profondeur dans les analyses de projets, ce qui a motivé la création de la v2 (le site actuel).`,
-      en: `The v1 portfolio served its purpose as an online showcase for a year, allowing me to share my projects with recruiters and peers. Its main drawback was the lack of depth in project analyses, which motivated the creation of v2 (the current site).`
-    },
-    reflection: {
-      fr: `Ce premier portfolio m'a appris l'importance de la présentation dans la carrière d'un développeur. Au-delà du code, savoir communiquer sur son travail est une compétence essentielle. La v2 (le site actuel) représente une évolution naturelle, avec plus de profondeur analytique et une meilleure expérience utilisateur.`,
-      en: `This first portfolio taught me the importance of presentation in a developer's career. Beyond code, knowing how to communicate about your work is an essential skill. V2 (the current site) represents a natural evolution, with more analytical depth and better user experience.`
-    },
+    context: { fr: "Premier portfolio personnel en HTML/CSS/JS vanilla. Remplacé par la v2 Next.js.", en: "First personal portfolio in vanilla HTML/CSS/JS. Replaced by the Next.js v2." },
+    objectives: { fr: "Créer une présence en ligne et apprendre les fondamentaux du développement web.", en: "Create an online presence and learn web development fundamentals." },
+    approach: { fr: "HTML/CSS/JS vanilla, mobile-first, CSS Grid et Flexbox, hébergé sur GitHub Pages.", en: "Vanilla HTML/CSS/JS, mobile-first, CSS Grid and Flexbox, hosted on GitHub Pages." },
+    architecture: { fr: "Site statique : index.html, styles/, scripts/, assets/.", en: "Static site: index.html, styles/, scripts/, assets/." },
+    skills: [],
+    codeHighlights: [],
+    results: { fr: "Portfolio v1 en ligne pendant un an, remplacé par la v2 Next.js.", en: "Portfolio v1 online for a year, replaced by the Next.js v2." },
+    reflection: { fr: "Ce projet m'a appris l'importance de la présentation dans la carrière d'un développeur.", en: "This project taught me the importance of presentation in a developer's career." },
     thumbnail: "/images/portfolio.webp",
     images: [],
     links: { github: "https://github.com/killianrms/portfolio", live: "https://old.killianrms.com" }
   },
   {
     slug: "nuit-info-2024",
-    title: "Nuit de l'Info 2024",
+    year: "2024",
+    archived: true,
+    title: { fr: "Nuit de l'Info 2024", en: "Nuit de l'Info 2024" },
     category: "competition",
     technologies: ["HTML", "CSS", "JavaScript", "Replit"],
     duration: { fr: "Décembre 2024 (1 nuit)", en: "December 2024 (1 night)" },
     team: { fr: "Équipe Le Buff Chinois", en: "Le Buff Chinois Team" },
     role: { fr: "Développeur", en: "Developer" },
     shortDescription: {
-      fr: "Compétition nationale de développement web en une nuit. Thème : le changement climatique (GIEC). Création d'un site web de sensibilisation aux enjeux climatiques avec l'équipe Le Buff Chinois.",
-      en: "National one-night web development competition. Theme: climate change (IPCC). Creation of a climate awareness website with the Le Buff Chinois team."
+      fr: "Compétition nationale de développement web en une nuit. Thème : le changement climatique (GIEC). Création d'un site web de sensibilisation avec l'équipe Le Buff Chinois.",
+      en: "National one-night web development competition. Theme: climate change (IPCC). Created a climate awareness website with the Le Buff Chinois team."
     },
-    context: {
-      fr: `La Nuit de l'Info 2024 est ma deuxième participation à cette compétition nationale annuelle. Le thème de cette édition était le changement climatique, une problématique soulevée par le GIEC (Groupe d'experts intergouvernemental sur l'évolution du climat).
-
-Notre équipe "Le Buff Chinois" devait créer un site web innovant et pertinent pour sensibiliser aux enjeux climatiques et encourager l'action pour un avenir durable. Nous avons choisi une stack simple HTML/CSS/JavaScript, hébergée sur Replit, pour pouvoir itérer rapidement pendant la nuit.`,
-      en: `The Nuit de l'Info 2024 was my second participation in this annual national competition. The theme of this edition was climate change, a concern raised by the IPCC (Intergovernmental Panel on Climate Change).
-
-Our "Le Buff Chinois" team had to create an innovative and relevant website to raise awareness about climate issues and encourage action for a sustainable future. We chose a simple HTML/CSS/JavaScript stack, hosted on Replit, to iterate quickly during the night.`
-    },
-    objectives: {
-      fr: `1. Créer un site web de sensibilisation au changement climatique en une nuit
-2. Présenter de manière claire et engageante les impacts du changement climatique
-3. Proposer des solutions concrètes pour réduire l'empreinte carbone
-4. Concevoir un design interactif pour capter l'attention des utilisateurs`,
-      en: `1. Create a climate change awareness website in one night
-2. Present climate change impacts in a clear and engaging way
-3. Propose concrete solutions to reduce carbon footprint
-4. Design an interactive layout to capture user attention`
-    },
-    approach: {
-      fr: `Le site a été développé en HTML, CSS et JavaScript, hébergé sur Replit pour un déploiement instantané. L'approche était pragmatique : utiliser des technologies maîtrisées par toute l'équipe pour maximiser la vitesse de développement.
-
-Le contenu du site couvrait les impacts du changement climatique avec des données du GIEC, et proposait des solutions concrètes pour s'adapter et réduire son empreinte carbone. Le design interactif visait à rendre le sujet accessible et engageant.`,
-      en: `The site was developed in HTML, CSS, and JavaScript, hosted on Replit for instant deployment. The approach was pragmatic: use technologies mastered by the entire team to maximize development speed.
-
-The site's content covered climate change impacts with IPCC data, and proposed concrete solutions to adapt and reduce carbon footprint. The interactive design aimed to make the subject accessible and engaging.`
-    },
-    architecture: {
-      fr: `Site web statique :
-- **Frontend** : HTML, CSS, JavaScript
-- **Hébergement** : Replit
-- **Contenu** : Données GIEC, impacts climatiques, solutions concrètes`,
-      en: `Static website:
-- **Frontend**: HTML, CSS, JavaScript
-- **Hosting**: Replit
-- **Content**: IPCC data, climate impacts, concrete solutions`
-    },
-    skills: [
-      {
-        name: { fr: "Développement web sous pression", en: "Web Development Under Pressure" },
-        description: { fr: "Livraison d'un site web fonctionnel et pertinent en une seule nuit, avec priorisation des fonctionnalités essentielles.", en: "Delivery of a functional and relevant website in a single night, with prioritization of essential features." }
-      },
-      {
-        name: { fr: "Travail d'équipe en hackathon", en: "Hackathon Teamwork" },
-        description: { fr: "Coordination efficace de l'équipe Le Buff Chinois sous pression, gestion du temps et répartition des tâches dans un délai extrêmement restreint.", en: "Efficient coordination of the Le Buff Chinois team under pressure, time management and task distribution within an extremely tight deadline." }
-      }
-    ],
-    codeHighlights: [
-     {
-        title: { fr: "Systeme de grid-based movement en C#", en: "Grid-based movement system in C#" },
-        code: `// Code Game Jam 2026 - Grid Movement Controller
-using UnityEngine;
-using System.Collections;
-
-public class GridMovement : MonoBehaviour
-{
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private LayerMask obstacleLayer;
-
-    private Vector3 targetPosition;
-    private bool isMoving = false;
-    private const float GRID_SIZE = 1f;
-
-    void Start()
-    {
-        // Snap position initiale sur la grille
-        transform.position = GetGridPosition(transform.position);
-        targetPosition = transform.position;
-    }
-
-    void Update()
-    {
-        HandleInput();
-        MoveTowardsTarget();
-    }
-
-    void HandleInput()
-    {
-        if (isMoving) return;
-
-        Vector3 moveDirection = Vector3.zero;
-
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-            moveDirection = Vector3.forward;
-        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-            moveDirection = Vector3.back;
-        else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-            moveDirection = Vector3.left;
-        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-            moveDirection = Vector3.right;
-
-        if (moveDirection != Vector3.zero)
-        {
-            TryMove(moveDirection);
-        }
-    }
-
-    void TryMove(Vector3 direction)
-    {
-        Vector3 nextPosition = transform.position + direction * GRID_SIZE;
-
-        // Verifier collision avec obstacles (Raycast)
-        if (Physics.Raycast(transform.position, direction, GRID_SIZE, obstacleLayer))
-        {
-            Debug.Log("Obstacle detecte, mouvement bloque");
-            return;
-        }
-
-        // Si libre, commencer deplacement
-        targetPosition = nextPosition;
-        isMoving = true;
-    }
-
-    void MoveTowardsTarget()
-    {
-        if (!isMoving) return;
-
-        // Interpolation lineaire vers position cible
-        transform.position = Vector3.MoveTowards(
-            transform.position,
-            targetPosition,
-            moveSpeed * Time.deltaTime
-        );
-
-        // Si position atteinte, arreter mouvement
-        if (Vector3.Distance(transform.position, targetPosition) < 0.01f)
-        {
-            transform.position = targetPosition;
-            isMoving = false;
-        }
-    }
-
-    Vector3 GetGridPosition(Vector3 position)
-    {
-        // Aligner position sur grille (snap)
-        return new Vector3(
-            Mathf.Round(position.x / GRID_SIZE) * GRID_SIZE,
-            position.y,
-            Mathf.Round(position.z / GRID_SIZE) * GRID_SIZE
-        );
-    }
-}`,
-        language: "csharp",
-        explanation: {
-          fr: "Ce script C# implemente un systeme de deplacement grid-based pour Unity. Le joueur se deplace case par case (1 unite) avec WASD/fleches. La methode TryMove() verifie les collisions par Raycast avant d'autoriser le mouvement. L'interpolation MoveTowards() assure une transition fluide entre cases. Le snap sur grille garantit un alignement precis, essentiel pour les puzzles.",
-          en: "This C# script implements a grid-based movement system for Unity. Player moves tile by tile (1 unit) with WASD/arrows. TryMove() method checks collisions via Raycast before allowing movement. MoveTowards() interpolation ensures smooth transition between tiles. Grid snapping guarantees precise alignment, essential for puzzles."
-        }
-      },
-      {
-        title: { fr: "Gestion interactions objets avec systeme events", en: "Object interaction management with event system" },
-        code: `// Code Game Jam 2026 - Interactable Object System
-using UnityEngine;
-using UnityEngine.Events;
-
-public class InteractableObject : MonoBehaviour
-{
-    [Header("Interaction Settings")]
-    [SerializeField] private string objectName = "Objet";
-    [SerializeField] private KeyCode interactKey = KeyCode.E;
-    [SerializeField] private float interactionRange = 2f;
-
-    [Header("Events")]
-    [SerializeField] private UnityEvent onInteract;
-    [SerializeField] private UnityEvent onPlayerEnterRange;
-    [SerializeField] private UnityEvent onPlayerExitRange;
-
-    private Transform player;
-    private bool playerInRange = false;
-    private UIManager uiManager;
-
-    void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        uiManager = FindObjectOfType<UIManager>();
-    }
-
-    void Update()
-    {
-        CheckPlayerDistance();
-
-        if (playerInRange && Input.GetKeyDown(interactKey))
-        {
-            Interact();
-        }
-    }
-
-    void CheckPlayerDistance()
-    {
-        float distance = Vector3.Distance(transform.position, player.position);
-        bool wasInRange = playerInRange;
-        playerInRange = distance <= interactionRange;
-
-        // Detecter entree/sortie de zone
-        if (playerInRange && !wasInRange)
-        {
-            onPlayerEnterRange?.Invoke();
-            uiManager.ShowInteractionPrompt($"Appuyez sur {interactKey} pour interagir avec {objectName}");
-        }
-        else if (!playerInRange && wasInRange)
-        {
-            onPlayerExitRange?.Invoke();
-            uiManager.HideInteractionPrompt();
-        }
-    }
-
-    void Interact()
-    {
-        Debug.Log($"Interaction avec {objectName}");
-        onInteract?.Invoke();
-
-        // Exemples d'actions via Events:
-        // - Ouvrir porte (animator.SetTrigger("Open"))
-        // - Ramasser objet (inventory.AddItem(item))
-        // - Activer mecanisme (puzzleManager.ActivateSwitch())
-        // - Afficher dialogue (dialogueManager.ShowDialogue(text))
-    }
-
-    // Methodes appelables via UnityEvents (Inspector)
-    public void OpenDoor()
-    {
-        GetComponent<Animator>().SetTrigger("Open");
-        AudioManager.Instance.PlaySFX("DoorOpen");
-    }
-
-    public void CollectKey()
-    {
-        GameManager.Instance.inventory.AddItem("Key");
-        uiManager.ShowNotification("Cle recuperee!");
-        Destroy(gameObject);
-    }
-
-    public void ActivatePuzzleSwitch()
-    {
-        PuzzleManager.Instance.ToggleSwitch(this.gameObject.name);
-        GetComponent<Renderer>().material.color = Color.green;
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        // Visualiser range d'interaction dans editeur
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, interactionRange);
-    }
-}`,
-        language: "csharp",
-        explanation: {
-          fr: "Ce systeme d'interaction utilise les UnityEvents pour une architecture modulaire. Le script detecte la proximite du joueur, affiche un prompt UI et declenche des events lors de l'interaction (E). Les methodes OpenDoor(), CollectKey(), ActivatePuzzleSwitch() sont assignables via l'Inspector Unity, permettant de configurer les interactions sans coder. Ideal pour game jams ou la rapidite est cruciale.",
-          en: "This interaction system uses UnityEvents for modular architecture. Script detects player proximity, displays UI prompt and triggers events on interaction (E). Methods OpenDoor(), CollectKey(), ActivatePuzzleSwitch() are assignable via Unity Inspector, allowing interaction configuration without coding. Ideal for game jams where speed is crucial."
-        }
-      }
-    ],
-    results: {
-      fr: `Le site a été livré fonctionnel à la fin de la nuit avec une présentation claire des impacts du changement climatique, des solutions proposées, et un design interactif. Par rapport à ma première participation en 2023, cette édition montre une nette progression dans l'organisation et la qualité du livrable.`,
-      en: `The site was delivered functional at the end of the night with a clear presentation of climate change impacts, proposed solutions, and an interactive design. Compared to my first participation in 2023, this edition shows clear progression in organization and deliverable quality.`
-    },
-    reflection: {
-      fr: `Cette deuxième Nuit de l'Info confirme l'importance de choisir des technologies maîtrisées lors d'un hackathon. En optant pour HTML/CSS/JS sur Replit, nous avons pu nous concentrer sur le contenu et le design plutôt que sur des problèmes techniques.
-
-La thématique du changement climatique nous a poussés à aller au-delà du simple développement technique pour réfléchir à l'impact et au message que nous voulions transmettre.`,
-      en: `This second Nuit de l'Info confirms the importance of choosing mastered technologies during a hackathon. By opting for HTML/CSS/JS on Replit, we could focus on content and design rather than technical problems.
-
-The climate change theme pushed us beyond simple technical development to think about the impact and message we wanted to convey.`
-    },
+    context: { fr: "Nuit de l'Info 2024 — compétition nationale de développement web en une nuit, thème changement climatique.", en: "Nuit de l'Info 2024 — national one-night web development competition, climate change theme." },
+    objectives: { fr: "Créer un site de sensibilisation au changement climatique en une nuit.", en: "Create a climate change awareness website in one night." },
+    approach: { fr: "HTML/CSS/JS sur Replit, approche pragmatique pour maximiser la vitesse de développement.", en: "HTML/CSS/JS on Replit, pragmatic approach to maximize development speed." },
+    architecture: { fr: "Site statique hébergé sur Replit avec contenu GIEC.", en: "Static site hosted on Replit with IPCC content." },
+    skills: [],
+    codeHighlights: [],
+    results: { fr: "Site livré fonctionnel à la fin de la nuit avec présentation des impacts climatiques.", en: "Site delivered functional at the end of the night with climate impact presentation." },
+    reflection: { fr: "Confirme l'importance de choisir des technologies maîtrisées en hackathon.", en: "Confirms the importance of choosing mastered technologies in a hackathon." },
     thumbnail: "/images/project-5.webp",
     images: [],
     links: {}
-  }
+  },
 ];
 
-export const getProjectCount = (): number => projects.length;
+export const getProjectCount = (): number => projects.filter(p => !p.archived).length;

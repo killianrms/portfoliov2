@@ -205,7 +205,7 @@ export default function ProjectPage() {
         {/* Header */}
         <FadeIn delay={0.1}>
           <h1 className="text-3xl md:text-5xl font-serif font-bold mb-6">
-            {project.title}
+            {project.title[language]}
           </h1>
 
           {/* Meta info */}
@@ -267,7 +267,7 @@ export default function ProjectPage() {
             <div className="relative w-full max-w-2xl mx-auto rounded-xl overflow-hidden border border-border">
               <Image
                 src={project.poster}
-                alt={`${project.title} - Affiche`}
+                alt={`${project.title[language]} - Affiche`}
                 width={800}
                 height={600}
                 className="w-full h-auto object-contain"
@@ -292,7 +292,7 @@ export default function ProjectPage() {
                 >
                   <Image
                     src={img}
-                    alt={`${project.title} - ${i + 1}`}
+                    alt={`${project.title[language]} - ${i + 1}`}
                     fill
                     sizes="(max-width: 768px) 50vw, 33vw"
                     className="object-cover"
@@ -341,7 +341,7 @@ export default function ProjectPage() {
             <div className="relative max-w-5xl max-h-[85vh] w-full h-full" onClick={(e) => e.stopPropagation()}>
               <Image
                 src={project.images[selectedImage]}
-                alt={`${project.title} - ${selectedImage + 1}`}
+                alt={`${project.title[language]} - ${selectedImage + 1}`}
                 fill
                 sizes="90vw"
                 className="object-contain"

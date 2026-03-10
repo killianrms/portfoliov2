@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo } from "react";
-import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { getProjectCount } from "@/data/projects";
 import FadeIn from "./FadeIn";
@@ -45,46 +44,30 @@ export default function About() {
           <p className="mt-2 text-accent font-medium">{t("about.subtitle")}</p>
         </FadeIn>
 
-        <FadeIn delay={0.2} className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-          {/* Photo */}
-          <div className="flex justify-center md:justify-start">
-            <div className="w-48 h-48 md:w-full md:h-64 rounded-2xl bg-surface border border-border overflow-hidden relative">
-              <Image
-                src="/images/photo.webp"
-                alt="Killian"
-                fill
-                sizes="(max-width: 768px) 192px, 300px"
-                className="object-cover"
-              />
-            </div>
-          </div>
+        <FadeIn delay={0.2} className="space-y-4">
+          <p className="text-muted leading-relaxed text-base md:text-lg">
+            {t("about.description")}
+          </p>
+          <p className="text-muted leading-relaxed text-base md:text-lg">
+            {t("about.description2")}
+          </p>
 
-          {/* Description */}
-          <div className="md:col-span-2 space-y-4">
-            <p className="text-muted leading-relaxed">
-              {t("about.description")}
-            </p>
-            <p className="text-muted leading-relaxed">
-              {t("about.description2")}
-            </p>
-
-            {/* Quick stats */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6">
-              {stats.map((stat, i) => (
-                <FadeIn
-                  key={i}
-                  delay={0.3 + i * 0.1}
-                  className="text-center p-3 bg-surface border border-border rounded-xl"
-                >
-                  <div className="text-2xl font-bold gradient-text">
-                    {stat.value}
-                  </div>
-                  <div className="text-xs text-muted mt-1">
-                    {stat.label[language]}
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
+          {/* Quick stats */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8">
+            {stats.map((stat, i) => (
+              <FadeIn
+                key={i}
+                delay={0.3 + i * 0.1}
+                className="text-center p-4 bg-surface border border-border rounded-xl"
+              >
+                <div className="text-2xl font-bold gradient-text">
+                  {stat.value}
+                </div>
+                <div className="text-xs text-muted mt-1">
+                  {stat.label[language]}
+                </div>
+              </FadeIn>
+            ))}
           </div>
         </FadeIn>
       </div>

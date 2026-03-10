@@ -31,12 +31,21 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <FadeIn delay={index * 0.1}>
       <Link href={`/projects/${project.slug}`} prefetch={false}>
-        <div className="group relative bg-surface border border-border rounded-xl overflow-hidden hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/5">
+        <div className={`group relative bg-surface border rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-accent/5 ${project.featured ? "border-accent/40 hover:border-accent" : "border-border hover:border-accent/50"}`}>
+          {/* Featured ribbon */}
+          {project.featured && (
+            <div className="absolute top-0 right-0 z-10">
+              <div className="bg-accent text-white text-xs font-semibold px-3 py-1 rounded-bl-xl">
+                ★ {language === "fr" ? "À la une" : "Featured"}
+              </div>
+            </div>
+          )}
+
           {/* Thumbnail */}
           <div className={`relative h-48 overflow-hidden ${project.thumbnail.includes("itesoft") ? "bg-white" : "bg-surface-hover"}`}>
             <Image
               src={project.thumbnail}
-              alt={project.title}
+              alt={project.title[language]}
               fill
               sizes="(max-width: 640px) 92vw, (max-width: 768px) 95vw, (max-width: 1200px) 45vw, 30vw"
               className={`group-hover:scale-110 transition-transform duration-500 ${project.thumbnail.includes("itesoft") ? "object-contain p-4" : "object-cover"}`}
@@ -54,10 +63,17 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
           {/* Content */}
           <div className="p-5">
-            <h3 className="text-lg font-semibold text-foreground group-hover:text-accent transition-colors duration-300 line-clamp-1">
-              {project.title}
-            </h3>
-            <p className="mt-2 text-sm text-muted line-clamp-2">
+            <div className="flex items-start justify-between gap-2 mb-1">
+              <h3 className="text-lg font-semibold text-foreground group-hover:text-accent transition-colors duration-300 line-clamp-1">
+                {project.title[language]}
+              </h3>
+              {project.year && (
+                <span className="shrink-0 text-xs text-muted bg-surface-hover px-2 py-1 rounded-md mt-0.5">
+                  {project.year}
+                </span>
+              )}
+            </div>
+            <p className="text-sm text-muted line-clamp-2">
               {project.shortDescription[language]}
             </p>
 
