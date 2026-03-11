@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import FadeIn from "./FadeIn";
 
@@ -34,7 +35,7 @@ const technologies: Tech[] = [
   { name: "MongoDB", category: "Database", color: "text-green-400 border-green-500/30 bg-green-500/5" },
 ];
 
-const categoryMeta: Record<string, { icon: JSX.Element; color: string; label: { fr: string; en: string } }> = {
+const categoryMeta: Record<string, { icon: React.JSX.Element; color: string; label: { fr: string; en: string } }> = {
   Languages: {
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
