@@ -3,7 +3,7 @@
 import React, { useRef, useState, useEffect, type ComponentType } from "react";
 import dynamic from "next/dynamic";
 
-function reloadOnChunkError(err: unknown) {
+function reloadOnChunkError(err: unknown): never {
   if (err instanceof Error && err.name === "ChunkLoadError") {
     window.location.reload();
   }
