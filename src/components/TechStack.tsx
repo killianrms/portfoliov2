@@ -79,7 +79,7 @@ export default function TechStack() {
   const categories = [...new Set(technologies.map((t) => t.category))];
 
   return (
-    <section id="skills" className="py-24 md:py-32 px-6 md:px-12 bg-surface/50">
+    <section className="py-24 md:py-32 px-6 md:px-12 bg-surface/50">
       <div className="max-w-5xl mx-auto">
         <FadeIn className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-serif font-bold">

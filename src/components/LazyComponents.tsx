@@ -93,9 +93,11 @@ const skeletons: Record<string, () => React.JSX.Element> = {
 function LazySection({
   component: Component,
   skeleton: Skeleton,
+  id,
 }: {
   component: ComponentType;
   skeleton: () => React.JSX.Element;
+  id: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -117,7 +119,7 @@ function LazySection({
   }, []);
 
   return (
-    <div ref={ref}>
+    <div ref={ref} id={id}>
       {visible ? <Component /> : <Skeleton />}
     </div>
   );
@@ -126,11 +128,11 @@ function LazySection({
 export default function LazyComponents() {
   return (
     <>
-      <LazySection component={Timeline} skeleton={SkeletonTimeline} />
+      <LazySection id="timeline" component={Timeline} skeleton={SkeletonTimeline} />
       <div className="section-separator" />
-      <LazySection component={TechStack} skeleton={SkeletonTechStack} />
+      <LazySection id="skills" component={TechStack} skeleton={SkeletonTechStack} />
       <div className="section-separator" />
-      <LazySection component={Contact} skeleton={SkeletonContact} />
+      <LazySection id="contact" component={Contact} skeleton={SkeletonContact} />
     </>
   );
 }

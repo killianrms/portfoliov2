@@ -136,7 +136,7 @@ export default function Timeline() {
   const { language, t } = useLanguage();
 
   return (
-    <section id="timeline" className="py-24 md:py-32 px-6 md:px-12">
+    <section className="py-24 md:py-32 px-6 md:px-12">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <FadeIn className="text-center mb-16">

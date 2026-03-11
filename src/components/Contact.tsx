@@ -30,7 +30,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 px-6 md:px-12">
+    <section className="py-24 md:py-32 px-6 md:px-12">
       <div className="max-w-2xl mx-auto">
 
         {/* Titre */}
