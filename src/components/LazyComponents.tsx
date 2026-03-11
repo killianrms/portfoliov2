@@ -95,7 +95,7 @@ function LazySection({
   skeleton: Skeleton,
 }: {
   component: ComponentType;
-  skeleton: () => JSX.Element;
+  skeleton: () => React.JSX.Element;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
