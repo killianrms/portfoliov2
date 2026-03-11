@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
 
@@ -21,22 +22,22 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-40 px-6 py-4 md:px-12">
       <div className="flex items-center justify-between">
         {/* Logo / Name */}
-        <a href="/" className="relative z-50">
+        <Link href="/" className="relative z-50">
           <span className="font-serif text-xl font-bold tracking-wide text-foreground">
             K<span className="text-accent">.</span>R
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           {links.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-sm font-medium text-muted hover:text-foreground transition-colors duration-300"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
 
           {/* Language Toggle */}
@@ -103,14 +104,14 @@ export default function Navbar() {
         }`}
       >
         {links.map((link) => (
-          <a
+          <Link
             key={link.href}
             href={link.href}
             onClick={() => setIsOpen(false)}
             className="text-2xl font-medium text-foreground hover:text-accent transition-colors duration-300"
           >
             {link.label}
-          </a>
+          </Link>
         ))}
         <div className="flex items-center gap-6 mt-4">
           <button
