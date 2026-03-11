@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect, type ComponentType } from "react";
+import React, { useRef, useState, useEffect, type ComponentType } from "react";
 import dynamic from "next/dynamic";
 
 const Timeline = dynamic(() => import("@/components/Timeline"), { ssr: false });
@@ -84,7 +84,7 @@ function SkeletonContact() {
   );
 }
 
-const skeletons: Record<string, () => JSX.Element> = {
+const skeletons: Record<string, () => React.JSX.Element> = {
   Timeline: SkeletonTimeline,
   TechStack: SkeletonTechStack,
   Contact: SkeletonContact,
