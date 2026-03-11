@@ -3,9 +3,25 @@
 import React, { useRef, useState, useEffect, type ComponentType } from "react";
 import dynamic from "next/dynamic";
 
-const Timeline = dynamic(() => import("@/components/Timeline"), { ssr: false });
-const TechStack = dynamic(() => import("@/components/TechStack"), { ssr: false });
-const Contact = dynamic(() => import("@/components/Contact"), { ssr: false });
+function reloadOnChunkError(err: unknown) {
+  if (err instanceof Error && err.name === "ChunkLoadError") {
+    window.location.reload();
+  }
+  throw err;
+}
+
+const Timeline = dynamic(
+  () => import("@/components/Timeline").catch(reloadOnChunkError),
+  { ssr: false }
+);
+const TechStack = dynamic(
+  () => import("@/components/TechStack").catch(reloadOnChunkError),
+  { ssr: false }
+);
+const Contact = dynamic(
+  () => import("@/components/Contact").catch(reloadOnChunkError),
+  { ssr: false }
+);
 
 function SkeletonTimeline() {
   return (
@@ -112,7 +128,7 @@ function LazySection({
           observer.disconnect();
         }
       },
-      { rootMargin: "200px" }
+      { rootMargin: "600px" }
     );
     observer.observe(el);
     return () => observer.disconnect();
