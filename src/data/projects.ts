@@ -1521,7 +1521,7 @@ The specificity of this edition was the diversity of challenges: going from a Ch
     title: { fr: "Application de Sauvegarde", en: "Backup Application" },
     category: "university",
     shortDescription: {
-      fr: "Systeme de sauvegarde automatique client-serveur avec gestion de versions, chiffrement AES-256-GCM et interface web Flask",
+      fr: "Système de sauvegarde automatique client-serveur avec gestion de versions, chiffrement AES-256-GCM et interface web Flask",
       en: "Automated client-server backup system with version management, AES-256-GCM encryption and Flask web interface"
     },
     technologies: [
