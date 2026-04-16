@@ -26,19 +26,20 @@ export const metadata: Metadata = {
 const realiserProjects = [
   {
     slug: "itesoft-assistant-ingenieur",
-    label: "ITESOFT – Alternance",
+    label: "ITESOFT - Alternance",
     badge: "Professionnel",
     points: [
-      "Personnalisation de Streamline Invoices en Java (back-end REST) et Angular (front-end) selon des besoins clients réels et documentés.",
-      "Analyse du code standard R&D pour identifier les points d'extension sans briser la maintenabilité : chaque personnalisation est justifiée et localisée.",
-      "Choix techniques contraints (Maven, IntelliJ, PostgreSQL, Termius) imposés par l'environnement de production ; adaptation rapide à un écosystème existant.",
-      "Cycle de déploiement Dev → Staging (Azure) → Production : livraison d'un package de déploiement validé en recette avec le client avant toute MEP.",
-      "Amélioration de l'outil interne CreatField : passage d'un processus manuel (20-30 champs un par un) à une solution automatisée via script API puis interface Angular.",
+      "Consolidation des compétences Java dans un contexte professionnel réel : Streamline Invoices est une plateforme déployée depuis des dizaines d'années, avec une base de code dense et des conventions internes établies. Comprendre et étendre ce code sans le dégrader est une contrainte bien plus exigeante qu'un projet from scratch.",
+      "Apprentissage d'AngularJS sur le tas - un framework déprécié depuis des années, avec une documentation fragmentée et souvent obsolète. Les ressources disponibles sont limitées et pas toujours fiables, ce qui m'a obligé à lire directement le code existant pour comprendre les patterns utilisés.",
+      "Analyse du code standard R&D pour identifier les points d'extension sans créer de conflits lors des mises à jour : chaque personnalisation est pensée en amont pour rester isolée du core.",
+      "Outillage imposé par l'environnement (Maven, IntelliJ, PostgreSQL, Termius) - adaptation rapide à un écosystème existant sans marge de manoeuvre sur les choix techniques.",
+      "Cycle Dev -> Staging (Azure) -> Production : livraison d'un package de déploiement validé en recette avec le client avant toute MEP.",
+      "Amélioration de l'outil interne CreatField : passage d'un processus manuel (20-30 champs un par un) à un script API, puis intégration dans l'interface Angular avec barre de recherche et sélection multiple.",
     ],
   },
   {
     slug: "tamastat",
-    label: "TamaStat – Stage",
+    label: "TamaStat - Stage",
     badge: "Professionnel",
     points: [
       "Conception et développement complet (solo) d'un outil de visualisation statistique pour TamaBox, depuis le recueil du besoin jusqu'au déploiement sur Vercel.",
@@ -48,7 +49,7 @@ const realiserProjects = [
   },
   {
     slug: "referendum",
-    label: "Referendum – SAÉ universitaire",
+    label: "Referendum - SAÉ universitaire",
     badge: "Universitaire",
     points: [
       "Application de vote sécurisée en Java / JavaFX : implémentation du chiffrement ElGamal et des preuves à divulgation nulle (Zero Knowledge Proof).",
@@ -58,7 +59,7 @@ const realiserProjects = [
   },
   {
     slug: "lobbybot-fortnite",
-    label: "LobbyBot 2.0 – Projet personnel",
+    label: "LobbyBot 2.0 - Projet personnel",
     badge: "Personnel",
     points: [
       "Architecture microservices en Node.js / Python / Express / Socket.IO avec load balancing automatique entre les bots (sélection du bot le moins chargé, création dynamique).",
@@ -68,7 +69,7 @@ const realiserProjects = [
   },
   {
     slug: "portfolio",
-    label: "Portfolio v2 – Projet personnel",
+    label: "Portfolio v2 - Projet personnel",
     badge: "Personnel",
     points: [
       "Développement de ce portfolio en Next.js 16 / React 19 / TypeScript / Tailwind CSS 4 : SPA avec App Router, SSG, optimisation des images (AVIF/WebP), lazy loading.",
@@ -80,7 +81,7 @@ const realiserProjects = [
 const administrerProjects = [
   {
     slug: "itesoft-assistant-ingenieur",
-    label: "ITESOFT – Alternance",
+    label: "ITESOFT - Alternance",
     badge: "Professionnel",
     points: [
       "Création et gestion de machines virtuelles (locales pour le développement, Azure pour le staging) : installation, configuration réseau, gestion des accès.",
@@ -92,7 +93,7 @@ const administrerProjects = [
   },
   {
     slug: "lobbybot-fortnite",
-    label: "LobbyBot 2.0 – Projet personnel",
+    label: "LobbyBot 2.0 - Projet personnel",
     badge: "Personnel",
     points: [
       "Déploiement d'un serveur Node.js / Express avec Socket.IO : configuration des ports, gestion des processus, auto-restart via scripts de surveillance.",
@@ -103,7 +104,7 @@ const administrerProjects = [
   },
   {
     slug: "tamastat",
-    label: "TamaStat – Stage",
+    label: "TamaStat - Stage",
     badge: "Professionnel",
     points: [
       "Déploiement continu sur Vercel : pipeline automatisé depuis Git, zéro downtime, gestion des variables d'environnement.",
@@ -112,7 +113,7 @@ const administrerProjects = [
   },
   {
     slug: "application-sauvegarde",
-    label: "Application de Sauvegarde – SAÉ universitaire",
+    label: "Application de Sauvegarde - SAÉ universitaire",
     badge: "Universitaire",
     points: [
       "Application Python / Flask de sauvegarde avec chiffrement et compression : politique de sécurité des données au niveau applicatif.",
@@ -124,7 +125,7 @@ const administrerProjects = [
 const collaborerProjects = [
   {
     slug: "itesoft-assistant-ingenieur",
-    label: "ITESOFT – Alternance",
+    label: "ITESOFT - Alternance",
     badge: "Professionnel",
     points: [
       "Participation aux daily meetings de l'équipe Delivery (~30 personnes) : remontée des blocages, suivi de l'avancement, coordination avec les chefs de projet.",
@@ -137,7 +138,7 @@ const collaborerProjects = [
   },
   {
     slug: "tamastat",
-    label: "TamaStat – Stage",
+    label: "TamaStat - Stage",
     badge: "Professionnel",
     points: [
       "Travail en binôme avec le gérant de TamaBox : recueil des besoins, itérations sur les maquettes, présentation des prototypes.",
@@ -262,7 +263,7 @@ function CompetenceSection({
         {/* Cadre référentiel */}
         <div className="mb-8">
           <h3 className="text-sm font-bold uppercase tracking-widest text-muted mb-3">
-            Situation professionnelle visée (niveau 3 – DACS)
+            Situation professionnelle visée (niveau 3 - DACS)
           </h3>
           <p className="text-sm text-muted leading-relaxed border-l-2 border-accent pl-4">
             {situation}
@@ -323,7 +324,7 @@ export default function PortfolioApprentissage() {
         <div className="max-w-3xl mx-auto">
           {/* Bandeau discret "évaluation" */}
           <span className="inline-block text-xs font-semibold tracking-widest uppercase bg-accent/10 text-accent px-3 py-1 rounded-full mb-6">
-            BUT Informatique — Parcours DACS — Niveau 3
+            BUT Informatique - Parcours DACS - Niveau 3
           </span>
 
           <h1 className="font-serif text-4xl md:text-6xl font-bold mb-6 leading-tight">
@@ -377,13 +378,11 @@ export default function PortfolioApprentissage() {
           "Intégrer des solutions dans un environnement de production",
           "Choisir et utiliser des bibliothèques et méthodes adaptées",
         ]}
-        synthesis={`La compétence Réaliser au niveau 3 dépasse la simple capacité à coder : elle exige de prendre des décisions d'architecture justifiées, de comprendre un code existant pour l'étendre sans le dégrader, et d'intégrer une solution dans un environnement réel avec ses contraintes.
+        synthesis={`Chez ITESOFT, je n'ai pas appris Java en partant de zéro - j'avais déjà une base solide via les SAÉ et projets universitaires. Ce que l'alternance m'a apporté, c'est la confrontation à un code de production vieux de plusieurs décennies, avec ses conventions internes, ses couches d'abstraction et ses contraintes de maintenabilité. Étendre ce code sans le casser, c'est un exercice très différent d'écrire du code from scratch.
 
-Chez ITESOFT, j'ai été confronté dès le premier jour à un code de production en Java et Angular que je n'avais pas écrit. Ma mission n'était pas de le réécrire, mais de l'étendre de façon contrôlée : chaque personnalisation client doit rester en dehors du code standard de la R&D pour ne pas créer de conflits lors des mises à jour. Ce travail d'analyse, de compréhension et d'extension d'un code existant est exactement ce que vise l'AC de profiling et d'évolution d'une application.
+Côté Angular, la situation était différente : le framework est déprécié, les docs officielles ne sont plus maintenues pour les vieilles versions, et les ressources en ligne sont souvent contradictoires ou obsolètes. J'ai dû apprendre en lisant directement le code existant du projet et en testant. C'est inconfortable mais ça force à vraiment comprendre ce qu'on fait plutôt que de copier des exemples.
 
-Le cycle de déploiement Dev → Staging → Production illustre l'AC "Intégrer des solutions dans un environnement de production" : je ne me limite pas à écrire du code, je le livre, le teste en conditions réelles avec le client, et coordonne la mise en production.
-
-Mes projets personnels (LobbyBot 2.0, Portfolio v2) et universitaires (Referendum) montrent une capacité à choisir et justifier les bibliothèques et architectures selon le contexte : pas de sur-ingénierie, pas de dépendance inutile.`}
+Sur Referendum ou LobbyBot, les choix techniques étaient libres - ce qui oblige à les justifier autrement. Pourquoi ElGamal et pas une lib crypto toute faite ? Pourquoi Socket.IO pour le dashboard ? Ces décisions sont documentées dans les pages projets et reflètent une vraie réflexion sur le contexte.`}
         projects={realiserProjects}
       />
 
@@ -403,13 +402,11 @@ Mes projets personnels (LobbyBot 2.0, Portfolio v2) et universitaires (Referendu
           "Appliquer une politique de sécurité au niveau de l'infrastructure",
           "Déployer et maintenir une infrastructure en fonction des besoins",
         ]}
-        synthesis={`La compétence Administrer au niveau 3 s'articule autour de deux axes : la maîtrise des environnements d'exécution (VMs, serveurs, conteneurs) et la capacité à automatiser et sécuriser ces environnements.
+        synthesis={`Chez ITESOFT, la partie administration était intégrée au travail quotidien sans être forcément étiquetée comme telle. Créer une VM, installer la plateforme, configurer les accès, ouvrir les bons ports, tester la connexion SSH - c'est fait systématiquement pour chaque nouveau client. La certification ISO 27001 de l'entreprise impose une rigueur sur la sécurité : pas de données sensibles en clair, gestion stricte des permissions, traçabilité des accès.
 
-Chez ITESOFT, j'ai géré des machines virtuelles locales (développement) et Azure (staging/production), avec accès SSH/SFTP via Termius. La contrainte ISO 27001 impose une politique de sécurité précise que j'applique à chaque personnalisation : validation des entrées, gestion des permissions, aucune donnée sensible exposée. Le cycle de déploiement structuré est lui-même une forme d'automatisation : des procédures de recette reproductibles, des packages de déploiement standardisés.
+L'amélioration de CreatField illustre bien l'AC "processus de traitement automatisé" : avant, migrer les champs d'un client prenait une demi-journée à cause du processus manuel. Après, quelques clics suffisent. C'est une automatisation modeste techniquement, mais son impact sur le travail de l'équipe est concret et immédiat.
 
-Sur LobbyBot 2.0, j'ai administré un serveur Node.js en production avec Docker pour l'isolation et la reproductibilité. Le système de load balancing et de relance automatique est un exemple concret de processus de traitement automatisé au sens du référentiel.
-
-TamaStat illustre une administration légère mais réelle : pipeline CI/CD Vercel, gestion des variables d'environnement, zéro downtime.`}
+Sur LobbyBot, j'administrais un serveur en conditions réelles - pas un projet académique en local. Docker m'a permis d'isoler les services et de redémarrer proprement en cas de crash, sans intervention manuelle.`}
         projects={administrerProjects}
       />
 
@@ -429,13 +426,11 @@ TamaStat illustre une administration légère mais réelle : pipeline CI/CD Verc
           "Guider la conduite du changement informatique au sein d'une organisation",
           "Accompagner le management de projet informatique",
         ]}
-        synthesis={`La compétence Collaborer au niveau 3 ne se limite pas au travail en équipe : elle implique de comprendre la chaîne de valeur d'une organisation, d'anticiper les enjeux de l'innovation numérique sur ses pratiques, et de contribuer activement à la conduite du changement.
+        synthesis={`Ce qui m'a le plus surpris chez ITESOFT, c'est la place que prend la communication dans le travail d'un développeur. Rédiger une Demande d'Assistance pour l'équipe R&D, c'est un exercice précis : reproduire le bug, isoler la cause probable, proposer une piste - sans ça, le ticket repart en attente. Pareil pour les phases de recette client : expliquer à un comptable pourquoi son bouton ne fonctionne pas comme prévu demande de traduire un problème technique en langage métier.
 
-Chez ITESOFT, j'ai intégré une équipe Delivery de ~30 personnes avec ses rituels (daily meetings), ses processus de revue de code et sa hiérarchie de communication (développeur → chef de projet → R&D → client). Participer aux code reviews, rédiger des Demandes d'Assistance structurées, et communiquer directement avec des clients non-techniques sont autant de pratiques qui correspondent précisément aux AC "Accompagner le management de projet" et "Conduire le changement".
+Les code reviews m'ont aussi beaucoup appris, dans les deux sens. Lire le code des autres développeurs de l'équipe m'a permis de monter en compétences sur des patterns que je n'aurais pas rencontrés autrement. Et commenter des PR en apportant quelque chose d'utile, sans être condescendant, c'est un exercice en soi.
 
-L'amélioration de CreatField illustre aussi la conduite du changement à petite échelle : identifier un processus inefficace, proposer une solution, la développer, la faire adopter par toute l'équipe.
-
-Les compétitions (Nuit de l'Info, Code Game Jam) montrent ma capacité à collaborer sous contrainte de temps, à organiser rapidement les tâches (Trello, répartition des rôles) et à partager les connaissances dans un contexte d'apprentissage rapide.`}
+Sur CreatField, la dimension "conduite du changement" est réelle même si elle est modeste : convaincre l'équipe d'adopter un nouvel outil qu'on a soi-même développé demande de montrer que ça fonctionne et que ça fait gagner du temps concrètement.`}
         projects={collaborerProjects}
       />
 
@@ -449,30 +444,30 @@ Les compétitions (Nuit de l'Info, Code Game Jam) montrent ma capacité à colla
           </h2>
           <div className="bg-surface border border-border rounded-2xl p-8 text-sm text-muted leading-relaxed space-y-4">
             <p>
-              Le parcours DACS m&apos;a conduit à développer ces trois
-              compétences de façon cohérente et complémentaire. Mon alternance
-              chez ITESOFT en est l&apos;expression la plus complète : je{" "}
+              L&apos;alternance chez ITESOFT est probablement la situation qui
+              illustre le mieux les trois compétences en même temps : je{" "}
               <strong className="text-foreground">réalise</strong> des
-              personnalisations applicatives en Java et Angular,
-              j&apos;<strong className="text-foreground">administre</strong>{" "}
-              les environnements de déploiement (VMs locales et Azure, SSH,
-              cycle Dev→Staging→Prod), et je{" "}
-              <strong className="text-foreground">collabore</strong> au sein
-              d&apos;une équipe projet de ~30 personnes avec des clients réels.
+              personnalisations sur un outil en production depuis des dizaines
+              d&apos;années, j&apos;
+              <strong className="text-foreground">administre</strong> les
+              environnements de déploiement de A à Z (VM, SSH, cycle
+              Dev-&gt;Staging-&gt;Prod), et je{" "}
+              <strong className="text-foreground">collabore</strong> dans une
+              équipe de ~30 personnes avec ses processus, ses rituels et ses
+              clients réels.
             </p>
             <p>
-              Mes projets personnels (LobbyBot 2.0, Portfolio v2, Kcnyx) et mes
-              SAÉ universitaires (Referendum, Application de Sauvegarde)
-              complètent ce tableau en montrant une initiative personnelle et
-              une capacité à mener des projets de bout en bout, depuis
-              l&apos;architecture jusqu&apos;à la mise en production.
+              Les projets personnels et universitaires viennent compléter ça sur
+              des aspects que l&apos;alternance ne couvre pas forcément : la
+              liberté de choisir l&apos;architecture (LobbyBot, Referendum), le
+              travail sous contrainte de temps extrême (Nuit de l&apos;Info), ou
+              le fait de porter un projet de bout en bout sans filet (TamaStat,
+              Portfolio v2).
             </p>
             <p>
-              L&apos;ensemble de ces expériences forme un profil cohérent avec
-              les attendus du niveau 3 du parcours DACS : un développeur capable
-              de produire des solutions de qualité, de les déployer et de les
-              maintenir dans un environnement contraint, en travaillant
-              efficacement avec les parties prenantes techniques et métier.
+              Le parcours DACS m&apos;a mis dans des situations suffisamment
+              variées pour que ces trois compétences soient réellement exercées,
+              pas juste théorisées.
             </p>
           </div>
 
@@ -490,8 +485,8 @@ Les compétitions (Nuit de l'Info, Code Game Jam) montrent ma capacité à colla
 
       {/* ── Footer discret ───────────────────────────────────────────────── */}
       <footer className="py-8 px-6 text-center text-xs text-muted border-t border-border">
-        Portfolio d&apos;apprentissage — BUT 3 Informatique, parcours DACS —
-        Killian RAMUS — {new Date().getFullYear()}
+        Portfolio d&apos;apprentissage - BUT 3 Informatique, parcours DACS -
+        Killian RAMUS - {new Date().getFullYear()}
       </footer>
     </div>
   );
