@@ -56,12 +56,12 @@ export default function Hero() {
             {/* Glow */}
             <div className="absolute -top-6 -right-6 w-32 h-32 bg-accent/15 rounded-full blur-2xl" />
             {/* Photo */}
-            <div className="relative w-44 lg:w-48 aspect-square rounded-2xl overflow-hidden border border-border">
+            <div className="relative w-64 lg:w-80 aspect-square rounded-2xl overflow-hidden border border-border">
               <Image
                 src="/images/photo.webp"
                 alt="Killian RAMUS"
                 fill
-                sizes="(max-width: 1024px) 176px, 192px"
+                sizes="(max-width: 1024px) 256px, 320px"
                 className="object-cover"
                 quality={95}
                 priority
