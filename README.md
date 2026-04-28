@@ -42,6 +42,20 @@ public/
   images/        # Images des projets
 ```
 
+## ⚠️ Section temporaire — Portfolio d'apprentissage
+
+> **À supprimer après la correction BUT 3.**
+
+Une page `/portfolio-apprentissage` a été ajoutée **uniquement pour l'évaluation du BUT 3 (parcours DACS)**.
+Elle justifie les compétences de niveau 3 (Réaliser, Administrer, Collaborer) à partir de traces concrètes de projets.
+
+Pour la supprimer complètement après la correction :
+1. Supprimer le dossier `src/app/portfolio-apprentissage/`
+2. Retirer le lien TEMPORAIRE dans `src/components/Navbar.tsx`
+   (chercher le commentaire `TEMPORAIRE — Portfolio d'apprentissage`)
+
+---
+
 ## Deploiement
 
 Deploye automatiquement sur Vercel : [killianrms.com](https://killianrms.com)

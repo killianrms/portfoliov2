@@ -16,6 +16,9 @@ export default function Navbar() {
     { href: "/#timeline", label: t("nav.studies") },
     { href: "/#skills", label: t("nav.skills") },
     { href: "/#contact", label: t("nav.contact") },
+    // ── TEMPORAIRE — Portfolio d'apprentissage — à supprimer après correction BUT 3 ──
+    { href: "/portfolio-apprentissage", label: "Portfolio d'apprentissage", temporary: true },
+    // ── FIN TEMPORAIRE ──────────────────────────────────────────────────────────────
   ];
 
   return (
@@ -34,7 +37,12 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-muted hover:text-foreground transition-colors duration-300"
+              /* TEMPORAIRE : le lien "Portfolio d'apprentissage" reçoit un style distinctif */
+              className={
+                "temporary" in link && link.temporary
+                  ? "text-sm font-medium text-accent hover:text-accent-hover border border-accent/30 hover:border-accent px-2 py-0.5 rounded transition-colors duration-300"
+                  : "text-sm font-medium text-muted hover:text-foreground transition-colors duration-300"
+              }
             >
               {link.label}
             </Link>
@@ -108,7 +116,12 @@ export default function Navbar() {
             key={link.href}
             href={link.href}
             onClick={() => setIsOpen(false)}
-            className="text-2xl font-medium text-foreground hover:text-accent transition-colors duration-300"
+            /* TEMPORAIRE : style distinctif pour le lien Portfolio d'apprentissage sur mobile */
+            className={
+              "temporary" in link && link.temporary
+                ? "text-xl font-medium text-accent hover:text-accent-hover border border-accent/30 rounded px-4 py-1 transition-colors duration-300"
+                : "text-2xl font-medium text-foreground hover:text-accent transition-colors duration-300"
+            }
           >
             {link.label}
           </Link>
