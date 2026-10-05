@@ -1,161 +1,128 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
+import { ArrowIcon, MoonIcon, SunIcon } from "./Icons";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const { t, language, toggleLanguage } = useLanguage();
+  const { t, language, toggleLanguage, path } = useLanguage();
   const { theme, toggleTheme } = useTheme();
 
   const links = [
-    { href: "/#about", label: t("nav.about") },
-    { href: "/#projects", label: t("nav.projects") },
-    { href: "/#timeline", label: t("nav.studies") },
-    { href: "/#skills", label: t("nav.skills") },
-    { href: "/#contact", label: t("nav.contact") },
-    // ── TEMPORAIRE — Portfolio d'apprentissage — à supprimer après correction BUT 3 ──
-    { href: "/portfolio-apprentissage", label: "Portfolio d'apprentissage", temporary: true },
-    // ── FIN TEMPORAIRE ──────────────────────────────────────────────────────────────
+    { href: path("/#about"), label: t("nav.about") },
+    { href: path("/#journey"), label: t("nav.journey") },
+    { href: path("/#projects"), label: t("nav.projects") },
+    { href: path("/#skills"), label: t("nav.skills") },
+    { href: path("/#contact"), label: t("nav.contact") },
   ];
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const { overflow } = document.body.style;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setIsOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = overflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [isOpen]);
+
+  const close = () => setIsOpen(false);
+
+  const langSwitch = (
+    <button
+      onClick={toggleLanguage}
+      className="type-label flex items-center gap-1 px-1 py-2 text-muted hover:text-foreground transition-colors"
+      aria-label={t("nav.language")}
+    >
+      <span className={language === "fr" ? "text-foreground" : undefined}>FR</span>
+      <span aria-hidden="true">/</span>
+      <span className={language === "en" ? "text-foreground" : undefined}>EN</span>
+    </button>
+  );
+
+  const themeSwitch = (
+    <button
+      onClick={toggleTheme}
+      className="grid h-9 w-9 place-items-center text-muted hover:text-foreground transition-colors"
+      aria-label={t("nav.theme")}
+    >
+      {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+    </button>
+  );
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-40 px-6 py-4 md:px-12">
-      <div className="flex items-center justify-between">
-        {/* Logo / Name */}
-        <Link href="/" className="relative z-50">
-          <span className="font-serif text-xl font-bold tracking-wide text-foreground">
-            K<span className="text-accent">.</span>R
-          </span>
-        </Link>
+    <nav data-open={isOpen} className="group/nav fixed inset-x-0 top-0 z-50">
+      <div className="relative z-10 border-b border-line bg-background">
+        <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 md:px-10">
+          <Link href={path("/")} onClick={close} className="flex items-center gap-3" aria-label="Killian RAMUS">
+            <span className="type-display grid h-8 w-8 place-items-center bg-accent pt-0.5 text-[1.35rem] text-on-accent">
+              KR
+            </span>
+            <span className="type-label hidden text-foreground sm:inline">Killian Ramus</span>
+          </Link>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              /* TEMPORAIRE : le lien "Portfolio d'apprentissage" reçoit un style distinctif */
-              className={
-                "temporary" in link && link.temporary
-                  ? "text-sm font-medium text-accent hover:text-accent-hover border border-accent/30 hover:border-accent px-2 py-0.5 rounded transition-colors duration-300"
-                  : "text-sm font-medium text-muted hover:text-foreground transition-colors duration-300"
-              }
-            >
-              {link.label}
-            </Link>
-          ))}
+          <div className="hidden items-center gap-7 md:flex">
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="type-label text-muted hover:text-foreground transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <span className="h-4 w-px bg-line" aria-hidden="true" />
+            {langSwitch}
+            {themeSwitch}
+          </div>
 
-          {/* Language Toggle */}
           <button
-            onClick={toggleLanguage}
-            className="text-sm font-medium text-muted hover:text-foreground transition-colors duration-300 border border-border px-2 py-1 rounded"
+            onClick={() => setIsOpen((v) => !v)}
+            className="type-label -mr-2 flex h-11 items-center gap-2 px-2 text-foreground md:hidden"
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
           >
-            {language === "fr" ? "EN" : "FR"}
-          </button>
-
-          {/* Theme Toggle */}
-          <button
-            onClick={toggleTheme}
-            className="text-muted hover:text-foreground transition-colors duration-300"
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? (
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="5"/>
-                <line x1="12" y1="1" x2="12" y2="3"/>
-                <line x1="12" y1="21" x2="12" y2="23"/>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                <line x1="1" y1="12" x2="3" y2="12"/>
-                <line x1="21" y1="12" x2="23" y2="12"/>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-              </svg>
-            ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-              </svg>
-            )}
+            <span className="grid w-4 gap-[5px]" aria-hidden="true">
+              <span className="h-[2px] bg-foreground transition-transform duration-200 group-data-[open=true]/nav:translate-y-[3.5px] group-data-[open=true]/nav:rotate-45" />
+              <span className="h-[2px] bg-foreground transition-transform duration-200 group-data-[open=true]/nav:-translate-y-[3.5px] group-data-[open=true]/nav:-rotate-45" />
+            </span>
+            <span className="group-data-[open=true]/nav:hidden">{t("nav.menu")}</span>
+            <span className="hidden group-data-[open=true]/nav:inline">{t("nav.close")}</span>
           </button>
         </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="relative z-50 md:hidden text-foreground"
-          aria-label="Toggle menu"
-        >
-          <div className="flex flex-col gap-1.5">
-            <span
-              className="block h-0.5 w-6 bg-foreground transition-all duration-300 origin-center"
-              style={isOpen ? { transform: "rotate(45deg) translate(2.5px, 2.5px)" } : undefined}
-            />
-            <span
-              className="block h-0.5 w-6 bg-foreground transition-all duration-300"
-              style={isOpen ? { opacity: 0 } : undefined}
-            />
-            <span
-              className="block h-0.5 w-6 bg-foreground transition-all duration-300 origin-center"
-              style={isOpen ? { transform: "rotate(-45deg) translate(2.5px, -2.5px)" } : undefined}
-            />
-          </div>
-        </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile menu */}
       <div
-        className={`fixed inset-0 z-40 bg-background/95 backdrop-blur-lg flex flex-col items-center justify-center gap-8 md:hidden transition-all duration-300 ${
-          isOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
-        }`}
+        id="mobile-menu"
+        className="invisible fixed inset-0 top-14 flex flex-col bg-background opacity-0 transition-[opacity,visibility] duration-200 group-data-[open=true]/nav:visible group-data-[open=true]/nav:opacity-100 md:hidden"
       >
-        {links.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            onClick={() => setIsOpen(false)}
-            /* TEMPORAIRE : style distinctif pour le lien Portfolio d'apprentissage sur mobile */
-            className={
-              "temporary" in link && link.temporary
-                ? "text-xl font-medium text-accent hover:text-accent-hover border border-accent/30 rounded px-4 py-1 transition-colors duration-300"
-                : "text-2xl font-medium text-foreground hover:text-accent transition-colors duration-300"
-            }
-          >
-            {link.label}
-          </Link>
-        ))}
-        <div className="flex items-center gap-6 mt-4">
-          <button
-            onClick={toggleLanguage}
-            className="text-lg font-medium text-muted hover:text-foreground transition-colors border border-border px-3 py-1.5 rounded"
-          >
-            {language === "fr" ? "EN" : "FR"}
-          </button>
-          <button
-            onClick={toggleTheme}
-            className="text-muted hover:text-foreground transition-colors"
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? (
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="5"/>
-                <line x1="12" y1="1" x2="12" y2="3"/>
-                <line x1="12" y1="21" x2="12" y2="23"/>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                <line x1="1" y1="12" x2="3" y2="12"/>
-                <line x1="21" y1="12" x2="23" y2="12"/>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-              </svg>
-            ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-              </svg>
-            )}
-          </button>
+        <ul className="flex-1 overflow-y-auto px-4 pt-6 sm:px-6">
+          {links.map((link) => (
+            <li key={link.href} className="border-b border-line">
+              <Link
+                href={link.href}
+                onClick={close}
+                className="group flex items-center justify-between py-4"
+                tabIndex={isOpen ? 0 : -1}
+              >
+                <span className="type-display text-[3.4rem]">{link.label}</span>
+                <ArrowIcon size={28} className="text-muted transition-colors group-active:text-accent-ink" />
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <div className="flex items-center justify-between border-t border-line px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:px-6">
+          {langSwitch}
+          <a href={t("cv.href")} target="_blank" rel="noopener noreferrer" className="type-label text-foreground underline decoration-accent decoration-2 underline-offset-4">
+            CV.pdf
+          </a>
+          {themeSwitch}
         </div>
       </div>
     </nav>

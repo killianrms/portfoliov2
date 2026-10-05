@@ -2,103 +2,81 @@
 
 import { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { projects } from "@/data/projects";
+import type { ProjectSummary } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
-import FadeIn from "./FadeIn";
+import SectionHeader from "./SectionHeader";
 
-type Filter = "all" | "professional" | "personal" | "university" | "competition";
+type Filter = "all" | ProjectSummary["category"];
 
-export default function ProjectsSection() {
-  const { language, t } = useLanguage();
+const FILTERS: Filter[] = ["all", "professional", "university", "personal", "competition"];
+
+export default function ProjectsSection({ projects }: { projects: ProjectSummary[] }) {
+  const { t } = useLanguage();
   const [filter, setFilter] = useState<Filter>("all");
   const [showArchived, setShowArchived] = useState(false);
 
-  const filters: { key: Filter; label: string }[] = [
-    { key: "all", label: t("projects.filter.all") },
-    { key: "professional", label: t("projects.filter.professional") },
-    { key: "personal", label: t("projects.filter.personal") },
-    { key: "university", label: t("projects.filter.university") },
-    { key: "competition", label: t("projects.filter.competition") },
-  ];
-
-  const activeProjects = projects.filter((p) => !p.archived);
-  const archivedProjects = projects.filter((p) => p.archived);
-
-  const filteredProjects =
-    filter === "all" ? activeProjects : activeProjects.filter((p) => p.category === filter);
-
-  const filteredArchived =
-    filter === "all" ? archivedProjects : archivedProjects.filter((p) => p.category === filter);
+  const matches = (p: ProjectSummary) => filter === "all" || p.category === filter;
+  const active = projects.filter((p) => !p.archived);
+  const visible = active.filter(matches);
+  const archived = projects.filter((p) => p.archived && matches(p));
+  const years = active.map((p) => Number(p.year));
 
   return (
-    <section id="projects" className="py-24 md:py-32 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <FadeIn className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-serif font-bold">
-            {t("projects.title")}
-          </h2>
-          <p className="mt-4 text-muted max-w-2xl mx-auto">
-            {t("projects.subtitle")}
-          </p>
-        </FadeIn>
+    <section id="projects" className="border-t border-line">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:px-10 md:py-28">
+        <SectionHeader
+          title={t("projects.title")}
+          meta={`${active.length} ${t("about.stat.projects")} · ${Math.min(...years)} → ${Math.max(...years)}`}
+        />
+
+        <p className="-mt-4 mb-10 max-w-2xl text-muted md:-mt-8 md:text-lg">{t("projects.subtitle")}</p>
 
         {/* Filters */}
-        <FadeIn delay={0.2} className="flex flex-wrap justify-center gap-3 mb-12">
-          {filters.map((f) => (
-            <button
-              key={f.key}
-              onClick={() => setFilter(f.key)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                filter === f.key
-                  ? "bg-accent text-white"
-                  : "bg-surface border border-border text-muted hover:text-foreground hover:border-accent/50"
-              }`}
-            >
-              {f.label}
-            </button>
-          ))}
-        </FadeIn>
+        <div className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0" role="group" aria-label={t("projects.filterLabel")}>
+          <div className="flex w-max gap-0 border border-line">
+            {FILTERS.map((f) => {
+              const count = f === "all" ? active.length : active.filter((p) => p.category === f).length;
+              const selected = filter === f;
+              return (
+                <button
+                  key={f}
+                  aria-pressed={selected}
+                  onClick={() => setFilter(f)}
+                  className={`type-label flex h-10 items-center gap-2 border-r border-line px-4 last:border-r-0 transition-colors ${
+                    selected ? "bg-foreground text-background" : "text-muted hover:text-foreground"
+                  }`}
+                >
+                  {t(`projects.filter.${f}`)}
+                  <span className={selected ? "opacity-60" : "text-accent-ink"}>{count}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
 
-        {/* Grid - projets actifs */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project, index) => (
-            <ProjectCard key={project.slug} project={project} index={index} />
+        <div className="mt-6 border-t border-line">
+          {visible.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
 
-        {/* Toggle archives */}
-        {(filteredArchived.length > 0 || showArchived) && (
-          <FadeIn className="mt-12 text-center">
+        {archived.length > 0 && (
+          <div className="mt-10">
             <button
               onClick={() => setShowArchived((v) => !v)}
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-surface border border-border rounded-lg text-sm text-muted hover:text-foreground hover:border-accent/50 transition-all duration-300"
+              aria-expanded={showArchived}
+              className="type-label flex items-center gap-2 text-muted hover:text-foreground transition-colors"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`transition-transform duration-300 ${showArchived ? "rotate-180" : ""}`}>
-                <polyline points="6 9 12 15 18 9"/>
-              </svg>
-              {showArchived
-                ? (language === "fr" ? "Masquer les projets archivés" : "Hide archived projects")
-                : (language === "fr" ? `Voir les projets archivés (${filteredArchived.length})` : `View archived projects (${filteredArchived.length})`)}
+              <span className="font-mono text-accent-ink">{showArchived ? "−" : "+"}</span>
+              {showArchived ? t("projects.archived.hide") : t("projects.archived.show")} ({archived.length})
             </button>
-          </FadeIn>
-        )}
-
-        {/* Grille archivés */}
-        {showArchived && filteredArchived.length > 0 && (
-          <div className="mt-8">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="h-px flex-1 bg-border" />
-              <span className="text-xs text-muted uppercase tracking-widest">
-                {language === "fr" ? "Projets archivés" : "Archived projects"}
-              </span>
-              <div className="h-px flex-1 bg-border" />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 opacity-75">
-              {filteredArchived.map((project, index) => (
-                <ProjectCard key={project.slug} project={project} index={index} />
-              ))}
-            </div>
+            {showArchived && (
+              <div className="mt-4 border-t border-line opacity-80">
+                {archived.map((project) => (
+                  <ProjectCard key={project.slug} project={project} />
+                ))}
+              </div>
+            )}
           </div>
         )}
       </div>

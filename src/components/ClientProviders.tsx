@@ -1,29 +1,22 @@
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
+import type { ReactNode } from "react";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { LanguageProvider } from "@/context/LanguageContext";
-import dynamic from "next/dynamic";
+import type { Language } from "@/lib/i18n";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import SkipLink from "./SkipLink";
 
-const SpotlightCursor = dynamic(() => import("./SpotlightCursor"), {
-  ssr: false,
-});
-
-export default function ClientProviders({ children }: { children: ReactNode }) {
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    setIsDesktop(window.innerWidth > 768);
-  }, []);
-
+export default function ClientProviders({ language, children }: { language: Language; children: ReactNode }) {
   return (
     <ThemeProvider>
-      <LanguageProvider>
+      <LanguageProvider language={language}>
+        <SkipLink />
         <Navbar />
-        {isDesktop && <SpotlightCursor />}
-        <main>{children}</main>
+        <main id="main" tabIndex={-1} className="outline-none">
+          {children}
+        </main>
         <Footer />
       </LanguageProvider>
     </ThemeProvider>

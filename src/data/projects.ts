@@ -33,7 +33,7 @@ export interface Project {
   thumbnail: string;
   images: string[];
   poster?: string;
-  links?: { github?: string; live?: string; video?: string; report?: string; discord?: string; download?: string };
+  links?: { github?: string; live?: string; video?: string; report?: string; discord?: string; download?: string; event?: string };
 }
 
 export const projects: Project[] = [
@@ -43,59 +43,75 @@ export const projects: Project[] = [
     featured: true,
     title: { fr: "ITESOFT - Assistant Ingénieur Développement et Projet", en: "ITESOFT - Assistant Development & Project Engineer" },
     category: "professional",
-    technologies: ["Java", "Angular", "SQL", "PostgreSQL", "Maven", "IntelliJ IDEA", "Termius", "Postman", "Azure", "Git"],
-    duration: { fr: "Septembre 2024 - Présent (Alternance)", en: "September 2024 - Present (Work-Study)" },
+    technologies: ["CI/CD", "Java", "Angular", "PostgreSQL", "Azure", "Maven", "Git", "SQL", "IntelliJ IDEA", "Termius", "Postman"],
+    duration: { fr: "Septembre 2025 - Présent (Alternance)", en: "September 2025 - Present (Work-Study)" },
     team: { fr: "Équipe Delivery (~30 personnes) - l'équipe projet d'ITESOFT", en: "Delivery team (~30 people) - ITESOFT's project team" },
-    role: { fr: "Assistant Ingénieur Développement et Projet - Personnalisation, déploiement et support de Streamline Invoices", en: "Assistant Development & Project Engineer - Customization, deployment and support of Streamline Invoices" },
+    role: { fr: "Assistant Ingénieur Développement et Projet - Automatisation des process, personnalisation et déploiement de Streamline Invoices", en: "Assistant Development & Project Engineer - Process automation, customization and deployment of Streamline Invoices" },
     shortDescription: {
-      fr: "Alternance au sein de l'équipe Delivery d'ITESOFT : personnalisation de la plateforme Streamline Invoices pour des grandes entreprises, développement d'outils internes et support client.",
-      en: "Work-study in ITESOFT's Delivery team: customization of the Streamline Invoices platform for large enterprises, internal tool development and client support."
+      fr: "Alternance dans l'équipe Delivery d'ITESOFT : outils d'automatisation des process (initialisation automatique des plateformes, pipelines CI/CD), personnalisation de Streamline Invoices pour de grands comptes et support client.",
+      en: "Work-study in ITESOFT's Delivery team: process automation tools (automated platform setup, CI/CD pipelines), customization of Streamline Invoices for large enterprises and client support."
     },
     context: {
       fr: `ITESOFT est un éditeur logiciel français spécialisé dans la dématérialisation et l'automatisation des processus documentaires. L'entreprise développe notamment Streamline Invoices, une plateforme de gestion de factures destinée à de grandes entreprises réalisant plusieurs milliards d'euros de chiffre d'affaires annuel. Cet outil permet aux comptables de centraliser l'ensemble du traitement des factures : capture automatique (PDF, email), circuits de validation configurables, et flux de traitement de bout en bout.
 
-Dans le cadre de mon alternance en BUT Informatique parcours " Réalisation d'applications : conception, développement, validation " à l'IUT de Montpellier-Sète, j'ai intégré l'équipe Delivery en septembre 2024. Cette équipe est littéralement l'équipe projet d'ITESOFT : elle est responsable de la personnalisation, du déploiement et du support de Streamline Invoices auprès des clients.
+J'ai intégré l'équipe Delivery en septembre 2025, en alternance pendant ma dernière année de BUT Informatique (parcours DACS) à l'IUT de Montpellier-Sète, et je poursuis aujourd'hui cette alternance dans le cadre de mon cycle ingénieur DevOps à Polytech Montpellier. L'équipe Delivery est littéralement l'équipe projet d'ITESOFT : elle est responsable de la personnalisation, du déploiement et du support de Streamline Invoices auprès des clients.
 
-Mon rôle consiste à personnaliser la plateforme selon les besoins spécifiques de chaque client : configuration des entreprises, holdings, utilisateurs et permissions, mais aussi développement de fonctionnalités sur-mesure (endpoints supplémentaires, connexions ERP, filtres, boutons). Un enjeu majeur de mon travail est de minimiser les modifications au code standard (maintenu par l'équipe R&D) afin de faciliter les montées de version et de limiter les conflits lors des mises à jour, tout en respectant les exigences de sécurité de l'entreprise, certifiée ISO 27001.
+Mon rôle s'est progressivement recentré sur l'automatisation : chaque nouveau client impliquait une longue série d'opérations manuelles (préparation des environnements, installation, configuration), et chaque livraison une suite d'étapes à dérouler à la main. Je conçois aujourd'hui les outils qui automatisent ces process : initialisation automatique des plateformes, pipelines CI/CD et outillage interne pour l'équipe.
+
+En parallèle, je continue à personnaliser la plateforme selon les besoins spécifiques de chaque client : configuration des entreprises, holdings, utilisateurs et permissions, mais aussi développement de fonctionnalités sur-mesure (endpoints supplémentaires, connexions ERP, filtres, boutons). Un enjeu majeur de mon travail est de minimiser les modifications au code standard (maintenu par l'équipe R&D) afin de faciliter les montées de version et de limiter les conflits lors des mises à jour, tout en respectant les exigences de sécurité de l'entreprise, certifiée ISO 27001.
 
 Au quotidien, je participe aux daily meetings de l'équipe Delivery pour suivre l'avancement des projets et remonter les éventuels blocages, et je fais également des reviews de pull requests des autres développeurs de l'équipe, ce qui me permet de monter en compétences en lisant du code métier et de contribuer à la qualité globale du code livré.`,
       en: `ITESOFT is a French software company specializing in dematerialization and document process automation. The company develops Streamline Invoices, an invoice management platform designed for large enterprises generating billions of euros in annual revenue. This tool allows accountants to centralize all invoice processing: automatic capture (PDF, email), configurable validation circuits, and end-to-end processing workflows.
 
-As part of my work-study program in a Computer Science degree (specialization: "Application Development: Design, Development, Validation") at IUT Montpellier-Sète, I joined the Delivery team in September 2024. This team is literally ITESOFT's project team: responsible for the customization, deployment, and support of Streamline Invoices for clients.
+I joined the Delivery team in September 2025 as a work-study student during the final year of my Computer Science degree (BUT, DACS track) at IUT Montpellier-Sète, and I'm now continuing this work-study as part of my DevOps engineering degree at Polytech Montpellier. The Delivery team is literally ITESOFT's project team: responsible for the customization, deployment, and support of Streamline Invoices for clients.
 
-My role involves customizing the platform according to each client's specific needs: configuring companies, holdings, users, and permissions, as well as developing custom features (additional endpoints, ERP connections, filters, buttons). A major challenge in my work is minimizing modifications to the standard code (maintained by the R&D team) to facilitate version upgrades and limit conflicts during updates, while respecting the company's security requirements under ISO 27001 certification.
+My role has gradually shifted towards automation: every new client meant a long series of manual operations (preparing environments, installing, configuring), and every delivery a list of steps to run by hand. I now build the tools that automate these processes: automated platform setup, CI/CD pipelines and internal tooling for the team.
+
+Alongside this, I keep customizing the platform according to each client's specific needs: configuring companies, holdings, users, and permissions, as well as developing custom features (additional endpoints, ERP connections, filters, buttons). A major challenge in my work is minimizing modifications to the standard code (maintained by the R&D team) to facilitate version upgrades and limit conflicts during updates, while respecting the company's security requirements under ISO 27001 certification.
 
 On a daily basis, I participate in the Delivery team's daily meetings to track project progress and flag any blockers, and I also review pull requests from other developers on the team, which helps me improve my skills by reading business code and contributes to the overall quality of delivered code.`
     },
     objectives: {
-      fr: `Les objectifs de ma mission chez ITESOFT s'articulent autour de quatre axes principaux :
+      fr: `Les objectifs de ma mission chez ITESOFT s'articulent autour de cinq axes principaux :
 
-1. **Personnalisation client** : Configurer et adapter Streamline Invoices pour chaque nouveau client - mise en place des VM de développement et de staging, installation de la plateforme, configuration des entreprises, holdings, utilisateurs et permissions, et développement des personnalisations spécifiques (endpoints, connexions ERP, filtres, boutons, fonctionnalités métier).
+1. **Automatisation des process** : Remplacer les tâches manuelles et répétitives de l'équipe Delivery par des outils fiables et reproductibles - initialisation automatique des plateformes pour les nouveaux clients, pipelines CI/CD pour builder, tester et livrer les personnalisations, scripts d'outillage interne.
 
-2. **Développement d'outils internes** : Concevoir et développer des outils qui améliorent la productivité de l'équipe Delivery. Notamment l'amélioration majeure de l'outil interne CreatField, utilisé pour la gestion des champs personnalisés des clients.
+2. **Personnalisation client** : Configurer et adapter Streamline Invoices pour chaque nouveau client - mise en place des VM de développement et de staging, installation de la plateforme, configuration des entreprises, holdings, utilisateurs et permissions, et développement des personnalisations spécifiques (endpoints, connexions ERP, filtres, boutons, fonctionnalités métier).
 
-3. **Support client** : Traiter les tickets ouverts par les clients, diagnostiquer les problèmes (côté client ou côté plateforme), et si nécessaire rédiger des Demandes d'Assistance (DA) détaillées pour l'équipe R&D lorsqu'un problème relève du standard.
+3. **Développement d'outils internes** : Concevoir et développer des outils qui améliorent la productivité de l'équipe Delivery. Notamment l'amélioration majeure de l'outil interne CreatField, utilisé pour la gestion des champs personnalisés des clients.
 
-4. **Recette et déploiement** : Exécuter les procédures de recette pour valider les personnalisations, gérer le cycle Dev → Staging → Production, et préparer les packages de déploiement pour l'équipe de mise en production.`,
-      en: `The objectives of my mission at ITESOFT revolve around four main axes:
+4. **Support client** : Traiter les tickets ouverts par les clients, diagnostiquer les problèmes (côté client ou côté plateforme), et si nécessaire rédiger des Demandes d'Assistance (DA) détaillées pour l'équipe R&D lorsqu'un problème relève du standard.
 
-1. **Client customization**: Configure and adapt Streamline Invoices for each new client - setting up development and staging VMs, installing the platform, configuring companies, holdings, users and permissions, and developing specific customizations (endpoints, ERP connections, filters, buttons, business features).
+5. **Recette et déploiement** : Exécuter les procédures de recette pour valider les personnalisations, gérer le cycle Dev → Staging → Production, et préparer les packages de déploiement pour l'équipe de mise en production.`,
+      en: `The objectives of my mission at ITESOFT revolve around five main axes:
 
-2. **Internal tool development**: Design and develop tools that improve the Delivery team's productivity. Notably the major improvement of the internal CreatField tool, used for managing client custom fields.
+1. **Process automation**: Replace the Delivery team's manual, repetitive tasks with reliable, reproducible tools - automated platform setup for new clients, CI/CD pipelines to build, test and ship customizations, internal tooling scripts.
 
-3. **Client support**: Handle client-opened tickets, diagnose issues (client-side or platform-side), and when necessary write detailed Assistance Requests (DA) for the R&D team when an issue relates to the standard product.
+2. **Client customization**: Configure and adapt Streamline Invoices for each new client - setting up development and staging VMs, installing the platform, configuring companies, holdings, users and permissions, and developing specific customizations (endpoints, ERP connections, filters, buttons, business features).
 
-4. **Testing and deployment**: Execute testing procedures to validate customizations, manage the Dev → Staging → Production cycle, and prepare deployment packages for the production deployment team.`
+3. **Internal tool development**: Design and develop tools that improve the Delivery team's productivity. Notably the major improvement of the internal CreatField tool, used for managing client custom fields.
+
+4. **Client support**: Handle client-opened tickets, diagnose issues (client-side or platform-side), and when necessary write detailed Assistance Requests (DA) for the R&D team when an issue relates to the standard product.
+
+5. **Testing and deployment**: Execute testing procedures to validate customizations, manage the Dev → Staging → Production cycle, and prepare deployment packages for the production deployment team.`
     },
     approach: {
-      fr: `Mon workflow de développement chez ITESOFT suit un cycle structuré en plusieurs étapes. Pour chaque nouveau client, je commence par créer une VM de développement sur laquelle j'installe Streamline Invoices, puis je configure l'environnement selon les spécifications du client (entreprises, holdings, utilisateurs, permissions, circuits de validation).
+      fr: `**Automatiser l'initialisation des plateformes.** Mettre en place Streamline Invoices pour un nouveau client demandait de dérouler à la main la même séquence à chaque fois : préparation de la machine, installation, puis configuration des entreprises, holdings, utilisateurs et permissions. J'ai transformé cette séquence en process automatisé et paramétrable : on décrit le client, l'outil se charge du reste. Le résultat est plus rapide, mais surtout identique d'un environnement à l'autre, ce qui supprime une grande partie des erreurs de configuration.
+
+**Industrialiser les livraisons avec des pipelines CI/CD.** Les personnalisations clients passent désormais par des pipelines qui buildent le code (Maven), lancent les vérifications et produisent les packages de déploiement. Le cycle Dev → Staging → Production devient une suite d'étapes automatisées et traçables plutôt qu'une checklist manuelle.
+
+Mon workflow de développement chez ITESOFT suit un cycle structuré en plusieurs étapes. Pour chaque nouveau client, je commence par créer une VM de développement sur laquelle j'installe Streamline Invoices, puis je configure l'environnement selon les spécifications du client (entreprises, holdings, utilisateurs, permissions, circuits de validation).
 
 Lorsque le client a besoin de fonctionnalités spécifiques - comme des endpoints supplémentaires pour se connecter à son ERP, des filtres personnalisés, ou des boutons métier - je développe ces personnalisations en Java (back-end) et Angular (front-end), en veillant à rester au maximum en dehors du code standard de la R&D. Cette contrainte est essentielle : elle permet de limiter les conflits lors des montées de version et de simplifier la maintenance à long terme.
 
 Le code est compilé via Maven dans IntelliJ IDEA, l'outil utilisé par toute l'entreprise. J'utilise Termius pour la connexion SSH/SFTP aux machines virtuelles, Postman pour tester les endpoints et envoyer des fichiers JSON, et PostgreSQL comme base de données. Les VM de développement sont locales, tandis que les VM de staging sont hébergées sur Azure, ce qui permet au client de s'y connecter pour tester. Une fois les tests validés en staging avec le client, je prépare un package de déploiement que j'envoie à l'équipe de production.
 
 J'ai également contribué de manière significative à l'amélioration de CreatField, un outil interne permettant de créer des champs personnalisés en respectant les conventions de l'entreprise. Le problème initial était que lors des migrations, il fallait retélécharger et renvoyer les champs un par un, ce qui pouvait représenter 20 à 30 champs par client - un processus long et fastidieux. J'ai d'abord développé un script pour télécharger via API tous les champs d'un client d'un coup, puis j'ai intégré cette fonctionnalité directement dans l'application avec une barre de recherche (avant, il fallait chercher manuellement le client parmi plus de 200) et des cases à cocher permettant de sélectionner des champs spécifiques ou tous les champs d'un client.`,
-      en: `My development workflow at ITESOFT follows a structured multi-step cycle. For each new client, I start by creating a development VM on which I install Streamline Invoices, then configure the environment according to client specifications (companies, holdings, users, permissions, validation circuits).
+      en: `**Automating platform setup.** Setting up Streamline Invoices for a new client meant running the same sequence by hand every time: preparing the machine, installing, then configuring companies, holdings, users and permissions. I turned this sequence into an automated, configurable process: you describe the client, the tool does the rest. It's faster, but above all identical from one environment to the next, which removes a large share of configuration errors.
+
+**Industrializing deliveries with CI/CD pipelines.** Client customizations now go through pipelines that build the code (Maven), run the checks and produce the deployment packages. The Dev → Staging → Production cycle becomes a series of automated, traceable steps rather than a manual checklist.
+
+My development workflow at ITESOFT follows a structured multi-step cycle. For each new client, I start by creating a development VM on which I install Streamline Invoices, then configure the environment according to client specifications (companies, holdings, users, permissions, validation circuits).
 
 When the client needs specific features - such as additional endpoints to connect to their ERP, custom filters, or business buttons - I develop these customizations in Java (back-end) and Angular (front-end), making sure to stay as much as possible outside the R&D's standard code. This constraint is essential: it limits conflicts during version upgrades and simplifies long-term maintenance.
 
@@ -126,6 +142,10 @@ Le cycle de déploiement suit le chemin : Développement local → VM de staging
 The deployment cycle follows the path: Local development → Azure staging VM (client testing) → Production package (sent to the dedicated team).`
     },
     skills: [
+      {
+        name: { fr: "Automatisation & CI/CD", en: "Automation & CI/CD" },
+        description: { fr: "Conception d'outils qui automatisent les process de l'équipe Delivery : initialisation automatique des plateformes clients, pipelines CI/CD de build et de livraison, scripts d'outillage interne. Objectif : des opérations rapides, reproductibles et traçables.", en: "Building tools that automate the Delivery team's processes: automated client platform setup, CI/CD build and delivery pipelines, internal tooling scripts. Goal: fast, reproducible and traceable operations." }
+      },
       {
         name: { fr: "Développement Java & Angular", en: "Java & Angular Development" },
         description: { fr: "Développement de personnalisations back-end en Java (endpoints REST, logique métier, connexions ERP) et front-end en Angular (composants, filtres, boutons). Compilation et build via Maven dans IntelliJ IDEA.", en: "Back-end customization development in Java (REST endpoints, business logic, ERP connections) and front-end in Angular (components, filters, buttons). Compilation and build via Maven in IntelliJ IDEA." }
@@ -185,6 +205,7 @@ Content-Type: application/json
     results: {
       fr: `Mon expérience chez ITESOFT a produit des résultats concrets tant pour l'entreprise que pour mon développement professionnel :
 
+- **Process automatisés** : L'initialisation des plateformes et les livraisons ne reposent plus sur des séquences manuelles. Les environnements sont montés de façon identique à chaque fois et les packages sortent de pipelines CI/CD plutôt que d'une checklist.
 - **Personnalisations client livrées** : Plusieurs clients configurés et personnalisés avec succès, de l'installation initiale à la mise en production, en passant par les phases de test avec le client sur les environnements staging Azure.
 - **Amélioration de CreatField** : L'intégration de la recherche et du téléchargement en lot dans l'outil CreatField a considérablement réduit le temps nécessaire à la gestion des champs personnalisés, passant de plusieurs heures à quelques minutes pour les migrations de 20-30 champs. Cette amélioration est utilisée par toute l'équipe Delivery au quotidien.
 - **Support client** : Traitement de nombreux tickets de support, avec diagnostic et résolution de problèmes variés, allant de la configuration utilisateur à des erreurs plus complexes nécessitant des Demandes d'Assistance à l'équipe R&D.
@@ -193,6 +214,7 @@ Content-Type: application/json
 Cette alternance m'a confronté à la réalité d'un éditeur logiciel servant de grandes entreprises, où la fiabilité, la sécurité et la satisfaction client sont des priorités absolues.`,
       en: `My experience at ITESOFT has produced concrete results both for the company and my professional development:
 
+- **Automated processes**: Platform setup and deliveries no longer rely on manual sequences. Environments are built identically every time and packages come out of CI/CD pipelines rather than a checklist.
 - **Client customizations delivered**: Several clients successfully configured and customized, from initial installation to production deployment, through client testing phases on Azure staging environments.
 - **CreatField improvement**: The integration of search and bulk download into the CreatField tool significantly reduced the time needed for custom field management, going from several hours to a few minutes for migrations of 20-30 fields. This improvement is used by the entire Delivery team daily.
 - **Client support**: Processing numerous support tickets, with diagnosis and resolution of varied issues, from user configuration to more complex errors requiring Assistance Requests to the R&D team.
@@ -209,7 +231,7 @@ Les principaux apprentissages que je retiens sont :
 
 2. **La relation client** : Le support m'a appris à communiquer avec des utilisateurs non-techniques, à diagnostiquer des problèmes à distance, et à rédiger des rapports clairs pour l'équipe R&D via les Demandes d'Assistance. La patience et la pédagogie sont des compétences aussi importantes que le code.
 
-3. **L'automatisation comme réflexe** : L'amélioration de CreatField m'a montré que lorsqu'un processus est répétitif et fastidieux, il vaut toujours la peine d'investir du temps pour l'automatiser. Le script initial m'a pris quelques heures, mais il fait gagner des heures chaque semaine à toute l'équipe.
+3. **L'automatisation comme réflexe** : L'amélioration de CreatField m'a montré que lorsqu'un processus est répétitif et fastidieux, il vaut toujours la peine d'investir du temps pour l'automatiser. Le script initial m'a pris quelques heures, mais il fait gagner des heures chaque semaine à toute l'équipe. C'est ce déclic qui m'a poussé vers l'automatisation des plateformes et des pipelines, puis vers un cycle ingénieur DevOps.
 
 4. **La sécurité comme culture** : Travailler sous norme ISO 27001 m'a appris que la sécurité n'est pas une fonctionnalité qu'on ajoute à la fin, mais une préoccupation constante qui influence chaque choix de conception et de développement.
 
@@ -222,7 +244,7 @@ The main learnings I take away are:
 
 2. **Client relations**: Support taught me to communicate with non-technical users, diagnose problems remotely, and write clear reports for the R&D team via Assistance Requests. Patience and pedagogy are skills as important as code.
 
-3. **Automation as a reflex**: The CreatField improvement showed me that when a process is repetitive and tedious, it's always worth investing time to automate it. The initial script took me a few hours, but it saves hours every week for the entire team.
+3. **Automation as a reflex**: The CreatField improvement showed me that when a process is repetitive and tedious, it's always worth investing time to automate it. The initial script took me a few hours, but it saves hours every week for the entire team. That click is what pushed me towards platform and pipeline automation, and then towards a DevOps engineering degree.
 
 4. **Security as a culture**: Working under ISO 27001 standards taught me that security is not a feature you add at the end, but a constant concern that influences every design and development choice.
 
@@ -372,17 +394,17 @@ function renderChart(data) {
 }`,
         language: "javascript",
         explanation: {
-          fr: "Configuration d'un graphique Chart.js pour visualiser l'evolution du taux d'occupation des box. Le dataset montre la progression de 75% a 100% grace a l'outil TamaStat.",
+          fr: "Configuration d'un graphique Chart.js pour visualiser l'évolution du taux d'occupation des box. Le dataset montre la progression de 75 % à 100 % grâce à l'outil TamaStat.",
           en: "Chart.js configuration to visualize storage box occupancy rate evolution. The dataset shows progression from 75% to 100% thanks to the TamaStat tool."
         }
       }
     ],
     results: {
-      fr: `Le projet TamaStat a eu un impact direct et mesurable : le taux d'occupation du client est passe de 75-82% a 100%. L'outil de visualisation statistique a permis au gerant de prendre des decisions marketing eclairees basees sur des donnees concretes.`,
+      fr: `Le projet TamaStat a eu un impact direct et mesurable : le taux d'occupation du client est passé de 75-82 % à 100 %. L'outil de visualisation statistique a permis au gérant de prendre des décisions marketing éclairées, basées sur des données concrètes.`,
       en: `The TamaStat project had a direct and measurable impact: the client's occupancy rate went from 75-82% to 100%. The statistical visualization tool allowed the owner to make informed marketing decisions based on concrete data.`
     },
     reflection: {
-      fr: `Ce stage m'a appris l'importance de l'autonomie et de la communication dans un projet professionnel. Presenter chaque semaine l'avancement au gerant m'a force a structurer mon travail et a prioriser les fonctionnalites a forte valeur ajoutee.`,
+      fr: `Ce stage m'a appris l'importance de l'autonomie et de la communication dans un projet professionnel. Présenter chaque semaine l'avancement au gérant m'a forcé à structurer mon travail et à prioriser les fonctionnalités à forte valeur ajoutée.`,
       en: `This internship taught me the importance of autonomy and communication in a professional project. Presenting weekly progress to the owner forced me to structure my work and prioritize high-value features.`
     },
     thumbnail: "/images/tamastat.webp",
@@ -1513,7 +1535,7 @@ The specificity of this edition was the diversity of challenges: going from a Ch
     },
     thumbnail: "/images/ndi2025.webp",
     images: [],
-    links: { live: "https://killianrms.github.io/NDI2025/", download: "/images/LaNuitDeLInfo2025-Sujet.pdf" }
+    links: { live: "https://killianrms.github.io/NDI2025/", event: "https://www.nuitdelinfo.com" }
   },
   {
     slug: "application-sauvegarde",
@@ -1537,23 +1559,23 @@ The specificity of this edition was the diversity of challenges: going from a Ch
     duration: { fr: "3 mois", en: "3 months" },
     team: { fr: "Projet universitaire - Équipe de 4 étudiants", en: "University project - Team of 4 students" },
     role: {
-      fr: "Developpeur principal - Architecture systeme, gestion versions, chiffrement, interface web",
+      fr: "Développeur principal - Architecture système, gestion des versions, chiffrement, interface web",
       en: "Lead Developer - System architecture, version management, encryption, web interface"
     },
     context: {
-      fr: "Projet BUT Informatique visant a creer un systeme de sauvegarde robuste pour proteger les donnees contre les ransomwares et erreurs utilisateur, avec retention de 30 jours.",
+      fr: "Projet de BUT Informatique visant à créer un système de sauvegarde robuste pour protéger les données contre les ransomwares et les erreurs utilisateur, avec une rétention de 30 jours.",
       en: "Computer Science degree project aimed at creating a robust backup system to protect data against ransomware and user errors, with 30-day retention."
     },
     objectives: {
-      fr: "Developper un systeme de sauvegarde automatique, securise via SSH, avec gestion intelligente de versions, compression gzip (70% reduction), deduplication par hash SHA256 et chiffrement AES-256-GCM.",
+      fr: "Développer un système de sauvegarde automatique, sécurisé via SSH, avec gestion intelligente des versions, compression gzip (70 % de réduction), déduplication par hash SHA-256 et chiffrement AES-256-GCM.",
       en: "Develop an automated backup system, secured via SSH, with intelligent version management, gzip compression (70% reduction), SHA256 hash deduplication and AES-256-GCM encryption."
     },
     approach: {
-      fr: "Architecture client-serveur avec daemon de surveillance (watchdog) sur le client, transfert SSH/SCP securise, traitement serveur (compression + chiffrement + deduplication), stockage SQLite des metadonnees et interface web Flask pour monitoring et restauration.",
+      fr: "Architecture client-serveur avec un daemon de surveillance (watchdog) sur le client, transfert SSH/SCP sécurisé, traitement côté serveur (compression + chiffrement + déduplication), stockage des métadonnées dans SQLite et interface web Flask pour le monitoring et la restauration.",
       en: "Client-server architecture with client-side monitoring daemon (watchdog), secure SSH/SCP transfer, server-side processing (compression + encryption + deduplication), SQLite metadata storage and Flask web interface for monitoring and restoration."
     },
     architecture: {
-      fr: "Client: daemon watchdog, SSH/SCP via Paramiko. Serveur: process_file.py pour traitement, version_manager.py pour gestion versions/deduplication, encryption.py pour AES-256-GCM, app.py Flask pour interface web (dashboard, restauration, API REST), SQLite pour metadonnees, systemd service pour automatisation.",
+      fr: "Client : daemon watchdog, SSH/SCP via Paramiko. Serveur : process_file.py pour le traitement, version_manager.py pour la gestion des versions et la déduplication, encryption.py pour AES-256-GCM, app.py (Flask) pour l'interface web (dashboard, restauration, API REST), SQLite pour les métadonnées, service systemd pour l'automatisation.",
       en: "Client: watchdog daemon, SSH/SCP via Paramiko. Server: process_file.py for processing, version_manager.py for version/deduplication management, encryption.py for AES-256-GCM, Flask app.py for web interface (dashboard, restore, REST API), SQLite for metadata, systemd service for automation."
     },
     skills: [
@@ -1625,7 +1647,7 @@ class VersionManager:
         self.conn.commit()`,
         language: "python",
         explanation: {
-          fr: "Ce code implemente la gestion de versions avec deduplication intelligente. Chaque fichier est hache (SHA256), compare a la version actuelle, puis compresse (gzip 70%), chiffre (AES-256-GCM) et stocke de maniere dedupliquee. Si le meme hash existe deja, le fichier est reutilise (economie d'espace). Les metadonnees sont enregistrees dans SQLite avec timestamp pour retention 30 jours.",
+          fr: "Ce code implémente la gestion de versions avec déduplication intelligente. Chaque fichier est haché (SHA-256), comparé à la version actuelle, puis compressé (gzip, 70 %), chiffré (AES-256-GCM) et stocké de manière dédupliquée. Si le même hash existe déjà, le fichier est réutilisé (économie d'espace). Les métadonnées sont enregistrées dans SQLite avec un horodatage pour la rétention de 30 jours.",
           en: "This code implements version management with intelligent deduplication. Each file is hashed (SHA256), compared to current version, then compressed (gzip 70%), encrypted (AES-256-GCM) and stored in deduplicated manner. If same hash already exists, file is reused (space saving). Metadata is recorded in SQLite with timestamp for 30-day retention."
         }
       },
@@ -1700,17 +1722,17 @@ def restore_file():
     })`,
         language: "python",
         explanation: {
-          fr: "Cette API Flask expose des endpoints REST pour consulter l'historique des versions et restaurer des fichiers. GET /api/files/<path>/versions retourne toutes les versions avec metadonnees (timestamp, tailles, hash). POST /api/restore gere la restauration complete: recuperation depuis dedup_store, dechiffrement AES-256-GCM, decompression gzip et ecriture du fichier restaure. L'interface web utilise ces endpoints pour permettre la restauration point-in-time.",
+          fr: "Cette API Flask expose des endpoints REST pour consulter l'historique des versions et restaurer des fichiers. GET /api/files/<path>/versions retourne toutes les versions avec leurs métadonnées (horodatage, tailles, hash). POST /api/restore gère la restauration complète : récupération depuis dedup_store, déchiffrement AES-256-GCM, décompression gzip et écriture du fichier restauré. L'interface web utilise ces endpoints pour permettre une restauration à un instant donné.",
           en: "This Flask API exposes REST endpoints to consult version history and restore files. GET /api/files/<path>/versions returns all versions with metadata (timestamp, sizes, hash). POST /api/restore handles complete restoration: retrieval from dedup_store, AES-256-GCM decryption, gzip decompression and writing of restored file. The web interface uses these endpoints to enable point-in-time restoration."
         }
       }
     ],
     results: {
-      fr: "Systeme production-ready avec 80-90% de reduction d'espace disque (compression gzip 70% + deduplication), interface web fonctionnelle avec dashboard temps reel, API REST complete, tests automatiques d'integrite et restauration, retention 30 jours.",
+      fr: "Système prêt pour la production avec 80 à 90 % de réduction d'espace disque (compression gzip 70 % + déduplication), interface web fonctionnelle avec dashboard en temps réel, API REST complète, tests automatiques d'intégrité et de restauration, rétention de 30 jours.",
       en: "Production-ready system with 80-90% disk space reduction (70% gzip compression + deduplication), functional web interface with real-time dashboard, complete REST API, automated integrity and restore tests, 30-day retention."
     },
     reflection: {
-      fr: "Projet enrichissant qui m'a permis d'approfondir mes competences en architecture systeme, securite (SSH, chiffrement), optimisation (compression + deduplication) et developpement web. La gestion de versions avec retention m'a particulierement forme aux problematiques de stockage et recuperation de donnees.",
+      fr: "Projet enrichissant qui m'a permis d'approfondir mes compétences en architecture système, sécurité (SSH, chiffrement), optimisation (compression + déduplication) et développement web. La gestion de versions avec rétention m'a particulièrement formé aux problématiques de stockage et de récupération de données.",
       en: "Enriching project that allowed me to deepen my skills in system architecture, security (SSH, encryption), optimization (compression + deduplication) and web development. Version management with retention particularly trained me in data storage and recovery challenges."
     },
     thumbnail: "/images/daemon-sauvegarde.webp",
@@ -1729,8 +1751,8 @@ def restore_file():
     team: { fr: "Projet individuel", en: "Individual project" },
     role: { fr: "Développeur & Designer", en: "Developer & Designer" },
     shortDescription: {
-      fr: "Ce portfolio — développé avec Next.js, React et TypeScript. Système bilingue FR/EN, animations CSS, analyses de projets détaillées et design responsive.",
-      en: "This portfolio — developed with Next.js, React and TypeScript. FR/EN bilingual system, CSS animations, detailed project analyses and responsive design."
+      fr: "Ce portfolio - développé avec Next.js, React et TypeScript. Système bilingue FR/EN, animations CSS, analyses de projets détaillées et design responsive.",
+      en: "This portfolio - developed with Next.js, React and TypeScript. FR/EN bilingual system, CSS animations, detailed project analyses and responsive design."
     },
     context: { fr: "Refonte complète du portfolio v1 en Next.js 15 avec TypeScript, système bilingue, thème sombre et analyses de projets détaillées.", en: "Complete redesign of portfolio v1 in Next.js 15 with TypeScript, bilingual system, dark theme and detailed project analyses." },
     objectives: { fr: "Créer une vitrine professionnelle moderne avec des analyses de projets détaillées.", en: "Create a modern professional showcase with detailed project analyses." },
@@ -1784,7 +1806,7 @@ def restore_file():
       fr: "Compétition nationale de développement web en une nuit. Thème : le changement climatique (GIEC). Création d'un site web de sensibilisation avec l'équipe Le Buff Chinois.",
       en: "National one-night web development competition. Theme: climate change (IPCC). Created a climate awareness website with the Le Buff Chinois team."
     },
-    context: { fr: "Nuit de l'Info 2024 — compétition nationale de développement web en une nuit, thème changement climatique.", en: "Nuit de l'Info 2024 — national one-night web development competition, climate change theme." },
+    context: { fr: "Nuit de l'Info 2024 - compétition nationale de développement web en une nuit, thème changement climatique.", en: "Nuit de l'Info 2024 - national one-night web development competition, climate change theme." },
     objectives: { fr: "Créer un site de sensibilisation au changement climatique en une nuit.", en: "Create a climate change awareness website in one night." },
     approach: { fr: "HTML/CSS/JS sur Replit, approche pragmatique pour maximiser la vitesse de développement.", en: "HTML/CSS/JS on Replit, pragmatic approach to maximize development speed." },
     architecture: { fr: "Site statique hébergé sur Replit avec contenu GIEC.", en: "Static site hosted on Replit with IPCC content." },
@@ -1799,3 +1821,21 @@ def restore_file():
 ];
 
 export const getProjectCount = (): number => projects.filter(p => !p.archived).length;
+
+/** What the home page list needs. Keeps the full write-ups out of the home bundle. */
+export type ProjectSummary = Pick<
+  Project,
+  "slug" | "year" | "featured" | "archived" | "title" | "category" | "technologies" | "shortDescription" | "thumbnail"
+>;
+
+export const summarizeProject = ({ slug, year, featured, archived, title, category, technologies, shortDescription, thumbnail }: Project): ProjectSummary => ({
+  slug,
+  year,
+  featured,
+  archived,
+  title,
+  category,
+  technologies,
+  shortDescription,
+  thumbnail,
+});

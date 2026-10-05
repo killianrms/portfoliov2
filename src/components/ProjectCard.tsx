@@ -3,108 +3,70 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
-import type { Project } from "@/data/projects";
-import FadeIn from "./FadeIn";
+import type { ProjectSummary } from "@/data/projects";
+import { localize } from "@/lib/typo";
+import { ArrowUpRightIcon } from "./Icons";
 
 interface ProjectCardProps {
-  project: Project;
-  index: number;
+  project: ProjectSummary;
 }
 
-export default function ProjectCard({ project, index }: ProjectCardProps) {
-  const { language, t } = useLanguage();
-
-  const categoryColors: Record<string, string> = {
-    professional: "bg-blue-500/10 text-blue-400 border-blue-500/20",
-    personal: "bg-green-500/10 text-green-400 border-green-500/20",
-    university: "bg-amber-500/10 text-amber-400 border-amber-500/20",
-    competition: "bg-pink-500/10 text-pink-400 border-pink-500/20",
-  };
-
-  const categoryLabels: Record<string, string> = {
-    professional: t("projects.filter.professional"),
-    personal: t("projects.filter.personal"),
-    university: t("projects.filter.university"),
-    competition: t("projects.filter.competition"),
-  };
+export default function ProjectCard({ project }: ProjectCardProps) {
+  const { language, t, path } = useLanguage();
+  const isLogo = project.thumbnail.includes("itesoft");
+  const extra = project.technologies.length - 4;
 
   return (
-    <FadeIn delay={index * 0.1}>
-      <Link href={`/projects/${project.slug}`} prefetch={false}>
-        <div className={`group relative bg-surface border rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-accent/5 ${project.featured ? "border-accent/40 hover:border-accent" : "border-border hover:border-accent/50"}`}>
-          {/* Featured ribbon */}
-          {project.featured && (
-            <div className="absolute top-0 right-0 z-10">
-              <div className="bg-accent text-white text-xs font-semibold px-3 py-1 rounded-bl-xl">
-                ★ {language === "fr" ? "À la une" : "Featured"}
-              </div>
-            </div>
-          )}
+    <Link
+      href={path(`/projects/${project.slug}`)}
+      prefetch={false}
+      className="group grid gap-5 border-b border-line py-8 outline-offset-4 md:grid-cols-12 md:gap-8 md:py-10"
+    >
+      {/* Thumbnail (first on mobile, last on desktop) */}
+      <div
+        className={`relative aspect-[16/9] overflow-hidden border border-line md:order-last md:col-span-4 md:aspect-[16/10] ${
+          isLogo ? "bg-white" : "bg-surface"
+        }`}
+      >
+        <Image
+          src={project.thumbnail}
+          alt=""
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 33vw, 400px"
+          className={`thumb-mono ${isLogo ? "object-contain p-8" : "object-cover"}`}
+        />
+      </div>
 
-          {/* Thumbnail */}
-          <div className={`relative h-48 overflow-hidden ${project.thumbnail.includes("itesoft") ? "bg-white" : "bg-surface-hover"}`}>
-            <Image
-              src={project.thumbnail}
-              alt={project.title[language]}
-              fill
-              sizes="(max-width: 640px) 92vw, (max-width: 768px) 95vw, (max-width: 1200px) 45vw, 30vw"
-              className={`group-hover:scale-110 transition-transform duration-500 ${project.thumbnail.includes("itesoft") ? "object-contain p-4" : "object-cover"}`}
+      <div className="md:col-span-8 md:flex md:gap-8">
+        <p className="type-label flex items-center gap-3 text-muted md:w-24 md:shrink-0 md:flex-col md:items-start md:gap-2">
+          <span className="text-foreground">{t(`projects.filter.${project.category}`)}</span>
+          <span>{project.year}</span>
+        </p>
+
+        <div className="mt-3 min-w-0 flex-1 md:mt-0">
+          <div className="flex items-start justify-between gap-4">
+            <h3 className="text-[1.4rem] font-bold leading-tight transition-colors group-hover:text-accent-ink md:text-[1.75rem]">
+              {project.title[language]}
+            </h3>
+            <ArrowUpRightIcon
+              size={22}
+              className="mt-1 shrink-0 text-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent-ink"
             />
-            {!project.thumbnail.includes("itesoft") && (
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
-            )}
-            {/* Category badge */}
-            <div className="absolute top-3 left-3">
-              <span className={`text-xs font-medium px-2 py-1 rounded-full border ${categoryColors[project.category]}`}>
-                {categoryLabels[project.category]}
-              </span>
-            </div>
           </div>
-
-          {/* Content */}
-          <div className="p-5">
-            <div className="flex items-start justify-between gap-2 mb-1">
-              <h3 className="text-lg font-semibold text-foreground group-hover:text-accent transition-colors duration-300 line-clamp-1">
-                {project.title[language]}
-              </h3>
-              {project.year && (
-                <span className="shrink-0 text-xs text-muted bg-surface-hover px-2 py-1 rounded-md mt-0.5">
-                  {project.year}
-                </span>
-              )}
-            </div>
-            <p className="text-sm text-muted line-clamp-2">
-              {project.shortDescription[language]}
+          {project.featured && (
+            <p className="type-label mt-2 inline-block bg-accent px-1.5 py-0.5 text-on-accent">
+              {t("projects.featured")}
             </p>
-
-            {/* Tech tags */}
-            <div className="mt-4 flex flex-wrap gap-1.5">
-              {project.technologies.slice(0, 4).map((tech) => (
-                <span
-                  key={tech}
-                  className="text-xs text-muted bg-surface-hover px-2 py-0.5 rounded"
-                >
-                  {tech}
-                </span>
-              ))}
-              {project.technologies.length > 4 && (
-                <span className="text-xs text-muted bg-surface-hover px-2 py-0.5 rounded">
-                  +{project.technologies.length - 4}
-                </span>
-              )}
-            </div>
-
-            {/* View link */}
-            <div className="mt-4 flex items-center gap-1 text-sm text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <span>{t("projects.viewProject")}</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform duration-300">
-                <line x1="5" y1="12" x2="19" y2="12"/>
-                <polyline points="12 5 19 12 12 19"/>
-              </svg>
-            </div>
-          </div>
+          )}
+          <p className="mt-3 line-clamp-3 max-w-2xl leading-relaxed text-muted">
+            {localize(project.shortDescription, language)}
+          </p>
+          <p className="type-label mt-4 text-foreground/70">
+            {project.technologies.slice(0, 4).join(" · ")}
+            {extra > 0 && <span className="text-muted"> · +{extra}</span>}
+          </p>
         </div>
-      </Link>
-    </FadeIn>
+      </div>
+    </Link>
   );
 }

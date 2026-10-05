@@ -1,27 +1,25 @@
-# Portfolio - Killian Music
+# Portfolio - Killian RAMUS
 
-Portfolio personnel construit avec Next.js 15, React et TypeScript.
+Portfolio personnel : élève-ingénieur DevOps à Polytech Montpellier, en alternance chez ITESOFT.
 
 ## Stack technique
 
-- **Framework** : Next.js 15 (App Router)
+- **Framework** : Next.js 16 (App Router), React 19
 - **Langage** : TypeScript
-- **UI** : React, Framer Motion
-- **Style** : Tailwind CSS
-- **Deploiement** : Vercel
+- **Style** : Tailwind CSS 4, polices Archivo (variable, axe de largeur) et JetBrains Mono via `next/font`
+- **Emails** : Resend (formulaire de contact)
+- **Déploiement** : Vercel
 
-## Fonctionnalites
+## Fonctionnalités
 
-- Systeme bilingue FR/EN avec React Context
-- Theme clair/sombre
-- 12 projets detailles avec pages dediees
-- Timeline interactive avec filtres (Formation/Experience/Benevolat)
-- Galerie d'images avec lightbox pour les projets
-- Compteur d'experience dynamique
-- Animations scroll avec Framer Motion
-- Design responsive
+- Bilingue : anglais sur `/`, français sur `/fr` (pages sous `src/app/[lang]`, les chemins racine sont réécrits vers `/en` dans `next.config.ts`), avec hreflang, canonical et sitemap bilingue
+- Thème sombre/clair appliqué avant l'affichage (pas de flash, pas de remontage de l'app)
+- Parcours présenté comme un pipeline CI/CD
+- Pages projets pré-générées au build (`generateStaticParams`), code coloré côté serveur
+- Image Open Graph générée au build (`src/app/opengraph-image.tsx`)
+- Toutes les sections sont rendues côté serveur : rien n'attend un scroll pour s'afficher
 
-## Demarrage
+## Démarrage
 
 ```bash
 npm install
@@ -34,28 +32,35 @@ Ouvrir [http://localhost:3000](http://localhost:3000).
 
 ```
 src/
-  app/           # Pages (App Router)
-  components/    # Composants React
-  context/       # Contextes (langue, theme)
-  data/          # Donnees projets et traductions
+  app/           # Pages (App Router), API contact, image OG
+  components/    # Sections et composants
+  context/       # Langue, thème
+  data/          # Projets, parcours, traductions
+  lib/           # Utilitaires (âge, durée d'alternance)
 public/
-  images/        # Images des projets
+  images/        # Images des projets et photo
 ```
 
-## ⚠️ Section temporaire — Portfolio d'apprentissage
+## CV
 
-> **À supprimer après la correction BUT 3.**
+Les CV (`public/cv-en.pdf`, `public/cv-fr.pdf`, et `public/cv.pdf` = version anglaise) sont générés par `scripts/build_cv.py` (format simple lisible par les ATS). Modifier le contenu dans ce script puis :
 
-Une page `/portfolio-apprentissage` a été ajoutée **uniquement pour l'évaluation du BUT 3 (parcours DACS)**.
-Elle justifie les compétences de niveau 3 (Réaliser, Administrer, Collaborer) à partir de traces concrètes de projets.
+```bash
+pip install reportlab
+python scripts/build_cv.py
+```
 
-Pour la supprimer complètement après la correction :
-1. Supprimer le dossier `src/app/portfolio-apprentissage/`
-2. Retirer le lien TEMPORAIRE dans `src/components/Navbar.tsx`
-   (chercher le commentaire `TEMPORAIRE — Portfolio d'apprentissage`)
+## Contenu à mettre à jour
 
----
+- `src/data/journey.ts` : formations (pipeline) et expériences
+- `src/data/projects.ts` : fiches projets
+- `src/data/translations.ts` : textes de l'interface
 
-## Deploiement
+## Variables d'environnement (Vercel)
 
-Deploye automatiquement sur Vercel : [killianrms.com](https://killianrms.com)
+- `RESEND_API_KEY` : clé Resend pour le formulaire de contact
+- `CONTACT_FROM` (optionnel) : expéditeur sur un domaine vérifié dans Resend, par ex. `Portfolio <contact@killianrms.com>`. Sans elle, l'adresse de test `onboarding@resend.dev` est utilisée.
+
+## Déploiement
+
+Déployé automatiquement sur Vercel : [killianrms.com](https://killianrms.com)

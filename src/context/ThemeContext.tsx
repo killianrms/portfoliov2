@@ -1,62 +1,49 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { useSyncExternalStore, useCallback, type ReactNode } from "react";
 
 type Theme = "dark" | "light";
 
-interface ThemeContextType {
-  theme: Theme;
-  toggleTheme: () => void;
+// The theme lives on <html> (set before first paint by the inline script in
+// layout.tsx), so this is a thin store over the DOM rather than React state.
+// Nothing remounts when it changes.
+const listeners = new Set<() => void>();
+
+function subscribe(listener: () => void) {
+  listeners.add(listener);
+  return () => {
+    listeners.delete(listener);
+  };
 }
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+function getSnapshot(): Theme {
+  return document.documentElement.classList.contains("dark") ? "dark" : "light";
+}
+
+function getServerSnapshot(): Theme {
+  return "light";
+}
+
+function applyTheme(theme: Theme) {
+  const root = document.documentElement;
+  root.classList.toggle("dark", theme === "dark");
+  root.classList.toggle("light", theme === "light");
+  try {
+    localStorage.setItem("theme", theme);
+  } catch {
+    // Private mode or blocked storage: the choice just won't persist.
+  }
+  listeners.forEach((l) => l());
+}
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("dark");
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    const saved = localStorage.getItem("theme") as Theme | null;
-    if (saved) {
-      setTheme(saved);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!mounted) return;
-    const root = document.documentElement;
-    if (theme === "dark") {
-      root.classList.add("dark");
-      root.classList.remove("light");
-    } else {
-      root.classList.add("light");
-      root.classList.remove("dark");
-    }
-    localStorage.setItem("theme", theme);
-  }, [theme, mounted]);
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
-  };
-
-  if (!mounted) {
-    return (
-      <ThemeContext.Provider value={{ theme: "dark", toggleTheme }}>
-        <div className="dark">{children}</div>
-      </ThemeContext.Provider>
-    );
-  }
-
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <>{children}</>;
 }
 
 export function useTheme() {
-  const context = useContext(ThemeContext);
-  if (!context) throw new Error("useTheme must be used within ThemeProvider");
-  return context;
+  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const toggleTheme = useCallback(() => {
+    applyTheme(getSnapshot() === "dark" ? "light" : "dark");
+  }, []);
+  return { theme, toggleTheme };
 }

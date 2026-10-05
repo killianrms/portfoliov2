@@ -6,236 +6,168 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
-  --color-surface-hover: var(--surface-hover);
-  --color-accent: var(--accent);
-  --color-accent-hover: var(--accent-hover);
   --color-muted: var(--muted);
-  --color-border: var(--border-color);
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-mono: "SF Mono", "Fira Code", monospace;
-  --font-serif: "Georgia", "Playfair Display", serif;
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-on-accent: var(--on-accent);
+  --color-on-accent-muted: var(--on-accent-muted);
+  --color-signal: var(--signal);
+  --color-ink: var(--ink);
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", monospace;
 }
 
+/* Technical-drawing palette: cool paper, ink, violet. Amber is reserved
+   for "in progress" states, like a running CI job. accent-ink is the
+   contrast-safe accent for small text. */
 :root {
-  --background: #fafafa;
-  --foreground: #171717;
-  --surface: #ffffff;
-  --surface-hover: #f5f5f5;
-  --accent: #8b5cf6;
-  --accent-hover: #7c3aed;
-  --muted: #737373;
-  --border-color: #e5e5e5;
+  --background: #e9eaec;
+  --surface: #dcdee3;
+  --foreground: #0e0f13;
+  --muted: #555966;
+  --line: #c6c9d1;
+  --accent: #6a2cff;
+  --accent-ink: #6a2cff;
+  --on-accent: #f5f3fa;
+  --on-accent-muted: #ebe4ff;
+  --signal: #ffbf1f;
+  --ink: #0e0f13;
+  color-scheme: light;
 }
 
 .dark {
-  --background: #09090b;
-  --foreground: #fafafa;
-  --surface: #18181b;
-  --surface-hover: #27272a;
-  --accent: #a78bfa;
-  --accent-hover: #8b5cf6;
-  --muted: #a1a1aa;
-  --border-color: #27272a;
+  --background: #0c0d11;
+  --surface: #171920;
+  --foreground: #e8e9ee;
+  --muted: #8b8f9c;
+  --line: #272a33;
+  --accent: #6a2cff;
+  --accent-ink: #b49cff;
+  --on-accent: #f5f3fa;
+  --on-accent-muted: #ebe4ff;
+  --signal: #ffbf1f;
+  --ink: #05060a;
+  color-scheme: dark;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: var(--font-sans);
+  /* Chrome on Linux/Android rounds the variable font's advances, which gives
+     uneven spacing ("automat isation", "confi guration"). This turns it off. */
+  text-rendering: geometricPrecision;
+  overflow-x: clip;
 }
 
 ::selection {
   background: var(--accent);
-  color: white;
+  color: var(--on-accent);
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--background);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--muted);
-  border-radius: 3px;
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
 }
 
-/* Spotlight cursor */
-.spotlight-cursor {
-  pointer-events: none;
-  position: fixed;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(167, 139, 250, 0.15) 0%, transparent 70%);
-  z-index: 50;
-  transition: opacity 0.3s ease;
-  will-change: transform;
-  mix-blend-mode: screen;
+/* ── Type ─────────────────────────────────────────────────────────── */
+
+/* Condensed poster type for the name and big statements */
+.type-display {
+  font-family: var(--font-sans);
+  font-variation-settings: "wdth" 62;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.82;
+  letter-spacing: -0.01em;
 }
 
-.dark .spotlight-cursor {
-  background: radial-gradient(circle, rgba(167, 139, 250, 0.12) 0%, transparent 70%);
+/* Wide heavy type for section titles */
+.type-wide {
+  font-family: var(--font-sans);
+  font-variation-settings: "wdth" 125;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+}
+
+/* Mono metadata labels */
+.type-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── Pieces ───────────────────────────────────────────────────────── */
+
+.rule {
+  border-top: 1px solid var(--line);
+}
+
+/* Dotted leader between a key and its value, like a spec sheet */
+.leader {
+  flex: 1;
+  min-width: 1rem;
+  border-bottom: 1px dotted var(--line);
+  transform: translateY(-0.3em);
+}
+
+/* "Running" pipeline stage */
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--signal) 60%, transparent); }
+  70% { box-shadow: 0 0 0 8px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+.status-running {
+  animation: pulse-ring 1.8s ease-out infinite;
+}
+
+@keyframes progress-sweep {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(250%); }
+}
+.progress-sweep {
+  animation: progress-sweep 2.4s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+}
+
+/* Project thumbnails: monochrome on pointer devices, colour on hover. Touch
+   devices always get colour. */
+@media (hover: hover) {
+  .thumb-mono {
+    filter: grayscale(1) contrast(1.05);
+    transition: filter 0.4s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .group:hover .thumb-mono,
+  .group:focus-visible .thumb-mono {
+    filter: none;
+    transform: scale(1.03);
+  }
 }
 
 /* Code blocks */
 pre {
-  border-radius: 8px;
   overflow-x: auto;
 }
 
 code {
-  font-family: "SF Mono", "Fira Code", monospace;
-  font-size: 0.875rem;
+  font-family: var(--font-mono);
 }
 
-/* Animated grid background */
-.grid-bg {
-  background-image:
-    linear-gradient(var(--border-color) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
-  background-size: 60px 60px;
-  opacity: 0.3;
-}
-
-.dark .grid-bg {
-  opacity: 0.15;
-}
-
-/* Fade in animation */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
-}
-
-/* Stagger children animation */
-.stagger-children > * {
-  opacity: 0;
-  animation: fadeInUp 0.5s ease-out forwards;
-}
-.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
-.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
-.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
-.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
-.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
-.stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
-
-/* Hero CSS animations — replaces framer-motion for critical path */
-@keyframes heroFadeInDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes heroFadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes heroFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-@keyframes heroScrollBounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); }
-}
-
-.hero-fade-in {
-  opacity: 0;
-  animation: heroFadeInDown 0.8s ease-out forwards;
-}
-.hero-delay-1 { animation-delay: 0.2s; animation-name: heroFadeInDown; }
-.hero-delay-2 { animation-delay: 0.5s; animation-name: heroFadeInUp; }
-.hero-delay-3 { animation-delay: 0.7s; animation-name: heroFadeInUp; }
-.hero-delay-4 { animation-delay: 1.2s; animation-name: heroFadeIn; }
-.hero-scroll-bounce { animation: heroScrollBounce 1.5s ease-in-out infinite; }
-
-/* Hero mobile rules moved to consolidated mobile block below */
-
-/* Hero gradient text */
-.gradient-text {
-  background: linear-gradient(135deg, var(--accent) 0%, #ec4899 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* FadeIn component — lightweight scroll-triggered transitions (replaces framer-motion whileInView) */
-.fade-in-hidden {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-}
-.fade-in-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* On mobile: skip ALL animations — instant content display, zero overhead */
-@media (max-width: 768px) {
-  .fade-in-hidden {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-  .hero-fade-in {
-    opacity: 1;
-    animation: none;
-  }
-  .hero-scroll-bounce {
-    animation: none;
-  }
-  .stagger-children > * {
-    opacity: 1;
-    animation: none;
-  }
-  .grid-bg {
-    display: none;
-  }
-  .animate-fade-in-up {
-    animation: none;
-    opacity: 1;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .fade-in-hidden {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
-
-/* Section separator */
-.section-separator {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border-color), transparent);
-}
-
-/* (mobile rules consolidated above) */
-
-/* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-
-  .stagger-children > * {
-    opacity: 1;
+  .status-running,
+  .progress-sweep {
     animation: none;
   }
 }
