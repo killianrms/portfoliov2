@@ -42,9 +42,9 @@ CONTACT = " | ".join([
 
 CV = {
     "en": {
-        "title": "DevOps Engineering Student | Work-Study at ITESOFT",
+        "title": "Assistant Development &amp; Project Engineer | DevOps Engineering Student",
         "headings": ["PROFESSIONAL SUMMARY", "EXPERIENCE", "EDUCATION", "SKILLS", "PROJECTS", "LANGUAGES AND ADDITIONAL INFORMATION"],
-        "summary": "DevOps engineering student at Polytech Montpellier, in a work-study program at ITESOFT. I build automation tools for the Delivery team: automated platform setup, CI/CD pipelines and internal tooling. Background in software development (BUT Computer Science) and in management and project management (IAE Montpellier).",
+        "summary": "Assistant development and project engineer in a work-study program at ITESOFT, and engineering student specializing in DevOps at Polytech Montpellier. In the Delivery team I develop client customizations (Java, AngularJS) and build automation tools: automated platform setup, CI/CD pipelines and internal tooling. Background in software development (BUT Computer Science) and in management and project management (IAE Montpellier).",
         "experience": [
             ("ITESOFT, Aimargues (France)", "Sep 2025 - Present", "Work-Study Assistant Development & Project Engineer, Delivery team", [
                 "Automated the setup of Streamline Invoices client platforms (environment preparation, installation, configuration), making each setup fast and reproducible.",
@@ -76,15 +76,15 @@ CV = {
         "projects": [
             ("LobbyBot", "Fortnite bot system with multi-account management, Discord bot and real-time dashboard (Node.js, Python, Docker, PostgreSQL). Community of 8,500+ members."),
             ("Referendum", "Secure voting application in Java/JavaFX with ElGamal encryption and zero-knowledge proof. Product Owner in a 4-person Scrum team."),
-            ("Kcnyx", "E-commerce platform (Next.js, TypeScript, Prisma, MySQL) deployed on Vercel, with secure authentication and admin tools."),
+            ("Backup system", "Automated client-server backup with versioning, SHA-256 deduplication, AES-256-GCM encryption, SSH transfers and a Flask web interface (Python, Linux, systemd)."),
         ],
         "languages": "French: native | English: B2",
         "additional": "Driving licences A and B",
     },
     "fr": {
-        "title": "Élève-ingénieur DevOps | Alternance chez ITESOFT",
+        "title": "Assistant ingénieur développement et projet | Élève-ingénieur DevOps",
         "headings": ["PROFIL", "EXPÉRIENCE PROFESSIONNELLE", "FORMATION", "COMPÉTENCES", "PROJETS", "LANGUES ET INFORMATIONS COMPLÉMENTAIRES"],
-        "summary": "Élève-ingénieur DevOps à Polytech Montpellier, en alternance chez ITESOFT. Je conçois des outils d'automatisation pour l'équipe Delivery : initialisation automatique des plateformes, pipelines CI/CD et outillage interne. Double formation en développement logiciel (BUT Informatique) et en management et gestion de projet (IAE Montpellier).",
+        "summary": "Assistant ingénieur développement et projet en alternance chez ITESOFT, élève-ingénieur spécialité DevOps à Polytech Montpellier. Dans l'équipe Delivery, je développe des personnalisations clients (Java, AngularJS) et des outils d'automatisation : initialisation automatique des plateformes, pipelines CI/CD et outillage interne. Double formation en développement logiciel (BUT Informatique) et en management et gestion de projet (IAE Montpellier).",
         "experience": [
             ("ITESOFT, Aimargues (30)", "Sept. 2025 - aujourd'hui", "Alternant Assistant ingénieur développement et projet, équipe Delivery", [
                 "Automatisation de l'initialisation des plateformes clients Streamline Invoices (préparation des environnements, installation, configuration), rendue rapide et reproductible.",
@@ -116,7 +116,7 @@ CV = {
         "projects": [
             ("LobbyBot", "Système de bots Fortnite avec gestion multi-comptes, bot Discord et dashboard temps réel (Node.js, Python, Docker, PostgreSQL). Communauté de plus de 8 500 membres."),
             ("Referendum", "Application de vote sécurisée en Java/JavaFX avec chiffrement ElGamal et preuve à divulgation nulle. Product Owner d'une équipe Scrum de 4 personnes."),
-            ("Kcnyx", "Plateforme e-commerce (Next.js, TypeScript, Prisma, MySQL) déployée sur Vercel, avec authentification sécurisée et outils d'administration."),
+            ("Système de sauvegarde", "Sauvegarde automatique client-serveur avec gestion de versions, déduplication SHA-256, chiffrement AES-256-GCM, transferts SSH et interface web Flask (Python, Linux, systemd)."),
         ],
         "languages": "Français : langue maternelle | Anglais : B2",
         "additional": "Permis A et B",
@@ -140,7 +140,7 @@ def build(lang, out):
     h = c["headings"]
     doc = SimpleDocTemplate(str(out), pagesize=A4, leftMargin=16 * mm, rightMargin=16 * mm, topMargin=11 * mm, bottomMargin=10 * mm,
                             title=f"Killian Ramus - CV ({lang.upper()})", author="Killian Ramus", subject=c["title"],
-                            keywords="DevOps, CI/CD, automation, Docker, Kubernetes, Java, Polytech Montpellier, ITESOFT")
+                            keywords="Development engineer, project engineer, DevOps, CI/CD, automation, Java, Angular, Docker, Polytech Montpellier, ITESOFT")
     s = [Paragraph("KILLIAN RAMUS", name), Paragraph(c["title"], title), Paragraph(CONTACT, contact)]
 
     section(s, h[0])
