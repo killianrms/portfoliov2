@@ -1,4 +1,4 @@
-# Killian Ramus - Portfolio
+# Killian Ramus · Portfolio
 
 [![CI](https://github.com/killianrms/portfoliov2/actions/workflows/ci.yml/badge.svg)](https://github.com/killianrms/portfoliov2/actions/workflows/ci.yml)
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fkillianrms.com&label=killianrms.com)](https://killianrms.com)

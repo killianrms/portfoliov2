@@ -1,7 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/context/LanguageContext";
-import { getAge, getWorkStudyDuration } from "@/lib/dates";
+import { getWorkStudyDuration } from "@/lib/dates";
 import SectionHeader from "./SectionHeader";
 
 export default function About({ projectCount }: { projectCount: number }) {
@@ -12,7 +12,7 @@ export default function About({ projectCount }: { projectCount: number }) {
     { key: t("about.stat.degrees"), value: "02" },
     { key: t("about.stat.experience"), value: getWorkStudyDuration(language) },
     { key: "Bac+5", value: t("about.stat.next") },
-    { key: t("about.stat.age"), value: String(getAge()) },
+    { key: t("about.stat.autoinit"), value: "2 h → 1 min" },
   ];
 
   return (

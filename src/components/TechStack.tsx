@@ -14,7 +14,7 @@ interface StackGroup {
 const stack: StackGroup[] = [
   {
     label: { fr: "Automatisation & DevOps", en: "Automation & DevOps" },
-    items: ["CI/CD", "Docker", "Kubernetes", "Linux", "Git", "Azure", "Maven"],
+    items: ["n8n", "Docker", "Azure DevOps", "CI/CD", "Linux", "Git", "Grafana", "Kubernetes", "Azure"],
     primary: true,
   },
   {

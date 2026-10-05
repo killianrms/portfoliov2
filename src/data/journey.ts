@@ -36,7 +36,7 @@ export const education: EducationStage[] = [
   {
     period: "2026 - 2029",
     level: "Bac+5",
-    title: { fr: "Ingénieur DevOps", en: "DevOps engineering degree" },
+    title: { fr: "Diplôme d'ingénieur, spécialité DevOps", en: "Engineering degree, DevOps specialization" },
     school: "Polytech Montpellier",
     detail: {
       fr: "Cycle ingénieur en alternance chez ITESOFT.",
@@ -69,24 +69,26 @@ export const experiences: Experience[] = [
     },
     kind: "work",
     summary: {
-      fr: "Dans l'équipe Delivery, je conçois les outils qui automatisent le quotidien de l'équipe autour de Streamline Invoices, la plateforme de traitement de factures d'ITESOFT utilisée par de grands comptes.",
-      en: "In the Delivery team, I build the tools that automate the team's day-to-day work around Streamline Invoices, ITESOFT's invoice processing platform used by large enterprises.",
+      fr: "Dans l'équipe Delivery de Streamline for Invoices, la solution de traitement des factures fournisseurs d'ITESOFT utilisée par de grands comptes, je développe des customisations, assure le support en production et automatise les process de l'équipe.",
+      en: "In the Delivery team of Streamline for Invoices, ITESOFT's supplier invoice processing solution used by large enterprises, I develop customizations, support production platforms and automate the team's processes.",
     },
     highlights: {
       fr: [
-        "Initialisation automatique des plateformes clients : ce qui se configurait à la main à chaque nouveau client devient scripté et reproductible.",
-        "Pipelines CI/CD pour builder, tester et livrer les personnalisations clients de façon fiable.",
-        "Outils d'automatisation de process internes, comme l'export en masse de CreatField qui remplace des heures de manipulations.",
-        "Personnalisation Java / Angular, cycle Dev → Staging → Prod et support client.",
+        "AutoInit, mon initiative : un workflow n8n qui initialise une plateforme client de bout en bout (dépôt Git, pipeline Azure DevOps, déploiement SSH/SFTP, frontal web, accès). Environ 2 h de manipulations remplacées par un formulaire d'une minute, une vingtaine de plateformes initialisées avec, outil repris par l'entreprise.",
+        "Customisations en production chez de nombreux clients : règles métier JavaScript et Java, requêtes RSQL, scripts SQL et tâches cron.",
+        "Diagnostic d'incidents dans les conteneurs Docker, les journaux Grafana et les bases PostgreSQL.",
+        "Git flow avec merge requests relues, staging pour la recette client, environnement certifié ISO 27001.",
+        "Travaux confidentiels : je ne peux pas les détailler davantage ici, mais j'en parle volontiers.",
       ],
       en: [
-        "Automated client platform setup: what used to be configured by hand for every new client is now scripted and reproducible.",
-        "CI/CD pipelines to build, test and ship client customizations reliably.",
-        "Internal process automation tools, like the CreatField bulk export that replaces hours of manual work.",
-        "Java / Angular customization, Dev → Staging → Prod cycle and client support.",
+        "AutoInit, my own initiative: an n8n workflow that sets up a client platform end to end (Git repository, Azure DevOps pipeline, SSH/SFTP deployment, web front end, access). About 2 hours of manual work replaced by a one-minute form, around twenty platforms set up with it, now maintained by the company.",
+        "Customizations in production for many clients: JavaScript and Java business rules, RSQL queries, SQL scripts and cron jobs.",
+        "Incident diagnosis across Docker containers, Grafana logs and PostgreSQL databases.",
+        "Git flow with reviewed merge requests, staging for client acceptance, ISO 27001 certified environment.",
+        "This work is confidential: I can't detail it further here, but I'm happy to talk about it.",
       ],
     },
-    tags: ["CI/CD", "Java", "Angular", "PostgreSQL", "Azure", "Maven"],
+    tags: ["n8n", "Docker", "Azure DevOps", "Node.js", "Java", "PostgreSQL", "Grafana"],
     href: "/projects/itesoft-assistant-ingenieur",
   },
   {
