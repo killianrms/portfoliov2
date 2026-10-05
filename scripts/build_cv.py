@@ -1,4 +1,4 @@
-"""Build the ATS-friendly CVs (public/cv-en.pdf, public/cv-fr.pdf, public/cv.pdf).
+"""Build the ATS-friendly CVs (public/cv-en.pdf, public/cv-fr.pdf, public/cv.pdf = French copy).
 
 Single column, standard section headings, standard font, real text (no images
 or tables), so applicant tracking systems parse it cleanly.
@@ -173,4 +173,4 @@ if __name__ == "__main__":
     public = Path(__file__).resolve().parent.parent / "public"
     build("en", public / "cv-en.pdf")
     build("fr", public / "cv-fr.pdf")
-    build("en", public / "cv.pdf")  # keeps old /cv.pdf links working
+    build("fr", public / "cv.pdf")  # old link already shared with companies; not linked from the site
