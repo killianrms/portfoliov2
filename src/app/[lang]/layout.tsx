@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
+import { Analytics } from "@vercel/analytics/next";
 import { Archivo, JetBrains_Mono } from "next/font/google";
 import "../globals.css";
 import ClientProviders from "@/components/ClientProviders";
@@ -81,6 +82,8 @@ export default async function RootLayout({
       </head>
       <body className="antialiased">
         <ClientProviders language={lang}>{children}</ClientProviders>
+        {/* Cookieless, anonymous audience measurement (no consent banner needed) */}
+        <Analytics />
       </body>
     </html>
   );

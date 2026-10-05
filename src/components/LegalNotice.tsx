@@ -50,7 +50,7 @@ const content: Record<"fr" | "en", { title: string; updated: string; sections: S
       {
         title: "Cookies",
         body: [
-          "Ce site n'utilise aucun cookie publicitaire ni outil de mesure d'audience. Il enregistre seulement dans votre navigateur votre choix de langue et de thème (clair ou sombre), ce qui ne nécessite pas de consentement.",
+          "Ce site n'utilise aucun cookie. Il mesure son audience avec Vercel Web Analytics, qui ne dépose pas de cookie et ne permet pas de vous identifier : seules des statistiques agrégées (pages vues, pays, type d'appareil) sont produites, à seule fin de mesurer la fréquentation. Votre choix de langue et de thème (clair ou sombre) est enregistré dans votre navigateur. Ni l'un ni l'autre ne nécessite de consentement.",
         ],
       },
     ],
@@ -95,7 +95,7 @@ const content: Record<"fr" | "en", { title: string; updated: string; sections: S
       {
         title: "Cookies",
         body: [
-          "This site uses no advertising cookies and no analytics. It only stores your language and theme (light or dark) choice in your browser, which does not require consent.",
+          "This site uses no cookies. It measures traffic with Vercel Web Analytics, which sets no cookie and cannot identify you: it only produces aggregated statistics (page views, country, device type), solely to measure audience. Your language and theme (light or dark) choice is stored in your browser. Neither requires consent."
         ],
       },
     ],

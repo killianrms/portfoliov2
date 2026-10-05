@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { LANGUAGES } from "@/lib/i18n";
 
-export const alt = "Killian RAMUS - DevOps & automation";
+export const alt = "Killian RAMUS - Development & project engineer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -61,7 +61,7 @@ export default async function OpengraphImage({ params }: { params: Promise<{ lan
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", borderTop: "2px solid rgba(245, 243, 250, 0.3)", paddingTop: 28 }}>
           <div style={{ display: "flex", fontSize: 40 }}>
-            {fr ? "Élève-ingénieur DevOps · automatisation et CI/CD" : "DevOps engineering student · automation & CI/CD"}
+            {fr ? "Ingénieur développement et projet · en formation DevOps" : "Development & project engineer · DevOps engineering student"}
           </div>
           <div style={{ display: "flex", fontSize: 22, color: "#ddd1ff", ...family("Mono", mono) }}>killianrms.com</div>
         </div>

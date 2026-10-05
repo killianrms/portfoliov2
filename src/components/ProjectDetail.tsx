@@ -101,7 +101,6 @@ interface ProjectDetailProps {
 export default function ProjectDetail({ project, next, codeBlocks }: ProjectDetailProps) {
   const { language, t, path } = useLanguage();
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const isLogo = project.thumbnail.includes("itesoft");
 
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -292,14 +291,14 @@ export default function ProjectDetail({ project, next, codeBlocks }: ProjectDeta
         </div>
 
         {/* Visual */}
-        <div className={`relative mt-10 aspect-[16/9] overflow-hidden border border-line md:mt-14 ${isLogo ? "bg-white" : "bg-surface"}`}>
+        <div className={`relative mt-10 aspect-[16/9] overflow-hidden border border-line md:mt-14 bg-surface`}>
           <Image
             src={project.poster ?? project.thumbnail}
             alt={project.title[language]}
             fill
             priority
             sizes="(max-width: 1280px) 100vw, 1200px"
-            className={isLogo ? "object-contain p-12 md:p-24" : project.poster ? "object-contain" : "object-cover object-top"}
+            className={project.poster ? "object-contain" : "object-cover object-top"}
           />
         </div>
 

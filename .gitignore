@@ -41,3 +41,8 @@ yarn-error.log*
 next-env.d.ts
 public/images/codeGameJam2025.zip
 .gstack/
+
+# playwright
+/test-results/
+/playwright-report/
+/blob-report/

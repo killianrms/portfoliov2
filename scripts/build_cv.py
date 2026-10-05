@@ -42,16 +42,15 @@ CONTACT = " | ".join([
 
 CV = {
     "en": {
-        "title": "DevOps Engineering Student | Work-Study at ITESOFT",
+        "title": "Assistant Development &amp; Project Engineer | DevOps Engineering Student",
         "headings": ["PROFESSIONAL SUMMARY", "EXPERIENCE", "EDUCATION", "SKILLS", "PROJECTS", "LANGUAGES AND ADDITIONAL INFORMATION"],
-        "summary": "DevOps engineering student at Polytech Montpellier, in a work-study program at ITESOFT. I build automation tools for the Delivery team: automated platform setup, CI/CD pipelines and internal tooling. Background in software development (BUT Computer Science) and in management and project management (IAE Montpellier).",
+        "summary": "Assistant development and project engineer in a work-study program at ITESOFT, and engineering student specializing in DevOps at Polytech Montpellier. In the Delivery team I develop client customizations (Java, AngularJS) and build automation tools: automated platform setup, CI/CD pipelines and internal tooling. Background in software development (BUT Computer Science) and in management and project management (IAE Montpellier).",
         "experience": [
-            ("ITESOFT, Aimargues (France)", "Sep 2025 - Present", "Work-Study Assistant Development & Project Engineer, Delivery team", [
-                "Automated the setup of Streamline Invoices client platforms (environment preparation, installation, configuration), making each setup fast and reproducible.",
-                "Built CI/CD pipelines to build, test and package client customizations (Maven, Git).",
-                "Improved the internal CreatField tool: bulk export through the API, search and multi-select, replacing a manual field-by-field process.",
-                "Developed client customizations in Java and AngularJS and handled Dev, Staging (Azure) and Production deployments.",
-                "Processed client support tickets, wrote escalation reports for R&amp;D, took part in daily meetings and code reviews.",
+            ("ITESOFT, Aimargues (France)", "Sep 2025 - Present", "Work-Study Assistant Development &amp; Project Engineer, Delivery team", [
+                "Created AutoInit, an n8n workflow that sets up client platforms end to end (Git repository, Azure DevOps pipeline, SSH/SFTP deployment, web front end, access handover): about 2 hours of manual work across five tools replaced by a one-minute form.",
+                "AutoInit adopted by the team the day after release, around 20 platforms set up with it, now maintained by the company.",
+                "Developed client customizations in production (JavaScript and Java business rules, RSQL, SQL, cron) for Streamline for Invoices, used by large enterprises.",
+                "Diagnosed production incidents across Docker containers, Grafana logs and PostgreSQL; Git flow with reviewed merge requests in an ISO 27001 environment.",
             ]),
             ("TamaBox, Draguignan (France)", "Jan 2025 - Apr 2025", "Full-Stack Developer Intern", [
                 "Designed, built and hosted a statistics web application on my own (PHP, MySQL, JavaScript, Chart.js).",
@@ -67,7 +66,7 @@ CV = {
             ("IUT Montpellier-Sète", "2023 - 2026", "BUT Computer Science (Bachelor's), DACS track: deployment of secure networked applications"),
         ],
         "skills": [
-            ("DevOps &amp; Automation", "CI/CD, Docker, Kubernetes, Linux, Git, Azure, Maven"),
+            ("DevOps &amp; Automation", "n8n, Docker, Azure DevOps, CI/CD, Linux, Git, Grafana, Kubernetes, Azure"),
             ("Programming Languages", "Java, Python, TypeScript, JavaScript, SQL, C, C#, PHP, HTML/CSS"),
             ("Frameworks", "Angular, AngularJS, React, Next.js, Node.js, JavaFX"),
             ("Databases", "PostgreSQL, MySQL, Oracle, MongoDB"),
@@ -76,22 +75,21 @@ CV = {
         "projects": [
             ("LobbyBot", "Fortnite bot system with multi-account management, Discord bot and real-time dashboard (Node.js, Python, Docker, PostgreSQL). Community of 8,500+ members."),
             ("Referendum", "Secure voting application in Java/JavaFX with ElGamal encryption and zero-knowledge proof. Product Owner in a 4-person Scrum team."),
-            ("Kcnyx", "E-commerce platform (Next.js, TypeScript, Prisma, MySQL) deployed on Vercel, with secure authentication and admin tools."),
+            ("Backup system", "Automated client-server backup with versioning, SHA-256 deduplication, AES-256-GCM encryption, SSH transfers and a Flask web interface (Python, Linux, systemd)."),
         ],
         "languages": "French: native | English: B2",
         "additional": "Driving licences A and B",
     },
     "fr": {
-        "title": "Élève-ingénieur DevOps | Alternance chez ITESOFT",
+        "title": "Assistant ingénieur développement et projet | Élève-ingénieur DevOps",
         "headings": ["PROFIL", "EXPÉRIENCE PROFESSIONNELLE", "FORMATION", "COMPÉTENCES", "PROJETS", "LANGUES ET INFORMATIONS COMPLÉMENTAIRES"],
-        "summary": "Élève-ingénieur DevOps à Polytech Montpellier, en alternance chez ITESOFT. Je conçois des outils d'automatisation pour l'équipe Delivery : initialisation automatique des plateformes, pipelines CI/CD et outillage interne. Double formation en développement logiciel (BUT Informatique) et en management et gestion de projet (IAE Montpellier).",
+        "summary": "Assistant ingénieur développement et projet en alternance chez ITESOFT, élève-ingénieur spécialité DevOps à Polytech Montpellier. Dans l'équipe Delivery, je développe des personnalisations clients (Java, AngularJS) et des outils d'automatisation : initialisation automatique des plateformes, pipelines CI/CD et outillage interne. Double formation en développement logiciel (BUT Informatique) et en management et gestion de projet (IAE Montpellier).",
         "experience": [
             ("ITESOFT, Aimargues (30)", "Sept. 2025 - aujourd'hui", "Alternant Assistant ingénieur développement et projet, équipe Delivery", [
-                "Automatisation de l'initialisation des plateformes clients Streamline Invoices (préparation des environnements, installation, configuration), rendue rapide et reproductible.",
-                "Mise en place de pipelines CI/CD pour builder, tester et packager les personnalisations clients (Maven, Git).",
-                "Amélioration de l'outil interne CreatField : export en masse via API, recherche et sélection multiple, en remplacement d'un traitement manuel champ par champ.",
-                "Développement de personnalisations en Java et AngularJS, déploiements Dev, Staging (Azure) et Production.",
-                "Traitement des tickets de support client, rédaction de demandes d'assistance pour la R&amp;D, daily meetings et revues de code.",
+                "Création d'AutoInit, un workflow n8n qui initialise les plateformes clientes de bout en bout (dépôt Git, pipeline Azure DevOps, déploiement SSH/SFTP, frontal web, remise des accès) : environ 2 h de manipulations sur cinq outils remplacées par un formulaire d'une minute.",
+                "AutoInit adopté par l'équipe dès sa mise en service, une vingtaine de plateformes initialisées avec, outil repris par l'entreprise.",
+                "Développement de customisations en production (règles métier JavaScript et Java, RSQL, SQL, cron) pour Streamline for Invoices, utilisé par de grands comptes.",
+                "Diagnostic d'incidents dans les conteneurs Docker, les journaux Grafana et PostgreSQL ; git flow avec merge requests relues, environnement ISO 27001.",
             ]),
             ("TamaBox, Draguignan (83)", "Janv. 2025 - avr. 2025", "Stagiaire développeur full-stack", [
                 "Conception, développement et hébergement en autonomie d'une application web de statistiques (PHP, MySQL, JavaScript, Chart.js).",
@@ -107,7 +105,7 @@ CV = {
             ("IUT Montpellier-Sète", "2023 - 2026", "BUT Informatique (Bac+3), parcours DACS : déploiement d'applications communicantes et sécurisées"),
         ],
         "skills": [
-            ("DevOps et automatisation", "CI/CD, Docker, Kubernetes, Linux, Git, Azure, Maven"),
+            ("DevOps et automatisation", "n8n, Docker, Azure DevOps, CI/CD, Linux, Git, Grafana, Kubernetes, Azure"),
             ("Langages", "Java, Python, TypeScript, JavaScript, SQL, C, C#, PHP, HTML/CSS"),
             ("Frameworks", "Angular, AngularJS, React, Next.js, Node.js, JavaFX"),
             ("Bases de données", "PostgreSQL, MySQL, Oracle, MongoDB"),
@@ -116,7 +114,7 @@ CV = {
         "projects": [
             ("LobbyBot", "Système de bots Fortnite avec gestion multi-comptes, bot Discord et dashboard temps réel (Node.js, Python, Docker, PostgreSQL). Communauté de plus de 8 500 membres."),
             ("Referendum", "Application de vote sécurisée en Java/JavaFX avec chiffrement ElGamal et preuve à divulgation nulle. Product Owner d'une équipe Scrum de 4 personnes."),
-            ("Kcnyx", "Plateforme e-commerce (Next.js, TypeScript, Prisma, MySQL) déployée sur Vercel, avec authentification sécurisée et outils d'administration."),
+            ("Système de sauvegarde", "Sauvegarde automatique client-serveur avec gestion de versions, déduplication SHA-256, chiffrement AES-256-GCM, transferts SSH et interface web Flask (Python, Linux, systemd)."),
         ],
         "languages": "Français : langue maternelle | Anglais : B2",
         "additional": "Permis A et B",
@@ -139,8 +137,8 @@ def build(lang, out):
     c = CV[lang]
     h = c["headings"]
     doc = SimpleDocTemplate(str(out), pagesize=A4, leftMargin=16 * mm, rightMargin=16 * mm, topMargin=11 * mm, bottomMargin=10 * mm,
-                            title=f"Killian Ramus - CV ({lang.upper()})", author="Killian Ramus", subject=c["title"],
-                            keywords="DevOps, CI/CD, automation, Docker, Kubernetes, Java, Polytech Montpellier, ITESOFT")
+                            title=f"CV Killian Ramus ({lang.upper()})", author="Killian Ramus", subject=c["title"],
+                            keywords="Development engineer, project engineer, DevOps, n8n, automation, CI/CD, Azure DevOps, Docker, Java, Polytech Montpellier, ITESOFT")
     s = [Paragraph("KILLIAN RAMUS", name), Paragraph(c["title"], title), Paragraph(CONTACT, contact)]
 
     section(s, h[0])

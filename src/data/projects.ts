@@ -41,228 +41,193 @@ export const projects: Project[] = [
     slug: "itesoft-assistant-ingenieur",
     year: "2025",
     featured: true,
-    title: { fr: "ITESOFT - Assistant Ingénieur Développement et Projet", en: "ITESOFT - Assistant Development & Project Engineer" },
+    title: { fr: "AutoInit et customisation de Streamline for Invoices chez ITESOFT", en: "AutoInit and Streamline for Invoices customization at ITESOFT" },
     category: "professional",
-    technologies: ["CI/CD", "Java", "Angular", "PostgreSQL", "Azure", "Maven", "Git", "SQL", "IntelliJ IDEA", "Termius", "Postman"],
-    duration: { fr: "Septembre 2025 - Présent (Alternance)", en: "September 2025 - Present (Work-Study)" },
-    team: { fr: "Équipe Delivery (~30 personnes) - l'équipe projet d'ITESOFT", en: "Delivery team (~30 people) - ITESOFT's project team" },
-    role: { fr: "Assistant Ingénieur Développement et Projet - Automatisation des process, personnalisation et déploiement de Streamline Invoices", en: "Assistant Development & Project Engineer - Process automation, customization and deployment of Streamline Invoices" },
+    technologies: ["n8n", "Docker", "Azure DevOps", "Node.js", "Java", "AngularJS", "PostgreSQL", "SSH / SFTP", "Grafana", "Git"],
+    duration: { fr: "Septembre 2025 à aujourd'hui (alternance)", en: "September 2025 to present (work-study)" },
+    team: { fr: "Équipe Delivery de Streamline for Invoices (32 personnes)", en: "Streamline for Invoices Delivery team (32 people)" },
+    role: { fr: "Assistant ingénieur développement et projet : créateur d'AutoInit, customisation, support et diagnostic en production", en: "Assistant development & project engineer: creator of AutoInit, customization, support and production diagnosis" },
     shortDescription: {
-      fr: "Alternance dans l'équipe Delivery d'ITESOFT : outils d'automatisation des process (initialisation automatique des plateformes, pipelines CI/CD), personnalisation de Streamline Invoices pour de grands comptes et support client.",
-      en: "Work-study in ITESOFT's Delivery team: process automation tools (automated platform setup, CI/CD pipelines), customization of Streamline Invoices for large enterprises and client support."
+      fr: "J'ai créé AutoInit, un workflow n8n qui automatise de bout en bout l'initialisation des plateformes clientes : environ 2 heures de manipulations sur cinq outils remplacées par un formulaire d'une minute, adopté par toute l'équipe. En parallèle, customisation et support en production de Streamline for Invoices pour des grands comptes.",
+      en: "I built AutoInit, an n8n workflow that fully automates client platform setup: about 2 hours of manual work across five tools replaced by a one-minute form, adopted by the whole team. Alongside, customization and production support of Streamline for Invoices for large enterprises."
     },
     context: {
-      fr: `ITESOFT est un éditeur logiciel français spécialisé dans la dématérialisation et l'automatisation des processus documentaires. L'entreprise développe notamment Streamline Invoices, une plateforme de gestion de factures destinée à de grandes entreprises réalisant plusieurs milliards d'euros de chiffre d'affaires annuel. Cet outil permet aux comptables de centraliser l'ensemble du traitement des factures : capture automatique (PDF, email), circuits de validation configurables, et flux de traitement de bout en bout.
+      fr: `ITESOFT est un éditeur de logiciels français spécialisé dans l'automatisation et la dématérialisation des processus métiers. Sa solution Streamline for Invoices automatise le traitement des factures fournisseurs de grands comptes, de la capture jusqu'à l'intégration dans l'ERP, en passant par le rapprochement avec les commandes et les circuits d'approbation.
 
-J'ai intégré l'équipe Delivery en septembre 2025, en alternance pendant ma dernière année de BUT Informatique (parcours DACS) à l'IUT de Montpellier-Sète, et je poursuis aujourd'hui cette alternance dans le cadre de mon cycle ingénieur DevOps à Polytech Montpellier. L'équipe Delivery est littéralement l'équipe projet d'ITESOFT : elle est responsable de la personnalisation, du déploiement et du support de Streamline Invoices auprès des clients.
+J'y suis en alternance depuis septembre 2025 dans l'équipe Delivery, d'abord pendant ma dernière année de BUT Informatique (parcours DACS), puis dans le cadre de mon cycle ingénieur spécialité DevOps à Polytech Montpellier. Le rôle de l'équipe : adapter la solution standard aux besoins de chaque client, la déployer et en assurer le support.
 
-Mon rôle s'est progressivement recentré sur l'automatisation : chaque nouveau client impliquait une longue série d'opérations manuelles (préparation des environnements, installation, configuration), et chaque livraison une suite d'étapes à dérouler à la main. Je conçois aujourd'hui les outils qui automatisent ces process : initialisation automatique des plateformes, pipelines CI/CD et outillage interne pour l'équipe.
+Le contexte est exigeant. La réforme de la facturation électronique, en vigueur au 1er septembre 2026, multiplie les projets de déploiement, et l'entreprise est certifiée **ISO 27001** : accès nominatifs aux environnements clients, bastion SSH audité, comptes de service à permissions limitées. Toutes mes réalisations ont dû s'inscrire dans ce cadre.
 
-En parallèle, je continue à personnaliser la plateforme selon les besoins spécifiques de chaque client : configuration des entreprises, holdings, utilisateurs et permissions, mais aussi développement de fonctionnalités sur-mesure (endpoints supplémentaires, connexions ERP, filtres, boutons). Un enjeu majeur de mon travail est de minimiser les modifications au code standard (maintenu par l'équipe R&D) afin de faciliter les montées de version et de limiter les conflits lors des mises à jour, tout en respectant les exigences de sécurité de l'entreprise, certifiée ISO 27001.
+Ces travaux sont confidentiels. Je ne peux pas montrer le code, les écrans ni entrer davantage dans le détail ici, mais je suis ouvert à la discussion sur le sujet et j'en parle volontiers en entretien.`,
+      en: `ITESOFT is a French software company specializing in business process automation and digitization. Its Streamline for Invoices solution automates supplier invoice processing for large enterprises, from capture to ERP integration, including matching with purchase orders and approval workflows.
 
-Au quotidien, je participe aux daily meetings de l'équipe Delivery pour suivre l'avancement des projets et remonter les éventuels blocages, et je fais également des reviews de pull requests des autres développeurs de l'équipe, ce qui me permet de monter en compétences en lisant du code métier et de contribuer à la qualité globale du code livré.`,
-      en: `ITESOFT is a French software company specializing in dematerialization and document process automation. The company develops Streamline Invoices, an invoice management platform designed for large enterprises generating billions of euros in annual revenue. This tool allows accountants to centralize all invoice processing: automatic capture (PDF, email), configurable validation circuits, and end-to-end processing workflows.
+I have been a work-study student in the Delivery team since September 2025, first during the final year of my BUT in Computer Science (DACS track), then as part of my DevOps engineering degree at Polytech Montpellier. The team's job: adapt the standard product to each client's needs, deploy it and support it.
 
-I joined the Delivery team in September 2025 as a work-study student during the final year of my Computer Science degree (BUT, DACS track) at IUT Montpellier-Sète, and I'm now continuing this work-study as part of my DevOps engineering degree at Polytech Montpellier. The Delivery team is literally ITESOFT's project team: responsible for the customization, deployment, and support of Streamline Invoices for clients.
+The context is demanding. France's e-invoicing reform, effective September 1, 2026, multiplies deployment projects, and the company is **ISO 27001** certified: named access to client environments, audited SSH bastion, least-privilege service accounts. Everything I built had to fit within that framework.
 
-My role has gradually shifted towards automation: every new client meant a long series of manual operations (preparing environments, installing, configuring), and every delivery a list of steps to run by hand. I now build the tools that automate these processes: automated platform setup, CI/CD pipelines and internal tooling for the team.
-
-Alongside this, I keep customizing the platform according to each client's specific needs: configuring companies, holdings, users, and permissions, as well as developing custom features (additional endpoints, ERP connections, filters, buttons). A major challenge in my work is minimizing modifications to the standard code (maintained by the R&D team) to facilitate version upgrades and limit conflicts during updates, while respecting the company's security requirements under ISO 27001 certification.
-
-On a daily basis, I participate in the Delivery team's daily meetings to track project progress and flag any blockers, and I also review pull requests from other developers on the team, which helps me improve my skills by reading business code and contributes to the overall quality of delivered code.`
+This work is confidential. I can't show the code or screens or go into more detail here, but I'm happy to discuss it in an interview.`
     },
     objectives: {
-      fr: `Les objectifs de ma mission chez ITESOFT s'articulent autour de cinq axes principaux :
+      fr: `Mon alternance s'articule autour de deux projets :
 
-1. **Automatisation des process** : Remplacer les tâches manuelles et répétitives de l'équipe Delivery par des outils fiables et reproductibles - initialisation automatique des plateformes pour les nouveaux clients, pipelines CI/CD pour builder, tester et livrer les personnalisations, scripts d'outillage interne.
+1. **AutoInit, automatiser l'initialisation des plateformes** : créer une nouvelle plateforme client demandait environ deux heures de manipulations réparties sur cinq outils (dépôt Git créé depuis l'archétype, branches et fichiers de configuration, pipeline de build, installation sur la machine virtuelle, déploiement, frontal web, transmission des accès), avec à chaque étape un risque d'erreur. L'objectif, que je me suis fixé moi-même : réduire tout cela à la saisie d'un formulaire.
 
-2. **Personnalisation client** : Configurer et adapter Streamline Invoices pour chaque nouveau client - mise en place des VM de développement et de staging, installation de la plateforme, configuration des entreprises, holdings, utilisateurs et permissions, et développement des personnalisations spécifiques (endpoints, connexions ERP, filtres, boutons, fonctionnalités métier).
+2. **Customisation et support de Streamline for Invoices** : faire entrer les règles de gestion propres à chaque grand compte dans un produit standard sans casser la compatibilité avec ses évolutions, et diagnostiquer les incidents de production.`,
+      en: `My work-study revolves around two projects:
 
-3. **Développement d'outils internes** : Concevoir et développer des outils qui améliorent la productivité de l'équipe Delivery. Notamment l'amélioration majeure de l'outil interne CreatField, utilisé pour la gestion des champs personnalisés des clients.
+1. **AutoInit, automating platform setup**: creating a new client platform took about two hours of manual steps across five tools (Git repository from the template, branches and config files, build pipeline, installation on the virtual machine, deployment, web front end, sharing access), each step a chance for error. The goal, which I set myself: reduce all of it to filling in a form.
 
-4. **Support client** : Traiter les tickets ouverts par les clients, diagnostiquer les problèmes (côté client ou côté plateforme), et si nécessaire rédiger des Demandes d'Assistance (DA) détaillées pour l'équipe R&D lorsqu'un problème relève du standard.
-
-5. **Recette et déploiement** : Exécuter les procédures de recette pour valider les personnalisations, gérer le cycle Dev → Staging → Production, et préparer les packages de déploiement pour l'équipe de mise en production.`,
-      en: `The objectives of my mission at ITESOFT revolve around five main axes:
-
-1. **Process automation**: Replace the Delivery team's manual, repetitive tasks with reliable, reproducible tools - automated platform setup for new clients, CI/CD pipelines to build, test and ship customizations, internal tooling scripts.
-
-2. **Client customization**: Configure and adapt Streamline Invoices for each new client - setting up development and staging VMs, installing the platform, configuring companies, holdings, users and permissions, and developing specific customizations (endpoints, ERP connections, filters, buttons, business features).
-
-3. **Internal tool development**: Design and develop tools that improve the Delivery team's productivity. Notably the major improvement of the internal CreatField tool, used for managing client custom fields.
-
-4. **Client support**: Handle client-opened tickets, diagnose issues (client-side or platform-side), and when necessary write detailed Assistance Requests (DA) for the R&D team when an issue relates to the standard product.
-
-5. **Testing and deployment**: Execute testing procedures to validate customizations, manage the Dev → Staging → Production cycle, and prepare deployment packages for the production deployment team.`
+2. **Streamline for Invoices customization and support**: fit each large client's business rules into a standard product without breaking compatibility with its updates, and diagnose production incidents.`
     },
     approach: {
-      fr: `**Automatiser l'initialisation des plateformes.** Mettre en place Streamline Invoices pour un nouveau client demandait de dérouler à la main la même séquence à chaque fois : préparation de la machine, installation, puis configuration des entreprises, holdings, utilisateurs et permissions. J'ai transformé cette séquence en process automatisé et paramétrable : on décrit le client, l'outil se charge du reste. Le résultat est plus rapide, mais surtout identique d'un environnement à l'autre, ce qui supprime une grande partie des erreurs de configuration.
+      fr: `**AutoInit : un workflow n8n de bout en bout.** Le projet est né d'une initiative personnelle, après avoir fait plusieurs initialisations à la main. Sans cahier des charges, j'ai formalisé moi-même les besoins : un formulaire (client, alias DNS, environnement, modules), puis la création et la configuration du dépôt Git du client, la construction du livrable, l'installation et le déploiement sur la machine virtuelle, l'exposition sur le frontal web, et enfin la notification de l'équipe avec les accès.
 
-**Industrialiser les livraisons avec des pipelines CI/CD.** Les personnalisations clients passent désormais par des pipelines qui buildent le code (Maven), lancent les vérifications et produisent les packages de déploiement. Le cycle Dev → Staging → Production devient une suite d'étapes automatisées et traçables plutôt qu'une checklist manuelle.
+J'ai choisi **n8n**, hébergé en interne dans Docker, plutôt que de simples scripts : il apporte un formulaire web, un historique visuel de chaque exécution et des notifications. Le workflow enchaîne une dizaine d'étapes. Côté Azure DevOps, il reproduit fidèlement le processus de l'équipe : branche dédiée et merge requests fusionnées par un compte de service, pour garder l'historique et les garde-fous du git flow. Comme la machine virtuelle cliente et le serveur Azure DevOps ne peuvent pas communiquer, n8n sert aussi de pont : il récupère l'artefact de build par l'API puis le pousse en SFTP à travers le bastion.
 
-Mon workflow de développement chez ITESOFT suit un cycle structuré en plusieurs étapes. Pour chaque nouveau client, je commence par créer une VM de développement sur laquelle j'installe Streamline Invoices, puis je configure l'environnement selon les spécifications du client (entreprises, holdings, utilisateurs, permissions, circuits de validation).
+**Des choix guidés par la fiabilité.** Les connexions SSH passent par une librairie (node-ssh) appelée dans des nœuds de code, car l'utilisateur change selon le client. Le déroulement est volontairement séquentiel : plus lent d'une dizaine de minutes, mais stable. Et le workflow ne se fie pas aux codes de retour des scripts d'installation : il vérifie l'état réel de la plateforme en comptant les conteneurs Docker démarrés.
 
-Lorsque le client a besoin de fonctionnalités spécifiques - comme des endpoints supplémentaires pour se connecter à son ERP, des filtres personnalisés, ou des boutons métier - je développe ces personnalisations en Java (back-end) et Angular (front-end), en veillant à rester au maximum en dehors du code standard de la R&D. Cette contrainte est essentielle : elle permet de limiter les conflits lors des montées de version et de simplifier la maintenance à long terme.
+**Customisation de Streamline for Invoices.** Chaque projet client est un dépôt Git qui ajoute une surcouche à un archétype standard : règles métier en JavaScript exécutées par un moteur de règles Node.js, règles Java côté backend, scripts SQL, connecteurs SFTP et tâches cron. Exemple : une facture pouvait être validée sans ses axes analytiques obligatoires. En croisant la spécification contractuelle et le code d'une règle voisine, j'ai trouvé la cause racine (l'état d'attente existait mais aucune règle n'y menait) et ajouté une règle de routage qui interroge le référentiel en RSQL, appliquée de façon homogène sur les six versions concernées de l'archétype.
 
-Le code est compilé via Maven dans IntelliJ IDEA, l'outil utilisé par toute l'entreprise. J'utilise Termius pour la connexion SSH/SFTP aux machines virtuelles, Postman pour tester les endpoints et envoyer des fichiers JSON, et PostgreSQL comme base de données. Les VM de développement sont locales, tandis que les VM de staging sont hébergées sur Azure, ce qui permet au client de s'y connecter pour tester. Une fois les tests validés en staging avec le client, je prépare un package de déploiement que j'envoie à l'équipe de production.
+**Diagnostic en production.** Face à un rapprochement de facture bloqué, je suis reparti des données brutes plutôt que du symptôme décrit : la quantité n'était pas nulle mais négative, et les métadonnées de la réception prouvaient que la valeur aberrante venait de l'import. Les plateformes tournent sous forme de dizaines de conteneurs Docker, supervisées avec Grafana et des outils internes.`,
+      en: `**AutoInit: an end-to-end n8n workflow.** The project started as a personal initiative, after doing several setups by hand. With no specification, I wrote the requirements myself: a form (client, DNS alias, environment, modules), then creating and configuring the client's Git repository, building the release, installing and deploying it on the virtual machine, exposing it on the web front end, and finally notifying the team with the access details.
 
-J'ai également contribué de manière significative à l'amélioration de CreatField, un outil interne permettant de créer des champs personnalisés en respectant les conventions de l'entreprise. Le problème initial était que lors des migrations, il fallait retélécharger et renvoyer les champs un par un, ce qui pouvait représenter 20 à 30 champs par client - un processus long et fastidieux. J'ai d'abord développé un script pour télécharger via API tous les champs d'un client d'un coup, puis j'ai intégré cette fonctionnalité directement dans l'application avec une barre de recherche (avant, il fallait chercher manuellement le client parmi plus de 200) et des cases à cocher permettant de sélectionner des champs spécifiques ou tous les champs d'un client.`,
-      en: `**Automating platform setup.** Setting up Streamline Invoices for a new client meant running the same sequence by hand every time: preparing the machine, installing, then configuring companies, holdings, users and permissions. I turned this sequence into an automated, configurable process: you describe the client, the tool does the rest. It's faster, but above all identical from one environment to the next, which removes a large share of configuration errors.
+I chose **n8n**, self-hosted in Docker, over plain scripts: it provides a web form, a visual history of every run and notifications. The workflow chains about ten steps. On the Azure DevOps side it mirrors the team's process: a dedicated branch and merge requests merged by a service account, keeping the history and safeguards of the git flow. Because the client VM and the Azure DevOps server cannot reach each other, n8n also acts as the bridge: it downloads the build artifact through the API and pushes it over SFTP through the bastion.
 
-**Industrializing deliveries with CI/CD pipelines.** Client customizations now go through pipelines that build the code (Maven), run the checks and produce the deployment packages. The Dev → Staging → Production cycle becomes a series of automated, traceable steps rather than a manual checklist.
+**Reliability-driven choices.** SSH connections use a library (node-ssh) called from code nodes, because the user changes with each client. Steps run sequentially on purpose: about ten minutes slower, but stable. And the workflow doesn't trust the install scripts' exit codes: it checks the platform's real state by counting the running Docker containers.
 
-My development workflow at ITESOFT follows a structured multi-step cycle. For each new client, I start by creating a development VM on which I install Streamline Invoices, then configure the environment according to client specifications (companies, holdings, users, permissions, validation circuits).
+**Streamline for Invoices customization.** Each client project is a Git repository adding a layer on top of a standard template: JavaScript business rules run by a Node.js rules engine, Java rules on the backend, SQL scripts, SFTP connectors and cron jobs. Example: an invoice could be approved without its mandatory analytical axes. By cross-checking the contractual specification with the code of a similar rule, I found the root cause (the waiting state existed but no rule led to it) and added a routing rule that queries the reference data with RSQL, applied consistently across the six affected template versions.
 
-When the client needs specific features - such as additional endpoints to connect to their ERP, custom filters, or business buttons - I develop these customizations in Java (back-end) and Angular (front-end), making sure to stay as much as possible outside the R&D's standard code. This constraint is essential: it limits conflicts during version upgrades and simplifies long-term maintenance.
-
-Code is compiled via Maven in IntelliJ IDEA, the tool used across the entire company. I use Termius for SSH/SFTP connections to virtual machines, Postman for testing endpoints and sending JSON files, and PostgreSQL as the database. Development VMs are local, while staging VMs are hosted on Azure, allowing clients to connect and test. Once staging tests are validated with the client, I prepare a deployment package that I send to the production team.
-
-I also significantly contributed to improving CreatField, an internal tool for creating custom fields following company conventions. The initial problem was that during migrations, fields had to be re-downloaded and re-uploaded one by one, which could represent 20 to 30 fields per client - a long and tedious process. I first developed a script to download all client fields at once via API, then integrated this feature directly into the application with a search bar (previously, you had to manually search for the client among 200+) and checkboxes allowing selection of specific fields or all fields for a client.`
+**Production diagnosis.** Faced with an invoice that could no longer be matched, I went back to the raw data instead of the reported symptom: the quantity wasn't zero but negative, and the receipt's metadata proved the bad value came from the import. Platforms run as dozens of Docker containers, monitored with Grafana and internal tools.`
     },
     architecture: {
-      fr: `Streamline Invoices repose sur une architecture applicative structurée autour des composants suivants :
+      fr: `**AutoInit**
+- **Entrée** : un formulaire n8n (client, alias DNS, environnement, modules).
+- **Orchestrateur** : n8n dans un conteneur Docker sur un serveur interne, seul point qui accède à la fois à Azure DevOps et aux machines virtuelles clientes.
+- **Azure DevOps** : création du dépôt depuis l'archétype, branche de configuration, merge requests fusionnées par un compte de service, déclenchement du pipeline de build, récupération de l'artefact par l'API REST.
+- **Machine virtuelle cliente (Azure)** : dépôt de l'artefact en SFTP, installation et déploiement en SSH, le tout à travers un bastion qui authentifie et journalise chaque session.
+- **Vérification** : comptage des conteneurs Docker réellement démarrés, puis configuration du frontal web.
+- **Notifications** : accès envoyés à l'équipe, et un workflow d'erreur dédié publie une alerte dans Teams avec l'étape et le message en cas d'échec.
 
-- **Capture documentaire** : Ingestion automatique des factures par PDF ou email, avec extraction des données via OCR et reconnaissance intelligente.
-- **Moteur de workflow** : Orchestration des circuits de validation configurables par client (ex : au-delà de X euros, validation par tel responsable). Les comptables peuvent vérifier, valider ou demander des informations à d'autres membres de l'entreprise.
-- **Front-end Angular** : Interface web permettant aux utilisateurs de naviguer dans leurs factures, appliquer des filtres, et suivre l'état de traitement.
-- **Back-end Java** : API REST et logique métier, compilée via Maven. Les personnalisations client sont développées dans des modules séparés du code standard R&D.
-- **Base de données PostgreSQL** : Stockage des factures, configurations client, utilisateurs et données de workflow.
-- **Infrastructure** : VM locales (dev) et VM Azure (staging/production). Accès via Termius (SSH/SFTP).
+**Plateforme Streamline for Invoices** : frontend AngularJS, backend Java (API REST, moteur de workflow BPMN), moteur de règles Node.js pour les customisations, base PostgreSQL, échanges de fichiers en SFTP, le tout en conteneurs Docker sur une machine virtuelle dédiée par client. Cycle de livraison : développement, merge request relue, staging pour la recette client, production.`,
+      en: `**AutoInit**
+- **Input**: an n8n form (client, DNS alias, environment, modules).
+- **Orchestrator**: n8n in a Docker container on an internal server, the only machine that can reach both Azure DevOps and the client VMs.
+- **Azure DevOps**: repository created from the template, configuration branch, merge requests merged by a service account, build pipeline triggered, artifact downloaded through the REST API.
+- **Client virtual machine (Azure)**: artifact uploaded over SFTP, installation and deployment over SSH, all through a bastion that authenticates and logs every session.
+- **Verification**: counting the Docker containers actually running, then configuring the web front end.
+- **Notifications**: access details sent to the team, and a dedicated error workflow posts a Teams alert with the failed step and its message.
 
-Le cycle de déploiement suit le chemin : Développement local → VM de staging Azure (test client) → Package de production (envoyé à l'équipe dédiée).`,
-      en: `Streamline Invoices is built on an application architecture structured around the following components:
-
-- **Document capture**: Automatic invoice ingestion via PDF or email, with data extraction through OCR and intelligent recognition.
-- **Workflow engine**: Orchestration of client-configurable validation circuits (e.g., above X euros, validation by a specific manager). Accountants can verify, validate, or request information from other company members.
-- **Angular front-end**: Web interface allowing users to browse their invoices, apply filters, and track processing status.
-- **Java back-end**: REST API and business logic, compiled via Maven. Client customizations are developed in modules separate from the R&D standard code.
-- **PostgreSQL database**: Storage for invoices, client configurations, users, and workflow data.
-- **Infrastructure**: Local VMs (dev) and Azure VMs (staging/production). Access via Termius (SSH/SFTP).
-
-The deployment cycle follows the path: Local development → Azure staging VM (client testing) → Production package (sent to the dedicated team).`
+**Streamline for Invoices platform**: AngularJS front end, Java back end (REST API, BPMN workflow engine), Node.js rules engine for customizations, PostgreSQL, SFTP file exchanges, all running as Docker containers on a dedicated VM per client. Delivery cycle: development, reviewed merge request, staging for client acceptance, production.`
     },
     skills: [
       {
-        name: { fr: "Automatisation & CI/CD", en: "Automation & CI/CD" },
-        description: { fr: "Conception d'outils qui automatisent les process de l'équipe Delivery : initialisation automatique des plateformes clients, pipelines CI/CD de build et de livraison, scripts d'outillage interne. Objectif : des opérations rapides, reproductibles et traçables.", en: "Building tools that automate the Delivery team's processes: automated client platform setup, CI/CD build and delivery pipelines, internal tooling scripts. Goal: fast, reproducible and traceable operations." }
+        name: { fr: "Automatisation et orchestration (n8n)", en: "Automation & orchestration (n8n)" },
+        description: { fr: "Conception d'un workflow n8n de bout en bout avec nœuds de code JavaScript, gestion d'erreur explicite, workflow d'alerte et configuration du serveur n8n en Docker (variables d'environnement, délais d'exécution, modules autorisés).", en: "Designed an end-to-end n8n workflow with JavaScript code nodes, explicit error handling, an alerting workflow, and configured the n8n server in Docker (environment variables, execution timeouts, allowed modules)." }
       },
       {
-        name: { fr: "Développement Java & Angular", en: "Java & Angular Development" },
-        description: { fr: "Développement de personnalisations back-end en Java (endpoints REST, logique métier, connexions ERP) et front-end en Angular (composants, filtres, boutons). Compilation et build via Maven dans IntelliJ IDEA.", en: "Back-end customization development in Java (REST endpoints, business logic, ERP connections) and front-end in Angular (components, filters, buttons). Compilation and build via Maven in IntelliJ IDEA." }
+        name: { fr: "Chaîne de build et de déploiement", en: "Build & deployment pipeline" },
+        description: { fr: "Rétro-ingénierie d'une chaîne non documentée à partir d'un pipeline existant, pilotage d'Azure DevOps par API (dépôts, merge requests, pipelines, artefacts), déploiement SSH/SFTP à travers un bastion.", en: "Reverse-engineered an undocumented build chain from an existing pipeline, drove Azure DevOps through its API (repositories, merge requests, pipelines, artifacts), deployed over SSH/SFTP through a bastion." }
       },
       {
-        name: { fr: "Gestion d'infrastructure & déploiement", en: "Infrastructure Management & Deployment" },
-        description: { fr: "Création et gestion de machines virtuelles (locales et Azure), installation et configuration de Streamline Invoices, gestion du cycle de déploiement Dev → Staging → Production via SSH/SFTP avec Termius.", en: "Creation and management of virtual machines (local and Azure), Streamline Invoices installation and configuration, management of the Dev → Staging → Production deployment cycle via SSH/SFTP with Termius." }
+        name: { fr: "Customisation d'un produit standard", en: "Customizing a standard product" },
+        description: { fr: "Règles métier JavaScript et Java, requêtes RSQL sur les référentiels, scripts SQL et tâches cron, sans casser la compatibilité avec les évolutions du standard.", en: "JavaScript and Java business rules, RSQL queries on reference data, SQL scripts and cron jobs, without breaking compatibility with the standard product's updates." }
       },
       {
-        name: { fr: "Base de données PostgreSQL", en: "PostgreSQL Database" },
-        description: { fr: "Configuration et interrogation de bases de données PostgreSQL dans le cadre de la personnalisation client. Écriture de requêtes SQL pour la configuration des données métier et le diagnostic de problèmes.", en: "Configuration and querying of PostgreSQL databases for client customization. Writing SQL queries for business data configuration and issue diagnosis." }
+        name: { fr: "Diagnostic en production", en: "Production diagnosis" },
+        description: { fr: "Investigation dans les conteneurs Docker, les journaux (Grafana), les bases PostgreSQL et les flux SFTP, en raisonnant sur les données plutôt que sur le symptôme décrit.", en: "Investigating Docker containers, logs (Grafana), PostgreSQL databases and SFTP flows, reasoning from data rather than from the reported symptom." }
       },
       {
-        name: { fr: "Support client & diagnostic", en: "Client Support & Diagnosis" },
-        description: { fr: "Traitement de tickets clients, diagnostic d'erreurs (côté client ou plateforme), rédaction de Demandes d'Assistance détaillées pour l'équipe R&D, et communication avec les clients pour résoudre les problèmes.", en: "Processing client tickets, diagnosing errors (client-side or platform-side), writing detailed Assistance Requests for the R&D team, and communicating with clients to resolve issues." }
+        name: { fr: "Sécurité ISO 27001", en: "ISO 27001 security" },
+        description: { fr: "Moindre privilège appliqué à l'automatisation : aucun compte personnel, compte de service limité aux projets concernés, sessions SSH authentifiées et journalisées par le bastion.", en: "Least privilege applied to automation: no personal accounts, a service account scoped to the relevant projects, SSH sessions authenticated and logged by the bastion." }
       },
       {
-        name: { fr: "Développement d'outils internes", en: "Internal Tool Development" },
-        description: { fr: "Amélioration significative de l'outil CreatField : développement d'un script d'API pour le téléchargement en masse, puis intégration dans l'application avec barre de recherche et sélection par cases à cocher, remplaçant un processus manuel fastidieux.", en: "Significant improvement of the CreatField tool: development of an API script for bulk downloading, then integration into the application with search bar and checkbox selection, replacing a tedious manual process." }
-      },
-      {
-        name: { fr: "Sécurité & conformité ISO 27001", en: "Security & ISO 27001 Compliance" },
-        description: { fr: "Développement en respectant les normes de sécurité ISO 27001 de l'entreprise. Attention particulière à la sécurité des personnalisations : validation des entrées, gestion des permissions, protection des données sensibles.", en: "Development respecting the company's ISO 27001 security standards. Particular attention to customization security: input validation, permission management, sensitive data protection." }
+        name: { fr: "Git flow et revue de code", en: "Git flow & code review" },
+        description: { fr: "Branches feature, release et hotfix, merge requests systématiquement relues, convention de commits, et rôle de relecteur pour décharger les seniors des erreurs évidentes.", en: "Feature, release and hotfix branches, every merge request reviewed, commit conventions, and a reviewer role catching obvious issues to save seniors' time." }
       }
     ],
     codeHighlights: [
       {
-        title: { fr: "Amélioration de CreatField - Téléchargement en masse via API", en: "CreatField Improvement - Bulk Download via API" },
-        code: `// Principe de l'amélioration CreatField (code simplifié)
-// Avant : téléchargement manuel un par un parmi 200+ clients
-// Après : recherche + sélection multiple + téléchargement en lot
+        title: { fr: "Utilitaire SSH d'AutoInit dans un nœud de code n8n (simplifié)", en: "AutoInit's SSH helper in an n8n code node (simplified)" },
+        code: `// Exécute une commande sur la VM cible et échoue clairement si le résultat
+// n'est pas celui attendu. L'utilisateur SSH est construit à chaque appel,
+// car il dépend du client et de l'environnement.
+const { NodeSSH } = require("node-ssh");
 
-// 1. Appel API pour récupérer tous les champs d'un client
-GET /api/creatfield/clients/{clientId}/fields
-// Retourne la liste des champs custom du client
-
-// 2. Téléchargement en lot des champs sélectionnés
-POST /api/creatfield/download-batch
-Content-Type: application/json
-{
-  "clientId": "CLIENT_001",
-  "fieldIds": ["field_1", "field_2", "field_15", "field_22"],
-  "format": "standard"
+async function run(target, command, { expectCode = 0 } = {}) {
+  const ssh = new NodeSSH();
+  await ssh.connect({
+    host: target.bastionHost,
+    username: \`\${target.user}@\${target.vm}\`,
+    privateKey: target.privateKey,
+  });
+  try {
+    const res = await ssh.execCommand(command);
+    if (res.code !== expectCode) {
+      throw new Error(
+        \`[\${target.vm}] "\${command}" a renvoyé \${res.code}\\n\${res.stdout}\\n\${res.stderr}\`
+      );
+    }
+    return res.stdout;
+  } finally {
+    ssh.dispose();
+  }
 }
 
-// 3. Côté front-end Angular : barre de recherche + checkboxes
-// - Recherche dynamique parmi 200+ clients (filtrage instantané)
-// - Cases à cocher par champ ou "tout sélectionner"
-// - Bouton de téléchargement groupé`,
+// On ne se fie pas au code retour de l'installation : on vérifie l'état réel.
+const running = await run(target, "docker ps -q | wc -l");
+if (Number(running) < target.expectedContainers) {
+  throw new Error(\`Seulement \${running} conteneurs démarrés\`);
+}`,
         language: "javascript",
         explanation: {
-          fr: "Cette amélioration illustre mon approche chez ITESOFT : identifier un processus manuel fastidieux (télécharger 20-30 champs un par un en cherchant parmi 200+ clients), puis l'automatiser progressivement. D'abord un script API simple, puis une intégration complète dans l'application avec interface de recherche et sélection multiple. Le gain de temps est considérable pour toute l'équipe Delivery.",
-          en: "This improvement illustrates my approach at ITESOFT: identifying a tedious manual process (downloading 20-30 fields one by one while searching among 200+ clients), then progressively automating it. First a simple API script, then a complete integration into the application with search interface and multi-selection. The time savings are considerable for the entire Delivery team."
+          fr: "Ce petit utilitaire a mis fin aux étapes « faussement réussies ». Ma deuxième version modifiait les identifiants SSH de n8n en cours d'exécution, mais n8n les met en cache au démarrage de chaque nœud : le workflow se connectait parfois au mauvais serveur. Construire l'utilisateur à chaque appel et lever une erreur explicite avec toute la sortie a rendu chaque échec visible et compréhensible.",
+          en: "This small helper put an end to steps that looked successful but weren't. My second version changed n8n's SSH credentials during execution, but n8n caches them when each node starts, so the workflow sometimes connected to the wrong server. Building the user on every call and throwing an explicit error with the full output made every failure visible and understandable."
         }
       }
     ],
     results: {
-      fr: `Mon expérience chez ITESOFT a produit des résultats concrets tant pour l'entreprise que pour mon développement professionnel :
-
-- **Process automatisés** : L'initialisation des plateformes et les livraisons ne reposent plus sur des séquences manuelles. Les environnements sont montés de façon identique à chaque fois et les packages sortent de pipelines CI/CD plutôt que d'une checklist.
-- **Personnalisations client livrées** : Plusieurs clients configurés et personnalisés avec succès, de l'installation initiale à la mise en production, en passant par les phases de test avec le client sur les environnements staging Azure.
-- **Amélioration de CreatField** : L'intégration de la recherche et du téléchargement en lot dans l'outil CreatField a considérablement réduit le temps nécessaire à la gestion des champs personnalisés, passant de plusieurs heures à quelques minutes pour les migrations de 20-30 champs. Cette amélioration est utilisée par toute l'équipe Delivery au quotidien.
-- **Support client** : Traitement de nombreux tickets de support, avec diagnostic et résolution de problèmes variés, allant de la configuration utilisateur à des erreurs plus complexes nécessitant des Demandes d'Assistance à l'équipe R&D.
-- **Montées de version** : Gestion réussie de montées de version de Streamline Invoices chez les clients, grâce à l'approche de minimisation des modifications du code standard qui a limité les conflits.
-
-Cette alternance m'a confronté à la réalité d'un éditeur logiciel servant de grandes entreprises, où la fiabilité, la sécurité et la satisfaction client sont des priorités absolues.`,
-      en: `My experience at ITESOFT has produced concrete results both for the company and my professional development:
-
-- **Automated processes**: Platform setup and deliveries no longer rely on manual sequences. Environments are built identically every time and packages come out of CI/CD pipelines rather than a checklist.
-- **Client customizations delivered**: Several clients successfully configured and customized, from initial installation to production deployment, through client testing phases on Azure staging environments.
-- **CreatField improvement**: The integration of search and bulk download into the CreatField tool significantly reduced the time needed for custom field management, going from several hours to a few minutes for migrations of 20-30 fields. This improvement is used by the entire Delivery team daily.
-- **Client support**: Processing numerous support tickets, with diagnosis and resolution of varied issues, from user configuration to more complex errors requiring Assistance Requests to the R&D team.
-- **Version upgrades**: Successful management of Streamline Invoices version upgrades for clients, thanks to the approach of minimizing standard code modifications that limited conflicts.
-
-This work-study confronted me with the reality of a software publisher serving large enterprises, where reliability, security, and client satisfaction are absolute priorities.`
+      fr: `- **Environ 2 heures de manipulations remplacées par un formulaire d'une minute**, suivi de 40 à 45 minutes d'exécution automatique qui ne mobilisent plus personne.
+- **Adopté immédiatement** : dès le lendemain de la mise en service, l'équipe m'a demandé d'initialiser des projets avec, et une vingtaine de plateformes ont été initialisées par AutoInit depuis, par moi comme par mes collègues.
+- **Validé de bout en bout** sur les environnements de développement et de staging, du formulaire jusqu'à la plateforme accessible sur son adresse publique. Une version suivante a supprimé la dernière action manuelle grâce à l'API du bastion.
+- **Repris par l'entreprise** : l'outil continue d'évoluer (démarrage automatique de la VM, stockage des identifiants dans un coffre-fort).
+- **Customisations en production** chez de nombreux clients, qui traitent des factures réelles chaque jour. Certains clients ont même rouvert un ticket simplement pour remercier du travail livré.`,
+      en: `- **About 2 hours of manual work replaced by a one-minute form**, followed by 40 to 45 minutes of automated execution that no longer ties anyone up.
+- **Adopted immediately**: the day after it went live, the team asked me to set up projects with it, and about twenty platforms have been initialized through AutoInit since, by me and by my colleagues.
+- **Validated end to end** on development and staging environments, from the form to a platform reachable at its public address. A later version removed the last manual action using the bastion's API.
+- **Taken over by the company**: the tool keeps evolving (automatic VM start, credentials stored in a vault).
+- **Customizations in production** for many clients, processing real invoices every day. Some clients even reopened a ticket just to say thanks for the work delivered.`
     },
     reflection: {
-      fr: `Cette expérience professionnelle chez ITESOFT constitue un tournant majeur dans mon parcours. Elle m'a fait passer d'un développeur essentiellement " scolaire " à quelqu'un qui comprend les enjeux réels d'un produit logiciel en production utilisé par des grandes entreprises.
+      fr: `AutoInit est ce qui m'a fait choisir le DevOps. Ce que j'ai préféré cette année, l'automatisation, les pipelines, Docker et le travail au contact des plateformes de production, correspond exactement à ce champ, d'où ma poursuite en cycle ingénieur spécialité DevOps, toujours chez ITESOFT.
 
-Les principaux apprentissages que je retiens sont :
+Les leçons que je garde :
 
-1. **L'art du compromis technique** : La contrainte de ne pas toucher au code standard de la R&D m'a appris à trouver des solutions créatives pour implémenter des fonctionnalités client tout en préservant la maintenabilité. Chaque personnalisation doit être pensée en fonction de son impact sur les futures montées de version.
+1. **Après une opération asynchrone, vérifier l'état obtenu plutôt que la réponse de l'appel.** La fusion d'une merge request par API est asynchrone : en enchaînant trop vite, le workflow construisait parfois le livrable du mauvais client.
+2. **Préférer la fiabilité à la vitesse.** Paralléliser aurait fait gagner dix minutes mais rendait les exécutions instables.
+3. **Partir de ce qui marche quand rien n'est documenté.** Analyser le pipeline de migration existant a corrigé plusieurs hypothèses fausses de mes premières versions.
+4. **Identifier un irritant, proposer, construire proprement et faire adopter.** C'est ce que l'équipe attend d'un ingénieur au-delà des tickets, et c'est la démarche que je veux continuer à développer.`,
+      en: `AutoInit is what made me choose DevOps. What I enjoyed most this year, automation, pipelines, Docker and working close to production platforms, is exactly that field, hence my DevOps engineering degree, still at ITESOFT.
 
-2. **La relation client** : Le support m'a appris à communiquer avec des utilisateurs non-techniques, à diagnostiquer des problèmes à distance, et à rédiger des rapports clairs pour l'équipe R&D via les Demandes d'Assistance. La patience et la pédagogie sont des compétences aussi importantes que le code.
+The lessons I keep:
 
-3. **L'automatisation comme réflexe** : L'amélioration de CreatField m'a montré que lorsqu'un processus est répétitif et fastidieux, il vaut toujours la peine d'investir du temps pour l'automatiser. Le script initial m'a pris quelques heures, mais il fait gagner des heures chaque semaine à toute l'équipe. C'est ce déclic qui m'a poussé vers l'automatisation des plateformes et des pipelines, puis vers un cycle ingénieur DevOps.
-
-4. **La sécurité comme culture** : Travailler sous norme ISO 27001 m'a appris que la sécurité n'est pas une fonctionnalité qu'on ajoute à la fin, mais une préoccupation constante qui influence chaque choix de conception et de développement.
-
-5. **La rigueur du cycle de déploiement** : Le passage obligé par Dev → Staging → Production m'a fait comprendre l'importance des environnements de test et de la validation client avant toute mise en production. Une erreur en production chez un client à plusieurs milliards de CA n'est pas une option.`,
-      en: `This professional experience at ITESOFT represents a major turning point in my journey. It took me from being an essentially "academic" developer to someone who understands the real challenges of a production software product used by large enterprises.
-
-The main learnings I take away are:
-
-1. **The art of technical compromise**: The constraint of not touching R&D's standard code taught me to find creative solutions for implementing client features while preserving maintainability. Each customization must be considered in terms of its impact on future version upgrades.
-
-2. **Client relations**: Support taught me to communicate with non-technical users, diagnose problems remotely, and write clear reports for the R&D team via Assistance Requests. Patience and pedagogy are skills as important as code.
-
-3. **Automation as a reflex**: The CreatField improvement showed me that when a process is repetitive and tedious, it's always worth investing time to automate it. The initial script took me a few hours, but it saves hours every week for the entire team. That click is what pushed me towards platform and pipeline automation, and then towards a DevOps engineering degree.
-
-4. **Security as a culture**: Working under ISO 27001 standards taught me that security is not a feature you add at the end, but a constant concern that influences every design and development choice.
-
-5. **Deployment cycle rigor**: The mandatory path through Dev → Staging → Production made me understand the importance of test environments and client validation before any production deployment. An error in production for a client with billions in revenue is not an option.`
+1. **After an asynchronous operation, check the resulting state rather than the call's response.** Merging a merge request through the API is asynchronous: chaining too fast, the workflow sometimes built the wrong client's release.
+2. **Prefer reliability over speed.** Parallelizing would have saved ten minutes but made runs unstable.
+3. **Start from what works when nothing is documented.** Analyzing the existing migration pipeline corrected several wrong assumptions in my first versions.
+4. **Spot a pain point, propose, build it properly and get it adopted.** That's what the team expects from an engineer beyond tickets, and it's the approach I want to keep developing.`
     },
-    thumbnail: "/images/itesoft_projet.webp",
+    thumbnail: "/images/autoinit.webp",
     images: [],
     links: {}
   },
   {
     slug: "tamastat",
     year: "2025",
-    title: { fr: "TamaStat - TamaBox", en: "TamaStat - TamaBox" },
+    title: { fr: "TamaStat pour TamaBox", en: "TamaStat for TamaBox" },
     category: "professional",
     technologies: ["JavaScript", "Chart.js", "HTML/CSS", "Vercel", "Git"],
-    duration: { fr: "Janvier - Avril 2025 (Stage)", en: "January - April 2025 (Internship)" },
+    duration: { fr: "Janvier à avril 2025 (stage)", en: "January to April 2025 (internship)" },
     team: { fr: "Seul avec le gérant de l'entreprise", en: "Solo with the company owner" },
-    role: { fr: "Développeur Full-Stack - Conception, développement et déploiement complet de l'application", en: "Full-Stack Developer - Complete design, development and deployment of the application" },
+    role: { fr: "Développeur Full-Stack : conception, développement et déploiement complet de l'application", en: "Full-Stack Developer: complete design, development and deployment of the application" },
     shortDescription: {
       fr: "Outil de visualisation statistique développé pour TamaBox (Draguignan, 83) : analyse des données de location de box de stockage, personas marketing et outil de prévision.",
       en: "Statistical visualization tool developed for TamaBox (Draguignan, France): storage box rental data analysis, marketing personas and forecasting tool."
@@ -270,37 +235,37 @@ The main learnings I take away are:
     context: {
       fr: `TamaStat est un outil de visualisation statistique que j'ai conçu et développé dans le cadre de mon stage de deuxième année de BUT Informatique, réalisé chez TamaBox, une entreprise de location de box de stockage située à Draguignan dans le Var (83), de janvier à avril 2025.
 
-C'était ma toute première expérience professionnelle. J'étais seul avec le gérant de l'entreprise - pas d'équipe technique, pas de développeur senior pour me guider. Le gérant m'a donné carte blanche : il m'a expliqué son activité, ses données, et ce qu'il voulait comprendre à travers un tableau de bord. À partir de là, j'ai eu une autonomie totale sur la conception, le développement et le déploiement de l'outil.
+C'était ma toute première expérience professionnelle. J'étais seul avec le gérant de l'entreprise, pas d'équipe technique, pas de développeur senior pour me guider. Le gérant m'a donné carte blanche : il m'a expliqué son activité, ses données, et ce qu'il voulait comprendre à travers un tableau de bord. À partir de là, j'ai eu une autonomie totale sur la conception, le développement et le déploiement de l'outil.
 
 Le contexte métier était le suivant : TamaBox propose des box de stockage de différentes tailles à la location. Le gérant disposait de données brutes sur son activité (entrées/sorties de locataires, répartition par taille de box, taux d'occupation, chiffre d'affaires, surface totale louée) mais n'avait aucun outil pour les visualiser et les analyser. Son taux d'occupation oscillait entre 75% et 82%, et il souhaitait atteindre les 100%.
 
 Nos échanges se faisaient lors de réunions hebdomadaires où je présentais l'avancement et où il me faisait ses retours. Le reste du temps, je travaillais en totale autonomie.`,
       en: `TamaStat is a statistical visualization tool that I designed and developed during my second-year Computer Science internship at TamaBox, a storage box rental company located in Draguignan, Var (83), France, from January to April 2025.
 
-This was my very first professional experience. I was alone with the company owner - no technical team, no senior developer to guide me. The owner gave me full creative freedom: he explained his business, his data, and what he wanted to understand through a dashboard. From there, I had complete autonomy over the design, development, and deployment of the tool.
+This was my very first professional experience. I was alone with the company owner, no technical team, no senior developer to guide me. The owner gave me full creative freedom: he explained his business, his data, and what he wanted to understand through a dashboard. From there, I had complete autonomy over the design, development, and deployment of the tool.
 
 The business context was as follows: TamaBox offers storage boxes of various sizes for rent. The owner had raw data about his business (tenant entries/exits, box size distribution, occupancy rates, revenue, total rented surface area) but had no tool to visualize and analyze it. His occupancy rate fluctuated between 75% and 82%, and he wanted to reach 100%.
 
 Our exchanges took place during weekly meetings where I presented progress and he gave his feedback. The rest of the time, I worked with complete autonomy.`
     },
     objectives: {
-      fr: `1. **Tableau de bord statistique** : Créer un outil de visualisation complet permettant au gérant de comprendre en un coup d'œil l'état de son activité - entrées/sorties de locataires, répartition par taille de box, taux de boxes louées vs non louées, évolution du chiffre d'affaires, et surface totale louée.
+      fr: `1. **Tableau de bord statistique** : Créer un outil de visualisation complet permettant au gérant de comprendre en un coup d'œil l'état de son activité, entrées/sorties de locataires, répartition par taille de box, taux de boxes louées vs non louées, évolution du chiffre d'affaires, et surface totale louée.
 
 2. **Personas marketing** : Concevoir des profils types de clients (personas) à partir de l'analyse des données, afin de permettre au gérant de cibler ses campagnes publicitaires vers les bons segments de clientèle.
 
 3. **Outil de prévision (forecasting)** : Développer un module de projection permettant d'anticiper l'évolution du taux d'occupation et du chiffre d'affaires sur les mois à venir.
 
-4. **Autonomie complète** : Gérer l'intégralité du projet seul - de la conception à la mise en production - en tant que première expérience professionnelle.`,
-      en: `1. **Statistical dashboard**: Create a comprehensive visualization tool allowing the owner to understand his business at a glance - tenant entries/exits, box size distribution, rented vs unrented box rates, revenue evolution, and total rented surface area.
+4. **Autonomie complète** : Gérer l'intégralité du projet seul, de la conception à la mise en production, en tant que première expérience professionnelle.`,
+      en: `1. **Statistical dashboard**: Create a comprehensive visualization tool allowing the owner to understand his business at a glance, tenant entries/exits, box size distribution, rented vs unrented box rates, revenue evolution, and total rented surface area.
 
 2. **Marketing personas**: Design typical customer profiles (personas) from data analysis, enabling the owner to target his advertising campaigns towards the right customer segments.
 
 3. **Forecasting tool**: Develop a projection module to anticipate the evolution of occupancy rates and revenue in the coming months.
 
-4. **Complete autonomy**: Manage the entire project solo - from design to production deployment - as a first professional experience.`
+4. **Complete autonomy**: Manage the entire project solo, from design to production deployment, as a first professional experience.`
     },
     approach: {
-      fr: `C'était la première fois que je faisais du JavaScript - je l'ai appris sur le tas pendant le stage. J'ai choisi une approche front-end pure avec JavaScript et Chart.js pour les visualisations, ce qui permettait un déploiement simple et rapide sur Vercel.
+      fr: `C'était la première fois que je faisais du JavaScript, je l'ai appris sur le tas pendant le stage. J'ai choisi une approche front-end pure avec JavaScript et Chart.js pour les visualisations, ce qui permettait un déploiement simple et rapide sur Vercel.
 
 J'ai tout construit seul de A à Z : le design de l'interface, le développement des graphiques interactifs, la logique de traitement des données, les personas marketing, et le module de prévision. Pour chaque fonctionnalité, je partais des données brutes fournies par le gérant, que je structurais et transformais en visualisations exploitables.
 
@@ -316,7 +281,7 @@ Pour les personas, j'ai analysé les données clients pour identifier des profil
 Le module de forecasting utilise les tendances historiques pour projeter l'évolution du taux d'occupation et du CA sur les mois suivants, permettant au gérant d'anticiper et d'ajuster sa stratégie.
 
 Le tout a été déployé sur Vercel pour un accès simple et permanent.`,
-      en: `This was the first time I ever worked with JavaScript - I learned it on the job during the internship. I chose a pure front-end approach with JavaScript and Chart.js for visualizations, which allowed simple and fast deployment on Vercel.
+      en: `This was the first time I ever worked with JavaScript, I learned it on the job during the internship. I chose a pure front-end approach with JavaScript and Chart.js for visualizations, which allowed simple and fast deployment on Vercel.
 
 I built everything from scratch on my own: the interface design, interactive chart development, data processing logic, marketing personas, and the forecasting module. For each feature, I started from raw data provided by the owner, which I structured and transformed into actionable visualizations.
 
@@ -415,12 +380,12 @@ function renderChart(data) {
     slug: "lobbybot-fortnite",
     year: "2020",
     featured: true,
-    title: { fr: "LobbyBot 2.0 - Bots Fortnite", en: "LobbyBot 2.0 - Fortnite Bots" },
+    title: { fr: "LobbyBot 2.0, bots Fortnite", en: "LobbyBot 2.0, Fortnite bots" },
     category: "personal",
     technologies: ["Node.js", "Python", "Discord.js", "Express", "Socket.IO", "PostgreSQL", "Docker", "OAuth2", "WebSocket", "Asyncio"],
-    duration: { fr: "Projet personnel continu (2020 - Présent)", en: "Ongoing personal project (2020 - Present)" },
-    team: { fr: "Projet individuel - Communauté de 8 500+ membres Discord", en: "Individual project - Community of 8,500+ Discord members" },
-    role: { fr: "Développeur unique - Conception, développement, maintenance et gestion de communauté", en: "Sole Developer - Design, development, maintenance and community management" },
+    duration: { fr: "Projet personnel continu, depuis 2020", en: "Ongoing personal project, since 2020" },
+    team: { fr: "Projet individuel, communauté de plus de 8 500 membres Discord", en: "Individual project, community of 8,500+ Discord members" },
+    role: { fr: "Développeur unique : conception, développement, maintenance et gestion de communauté", en: "Sole Developer: design, development, maintenance and community management" },
     shortDescription: {
       fr: "Système complet de bots Fortnite avec gestion multi-comptes, bot Discord central, dashboard web temps réel et communauté de 8 500+ membres. Projet initié pendant le COVID à 16 ans, devenu mon plus gros projet personnel.",
       en: "Complete Fortnite bot system with multi-account management, central Discord bot, real-time web dashboard and community of 8,500+ members. Project started during COVID at age 16, became my biggest personal project."
@@ -458,7 +423,7 @@ Major improvements include: automated creation of new bots when a bot reaches it
 
 - **Phase 1 (2020)** : Bots Python simples utilisant les API non-documentées d'Epic Games, avec authentification OAuth2 et gestion basique des amis et skins.
 - **Phase 2 (évolution)** : Migration vers une architecture Node.js pour le bot Discord central, avec Discord.js pour gérer les commandes de la communauté.
-- **Phase 3 (actuelle - LobbyBot 2.0)** : Architecture complète avec trois composants principaux orchestrés par Docker :
+- **Phase 3 (actuelle, LobbyBot 2.0)** : Architecture complète avec trois composants principaux orchestrés par Docker :
 
   1. **Discord Manager** (Node.js) : Le cœur du système. Gère tous les bots simultanément, le load balancing, les commandes Discord, et la communication avec la base de données PostgreSQL.
   2. **Dashboard Web** (Node.js/Express/Socket.IO) : Interface de contrôle en temps réel avec un design "Space/Starfield". Communication instantanée avec le Manager via Socket.IO.
@@ -469,7 +434,7 @@ Le système de load balancing sélectionne automatiquement le bot ayant le moins
 
 - **Phase 1 (2020)**: Simple Python bots using Epic Games' undocumented APIs, with OAuth2 authentication and basic friend/skin management.
 - **Phase 2 (evolution)**: Migration to Node.js architecture for the central Discord bot, using Discord.js to handle community commands.
-- **Phase 3 (current - LobbyBot 2.0)**: Complete architecture with three main components orchestrated by Docker:
+- **Phase 3 (current, LobbyBot 2.0)**: Complete architecture with three main components orchestrated by Docker:
 
   1. **Discord Manager** (Node.js): The system's core. Manages all bots simultaneously, load balancing, Discord commands, and PostgreSQL database communication.
   2. **Web Dashboard** (Node.js/Express/Socket.IO): Real-time control interface with a "Space/Starfield" design. Instant communication with the Manager via Socket.IO.
@@ -683,12 +648,12 @@ This project proves that a passionate side project can become something signific
     slug: "referendum",
     year: "2024",
     featured: true,
-    title: { fr: "Referendum - Application de Vote Sécurisée", en: "Referendum - Secure Voting Application" },
+    title: { fr: "Referendum, application de vote sécurisée", en: "Referendum, a secure voting app" },
     category: "university",
     technologies: ["Java", "JavaFX", "ElGamal", "Zero Knowledge Proof", "DeepSeek API", "Cryptographie", "Sockets", "Scrum", "Git"],
     duration: { fr: "Toute la deuxième année de BUT 2 (Projet de fin d'année)", en: "Full second year of CS degree (Year-end project)" },
     team: { fr: "Groupe de 4 étudiants", en: "Group of 4 students" },
-    role: { fr: "Product Owner & Développeur Cryptographie - Chiffrement ElGamal, Preuve Zero Knowledge, ChatBot IA et sécurisation des sockets", en: "Product Owner & Cryptography Developer - ElGamal encryption, Zero Knowledge Proof, AI ChatBot and socket security" },
+    role: { fr: "Product Owner & Développeur Cryptographie : chiffrement ElGamal, Preuve Zero Knowledge, ChatBot IA et sécurisation des sockets", en: "Product Owner & Cryptography Developer: ElGamal encryption, Zero Knowledge Proof, AI ChatBot and socket security" },
     shortDescription: {
       fr: "Application de vote sécurisée en Java/JavaFX avec chiffrement ElGamal, preuve Zero Knowledge non-interactive, chatbot IA (DeepSeek) et méthodologie Scrum sur toute une année universitaire.",
       en: "Secure voting application in Java/JavaFX with ElGamal encryption, non-interactive Zero Knowledge Proof, AI chatbot (DeepSeek) and Scrum methodology over a full academic year."
@@ -740,9 +705,9 @@ The project was divided into several phases: sprints with regular deliveries, th
     approach: {
       fr: `Le projet a suivi la méthodologie Scrum sur toute l'année. En tant que Product Owner, j'organisais les sprint plannings, maintenais le backlog, et présentais les démos au "client" (les enseignants) à chaque fin de sprint. À la fin de chaque cycle, nous recevions un nouveau contrat avec des exigences supplémentaires, simulant l'évolution des besoins d'un vrai client.
 
-Côté technique, l'application est développée en Java avec une interface JavaFX. Mon rôle technique principal était le chiffrement ElGamal - un système de cryptographie asymétrique à clé publique. Le principe : chaque vote est chiffré avec la clé publique du scrutin avant d'être envoyé au serveur. Seul le détenteur de la clé privée peut déchiffrer les votes à la clôture du scrutin. Cela garantit que personne - pas même le serveur - ne peut lire un vote individuel avant la fin du scrutin.
+Côté technique, l'application est développée en Java avec une interface JavaFX. Mon rôle technique principal était le chiffrement ElGamal, un système de cryptographie asymétrique à clé publique. Le principe : chaque vote est chiffré avec la clé publique du scrutin avant d'être envoyé au serveur. Seul le détenteur de la clé privée peut déchiffrer les votes à la clôture du scrutin. Cela garantit que personne, pas même le serveur, ne peut lire un vote individuel avant la fin du scrutin.
 
-**Preuve Zero Knowledge non-interactive** : Pour garantir l'intégrité des votes, le projet intègre une preuve Zero Knowledge. L'objectif est de prouver côté serveur que le vote d'un client est bien "oui" ou "non" (0 ou 1), sans révéler lequel. Si un utilisateur tente de voter une valeur invalide (par exemple 10 ou un nombre négatif), le vote est rejeté. La preuve est non-interactive : un seul échange entre le client et le serveur suffit - l'envoi de la preuve avec le message chiffré. Côté client, la fonction createZKProof génère deux preuves (une vraie, une simulée) via des engagements cryptographiques, un haché SHA-256 et de l'arithmétique modulaire. Côté serveur, verifyZKProof recalcule les valeurs et vérifie que la somme des challenges correspond au haché. Si c'est le cas, la preuve est valide - le vote est bien 0 ou 1, sans que le serveur ne sache lequel.
+**Preuve Zero Knowledge non-interactive** : Pour garantir l'intégrité des votes, le projet intègre une preuve Zero Knowledge. L'objectif est de prouver côté serveur que le vote d'un client est bien "oui" ou "non" (0 ou 1), sans révéler lequel. Si un utilisateur tente de voter une valeur invalide (par exemple 10 ou un nombre négatif), le vote est rejeté. La preuve est non-interactive : un seul échange entre le client et le serveur suffit, l'envoi de la preuve avec le message chiffré. Côté client, la fonction createZKProof génère deux preuves (une vraie, une simulée) via des engagements cryptographiques, un haché SHA-256 et de l'arithmétique modulaire. Côté serveur, verifyZKProof recalcule les valeurs et vérifie que la somme des challenges correspond au haché. Si c'est le cas, la preuve est valide, le vote est bien 0 ou 1, sans que le serveur ne sache lequel.
 
 **ChatBot FAQ (DeepSeek API)** : J'ai implémenté un chatbot FAQ intégré à l'application dont le but est de répondre aux questions fréquentes des utilisateurs. J'ai intégré l'API DeepSeek qui sert uniquement à comprendre la question de l'utilisateur pour lui fournir la réponse la plus pertinente parmi des réponses spécifiques pré-préparées, limitées aux questions relatives à l'application.
 
@@ -751,9 +716,9 @@ J'ai également sécurisé les communications par sockets entre le client et le 
 Le reste de l'équipe travaillait sur l'interface JavaFX, la gestion des utilisateurs, la base de données et la logique métier des scrutins. Nous faisions des revues de code régulières et utilisions Git pour la gestion du code source.`,
       en: `The project followed Scrum methodology throughout the year. As Product Owner, I organized sprint plannings, maintained the backlog, and presented demos to the "client" (instructors) at each sprint end. At the end of each cycle, we received a new contract with additional requirements, simulating the evolving needs of a real client.
 
-On the technical side, the application is developed in Java with a JavaFX interface. My main technical role was ElGamal encryption - an asymmetric public-key cryptography system. The principle: each vote is encrypted with the poll's public key before being sent to the server. Only the private key holder can decrypt votes when the poll closes. This ensures that nobody - not even the server - can read an individual vote before the poll ends.
+On the technical side, the application is developed in Java with a JavaFX interface. My main technical role was ElGamal encryption, an asymmetric public-key cryptography system. The principle: each vote is encrypted with the poll's public key before being sent to the server. Only the private key holder can decrypt votes when the poll closes. This ensures that nobody, not even the server, can read an individual vote before the poll ends.
 
-**Non-interactive Zero Knowledge Proof**: To guarantee vote integrity, the project integrates a Zero Knowledge Proof. The goal is to prove server-side that a client's vote is indeed "yes" or "no" (0 or 1), without revealing which one. If a user attempts to vote an invalid value (e.g., 10 or a negative number), the vote is rejected. The proof is non-interactive: a single exchange between client and server suffices - sending the proof along with the encrypted message. Client-side, the createZKProof function generates two proofs (one real, one simulated) via cryptographic commitments, a SHA-256 hash, and modular arithmetic. Server-side, verifyZKProof recalculates values and verifies that the sum of challenges matches the hash. If so, the proof is valid - the vote is indeed 0 or 1, without the server knowing which.
+**Non-interactive Zero Knowledge Proof**: To guarantee vote integrity, the project integrates a Zero Knowledge Proof. The goal is to prove server-side that a client's vote is indeed "yes" or "no" (0 or 1), without revealing which one. If a user attempts to vote an invalid value (e.g., 10 or a negative number), the vote is rejected. The proof is non-interactive: a single exchange between client and server suffices, sending the proof along with the encrypted message. Client-side, the createZKProof function generates two proofs (one real, one simulated) via cryptographic commitments, a SHA-256 hash, and modular arithmetic. Server-side, verifyZKProof recalculates values and verifies that the sum of challenges matches the hash. If so, the proof is valid, the vote is indeed 0 or 1, without the server knowing which.
 
 **FAQ ChatBot (DeepSeek API)**: I implemented a FAQ chatbot integrated into the application to answer users' frequently asked questions. I integrated the DeepSeek API which serves solely to understand the user's question and provide the most relevant answer from specific pre-prepared responses, limited to questions related to the application.
 
@@ -781,7 +746,7 @@ The rest of the team worked on the JavaFX interface, user management, database, 
     },
     skills: [
       {
-        name: { fr: "Cryptographie - ElGamal", en: "Cryptography - ElGamal" },
+        name: { fr: "Cryptographie ElGamal", en: "ElGamal cryptography" },
         description: { fr: "Implémentation complète du protocole ElGamal : génération de clés asymétriques, chiffrement et déchiffrement des votes. Compréhension des fondements mathématiques (logarithme discret, arithmétique modulaire) et des enjeux de sécurité.", en: "Complete implementation of the ElGamal protocol: asymmetric key generation, vote encryption and decryption. Understanding of mathematical foundations (discrete logarithm, modular arithmetic) and security challenges." }
       },
       {
@@ -922,7 +887,7 @@ public class VoteController {
     reflection: {
       fr: `Le projet Referendum est celui qui m'a le plus apporté sur le plan professionnel pendant ma formation :
 
-1. **Le rôle de Product Owner** m'a appris à voir un projet au-delà du code. Gérer un backlog, prioriser les fonctionnalités en fonction de la valeur métier, et présenter un produit à un client - ce sont des compétences que je n'aurais pas développées en restant uniquement développeur.
+1. **Le rôle de Product Owner** m'a appris à voir un projet au-delà du code. Gérer un backlog, prioriser les fonctionnalités en fonction de la valeur métier, et présenter un produit à un client, ce sont des compétences que je n'aurais pas développées en restant uniquement développeur.
 
 2. **La cryptographie ElGamal et la Preuve Zero Knowledge** m'ont confronté à un domaine que je ne connaissais pas du tout. Comprendre les fondements mathématiques (logarithme discret, arithmétique modulaire, SHA-256), implémenter un protocole de chiffrement asymétrique, et concevoir une preuve non-interactive garantissant l'intégrité des votes sans compromettre leur confidentialité m'a donné une vraie sensibilité à la cybersécurité et à la rigueur qu'elle exige.
 
@@ -933,7 +898,7 @@ public class VoteController {
 5. **Les présentations orales et dossiers techniques** m'ont forcé à structurer ma pensée et à expliquer des concepts complexes de manière accessible. C'est une compétence essentielle que le code seul ne développe pas.`,
       en: `The Referendum project taught me the most on a professional level during my studies:
 
-1. **The Product Owner role** taught me to see a project beyond the code. Managing a backlog, prioritizing features based on business value, and presenting a product to a client - these are skills I wouldn't have developed by staying purely a developer.
+1. **The Product Owner role** taught me to see a project beyond the code. Managing a backlog, prioritizing features based on business value, and presenting a product to a client, these are skills I wouldn't have developed by staying purely a developer.
 
 2. **ElGamal cryptography and Zero Knowledge Proof** confronted me with a domain I knew nothing about. Understanding the mathematical foundations (discrete logarithm, modular arithmetic, SHA-256), implementing an asymmetric encryption protocol, and designing a non-interactive proof guaranteeing vote integrity without compromising confidentiality gave me a genuine sensitivity to cybersecurity and the rigor it demands.
 
@@ -948,257 +913,14 @@ public class VoteController {
     links: { github: "https://github.com/killianrms/referendum", video: "https://youtu.be/F3I_4daMcuk", report: "https://docs.google.com/document/d/11MfYwfZin0VpMzFhqWLSZ3Y3LzQwRpnDo-VK7oX6jJ8/edit?usp=sharing" }
   },
   {
-    slug: "kcnyx",
-    year: "2026",
-    title: { fr: "Kcnyx - Plateforme E-Commerce SaaS", en: "Kcnyx - E-Commerce SaaS Platform" },
-    category: "personal",
-    shortDescription: {
-      fr: "Plateforme e-commerce full-stack haute performance avec authentification sécurisée, paiements multi-méthodes (Revolut + Crypto), gestion administrative complète et système d'avis clients. Déployée sur Vercel avec MySQL AWS RDS.",
-      en: "High-performance full-stack e-commerce platform with secure authentication, multi-payment methods (Revolut + Crypto), complete admin management, and customer review system. Deployed on Vercel with MySQL AWS RDS."
-    },
-    technologies: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "Prisma ORM", "MySQL", "NextAuth.js", "Vercel Blob", "Resend", "Discord Webhooks", "Blockchair API", "Zod", "bcrypt"],
-    duration: { fr: "Projet personnel continu (2024 - Présent)", en: "Ongoing personal project (2024 - Present)" },
-    team: { fr: "Projet individuel", en: "Individual project" },
-    role: { fr: "Développeur Full-Stack - Conception, développement et déploiement complet de la plateforme", en: "Full-Stack Developer - Complete platform design, development and deployment" },
-    context: {
-      fr: `Kcnyx est une plateforme e-commerce moderne que j'ai conçue et développée de A à Z pour vendre des services numériques (comptes gaming, outils IA, IPTV, streaming, etc.). Le projet est né d'une volonté de créer une solution e-commerce complète, sécurisée et performante intégrant des méthodes de paiement alternatives (Revolut et crypto-monnaies).
-
-Le site est en production sur kcnyx.com et intègre des fonctionnalités avancées : authentification sécurisée, système de paiements multi-méthodes avec vérification automatique via blockchain, gestion administrative complète, système d'avis clients modulaire, et codes promotionnels.
-
-L'architecture repose sur Next.js 16 avec le nouveau App Router, TypeScript strict, Tailwind CSS 4 pour le styling, Prisma ORM pour la base de données MySQL hébergée sur AWS RDS, et NextAuth.js pour l'authentification. Le site est déployé sur Vercel avec Blob Storage pour les images.`,
-      en: `Kcnyx is a modern e-commerce platform I designed and developed from scratch to sell digital services (gaming accounts, AI tools, IPTV, streaming, etc.). The project was born from a desire to create a complete, secure and high-performance e-commerce solution integrating alternative payment methods (Revolut and cryptocurrencies).
-
-The site is in production at kcnyx.com and integrates advanced features: secure authentication, multi-payment system with automatic blockchain verification, complete admin management, modular customer review system, and promotional codes.
-
-The architecture is based on Next.js 16 with the new App Router, strict TypeScript, Tailwind CSS 4 for styling, Prisma ORM for the MySQL database hosted on AWS RDS, and NextAuth.js for authentication. The site is deployed on Vercel with Blob Storage for images.`
-    },
-    objectives: {
-      fr: `1. **E-commerce complet** : Créer une plateforme fonctionnelle avec catalogue de produits, variantes (durées d'abonnement, plans), panier persistant, et système de commandes.
-
-2. **Paiements multi-méthodes** : Intégrer Revolut (virement SEPA instantané) et crypto-monnaies (BTC, SOL, USDC/USDT) avec vérification automatique des paiements via l'API Blockchair.
-
-3. **Gestion administrative** : Dashboard complet pour gérer produits (CRUD), commandes, utilisateurs, codes promo, et avis clients avec modération.
-
-4. **Sécurité enterprise** : Implémenter rate limiting (login 5/15min, register 3/h), validation Zod stricte, hachage bcrypt, protection CSRF, et vérification des stocks.
-
-5. **UX premium** : Interface moderne avec Tailwind CSS 4, animations fluides, responsive design, et expérience utilisateur soignée du catalogue au checkout.`,
-      en: `1. **Complete e-commerce**: Create a functional platform with product catalog, variants (subscription durations, plans), persistent cart, and order system.
-
-2. **Multi-payment methods**: Integrate Revolut (instant SEPA transfer) and cryptocurrencies (BTC, SOL, USDC/USDT) with automatic payment verification via Blockchair API.
-
-3. **Administrative management**: Complete dashboard to manage products (CRUD), orders, users, promo codes, and customer reviews with moderation.
-
-4. **Enterprise security**: Implement rate limiting (login 5/15min, register 3/h), strict Zod validation, bcrypt hashing, CSRF protection, and stock verification.
-
-5. **Premium UX**: Modern interface with Tailwind CSS 4, smooth animations, responsive design, and polished user experience from catalog to checkout.`
-    },
-    approach: {
-      fr: `Le projet a été développé avec Next.js 16 et le nouveau App Router pour bénéficier du Server-Side Rendering et des Server Components. J'ai utilisé TypeScript en mode strict (aucun 'any') pour garantir la sûreté du code.
-
-**Architecture e-commerce** :
-- **Catalogue produits** : Système de catégories (Gaming, AI Tools, IPTV, Streaming, etc.) avec variantes de produits (durées, plans, éditions) et gestion du stock en temps réel.
-- **Panier** : Context API React avec persistance localStorage pour maintenir le panier entre les sessions.
-- **Checkout** : Formulaire multi-étapes avec sélection de méthode de paiement, calcul automatique des totaux, application des codes promo, et vérification du stock avant validation.
-
-**Système de paiements avancé** :
-- **Revolut** : Paiement instantané via Revolut.Me ou virement SEPA avec IBAN. Vérification manuelle côté admin (TODO: intégration API Revolut Business ou Bridge API pour automatisation).
-- **Crypto** : Support BTC (Bitcoin), SOL (Solana), USDC/USDT (Polygon/Ethereum). Conversion EUR → Crypto via CoinGecko API (free). Vérification automatique via Blockchair API - polling toutes les 30s pour détecter la transaction sur la blockchain avec tolérance 1% pour les fluctuations.
-
-**Sécurité multi-couches** :
-- Rate limiting multi-couches (Upstash Redis) : login 5/15min, register 3/h, contact 5/15min, API 100/min.
-- Validation stricte avec Zod sur toutes les entrées utilisateur (8 schémas de validation).
-- Hachage sécurisé des mots de passe avec bcryptjs (10 rounds).
-- Protection CSRF intégrée via NextAuth.js.
-- Vérification du stock avant chaque commande pour éviter les surventes.
-
-**Base de données Prisma** :
-- 8 modèles principaux : User, Product, ProductVariant, Order, OrderItem, PromoCode, Review, Conversation.
-- Relations complexes : produits avec variantes, commandes avec items, avis par commande/produit.
-- Indexes optimisés sur category, featured, available, code, active pour les performances.
-
-**Services externes** :
-- **Resend** : Emails transactionnels avec templates React Email (confirmation commande, paiement validé, rappel paiement).
-- **Discord** : Webhooks pour notifier l'équipe des nouvelles commandes avec détails (items, client, total).
-- **Vercel Blob** : Stockage d'images produits avec optimization automatique.
-- **Blockchair API** : Vérification automatique des paiements crypto sur les blockchains BTC, SOL, ETH/Polygon.`,
-      en: `The project was developed with Next.js 16 and the new App Router to benefit from Server-Side Rendering and Server Components. I used TypeScript in strict mode (no 'any') to ensure code safety.
-
-**E-commerce architecture**:
-- **Product catalog**: Category system (Gaming, AI Tools, IPTV, Streaming, etc.) with product variants (durations, plans, editions) and real-time stock management.
-- **Cart**: React Context API with localStorage persistence to maintain cart between sessions.
-- **Checkout**: Multi-step form with payment method selection, automatic total calculation, promo code application, and stock verification before validation.
-
-**Advanced payment system**:
-- **Revolut**: Instant payment via Revolut.Me or SEPA transfer with IBAN. Manual verification on admin side (TODO: integrate Revolut Business API or Bridge API for automation).
-- **Crypto**: Support for BTC (Bitcoin), SOL (Solana), USDC/USDT (Polygon/Ethereum). EUR → Crypto conversion via CoinGecko API (free). Automatic verification via Blockchair API - polling every 30s to detect the transaction on the blockchain with 1% tolerance for fluctuations.
-
-**Multi-layer security**:
-- Multi-layer rate limiting (Upstash Redis): login 5/15min, register 3/h, contact 5/15min, API 100/min.
-- Strict validation with Zod on all user inputs (8 validation schemas).
-- Secure password hashing with bcryptjs (10 rounds).
-- Built-in CSRF protection via NextAuth.js.
-- Stock verification before each order to avoid overselling.
-
-**Prisma database**:
-- 8 main models: User, Product, ProductVariant, Order, OrderItem, PromoCode, Review, Conversation.
-- Complex relationships: products with variants, orders with items, reviews per order/product.
-- Optimized indexes on category, featured, available, code, active for performance.
-
-**External services**:
-- **Resend**: Transactional emails with React Email templates (order confirmation, payment validated, payment reminder).
-- **Discord**: Webhooks to notify the team of new orders with details (items, client, total).
-- **Vercel Blob**: Product image storage with automatic optimization.
-- **Blockchair API**: Automatic verification of crypto payments on BTC, SOL, ETH/Polygon blockchains.`
-    },
-    architecture: {
-      fr: `Application Next.js 16 full-stack déployée sur Vercel :
-
-**Frontend** :
-- Next.js 16 App Router avec Server Components et Server Actions
-- React 19 avec Hooks (useState, useEffect, useContext)
-- Tailwind CSS 4 pour le styling moderne et responsive
-- Context API pour gestion du panier (CartContext)
-- Composants réutilisables : ProductCard, CheckoutForm, ReviewsCarousel, AdminNav
-
-**Backend** :
-- API Routes Next.js : 33 endpoints REST (auth, orders, products, admin, payments)
-- NextAuth.js 5 pour l'authentification JWT + Credentials
-- Prisma ORM pour les requêtes base de données
-- Validation Zod sur toutes les entrées
-- Rate limiting avec Upstash Redis
-
-**Base de Données** :
-- MySQL sur AWS RDS
-- 8 modèles Prisma avec relations complexes
-- Indexes optimisés pour performances
-
-**Services Externes** :
-- Resend pour les emails transactionnels
-- Discord Webhooks pour notifications équipe
-- Vercel Blob pour stockage d'images
-- Blockchair API pour vérification paiements crypto
-- CoinGecko API pour conversion EUR → Crypto
-
-**Déploiement** :
-- Vercel pour le frontend et les API Routes
-- MySQL AWS RDS pour la base de données
-- Upstash Redis pour le rate limiting
-- Vercel Blob Storage pour les images`,
-      en: `Full-stack Next.js 16 application deployed on Vercel:
-
-**Frontend**:
-- Next.js 16 App Router with Server Components and Server Actions
-- React 19 with Hooks (useState, useEffect, useContext)
-- Tailwind CSS 4 for modern and responsive styling
-- Context API for cart management (CartContext)
-- Reusable components: ProductCard, CheckoutForm, ReviewsCarousel, AdminNav
-
-**Backend**:
-- Next.js API Routes: 33 REST endpoints (auth, orders, products, admin, payments)
-- NextAuth.js 5 for JWT + Credentials authentication
-- Prisma ORM for database queries
-- Zod validation on all inputs
-- Rate limiting with Upstash Redis
-
-**Database**:
-- MySQL on AWS RDS
-- 8 Prisma models with complex relationships
-- Optimized indexes for performance
-
-**External Services**:
-- Resend for transactional emails
-- Discord Webhooks for team notifications
-- Vercel Blob for image storage
-- Blockchair API for crypto payment verification
-- CoinGecko API for EUR → Crypto conversion
-
-**Deployment**:
-- Vercel for frontend and API Routes
-- MySQL AWS RDS for database
-- Upstash Redis for rate limiting
-- Vercel Blob Storage for images`
-    },
-    skills: [
-      {
-        name: { fr: "Next.js 16 & React 19", en: "Next.js 16 & React 19" },
-        description: { fr: "Maîtrise du nouveau App Router Next.js 16 avec Server Components, Server Actions, et React 19. Architecture full-stack avec SSR et CSR optimisés.", en: "Mastery of the new Next.js 16 App Router with Server Components, Server Actions, and React 19. Full-stack architecture with optimized SSR and CSR." }
-      },
-      {
-        name: { fr: "TypeScript strict & Zod", en: "Strict TypeScript & Zod" },
-        description: { fr: "Types TypeScript stricts sans aucun 'any', validation Zod sur toutes les entrées utilisateur. 8 schémas de validation pour garantir la sûreté du code.", en: "Strict TypeScript types without any 'any', Zod validation on all user inputs. 8 validation schemas to ensure code safety." }
-      },
-      {
-        name: { fr: "Prisma ORM & MySQL", en: "Prisma ORM & MySQL" },
-        description: { fr: "Modélisation base de données avec 8 modèles Prisma, relations complexes, indexes optimisés. Migration et seed automatisés. MySQL sur AWS RDS.", en: "Database modeling with 8 Prisma models, complex relationships, optimized indexes. Automated migration and seed. MySQL on AWS RDS." }
-      },
-      {
-        name: { fr: "Paiements multi-méthodes avancés", en: "Advanced Multi-Payment Methods" },
-        description: { fr: "Intégration Revolut (virement SEPA) et crypto-monnaies (BTC, SOL, USDC/USDT) avec vérification automatique via Blockchair API. Conversion EUR → Crypto via CoinGecko API.", en: "Revolut integration (SEPA transfer) and cryptocurrencies (BTC, SOL, USDC/USDT) with automatic verification via Blockchair API. EUR → Crypto conversion via CoinGecko API." }
-      },
-      {
-        name: { fr: "Sécurité enterprise", en: "Enterprise Security" },
-        description: { fr: "Rate limiting multi-couches (5-100 req/période), hachage bcrypt, protection CSRF, validation stricte Zod, vérification stocks. Types TypeScript stricts (0 any).", en: "Multi-layer rate limiting (5-100 req/period), bcrypt hashing, CSRF protection, strict Zod validation, stock verification. Strict TypeScript types (0 any)." }
-      },
-      {
-        name: { fr: "API REST complète", en: "Complete REST API" },
-        description: { fr: "33 endpoints API REST bien structurés avec gestion d'erreurs robuste, validation entrées, et responses typées. Authentication NextAuth.js sur routes protégées.", en: "33 well-structured REST API endpoints with robust error handling, input validation, and typed responses. NextAuth.js authentication on protected routes." }
-      }
-    ],
-    codeHighlights: [
-      {
-        title: { fr: "Vérification automatique paiements crypto", en: "Automatic crypto payment verification" },
-        code: `// lib/crypto-payment.ts - Vérification automatique blockchain
-export async function verifyCryptoPayment(
-  orderId: string,
-  network: 'btc' | 'sol' | 'eth',
-  expectedAmount: number
-): Promise<{ verified: boolean; txId?: string }> {
-  const walletAddress = getWalletAddress(network);
-  const amountCrypto = await convertEURtoCrypto(expectedAmount, network);
-
-  // Polling Blockchair API toutes les 30s
-  const url = 'https://api.blockchair.com/\${network}/dashboards/address/\${walletAddress}';
-  const response = await fetch(url);
-  const data = await response.json();
-
-  // Chercher transaction récente avec montant correct (tolérance 1%)
-  const recentTxs = data.data[walletAddress].transactions;
-  for (const tx of recentTxs) {
-    const receivedAmount = tx.balance_change / (network === 'btc' ? 1e8 : 1e9);
-    if (Math.abs(receivedAmount - amountCrypto) / amountCrypto < 0.01) {
-      return { verified: true, txId: tx.hash };
-    }
-  }
-  return { verified: false };
-}`,
-        language: "typescript",
-        explanation: {
-          fr: "Système de vérification automatique des paiements crypto via l'API Blockchair. La fonction poll la blockchain toutes les 30 secondes pour détecter les transactions entrantes correspondant au montant attendu avec une tolérance de 1% pour les fluctuations de prix.",
-          en: "Automatic crypto payment verification system via the Blockchair API. The function polls the blockchain every 30 seconds to detect incoming transactions matching the expected amount with 1% tolerance for price fluctuations."
-        }
-      }
-    ],
-    results: {
-      fr: `Plateforme e-commerce fonctionnelle déployée en production sur kcnyx.com avec toutes les fonctionnalités implémentées : catalogue de produits avec variantes, panier persistant, système de commandes, paiements multi-méthodes (Revolut + Crypto), dashboard administrateur complet, et système d'avis clients.`,
-      en: `Functional e-commerce platform deployed in production on kcnyx.com with all features implemented: product catalog with variants, persistent cart, order system, multi-payment methods (Revolut + Crypto), complete admin dashboard, and customer review system.`
-    },
-    reflection: {
-      fr: `Ce projet m'a permis de maîtriser le développement full-stack avec Next.js 16 et TypeScript strict. L'intégration des paiements crypto via Blockchair API a été un défi technique enrichissant, m'obligeant à comprendre le fonctionnement des blockchains à un niveau technique.`,
-      en: `This project allowed me to master full-stack development with Next.js 16 and strict TypeScript. Integrating crypto payments via the Blockchair API was an enriching technical challenge, forcing me to understand blockchain operations at a technical level.`
-    },
-    thumbnail: "/images/kcnyx.webp",
-    images: [],
-    links: { live: "https://kcnyx.com" }
-  },
-  {
     slug: "code-game-jam-2026",
     year: "2026",
-    title: { fr: "Code Game Jam 2026 - Scroll Party", en: "Code Game Jam 2026 - Scroll Party" },
+    title: { fr: "Scroll Party (Code Game Jam 2026)", en: "Scroll Party (Code Game Jam 2026)" },
     category: "competition",
     technologies: ["Unity", "C#", "Game Design", "Sound Design", "Trello"],
-    duration: { fr: "22 - 24 Janvier 2026 (48h)", en: "January 22 - 24, 2026 (48h)" },
-    team: { fr: "Équipe Golem Gang - 5 étudiants", en: "Golem Gang Team - 5 students" },
-    role: { fr: "Développeur - Game Design et développement Unity", en: "Developer - Game Design and Unity development" },
+    duration: { fr: "Du 22 au 24 janvier 2026 (48 h)", en: "January 22 to 24, 2026 (48 hours)" },
+    team: { fr: "Équipe Golem Gang, 5 étudiants", en: "Golem Gang team, 5 students" },
+    role: { fr: "Développeur : game design et développement Unity", en: "Developer: game design and Unity development" },
     shortDescription: {
       fr: "Jeu vidéo développé en 48h sur Unity lors de la Code Game Jam 2026. Thème : \"Fête des Clics\". Scroll Party est un jeu de sensibilisation à l'addiction aux réseaux sociaux où le joueur doit résister au scroll pendant une soirée.",
       en: "Video game developed in 48h on Unity during the Code Game Jam 2026. Theme: \"Fête des Clics\" (Click Party). Scroll Party is an awareness game about social media addiction where the player must resist scrolling during a party."
@@ -1231,8 +953,8 @@ The concept: the player is at a party and scrolls on their phone like on TikTok.
 **Mécaniques de jeu :**
 - Le joueur est à une soirée et tient son téléphone, scrollant un fil façon TikTok avec des contenus qui défilent.
 - Des PNJ viennent régulièrement lui parler. Le joueur peut choisir de poser son téléphone pour répondre ou d'ignorer et continuer à scroller.
-- **Jauge de likes** : si le joueur continue à scroller sans écouter les PNJ, cette jauge augmente. Des voix dans sa tête l'encouragent ("wow c'est trop bien", "continue") pour conforter l'addiction. Si elle atteint 100%, le joueur perd - il est complètement absorbé par son écran.
-- **Jauge de sociabilisation** : si le joueur pose son téléphone pour parler aux PNJ, cette jauge augmente. L'écran commence à trembler, la vision devient floue - simulant le manque et l'addiction. Si elle atteint 100%, le joueur a le **DÉCLIC** (jeu de mots avec "des clics" du thème) : il réalise ce qu'il fait, pose définitivement son téléphone, et profite de sa soirée. Il gagne !
+- **Jauge de likes** : si le joueur continue à scroller sans écouter les PNJ, cette jauge augmente. Des voix dans sa tête l'encouragent ("wow c'est trop bien", "continue") pour conforter l'addiction. Si elle atteint 100%, le joueur perd, il est complètement absorbé par son écran.
+- **Jauge de sociabilisation** : si le joueur pose son téléphone pour parler aux PNJ, cette jauge augmente. L'écran commence à trembler, la vision devient floue, simulant le manque et l'addiction. Si elle atteint 100%, le joueur a le **DÉCLIC** (jeu de mots avec "des clics" du thème) : il réalise ce qu'il fait, pose définitivement son téléphone, et profite de sa soirée. Il gagne !
 
 Le jeu utilise ces mécaniques inversées pour créer une expérience de sensibilisation : gagner demande de résister à l'envie de scroller, ce qui reproduit la difficulté réelle de décrocher de son téléphone.`,
       en: `The game was developed on Unity in C#. Team organization was done via Trello to distribute tasks over the 48h.
@@ -1240,8 +962,8 @@ Le jeu utilise ces mécaniques inversées pour créer une expérience de sensibi
 **Game mechanics:**
 - The player is at a party holding their phone, scrolling a TikTok-style feed with content flowing by.
 - NPCs regularly come to talk to them. The player can choose to put down their phone to respond or ignore them and keep scrolling.
-- **Likes gauge**: if the player keeps scrolling without listening to NPCs, this gauge increases. Voices in their head encourage them ("wow this is amazing", "keep going") to reinforce addiction. If it reaches 100%, the player loses - completely absorbed by their screen.
-- **Socialization gauge**: if the player puts down their phone to talk to NPCs, this gauge increases. The screen starts shaking, vision becomes blurry - simulating withdrawal and addiction. If it reaches 100%, the player has the **DÉCLIC** (wordplay with "des clics"/clicks from the theme): they realize what they're doing, permanently put down their phone, and enjoy their party. They win!
+- **Likes gauge**: if the player keeps scrolling without listening to NPCs, this gauge increases. Voices in their head encourage them ("wow this is amazing", "keep going") to reinforce addiction. If it reaches 100%, the player loses, completely absorbed by their screen.
+- **Socialization gauge**: if the player puts down their phone to talk to NPCs, this gauge increases. The screen starts shaking, vision becomes blurry, simulating withdrawal and addiction. If it reaches 100%, the player has the **DÉCLIC** (wordplay with "des clics"/clicks from the theme): they realize what they're doing, permanently put down their phone, and enjoy their party. They win!
 
 The game uses these inverted mechanics to create an awareness experience: winning requires resisting the urge to scroll, which reproduces the real difficulty of putting down one's phone.`
     },
@@ -1273,7 +995,7 @@ The game uses these inverted mechanics to create an awareness experience: winnin
     ],
     codeHighlights: [
       {
-        title: { fr: "Système de double jauge - Scroll Party", en: "Dual gauge system - Scroll Party" },
+        title: { fr: "Système de double jauge de Scroll Party", en: "Scroll Party's dual gauge system" },
         code: `// Scroll Party - Systeme de jauges Unity C#
 using UnityEngine;
 using UnityEngine.UI;
@@ -1352,14 +1074,14 @@ Le concept du double sens "Fête des Clics" → fête + déclic a été le fil r
 The "Fête des Clics" double meaning concept → party + click moment was the game's common thread, combining addictive gameplay with an awareness message.`
     },
     reflection: {
-      fr: `La Code Game Jam 2026 m'a appris à développer un jeu vidéo complet en un temps très limité. Contrairement au développement web, le game development sur Unity impose de penser en termes de game loop, de physique, d'animations et de sound design - des compétences très différentes de mon quotidien.
+      fr: `La Code Game Jam 2026 m'a appris à développer un jeu vidéo complet en un temps très limité. Contrairement au développement web, le game development sur Unity impose de penser en termes de game loop, de physique, d'animations et de sound design, des compétences très différentes de mon quotidien.
 
-Le plus grand défi a été de transformer le thème "Fête des Clics" en une expérience de jeu significative. Le concept du déclic - où gagner consiste à arrêter de jouer avec son téléphone - crée un paradoxe intéressant qui fait réfléchir le joueur sur ses propres habitudes numériques.
+Le plus grand défi a été de transformer le thème "Fête des Clics" en une expérience de jeu significative. Le concept du déclic, où gagner consiste à arrêter de jouer avec son téléphone, crée un paradoxe intéressant qui fait réfléchir le joueur sur ses propres habitudes numériques.
 
 Travailler à 5 sur 48h avec Trello nous a appris à prioriser ce qui compte vraiment dans un jeu : les mécaniques de base doivent fonctionner avant de s'attaquer au polish visuel ou sonore.`,
-      en: `The Code Game Jam 2026 taught me to develop a complete video game in very limited time. Unlike web development, game development on Unity requires thinking in terms of game loops, physics, animations, and sound design - very different skills from my daily routine.
+      en: `The Code Game Jam 2026 taught me to develop a complete video game in very limited time. Unlike web development, game development on Unity requires thinking in terms of game loops, physics, animations, and sound design, very different skills from my daily routine.
 
-The biggest challenge was transforming the "Fête des Clics" theme into a meaningful game experience. The "click moment" concept - where winning consists of stopping phone use - creates an interesting paradox that makes the player reflect on their own digital habits.
+The biggest challenge was transforming the "Fête des Clics" theme into a meaningful game experience. The "click moment" concept, where winning consists of stopping phone use, creates an interesting paradox that makes the player reflect on their own digital habits.
 
 Working as a team of 5 over 48h with Trello taught us to prioritize what truly matters in a game: core mechanics must work before tackling visual or audio polish.`
     },
@@ -1375,8 +1097,8 @@ Working as a team of 5 over 48h with Trello taught us to prioritize what truly m
     category: "competition",
     technologies: ["TypeScript", "HTML/CSS", "Chrome Extension (Manifest V3)", "DeepSeek API", "GitHub Pages"],
     duration: { fr: "Décembre 2025 (1 nuit)", en: "December 2025 (1 night)" },
-    team: { fr: "Équipe Golem Gang - 7 étudiants", en: "Golem Gang Team - 7 students" },
-    role: { fr: "Développeur - Participation aux 3 défis", en: "Developer - Participation in all 3 challenges" },
+    team: { fr: "Équipe Golem Gang, 7 étudiants", en: "Golem Gang team, 7 students" },
+    role: { fr: "Développeur : participation aux 3 défis", en: "Developer: participation in all 3 challenges" },
     shortDescription: {
       fr: "Compétition nationale de développement en une nuit. Sujet principal : \"Comment les établissements scolaires peuvent tenir tête aux Big Tech ?\". 3 défis relevés : extension de sécurité Chrome, chatbot IA et jeu d'ergonomie frustrante.",
       en: "National one-night development competition. Main subject: \"How can schools stand up to Big Tech?\". 3 challenges completed: Chrome security extension, AI chatbot, and frustrating ergonomics game."
@@ -1396,11 +1118,11 @@ Our "Golem Gang" team consisted of 7 students. We organized quickly to deliver a
     objectives: {
       fr: `1. **Défi principal** : Développer un site interactif sur le numérique responsable avec simulateur d'empreinte numérique, quiz de connaissances et système de badges
 2. **Défi "La Ligue des Extensions"** : Créer SafeLinks, une extension Chrome (Manifest V3) open source qui détecte la sécurité des liens avant de cliquer
-3. **Défi "Simplifier pour mieux vivre"** : Concevoir le Password Game, un champ de saisie volontairement frustrant avec des règles absurdes - un bouton esthétique mais délibérément compliqué à utiliser
+3. **Défi "Simplifier pour mieux vivre"** : Concevoir le Password Game, un champ de saisie volontairement frustrant avec des règles absurdes, un bouton esthétique mais délibérément compliqué à utiliser
 4. **Défi Chatbot "Chat'bruti"** : Développer un chatbot IA drôle et inutilement philosophique, intégré au site`,
       en: `1. **Main challenge**: Develop an interactive site about responsible digital with digital footprint simulator, knowledge quiz, and badge system
 2. **"La Ligue des Extensions" challenge**: Create SafeLinks, an open source Chrome extension (Manifest V3) that detects link safety before clicking
-3. **"Simplifier pour mieux vivre" challenge**: Design the Password Game, a deliberately frustrating input field with absurd rules - an aesthetic but deliberately complicated button to use
+3. **"Simplifier pour mieux vivre" challenge**: Design the Password Game, a deliberately frustrating input field with absurd rules, an aesthetic but deliberately complicated button to use
 4. **Chatbot challenge "Chat'bruti"**: Develop a funny and unnecessarily philosophical AI chatbot, integrated into the site`
     },
     approach: {
@@ -1408,7 +1130,7 @@ Our "Golem Gang" team consisted of 7 students. We organized quickly to deliver a
 
 - **Simulateur d'empreinte numérique** : Calcul de l'impact numérique de l'utilisateur avec un système de badges à débloquer.
 - **Quiz de connaissances** : Test sur le numérique responsable et la cybersécurité.
-- **Password Game** : Un jeu d'ergonomie volontairement frustrant où l'utilisateur doit créer un mot de passe en suivant des règles de plus en plus absurdes - le bouton est esthétique mais délibérément compliqué à utiliser.
+- **Password Game** : Un jeu d'ergonomie volontairement frustrant où l'utilisateur doit créer un mot de passe en suivant des règles de plus en plus absurdes, le bouton est esthétique mais délibérément compliqué à utiliser.
 
 Pour le défi extension, nous avons développé **SafeLinks**, une extension Chrome Manifest V3 qui analyse la sécurité des liens avant que l'utilisateur ne clique dessus. Le code est open source sur GitHub.
 
@@ -1417,7 +1139,7 @@ Pour le défi chatbot, nous avons créé **Chat'bruti**, un chatbot IA accessibl
 
 - **Digital footprint simulator**: Calculation of the user's digital impact with a badge system to unlock.
 - **Knowledge quiz**: Test on responsible digital and cybersecurity.
-- **Password Game**: A deliberately frustrating ergonomics game where the user must create a password following increasingly absurd rules - the button is aesthetic but deliberately complicated to use.
+- **Password Game**: A deliberately frustrating ergonomics game where the user must create a password following increasingly absurd rules, the button is aesthetic but deliberately complicated to use.
 
 For the extension challenge, we developed **SafeLinks**, a Chrome Manifest V3 extension that analyzes link safety before the user clicks. The code is open source on GitHub.
 
@@ -1425,12 +1147,12 @@ For the chatbot challenge, we created **Chat'bruti**, an AI chatbot accessible v
     },
     architecture: {
       fr: `Projet multi-composants développé en une nuit :
-- **Site principal** : TypeScript, HTML/CSS, déployé sur GitHub Pages - modules interactifs (simulateur, quiz, Password Game)
+- **Site principal** : TypeScript, HTML/CSS, déployé sur GitHub Pages, modules interactifs (simulateur, quiz, Password Game)
 - **Extension Chrome SafeLinks** : Manifest V3, détection de la sécurité des liens
 - **Chatbot Chat'bruti** : IA intégrée au site, personnalité humoristique et philosophique
 - **Hébergement** : GitHub Pages`,
       en: `Multi-component project developed in one night:
-- **Main site**: TypeScript, HTML/CSS, deployed on GitHub Pages - interactive modules (simulator, quiz, Password Game)
+- **Main site**: TypeScript, HTML/CSS, deployed on GitHub Pages, interactive modules (simulator, quiz, Password Game)
 - **SafeLinks Chrome Extension**: Manifest V3, link safety detection
 - **Chat'bruti Chatbot**: AI integrated into the site, humorous and philosophical personality
 - **Hosting**: GitHub Pages`
@@ -1451,7 +1173,7 @@ For the chatbot challenge, we created **Chat'bruti**, an AI chatbot accessible v
     ],
     codeHighlights: [
       {
-        title: { fr: "Extension Chrome SafeLinks - Analyse de sécurité des liens", en: "SafeLinks Chrome Extension - Link safety analysis" },
+        title: { fr: "Extension Chrome SafeLinks : analyse de sécurité des liens", en: "SafeLinks Chrome extension: link safety analysis" },
         code: `// SafeLinks - Chrome Extension Manifest V3
 // content-script.ts - Analyse des liens sur la page
 
@@ -1512,7 +1234,7 @@ document.querySelectorAll('a[href]').forEach(link => {
 
 - **Site principal** déployé sur GitHub Pages avec le simulateur d'empreinte numérique, le quiz et le système de badges
 - **SafeLinks** : extension Chrome fonctionnelle détectant la sécurité des liens, code open source publié sur GitHub
-- **Password Game** : jeu d'ergonomie volontairement frustrant avec un bouton esthétique mais compliqué - le défi d'ergonomie inversée est réussi
+- **Password Game** : jeu d'ergonomie volontairement frustrant avec un bouton esthétique mais compliqué, le défi d'ergonomie inversée est réussi
 - **Chat'bruti** : chatbot IA humoristique intégré au site, accessible en bas à droite
 
 Cette expérience m'a appris la valeur du prototypage rapide et de la priorisation des fonctionnalités essentielles (MVP) lorsque le temps est limité.`,
@@ -1520,7 +1242,7 @@ Cette expérience m'a appris la valeur du prototypage rapide et de la priorisati
 
 - **Main site** deployed on GitHub Pages with the digital footprint simulator, quiz, and badge system
 - **SafeLinks**: functional Chrome extension detecting link safety, open source code published on GitHub
-- **Password Game**: deliberately frustrating ergonomics game with an aesthetic but complicated button - the reverse ergonomics challenge is successful
+- **Password Game**: deliberately frustrating ergonomics game with an aesthetic but complicated button, the reverse ergonomics challenge is successful
 - **Chat'bruti**: humorous AI chatbot integrated into the site, accessible in the bottom right
 
 This experience taught me the value of rapid prototyping and prioritizing essential features (MVP) when time is limited.`
@@ -1557,10 +1279,10 @@ The specificity of this edition was the diversity of challenges: going from a Ch
       "Watchdog"
     ],
     duration: { fr: "3 mois", en: "3 months" },
-    team: { fr: "Projet universitaire - Équipe de 4 étudiants", en: "University project - Team of 4 students" },
+    team: { fr: "Projet universitaire, équipe de 4 étudiants", en: "University project, team of 4 students" },
     role: {
-      fr: "Développeur principal - Architecture système, gestion des versions, chiffrement, interface web",
-      en: "Lead Developer - System architecture, version management, encryption, web interface"
+      fr: "Développeur principal : architecture système, gestion des versions, chiffrement, interface web",
+      en: "Lead Developer, System architecture, version management, encryption, web interface"
     },
     context: {
       fr: "Projet de BUT Informatique visant à créer un système de sauvegarde robuste pour protéger les données contre les ransomwares et les erreurs utilisateur, avec une rétention de 30 jours.",
@@ -1738,85 +1460,6 @@ def restore_file():
     thumbnail: "/images/daemon-sauvegarde.webp",
     images: [],
     links: { github: "https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g2a8" }
-  },
-
-  {
-    slug: "portfolio",
-    year: "2026",
-    archived: true,
-    title: { fr: "Portfolio v2", en: "Portfolio v2" },
-    category: "personal",
-    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"],
-    duration: { fr: "Février 2026 - Présent", en: "February 2026 - Present" },
-    team: { fr: "Projet individuel", en: "Individual project" },
-    role: { fr: "Développeur & Designer", en: "Developer & Designer" },
-    shortDescription: {
-      fr: "Ce portfolio - développé avec Next.js, React et TypeScript. Système bilingue FR/EN, animations CSS, analyses de projets détaillées et design responsive.",
-      en: "This portfolio - developed with Next.js, React and TypeScript. FR/EN bilingual system, CSS animations, detailed project analyses and responsive design."
-    },
-    context: { fr: "Refonte complète du portfolio v1 en Next.js 15 avec TypeScript, système bilingue, thème sombre et analyses de projets détaillées.", en: "Complete redesign of portfolio v1 in Next.js 15 with TypeScript, bilingual system, dark theme and detailed project analyses." },
-    objectives: { fr: "Créer une vitrine professionnelle moderne avec des analyses de projets détaillées.", en: "Create a modern professional showcase with detailed project analyses." },
-    approach: { fr: "Next.js 15 App Router, TypeScript, Tailwind CSS, animations CSS pures pour la performance.", en: "Next.js 15 App Router, TypeScript, Tailwind CSS, pure CSS animations for performance." },
-    architecture: { fr: "src/app/ (pages), src/components/ (React), src/data/ (projets + traductions), public/ (assets). Déployé sur Vercel.", en: "src/app/ (pages), src/components/ (React), src/data/ (projects + translations), public/ (assets). Deployed on Vercel." },
-    skills: [],
-    codeHighlights: [],
-    results: { fr: "Portfolio moderne déployé sur Vercel, présentant tous mes projets avec analyses détaillées.", en: "Modern portfolio deployed on Vercel, showcasing all projects with detailed analyses." },
-    reflection: { fr: "Ce projet m'a permis de consolider mes compétences Next.js, React et TypeScript.", en: "This project consolidated my Next.js, React and TypeScript skills." },
-    thumbnail: "/images/portfoliov2.webp",
-    images: [],
-    links: {}
-  },
-  {
-    slug: "ancien-portfolio",
-    year: "2024",
-    archived: true,
-    title: { fr: "Ancien Portfolio", en: "Former Portfolio" },
-    category: "personal",
-    technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"],
-    duration: { fr: "Projet personnel (2024)", en: "Personal project (2024)" },
-    team: { fr: "Projet individuel", en: "Individual project" },
-    role: { fr: "Développeur & Designer", en: "Developer & Designer" },
-    shortDescription: {
-      fr: "Première version de mon portfolio personnel, développé en HTML/CSS/JS vanilla. Remplacé par la version actuelle en Next.js/React/TypeScript.",
-      en: "First version of my personal portfolio, developed in vanilla HTML/CSS/JS. Replaced by the current Next.js/React/TypeScript version."
-    },
-    context: { fr: "Premier portfolio personnel en HTML/CSS/JS vanilla. Remplacé par la v2 Next.js.", en: "First personal portfolio in vanilla HTML/CSS/JS. Replaced by the Next.js v2." },
-    objectives: { fr: "Créer une présence en ligne et apprendre les fondamentaux du développement web.", en: "Create an online presence and learn web development fundamentals." },
-    approach: { fr: "HTML/CSS/JS vanilla, mobile-first, CSS Grid et Flexbox, hébergé sur GitHub Pages.", en: "Vanilla HTML/CSS/JS, mobile-first, CSS Grid and Flexbox, hosted on GitHub Pages." },
-    architecture: { fr: "Site statique : index.html, styles/, scripts/, assets/.", en: "Static site: index.html, styles/, scripts/, assets/." },
-    skills: [],
-    codeHighlights: [],
-    results: { fr: "Portfolio v1 en ligne pendant un an, remplacé par la v2 Next.js.", en: "Portfolio v1 online for a year, replaced by the Next.js v2." },
-    reflection: { fr: "Ce projet m'a appris l'importance de la présentation dans la carrière d'un développeur.", en: "This project taught me the importance of presentation in a developer's career." },
-    thumbnail: "/images/portfolio.webp",
-    images: [],
-    links: { github: "https://github.com/killianrms/portfolio", live: "https://old.killianrms.com" }
-  },
-  {
-    slug: "nuit-info-2024",
-    year: "2024",
-    archived: true,
-    title: { fr: "Nuit de l'Info 2024", en: "Nuit de l'Info 2024" },
-    category: "competition",
-    technologies: ["HTML", "CSS", "JavaScript", "Replit"],
-    duration: { fr: "Décembre 2024 (1 nuit)", en: "December 2024 (1 night)" },
-    team: { fr: "Équipe Le Buff Chinois", en: "Le Buff Chinois Team" },
-    role: { fr: "Développeur", en: "Developer" },
-    shortDescription: {
-      fr: "Compétition nationale de développement web en une nuit. Thème : le changement climatique (GIEC). Création d'un site web de sensibilisation avec l'équipe Le Buff Chinois.",
-      en: "National one-night web development competition. Theme: climate change (IPCC). Created a climate awareness website with the Le Buff Chinois team."
-    },
-    context: { fr: "Nuit de l'Info 2024 - compétition nationale de développement web en une nuit, thème changement climatique.", en: "Nuit de l'Info 2024 - national one-night web development competition, climate change theme." },
-    objectives: { fr: "Créer un site de sensibilisation au changement climatique en une nuit.", en: "Create a climate change awareness website in one night." },
-    approach: { fr: "HTML/CSS/JS sur Replit, approche pragmatique pour maximiser la vitesse de développement.", en: "HTML/CSS/JS on Replit, pragmatic approach to maximize development speed." },
-    architecture: { fr: "Site statique hébergé sur Replit avec contenu GIEC.", en: "Static site hosted on Replit with IPCC content." },
-    skills: [],
-    codeHighlights: [],
-    results: { fr: "Site livré fonctionnel à la fin de la nuit avec présentation des impacts climatiques.", en: "Site delivered functional at the end of the night with climate impact presentation." },
-    reflection: { fr: "Confirme l'importance de choisir des technologies maîtrisées en hackathon.", en: "Confirms the importance of choosing mastered technologies in a hackathon." },
-    thumbnail: "/images/project-5.webp",
-    images: [],
-    links: {}
   },
 ];
 

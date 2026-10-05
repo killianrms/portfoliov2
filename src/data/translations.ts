@@ -1,7 +1,7 @@
 const fr = {
   // Metadata
-  "meta.title": "Killian RAMUS - DevOps et automatisation",
-  "meta.description": "Killian RAMUS, élève-ingénieur DevOps à Polytech Montpellier, en alternance chez ITESOFT : pipelines CI/CD, initialisation automatique de plateformes et outillage interne.",
+  "meta.title": "Killian RAMUS - Ingénieur développement et projet",
+  "meta.description": "Killian RAMUS, assistant ingénieur développement et projet en alternance chez ITESOFT, en formation d'ingénieur spécialité DevOps à Polytech Montpellier.",
   "nav.skip": "Aller au contenu",
   // Navigation
   "nav.about": "À propos",
@@ -20,24 +20,25 @@ const fr = {
   "contact.limited": "Trop de messages envoyés. Réessayez dans quelques minutes.",
 
   // Hero
-  "hero.status": "En alternance chez ITESOFT",
-  "hero.role": "Élève-ingénieur DevOps · Polytech Montpellier",
-  "hero.headline": "Je conçois des outils d'automatisation et des pipelines CI/CD.",
-  "hero.pitch": "En alternance dans l'équipe Delivery d'ITESOFT : initialisation automatique des plateformes clients, pipelines de livraison et outillage interne.",
+  "hero.status": "Alternance ITESOFT · Polytech Montpellier",
+  "hero.role": "Assistant ingénieur développement et projet · ITESOFT",
+  "hero.headline": "Je développe des logiciels et des outils d'automatisation, et je me forme au DevOps.",
+  "hero.pitch": "En alternance dans l'équipe Delivery d'ITESOFT, j'ai créé AutoInit, un workflow n8n qui initialise une plateforme client en un formulaire au lieu de deux heures de manipulations. En parallèle, cycle ingénieur spécialité DevOps à Polytech Montpellier.",
   "hero.ctaProjects": "Voir les projets",
   "hero.caption": "Montpellier, FR",
   "hero.age": "ans",
 
   // About
   "about.title": "À propos",
-  "about.statement": "Élève-ingénieur DevOps, je travaille sur l'automatisation de l'infrastructure et des livraisons.",
+  "about.statement": "Ingénieur développement et projet en alternance, je me spécialise en DevOps pour automatiser l'infrastructure et les livraisons.",
   "about.p1": "Diplômé d'un BUT Informatique (parcours DACS) à l'IUT de Montpellier-Sète et d'un Bac+3 en management et gestion de projet à l'IAE Montpellier obtenu en double diplôme, je prépare aujourd'hui mon diplôme d'ingénieur en DevOps à Polytech Montpellier.",
-  "about.p2": "En alternance chez ITESOFT, dans l'équipe Delivery, je transforme les tâches manuelles en outils : initialisation automatique des plateformes clients, pipelines CI/CD, scripts qui remplacent des heures de clics. La double casquette technique et gestion de projet m'aide à comprendre le besoin avant d'écrire la première ligne.",
+  "about.p2": "En alternance chez ITESOFT, dans l'équipe Delivery, je développe des customisations pour de grands comptes et j'automatise ce qui se fait à la main. Mon projet principal, AutoInit, enchaîne avec n8n la création du dépôt Git, le pipeline Azure DevOps, le déploiement en SSH et la remise des accès. La double casquette technique et gestion de projet m'aide à comprendre le besoin avant d'écrire la première ligne.",
   "about.p3": "À côté : deux ans au BDE Informatique comme responsable événementiel et communication, et des années de handball qui m'ont appris l'esprit d'équipe et la persévérance. Originaire du Var, installé à Montpellier.",
   "about.stat.projects": "projets",
   "about.stat.degrees": "diplômes bac+3",
   "about.stat.experience": "en alternance",
   "about.stat.age": "ans",
+  "about.stat.autoinit": "AutoInit, mise en place",
   "about.stat.next": "en cours",
 
   // Journey
@@ -107,8 +108,8 @@ const fr = {
 
 const en: Record<keyof typeof fr, string> = {
   // Metadata
-  "meta.title": "Killian RAMUS - DevOps & automation",
-  "meta.description": "Killian RAMUS, DevOps engineering student at Polytech Montpellier, work-study at ITESOFT: CI/CD pipelines, automated platform setup and internal tooling.",
+  "meta.title": "Killian RAMUS - Development & project engineer",
+  "meta.description": "Killian RAMUS, assistant development and project engineer in a work-study program at ITESOFT, and engineering student specializing in DevOps at Polytech Montpellier.",
   "nav.skip": "Skip to content",
   // Navigation
   "nav.about": "About",
@@ -127,24 +128,25 @@ const en: Record<keyof typeof fr, string> = {
   "contact.limited": "Too many messages sent. Please try again in a few minutes.",
 
   // Hero
-  "hero.status": "Work-study at ITESOFT",
-  "hero.role": "DevOps engineering student · Polytech Montpellier",
-  "hero.headline": "I build automation tools and CI/CD pipelines.",
-  "hero.pitch": "Work-study in ITESOFT's Delivery team: automated client platform setup, delivery pipelines and internal tooling.",
+  "hero.status": "Work-study ITESOFT · Polytech Montpellier",
+  "hero.role": "Assistant development & project engineer · ITESOFT",
+  "hero.headline": "I build software and automation tools, and I'm training to become a DevOps engineer.",
+  "hero.pitch": "In ITESOFT's Delivery team I built AutoInit, an n8n workflow that sets up a client platform from a single form instead of two hours of manual work. Alongside, an engineering degree specializing in DevOps at Polytech Montpellier.",
   "hero.ctaProjects": "See projects",
   "hero.caption": "Montpellier, FR",
   "hero.age": "years old",
 
   // About
   "about.title": "About",
-  "about.statement": "DevOps engineering student working on infrastructure and delivery automation.",
+  "about.statement": "Development and project engineer in a work-study program, specializing in DevOps to automate infrastructure and delivery.",
   "about.p1": "I hold a Bachelor's in Computer Science (BUT, DACS track) from IUT Montpellier-Sète and a Bachelor-level degree in management and project management from IAE Montpellier, earned as a dual degree. I'm now working towards a DevOps engineering degree at Polytech Montpellier.",
-  "about.p2": "As a work-study student in ITESOFT's Delivery team, I turn manual tasks into tools: automated client platform setup, CI/CD pipelines, scripts that replace hours of clicking. Having both a technical and a project-management background helps me understand the need before writing the first line.",
+  "about.p2": "As a work-study student in ITESOFT's Delivery team, I develop customizations for large enterprises and automate what used to be done by hand. My main project, AutoInit, uses n8n to chain Git repository creation, the Azure DevOps pipeline, SSH deployment and access handover. Having both a technical and a project-management background helps me understand the need before writing the first line.",
   "about.p3": "Outside of that: two years at the CS student association as events and communication lead, and years of handball that taught me team spirit and perseverance. Born in the Var, based in Montpellier.",
   "about.stat.projects": "projects",
   "about.stat.degrees": "bachelor degrees",
   "about.stat.experience": "work-study",
   "about.stat.age": "years old",
+  "about.stat.autoinit": "AutoInit, platform setup",
   "about.stat.next": "in progress",
 
   // Journey

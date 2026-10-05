@@ -13,7 +13,6 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   const { language, t, path } = useLanguage();
-  const isLogo = project.thumbnail.includes("itesoft");
   const extra = project.technologies.length - 4;
 
   return (
@@ -24,16 +23,14 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     >
       {/* Thumbnail (first on mobile, last on desktop) */}
       <div
-        className={`relative aspect-[16/9] overflow-hidden border border-line md:order-last md:col-span-4 md:aspect-[16/10] ${
-          isLogo ? "bg-white" : "bg-surface"
-        }`}
+        className="relative aspect-[16/9] overflow-hidden border border-line bg-surface md:order-last md:col-span-4 md:aspect-[16/10]"
       >
         <Image
           src={project.thumbnail}
           alt=""
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 33vw, 400px"
-          className={`thumb-mono ${isLogo ? "object-contain p-8" : "object-cover"}`}
+          className="thumb-mono object-cover"
         />
       </div>
 
