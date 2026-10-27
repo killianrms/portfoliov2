@@ -66,7 +66,7 @@ CV = {
             ("IUT Montpellier-Sète", "2023 - 2026", "BUT Computer Science (Bachelor's), DACS track: deployment of secure networked applications"),
         ],
         "skills": [
-            ("DevOps &amp; Automation", "n8n, Docker, Azure DevOps, CI/CD, Linux, Git, Grafana, Kubernetes, Azure"),
+            ("DevOps &amp; Automation", "n8n, Docker, Azure DevOps, CI/CD, Linux, Git, Grafana, Azure"),
             ("Programming Languages", "Java, Python, TypeScript, JavaScript, SQL, C, C#, PHP, HTML/CSS"),
             ("Frameworks", "Angular, AngularJS, React, Next.js, Node.js, JavaFX"),
             ("Databases", "PostgreSQL, MySQL, Oracle, MongoDB"),
@@ -105,7 +105,7 @@ CV = {
             ("IUT Montpellier-Sète", "2023 - 2026", "BUT Informatique (Bac+3), parcours DACS : déploiement d'applications communicantes et sécurisées"),
         ],
         "skills": [
-            ("DevOps et automatisation", "n8n, Docker, Azure DevOps, CI/CD, Linux, Git, Grafana, Kubernetes, Azure"),
+            ("DevOps et automatisation", "n8n, Docker, Azure DevOps, CI/CD, Linux, Git, Grafana, Azure"),
             ("Langages", "Java, Python, TypeScript, JavaScript, SQL, C, C#, PHP, HTML/CSS"),
             ("Frameworks", "Angular, AngularJS, React, Next.js, Node.js, JavaFX"),
             ("Bases de données", "PostgreSQL, MySQL, Oracle, MongoDB"),
