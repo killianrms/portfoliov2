@@ -22,9 +22,10 @@ Personal portfolio of Killian Ramus, assistant development and project engineer 
 
 - **Bilingual URLs:** English at `/`, French at `/fr`. Pages live under `src/app/[lang]` and root paths are rewritten to `/en` in `next.config.ts`. Each page has its own `lang`, canonical, hreflang alternates and Open Graph image; the sitemap lists both languages.
 - **Fully prerendered:** every page, project and language is static HTML; no section waits for a scroll to appear. Code samples are highlighted at build time, so project pages ship no highlighting JavaScript.
-- **Theme without flash:** light/dark applied by an inline script before first paint, following the device setting until the visitor chooses.
+- **Dark by default, without flash:** the page is rendered dark; an inline script switches to light before first paint for visitors who chose it. The choice survives language switches, which swap the `[lang]` root layout.
+- **Motion that never hides content:** the hero entrance and the AutoInit workflow diagram are CSS animations, and blocks settle in with scroll-driven CSS (`animation-timeline: view()`). Without support, or with reduced motion, everything is simply visible.
 - **Security:** Content-Security-Policy and hardening headers; the contact form uses a honeypot, a minimum fill time, a per-IP rate limit and server-side validation, and escapes all input.
-- **Accessibility:** skip link, keyboard-friendly lightbox with focus trap, `aria-pressed` filters, contrast checked in both themes, reduced motion respected.
+- **Accessibility:** skip link, keyboard-friendly lightbox with focus trap, `aria-pressed` filters, current section marked in the navigation, contrast checked in both themes, reduced motion respected.
 
 ## Getting started
 
@@ -49,7 +50,7 @@ src/
   components/    # Sections and UI
   context/       # Language and theme
   data/          # Projects, education/experience, UI strings
-  lib/           # i18n helpers, dates, French typography
+  lib/           # i18n helpers, theme, dates, French typography
 tests/e2e/       # Playwright tests
 scripts/         # CV generator
 ```

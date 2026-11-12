@@ -10,11 +10,20 @@ export interface Skill {
   description: { fr: string; en: string };
 }
 
+export interface ProjectCover {
+  /** Short name set in large type. */
+  word: { fr: string; en: string };
+  /** One striking fact, and what it measures. */
+  metric: { fr: string; en: string };
+  caption: { fr: string; en: string };
+  /** "accent" is reserved for the main project. */
+  tone?: "accent";
+}
+
 export interface Project {
   slug: string;
   year: string;
   featured?: boolean;
-  archived?: boolean;
   title: { fr: string; en: string };
   category: "professional" | "personal" | "university" | "competition";
   technologies: string[];
@@ -30,7 +39,10 @@ export interface Project {
   codeHighlights: CodeHighlight[];
   results: { fr: string; en: string };
   reflection: { fr: string; en: string };
-  thumbnail: string;
+  /** Typographic cover shown on the home page and, without a visual, on the project page. */
+  cover: ProjectCover;
+  /** Main visual of the project page (screenshot). */
+  thumbnail?: string;
   images: string[];
   poster?: string;
   links?: { github?: string; live?: string; video?: string; report?: string; discord?: string; download?: string; event?: string };
@@ -41,15 +53,15 @@ export const projects: Project[] = [
     slug: "itesoft-assistant-ingenieur",
     year: "2025",
     featured: true,
-    title: { fr: "AutoInit et customisation de Streamline for Invoices chez ITESOFT", en: "AutoInit and Streamline for Invoices customization at ITESOFT" },
+    title: { fr: "AutoInit et Streamline for Invoices chez ITESOFT", en: "AutoInit and Streamline for Invoices at ITESOFT" },
     category: "professional",
     technologies: ["n8n", "Docker", "Azure DevOps", "Node.js", "Java", "AngularJS", "PostgreSQL", "SSH / SFTP", "Grafana", "Git"],
     duration: { fr: "Septembre 2025 à aujourd'hui (alternance)", en: "September 2025 to present (work-study)" },
     team: { fr: "Équipe Delivery de Streamline for Invoices (32 personnes)", en: "Streamline for Invoices Delivery team (32 people)" },
     role: { fr: "Assistant ingénieur développement et projet : créateur d'AutoInit, customisation, support et diagnostic en production", en: "Assistant development & project engineer: creator of AutoInit, customization, support and production diagnosis" },
     shortDescription: {
-      fr: "J'ai créé AutoInit, un workflow n8n qui automatise de bout en bout l'initialisation des plateformes clientes : environ 2 heures de manipulations sur cinq outils remplacées par un formulaire d'une minute, adopté par toute l'équipe. En parallèle, customisation et support en production de Streamline for Invoices pour des grands comptes.",
-      en: "I built AutoInit, an n8n workflow that fully automates client platform setup: about 2 hours of manual work across five tools replaced by a one-minute form, adopted by the whole team. Alongside, customization and production support of Streamline for Invoices for large enterprises."
+      fr: "AutoInit est un workflow n8n que j'ai créé pour initialiser les plateformes clientes de bout en bout : environ 2 heures de manipulations sur cinq outils sont devenues un formulaire d'une minute, utilisé par toute l'équipe. Je fais aussi de la customisation et du support en production sur Streamline for Invoices, pour des grands comptes.",
+      en: "AutoInit is an n8n workflow I built to set up client platforms end to end: about 2 hours of manual work across five tools became a one-minute form, used by the whole team. I also customize Streamline for Invoices and support it in production for large companies."
     },
     context: {
       fr: `ITESOFT est un éditeur de logiciels français spécialisé dans l'automatisation et la dématérialisation des processus métiers. Sa solution Streamline for Invoices automatise le traitement des factures fournisseurs de grands comptes, de la capture jusqu'à l'intégration dans l'ERP, en passant par le rapprochement avec les commandes et les circuits d'approbation.
@@ -215,7 +227,12 @@ The lessons I keep:
 3. **Start from what works when nothing is documented.** Analyzing the existing migration pipeline corrected several wrong assumptions in my first versions.
 4. **Spot a pain point, propose, build it properly and get it adopted.** That's what the team expects from an engineer beyond tickets, and it's the approach I want to keep developing.`
     },
-    thumbnail: "/images/autoinit.webp",
+    cover: {
+      word: { fr: "AutoInit", en: "AutoInit" },
+      metric: { fr: "2 h → 1 min", en: "2 h → 1 min" },
+      caption: { fr: "pour initialiser une plateforme client", en: "to set up a client platform" },
+      tone: "accent",
+    },
     images: [],
     links: {}
   },
@@ -227,113 +244,105 @@ The lessons I keep:
     technologies: ["JavaScript", "Chart.js", "HTML/CSS", "Vercel", "Git"],
     duration: { fr: "Janvier à avril 2025 (stage)", en: "January to April 2025 (internship)" },
     team: { fr: "Seul avec le gérant de l'entreprise", en: "Solo with the company owner" },
-    role: { fr: "Développeur Full-Stack : conception, développement et déploiement complet de l'application", en: "Full-Stack Developer: complete design, development and deployment of the application" },
+    role: { fr: "Développeur full-stack : conception, développement et mise en ligne de l'application", en: "Full-stack developer: design, development and deployment of the application" },
     shortDescription: {
-      fr: "Outil de visualisation statistique développé pour TamaBox (Draguignan, 83) : analyse des données de location de box de stockage, personas marketing et outil de prévision.",
-      en: "Statistical visualization tool developed for TamaBox (Draguignan, France): storage box rental data analysis, marketing personas and forecasting tool."
+      fr: "Tableau de bord statistique conçu seul pendant mon stage chez TamaBox, loueur de box de stockage à Draguignan : données de location, personas clients et prévisions. Le taux d'occupation est passé de 75-82 % à 100 %.",
+      en: "A statistics dashboard I built alone during my internship at TamaBox, a storage box rental company in Draguignan: rental data, customer personas and forecasts. The occupancy rate went from 75-82% to 100%."
     },
     context: {
-      fr: `TamaStat est un outil de visualisation statistique que j'ai conçu et développé dans le cadre de mon stage de deuxième année de BUT Informatique, réalisé chez TamaBox, une entreprise de location de box de stockage située à Draguignan dans le Var (83), de janvier à avril 2025.
+      fr: `TamaStat est un tableau de bord statistique que j'ai conçu et développé pendant mon stage de deuxième année de BUT Informatique, de janvier à avril 2025, chez TamaBox, une entreprise de location de box de stockage à Draguignan (Var).
 
-C'était ma toute première expérience professionnelle. J'étais seul avec le gérant de l'entreprise, pas d'équipe technique, pas de développeur senior pour me guider. Le gérant m'a donné carte blanche : il m'a expliqué son activité, ses données, et ce qu'il voulait comprendre à travers un tableau de bord. À partir de là, j'ai eu une autonomie totale sur la conception, le développement et le déploiement de l'outil.
+C'était ma première expérience professionnelle. J'étais seul avec le gérant : pas d'équipe technique, pas de développeur senior. Il m'a expliqué son activité, ses données et ce qu'il voulait comprendre, puis m'a laissé carte blanche sur la conception, le développement et la mise en ligne.
 
-Le contexte métier était le suivant : TamaBox propose des box de stockage de différentes tailles à la location. Le gérant disposait de données brutes sur son activité (entrées/sorties de locataires, répartition par taille de box, taux d'occupation, chiffre d'affaires, surface totale louée) mais n'avait aucun outil pour les visualiser et les analyser. Son taux d'occupation oscillait entre 75% et 82%, et il souhaitait atteindre les 100%.
+TamaBox loue des box de différentes tailles. Le gérant avait des données brutes sur son activité (entrées et sorties de locataires, répartition par taille de box, taux d'occupation, chiffre d'affaires, surface louée) mais aucun outil pour les lire. Son taux d'occupation oscillait entre 75 et 82 %, et il visait 100 %.
 
-Nos échanges se faisaient lors de réunions hebdomadaires où je présentais l'avancement et où il me faisait ses retours. Le reste du temps, je travaillais en totale autonomie.`,
-      en: `TamaStat is a statistical visualization tool that I designed and developed during my second-year Computer Science internship at TamaBox, a storage box rental company located in Draguignan, Var (83), France, from January to April 2025.
+Nous faisions un point chaque semaine : je présentais l'avancement, il me faisait ses retours. Le reste du temps, je travaillais en autonomie.`,
+      en: `TamaStat is a statistics dashboard I designed and built during the internship of my second year of BUT in Computer Science, from January to April 2025, at TamaBox, a storage box rental company in Draguignan, in the south of France.
 
-This was my very first professional experience. I was alone with the company owner, no technical team, no senior developer to guide me. The owner gave me full creative freedom: he explained his business, his data, and what he wanted to understand through a dashboard. From there, I had complete autonomy over the design, development, and deployment of the tool.
+It was my first professional experience. I worked alone with the owner: no technical team, no senior developer. He explained his business, his data and what he wanted to understand, then gave me free rein on design, development and deployment.
 
-The business context was as follows: TamaBox offers storage boxes of various sizes for rent. The owner had raw data about his business (tenant entries/exits, box size distribution, occupancy rates, revenue, total rented surface area) but had no tool to visualize and analyze it. His occupancy rate fluctuated between 75% and 82%, and he wanted to reach 100%.
+TamaBox rents out boxes of different sizes. The owner had raw data about his business (tenants moving in and out, breakdown by box size, occupancy rate, revenue, rented surface) but no tool to read it. His occupancy rate hovered between 75 and 82%, and he was aiming for 100%.
 
-Our exchanges took place during weekly meetings where I presented progress and he gave his feedback. The rest of the time, I worked with complete autonomy.`
+We met once a week: I showed my progress and he gave me feedback. The rest of the time I worked on my own.`
     },
     objectives: {
-      fr: `1. **Tableau de bord statistique** : Créer un outil de visualisation complet permettant au gérant de comprendre en un coup d'œil l'état de son activité, entrées/sorties de locataires, répartition par taille de box, taux de boxes louées vs non louées, évolution du chiffre d'affaires, et surface totale louée.
+      fr: `1. **Tableau de bord** : montrer en un coup d'œil l'état de l'activité, avec les entrées et sorties de locataires, la répartition par taille de box, la part de box louées, l'évolution du chiffre d'affaires et la surface totale louée.
 
-2. **Personas marketing** : Concevoir des profils types de clients (personas) à partir de l'analyse des données, afin de permettre au gérant de cibler ses campagnes publicitaires vers les bons segments de clientèle.
+2. **Personas marketing** : dégager des profils types de clients à partir des données, pour que le gérant cible mieux ses publicités.
 
-3. **Outil de prévision (forecasting)** : Développer un module de projection permettant d'anticiper l'évolution du taux d'occupation et du chiffre d'affaires sur les mois à venir.
+3. **Prévisions** : projeter le taux d'occupation et le chiffre d'affaires sur les mois suivants.
 
-4. **Autonomie complète** : Gérer l'intégralité du projet seul, de la conception à la mise en production, en tant que première expérience professionnelle.`,
-      en: `1. **Statistical dashboard**: Create a comprehensive visualization tool allowing the owner to understand his business at a glance, tenant entries/exits, box size distribution, rented vs unrented box rates, revenue evolution, and total rented surface area.
+4. **Tout mener seul** : de l'analyse du besoin à la mise en production.`,
+      en: `1. **Dashboard**: show the state of the business at a glance, with tenants moving in and out, the breakdown by box size, the share of rented boxes, revenue over time and the total rented surface.
 
-2. **Marketing personas**: Design typical customer profiles (personas) from data analysis, enabling the owner to target his advertising campaigns towards the right customer segments.
+2. **Marketing personas**: derive typical customer profiles from the data so the owner can target his advertising better.
 
-3. **Forecasting tool**: Develop a projection module to anticipate the evolution of occupancy rates and revenue in the coming months.
+3. **Forecasts**: project the occupancy rate and revenue over the following months.
 
-4. **Complete autonomy**: Manage the entire project solo, from design to production deployment, as a first professional experience.`
+4. **Handle everything alone**: from understanding the need to going live.`
     },
     approach: {
-      fr: `C'était la première fois que je faisais du JavaScript, je l'ai appris sur le tas pendant le stage. J'ai choisi une approche front-end pure avec JavaScript et Chart.js pour les visualisations, ce qui permettait un déploiement simple et rapide sur Vercel.
+      fr: `Je n'avais jamais fait de JavaScript : je l'ai appris pendant le stage. J'ai choisi une application purement front-end, en JavaScript avec Chart.js pour les graphiques, parce qu'elle se déploie simplement sur Vercel.
 
-J'ai tout construit seul de A à Z : le design de l'interface, le développement des graphiques interactifs, la logique de traitement des données, les personas marketing, et le module de prévision. Pour chaque fonctionnalité, je partais des données brutes fournies par le gérant, que je structurais et transformais en visualisations exploitables.
+Pour chaque fonctionnalité, je partais des données brutes fournies par le gérant, que je structurais avant de les transformer en graphiques :
+- **Entrées et sorties** : mouvements de locataires dans le temps.
+- **Répartition par taille** : box louées selon leur superficie.
+- **Taux d'occupation** : part de box louées et disponibles, et son évolution.
+- **Chiffre d'affaires** : évolution des revenus, ventilée par type de box.
+- **Surface louée** : total en m².
 
-Les graphiques couvrent plusieurs axes d'analyse :
-- **Entrées/sorties** : Suivi des mouvements de locataires dans le temps
-- **Répartition par taille** : Distribution des box louées selon leur superficie
-- **Taux d'occupation** : Pourcentage de box louées vs disponibles, avec évolution temporelle
-- **Chiffre d'affaires** : Évolution des revenus avec ventilation par type de box
-- **Surface totale louée** : Suivi de la surface louée en m²
+Pour les personas, j'ai analysé les données clients et identifié des profils types (particuliers en déménagement, entreprises en stockage long terme, étudiants), avec leurs habitudes de location. Le gérant s'en est servi pour cibler ses publicités.
 
-Pour les personas, j'ai analysé les données clients pour identifier des profils types (particuliers déménagement, entreprises stockage long terme, étudiants, etc.) avec leurs caractéristiques et comportements. Le gérant a ensuite utilisé ces personas pour cibler ses publicités.
+Le module de prévision prolonge les tendances passées pour estimer le taux d'occupation et le chiffre d'affaires des mois suivants.`,
+      en: `I had never written JavaScript before: I learned it during the internship. I chose a purely front-end application, in JavaScript with Chart.js for the charts, because it is simple to deploy on Vercel.
 
-Le module de forecasting utilise les tendances historiques pour projeter l'évolution du taux d'occupation et du CA sur les mois suivants, permettant au gérant d'anticiper et d'ajuster sa stratégie.
+For each feature I started from the raw data the owner gave me, structured it, then turned it into charts:
+- **Moving in and out**: tenant movements over time.
+- **Breakdown by size**: rented boxes by surface area.
+- **Occupancy rate**: share of rented and available boxes, and how it changes.
+- **Revenue**: income over time, split by box type.
+- **Rented surface**: total in m².
 
-Le tout a été déployé sur Vercel pour un accès simple et permanent.`,
-      en: `This was the first time I ever worked with JavaScript, I learned it on the job during the internship. I chose a pure front-end approach with JavaScript and Chart.js for visualizations, which allowed simple and fast deployment on Vercel.
+For the personas, I analyzed customer data and identified typical profiles (individuals moving house, companies storing long term, students) with their rental habits. The owner used them to target his advertising.
 
-I built everything from scratch on my own: the interface design, interactive chart development, data processing logic, marketing personas, and the forecasting module. For each feature, I started from raw data provided by the owner, which I structured and transformed into actionable visualizations.
-
-The charts cover several analysis axes:
-- **Entries/exits**: Tracking tenant movements over time
-- **Size distribution**: Distribution of rented boxes by surface area
-- **Occupancy rate**: Percentage of rented vs available boxes, with temporal evolution
-- **Revenue**: Revenue evolution with breakdown by box type
-- **Total rented surface**: Tracking rented surface area in m²
-
-For the personas, I analyzed customer data to identify typical profiles (moving individuals, long-term business storage, students, etc.) with their characteristics and behaviors. The owner then used these personas to target his advertisements.
-
-The forecasting module uses historical trends to project occupancy rate and revenue evolution for the coming months, allowing the owner to anticipate and adjust his strategy.
-
-Everything was deployed on Vercel for simple and permanent access.`
+The forecasting module extends past trends to estimate the occupancy rate and revenue for the following months.`
     },
     architecture: {
-      fr: `Application front-end déployée sur Vercel :
-- **Données** : Fichiers de données structurées à partir des exports bruts du gérant, transformées en format exploitable par les graphiques.
-- **Visualisation** : Chart.js pour l'ensemble des graphiques interactifs (barres, lignes, camemberts, graphiques combinés) avec tooltips, légendes et animations.
-- **Personas** : Module d'analyse présentant les profils types de clients avec leurs caractéristiques, comportements de location et recommandations de ciblage publicitaire.
-- **Forecasting** : Module de projection basé sur les tendances historiques, affichant les prévisions d'occupation et de chiffre d'affaires.
-- **Déploiement** : Hébergement sur Vercel avec déploiement continu depuis Git.`,
-      en: `Front-end application deployed on Vercel:
-- **Data**: Structured data files from the owner's raw exports, transformed into chart-friendly format.
-- **Visualization**: Chart.js for all interactive charts (bars, lines, pies, combined charts) with tooltips, legends and animations.
-- **Personas**: Analysis module presenting typical customer profiles with their characteristics, rental behaviors and advertising targeting recommendations.
-- **Forecasting**: Projection module based on historical trends, displaying occupancy and revenue forecasts.
-- **Deployment**: Hosted on Vercel with continuous deployment from Git.`
+      fr: `Application front-end hébergée sur Vercel :
+- **Données** : fichiers structurés à partir des exports bruts du gérant.
+- **Graphiques** : Chart.js (barres, courbes, camemberts, graphiques combinés) avec infobulles et légendes.
+- **Personas** : profils types de clients, leurs habitudes de location et des pistes de ciblage publicitaire.
+- **Prévisions** : projection de l'occupation et du chiffre d'affaires à partir des tendances passées.
+- **Déploiement** : mise en ligne continue depuis Git.`,
+      en: `Front-end application hosted on Vercel:
+- **Data**: files structured from the owner's raw exports.
+- **Charts**: Chart.js (bars, lines, pies, combined charts) with tooltips and legends.
+- **Personas**: typical customer profiles, their rental habits and advertising targeting ideas.
+- **Forecasts**: projection of occupancy and revenue from past trends.
+- **Deployment**: continuous deployment from Git.`
     },
     skills: [
       {
-        name: { fr: "JavaScript (apprentissage sur le tas)", en: "JavaScript (learned on the job)" },
-        description: { fr: "Première utilisation de JavaScript dans un contexte professionnel. Apprentissage autonome du langage et de ses spécificités (manipulation DOM, événements, asynchrone) directement en développant l'application.", en: "First use of JavaScript in a professional context. Self-taught learning of the language and its specifics (DOM manipulation, events, async) directly while developing the application." }
+        name: { fr: "JavaScript, appris pendant le stage", en: "JavaScript, learned on the job" },
+        description: { fr: "Premier projet en JavaScript : manipulation du DOM, événements et asynchrone, appris en développant l'application.", en: "My first JavaScript project: DOM manipulation, events and asynchronous code, learned while building the application." }
       },
       {
-        name: { fr: "Visualisation de données avec Chart.js", en: "Data Visualization with Chart.js" },
-        description: { fr: "Utilisation approfondie de Chart.js pour créer des graphiques variés et interactifs : barres empilées, courbes d'évolution, camemberts de répartition, avec personnalisation des tooltips, couleurs et animations.", en: "In-depth use of Chart.js to create varied and interactive charts: stacked bars, evolution curves, distribution pies, with custom tooltips, colors and animations." }
+        name: { fr: "Visualisation de données avec Chart.js", en: "Data visualization with Chart.js" },
+        description: { fr: "Barres empilées, courbes d'évolution et camemberts de répartition, avec infobulles, couleurs et animations personnalisées.", en: "Stacked bars, trend lines and pie charts, with custom tooltips, colors and animations." }
       },
       {
-        name: { fr: "Analyse de données et personas", en: "Data Analysis and Personas" },
-        description: { fr: "Analyse des données clients pour identifier des segments types et créer des personas marketing actionnables. Transformation de données brutes en recommandations stratégiques concrètes.", en: "Customer data analysis to identify typical segments and create actionable marketing personas. Transformation of raw data into concrete strategic recommendations." }
+        name: { fr: "Analyse de données et personas", en: "Data analysis and personas" },
+        description: { fr: "Analyse des données clients pour dégager des segments types, puis des personas dont le gérant s'est servi pour ses campagnes.", en: "Analyzing customer data to identify typical segments, then personas the owner used for his campaigns." }
       },
       {
-        name: { fr: "Autonomie et gestion de projet solo", en: "Autonomy and Solo Project Management" },
-        description: { fr: "Gestion complète d'un projet en autonomie totale : analyse du besoin, conception, développement, déploiement, et présentations hebdomadaires au gérant. Première expérience professionnelle.", en: "Complete project management with full autonomy: requirement analysis, design, development, deployment, and weekly presentations to the owner. First professional experience." }
-      }
+        name: { fr: "Autonomie et gestion de projet", en: "Autonomy and project management" },
+        description: { fr: "Un projet mené seul : analyse du besoin, conception, développement, mise en ligne et point hebdomadaire avec le gérant.", en: "A project handled alone: understanding the need, design, development, deployment and a weekly meeting with the owner." }
+      },
     ],
     codeHighlights: [
      {
-        title: { fr: "Visualisation dynamique Chart.js", en: "Dynamic Chart.js Visualization" },
-        code: `// TamaStat - Graphique d'évolution du taux d'occupation
+        title: { fr: "Graphique d'évolution avec Chart.js", en: "Trend chart with Chart.js" },
+        code: `// TamaStat : Graphique d'évolution du taux d'occupation
 const occupancyData = {
   labels: ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Juin'],
   datasets: [{
@@ -359,18 +368,23 @@ function renderChart(data) {
 }`,
         language: "javascript",
         explanation: {
-          fr: "Configuration d'un graphique Chart.js pour visualiser l'évolution du taux d'occupation des box. Le dataset montre la progression de 75 % à 100 % grâce à l'outil TamaStat.",
-          en: "Chart.js configuration to visualize storage box occupancy rate evolution. The dataset shows progression from 75% to 100% thanks to the TamaStat tool."
+          fr: "Configuration du graphique Chart.js qui trace l'évolution du taux d'occupation des box, de 75 % à 100 %.",
+          en: "Configuration of the Chart.js chart that plots the box occupancy rate over time, from 75% to 100%."
         }
       }
     ],
     results: {
-      fr: `Le projet TamaStat a eu un impact direct et mesurable : le taux d'occupation du client est passé de 75-82 % à 100 %. L'outil de visualisation statistique a permis au gérant de prendre des décisions marketing éclairées, basées sur des données concrètes.`,
-      en: `The TamaStat project had a direct and measurable impact: the client's occupancy rate went from 75-82% to 100%. The statistical visualization tool allowed the owner to make informed marketing decisions based on concrete data.`
+      fr: "Le taux d'occupation de TamaBox est passé de 75-82 % à 100 %. Le gérant s'est appuyé sur le tableau de bord et sur les personas pour décider où faire de la publicité, et pour qui.",
+      en: "TamaBox's occupancy rate went from 75-82% to 100%. The owner relied on the dashboard and the personas to decide where to advertise, and to whom."
     },
     reflection: {
-      fr: `Ce stage m'a appris l'importance de l'autonomie et de la communication dans un projet professionnel. Présenter chaque semaine l'avancement au gérant m'a forcé à structurer mon travail et à prioriser les fonctionnalités à forte valeur ajoutée.`,
-      en: `This internship taught me the importance of autonomy and communication in a professional project. Presenting weekly progress to the owner forced me to structure my work and prioritize high-value features.`
+      fr: "Ce stage m'a appris à travailler seul sans perdre le client de vue. Présenter l'avancement chaque semaine m'obligeait à structurer mon travail et à commencer par ce qui lui était le plus utile. C'est aussi là que j'ai appris JavaScript, directement sur un projet réel.",
+      en: "This internship taught me to work alone without losing sight of the client. Presenting my progress every week forced me to structure my work and to start with what was most useful to him. It is also where I learned JavaScript, directly on a real project."
+    },
+    cover: {
+      word: { fr: "TamaStat", en: "TamaStat" },
+      metric: { fr: "100 %", en: "100%" },
+      caption: { fr: "de taux d'occupation, contre 75-82 % avant", en: "occupancy rate, up from 75-82%" },
     },
     thumbnail: "/images/tamastat.webp",
     images: [],
@@ -383,119 +397,113 @@ function renderChart(data) {
     title: { fr: "LobbyBot 2.0, bots Fortnite", en: "LobbyBot 2.0, Fortnite bots" },
     category: "personal",
     technologies: ["Node.js", "Python", "Discord.js", "Express", "Socket.IO", "PostgreSQL", "Docker", "OAuth2", "WebSocket", "Asyncio"],
-    duration: { fr: "Projet personnel continu, depuis 2020", en: "Ongoing personal project, since 2020" },
-    team: { fr: "Projet individuel, communauté de plus de 8 500 membres Discord", en: "Individual project, community of 8,500+ Discord members" },
-    role: { fr: "Développeur unique : conception, développement, maintenance et gestion de communauté", en: "Sole Developer: design, development, maintenance and community management" },
+    duration: { fr: "Projet personnel, depuis 2020", en: "Personal project, since 2020" },
+    team: { fr: "Projet individuel, communauté de plus de 8 500 membres sur Discord", en: "Solo project, community of more than 8,500 members on Discord" },
+    role: { fr: "Seul développeur : conception, développement, maintenance et animation de la communauté", en: "Sole developer: design, development, maintenance and community management" },
     shortDescription: {
-      fr: "Système complet de bots Fortnite avec gestion multi-comptes, bot Discord central, dashboard web temps réel et communauté de 8 500+ membres. Projet initié pendant le COVID à 16 ans, devenu mon plus gros projet personnel.",
-      en: "Complete Fortnite bot system with multi-account management, central Discord bot, real-time web dashboard and community of 8,500+ members. Project started during COVID at age 16, became my biggest personal project."
+      fr: "Des bots Fortnite que les joueurs ajoutent en ami pour prévisualiser skins et danses, pilotés par un bot Discord central et un dashboard web temps réel. Commencé à 16 ans pendant le confinement, le projet réunit aujourd'hui plus de 8 500 membres sur Discord.",
+      en: "Fortnite bots that players add as friends to preview skins and emotes, run from a central Discord bot with a real-time web dashboard. Started at 16 during lockdown, the project now has a Discord community of more than 8,500 members."
     },
     context: {
-      fr: `LobbyBot 2.0 est mon plus gros projet personnel. Il a démarré en 2020, pendant le COVID, alors que j'avais 16 ans. À l'origine, c'était simplement des bots Fortnite en Python qui permettaient aux joueurs de voir tous les skins et danses du jeu. Le projet était financé par la publicité de mon code créateur Epic Games (10% de rémunération sur chaque achat effectué par mes soutiens sur le store Epic Games).
+      fr: `LobbyBot 2.0 est mon plus gros projet personnel. Je l'ai commencé en 2020, pendant le confinement, à 16 ans. Au départ, c'étaient de simples bots Fortnite en Python qui permettaient aux joueurs de voir tous les skins et toutes les danses du jeu. Le projet se finançait grâce à mon code créateur Epic Games, qui me reverse 10 % des achats de mes soutiens sur la boutique.
 
-Les joueurs utilisaient les bots pour prévisualiser les skins et danses à venir dans la boutique, mais aussi pour jouer avec eux afin de faciliter leur progression et éviter de tomber contre des joueurs trop forts. J'ai eu plusieurs contacts avec Epic Games qui m'ont autorisé à faire ces bots.
+Les joueurs ajoutaient les bots en ami pour prévisualiser les skins et les danses à venir, mais aussi pour jouer avec eux, ce qui facilitait leur progression et leur évitait de tomber contre des adversaires trop forts. J'ai échangé à plusieurs reprises avec Epic Games, qui m'a autorisé à faire tourner ces bots.
 
-Ce petit projet initié pendant le confinement est devenu, et reste encore aujourd'hui, mon plus gros projet personnel. La communauté compte plus de 8 500 membres sur Discord qui suivent activement le projet. Au fil des années, j'ai considérablement amélioré le code : passage du simple script Python à une architecture complète avec un bot Discord central en Node.js, un dashboard web en temps réel, une base de données PostgreSQL, et le tout orchestré avec Docker.
+Le projet existe toujours. Sa communauté compte plus de 8 500 membres sur Discord, et le code a beaucoup changé : le script Python est devenu un bot Discord central en Node.js, un dashboard web temps réel et une base PostgreSQL, le tout dans des conteneurs Docker.
 
-Les améliorations majeures incluent : l'automatisation de la création de nouveaux bots quand un bot atteint sa limite d'amis, l'automatisation du relancement des bots en cas de crash ou de redémarrage serveur, et un système de load balancing intelligent qui sélectionne automatiquement le bot le moins chargé pour chaque nouvel ami.`,
-      en: `LobbyBot 2.0 is my biggest personal project. It started in 2020, during COVID, when I was 16 years old. Originally, it was simply Python Fortnite bots that allowed players to see all the game's skins and dances. The project was funded through my Epic Games creator code advertising (10% commission on each purchase made by my supporters on the Epic Games store).
+Les évolutions qui comptent le plus : un nouveau bot est créé automatiquement quand un bot atteint sa limite d'amis, les bots redémarrent seuls après un crash ou un redémarrage du serveur, et chaque nouvel ami est dirigé vers le bot le moins chargé.`,
+      en: `LobbyBot 2.0 is my biggest personal project. I started it in 2020, during lockdown, at 16. At first it was just Fortnite bots written in Python that let players see every skin and emote in the game. The project was funded by my Epic Games creator code, which pays me 10% of what my supporters spend in the store.
 
-Players used the bots to preview upcoming skins and dances in the shop, but also to play with them to ease their progression and avoid facing overly strong opponents. I had multiple contacts with Epic Games who authorized me to create these bots.
+Players added the bots as friends to preview upcoming skins and emotes, and also to play with them, which made progressing easier and kept them away from much stronger opponents. I talked with Epic Games several times, and they allowed me to run these bots.
 
-This small project started during lockdown became, and still remains today, my biggest personal project. The community has over 8,500 members on Discord actively following the project. Over the years, I significantly improved the code: from simple Python scripts to a complete architecture with a central Discord bot in Node.js, a real-time web dashboard, a PostgreSQL database, all orchestrated with Docker.
+The project is still running. Its community has more than 8,500 members on Discord, and the code has changed a lot: the Python script became a central Discord bot in Node.js, a real-time web dashboard and a PostgreSQL database, all in Docker containers.
 
-Major improvements include: automated creation of new bots when a bot reaches its friend limit, automated bot restart in case of crash or server reboot, and an intelligent load balancing system that automatically selects the least loaded bot for each new friend.`
+The changes that matter most: a new bot is created automatically when one reaches its friend limit, bots restart on their own after a crash or a server reboot, and each new friend is sent to the least loaded bot.`
     },
     objectives: {
-      fr: `1. **Système multi-bots** : Gérer un nombre illimité de bots Fortnite simultanément avec un load balancing intelligent (seuil de 900 amis par bot)
-2. **Bot Discord central** : Permettre aux 8 500+ membres de la communauté d'interagir avec les bots Fortnite via des commandes Discord (/add, /login, /list, /shop, /locker...)
-3. **Dashboard web temps réel** : Interface de contrôle permettant de voir l'état des bots, leurs amis, et de les gérer (kick, promote, privacy) via Socket.IO
-4. **Automatisation complète** : Création automatique de bots, relancement en cas de crash, et gestion autonome des listes d'amis
-5. **Internationalisation** : Support multilingue (FR/EN/ES/DE) pour la communauté internationale`,
-      en: `1. **Multi-bot system**: Manage unlimited simultaneous Fortnite bots with intelligent load balancing (900 friends threshold per bot)
-2. **Central Discord bot**: Allow the 8,500+ community members to interact with Fortnite bots via Discord commands (/add, /login, /list, /shop, /locker...)
-3. **Real-time web dashboard**: Control interface to view bot status, friends, and manage them (kick, promote, privacy) via Socket.IO
-4. **Full automation**: Automatic bot creation, restart on crash, and autonomous friend list management
-5. **Internationalization**: Multilingual support (FR/EN/ES/DE) for the international community`
+      fr: `1. **Plusieurs bots en parallèle** : faire tourner autant de bots Fortnite que nécessaire, avec une répartition de charge et un seuil de 900 amis par bot.
+2. **Bot Discord central** : permettre aux membres de piloter les bots depuis Discord (/add, /login, /list, /shop, /locker).
+3. **Dashboard web temps réel** : voir l'état des bots et de leurs amis, et agir dessus (kick, promote, privacy) via Socket.IO.
+4. **Automatisation** : création des bots, redémarrage après un crash et gestion des listes d'amis sans intervention.
+5. **Quatre langues** : français, anglais, espagnol et allemand, pour une communauté internationale.`,
+      en: `1. **Several bots in parallel**: run as many Fortnite bots as needed, with load balancing and a threshold of 900 friends per bot.
+2. **Central Discord bot**: let members drive the bots from Discord (/add, /login, /list, /shop, /locker).
+3. **Real-time web dashboard**: see the state of the bots and their friends, and act on them (kick, promote, privacy) through Socket.IO.
+4. **Automation**: bot creation, restart after a crash and friend list management with no manual action.
+5. **Four languages**: French, English, Spanish and German, for an international community.`
     },
     approach: {
-      fr: `Le projet a évolué d'un simple script Python vers une architecture distribuée complète :
+      fr: `Le projet est passé d'un script Python à une architecture en plusieurs services :
 
-- **Phase 1 (2020)** : Bots Python simples utilisant les API non-documentées d'Epic Games, avec authentification OAuth2 et gestion basique des amis et skins.
-- **Phase 2 (évolution)** : Migration vers une architecture Node.js pour le bot Discord central, avec Discord.js pour gérer les commandes de la communauté.
-- **Phase 3 (actuelle, LobbyBot 2.0)** : Architecture complète avec trois composants principaux orchestrés par Docker :
+- **2020** : des bots Python qui utilisent les API non documentées d'Epic Games, avec authentification OAuth2 et une gestion simple des amis et des skins.
+- **Ensuite** : un bot Discord central en Node.js, avec Discord.js pour les commandes de la communauté.
+- **Aujourd'hui, LobbyBot 2.0** : trois composants dans Docker.
 
-  1. **Discord Manager** (Node.js) : Le cœur du système. Gère tous les bots simultanément, le load balancing, les commandes Discord, et la communication avec la base de données PostgreSQL.
-  2. **Dashboard Web** (Node.js/Express/Socket.IO) : Interface de contrôle en temps réel avec un design "Space/Starfield". Communication instantanée avec le Manager via Socket.IO.
-  3. **Base de données PostgreSQL** : Stockage des comptes bots, utilisateurs, préférences de langue, et statistiques.
+1. **Discord Manager** (Node.js) : le cœur du système. Il gère tous les bots, la répartition de charge, les commandes Discord et les échanges avec PostgreSQL.
+2. **Dashboard web** (Node.js, Express, Socket.IO) : interface de contrôle en temps réel, reliée au Manager par Socket.IO.
+3. **PostgreSQL** : comptes des bots, utilisateurs, préférences de langue et statistiques.
 
-Le système de load balancing sélectionne automatiquement le bot ayant le moins d'amis (< 900) pour chaque nouvelle demande d'ajout. Si tous les bots sont pleins, un nouveau bot est créé automatiquement.`,
-      en: `The project evolved from a simple Python script to a complete distributed architecture:
+Pour chaque demande d'ajout, le système choisit le bot qui a le moins d'amis parmi ceux qui en ont moins de 900. Si tous sont pleins, il en crée un nouveau.`,
+      en: `The project grew from a Python script into an architecture made of several services:
 
-- **Phase 1 (2020)**: Simple Python bots using Epic Games' undocumented APIs, with OAuth2 authentication and basic friend/skin management.
-- **Phase 2 (evolution)**: Migration to Node.js architecture for the central Discord bot, using Discord.js to handle community commands.
-- **Phase 3 (current, LobbyBot 2.0)**: Complete architecture with three main components orchestrated by Docker:
+- **2020**: Python bots using Epic Games' undocumented APIs, with OAuth2 authentication and basic friend and skin management.
+- **Then**: a central Discord bot in Node.js, with Discord.js for the community's commands.
+- **Today, LobbyBot 2.0**: three components in Docker.
 
-  1. **Discord Manager** (Node.js): The system's core. Manages all bots simultaneously, load balancing, Discord commands, and PostgreSQL database communication.
-  2. **Web Dashboard** (Node.js/Express/Socket.IO): Real-time control interface with a "Space/Starfield" design. Instant communication with the Manager via Socket.IO.
-  3. **PostgreSQL Database**: Storage for bot accounts, users, language preferences, and statistics.
+1. **Discord Manager** (Node.js): the core of the system. It handles all the bots, load balancing, Discord commands and exchanges with PostgreSQL.
+2. **Web dashboard** (Node.js, Express, Socket.IO): a real-time control interface, connected to the Manager through Socket.IO.
+3. **PostgreSQL**: bot accounts, users, language preferences and statistics.
 
-The load balancing system automatically selects the bot with the fewest friends (< 900) for each new friend request. If all bots are full, a new bot is automatically created.`
+For each friend request, the system picks the bot with the fewest friends among those under 900. If they are all full, it creates a new one.`
     },
     architecture: {
-      fr: `Architecture distribuée Docker multi-services :
+      fr: `Trois services orchestrés par Docker Compose :
 
-- **lobbybot2.0-discord/** (Node.js) : Manager central
-  - 'src/managers/' : Gestionnaires principaux (Bots, Database, User, API, Discord)
-  - 'src/commands/' : Commandes Discord (/login, /add, /list, /shop, /locker, /admin...)
-  - 'src/actions/' : Logique des actions Fortnite (Skin, Party, Friends)
-  - 'src/utils/' : Utilitaires (Locales i18n, helpers)
+- **lobbybot2.0-discord** (Node.js) : le Manager central.
+  - 'src/managers/' : gestionnaires (Bots, Database, User, API, Discord)
+  - 'src/commands/' : commandes Discord (/login, /add, /list, /shop, /locker, /admin)
+  - 'src/actions/' : actions Fortnite (Skin, Party, Friends)
+  - 'src/utils/' : utilitaires (traductions, helpers)
+- **lobbybot2.0-website** (Node.js, Express) : le dashboard web.
+  - Serveur Express et Socket.IO pour le temps réel
+  - Interface en HTML, CSS et JavaScript, sur un thème spatial
+  - État des bots, amis et actions (Kick, Promote, Privacy)
+- **PostgreSQL** : base partagée (comptes, utilisateurs, préférences).`,
+      en: `Three services orchestrated by Docker Compose:
 
-- **lobbybot2.0-website/** (Node.js/Express) : Dashboard web
-  - Backend Express + Socket.IO pour la communication temps réel
-  - Frontend HTML5/CSS3/Vanilla JS avec design "Space/Starfield"
-  - Affichage de l'état des bots, amis, contrôles (Kick, Promote, Privacy)
-
-- **PostgreSQL** : Base de données partagée (comptes, utilisateurs, préférences)
-- **Docker Compose** : Orchestration des trois services`,
-      en: `Distributed multi-service Docker architecture:
-
-- **lobbybot2.0-discord/** (Node.js): Central Manager
-  - 'src/managers/': Main managers (Bots, Database, User, API, Discord)
-  - 'src/commands/': Discord commands (/login, /add, /list, /shop, /locker, /admin...)
-  - 'src/actions/': Fortnite action logic (Skin, Party, Friends)
-  - 'src/utils/': Utilities (i18n Locales, helpers)
-
-- **lobbybot2.0-website/** (Node.js/Express): Web Dashboard
-  - Express + Socket.IO backend for real-time communication
-  - HTML5/CSS3/Vanilla JS frontend with "Space/Starfield" design
-  - Bot status display, friends, controls (Kick, Promote, Privacy)
-
-- **PostgreSQL**: Shared database (accounts, users, preferences)
-- **Docker Compose**: Orchestration of all three services`
+- **lobbybot2.0-discord** (Node.js): the central Manager.
+  - 'src/managers/': managers (Bots, Database, User, API, Discord)
+  - 'src/commands/': Discord commands (/login, /add, /list, /shop, /locker, /admin)
+  - 'src/actions/': Fortnite actions (Skin, Party, Friends)
+  - 'src/utils/': utilities (translations, helpers)
+- **lobbybot2.0-website** (Node.js, Express): the web dashboard.
+  - Express server and Socket.IO for real time
+  - Interface in HTML, CSS and JavaScript, with a space theme
+  - Bot status, friends and actions (Kick, Promote, Privacy)
+- **PostgreSQL**: shared database (accounts, users, preferences).`
     },
     skills: [
       {
-        name: { fr: "Architecture distribuée & Docker", en: "Distributed Architecture & Docker" },
-        description: { fr: "Conception et déploiement d'une architecture multi-services avec Docker Compose : Manager Node.js, Dashboard web, et base de données PostgreSQL communiquant en temps réel.", en: "Design and deployment of a multi-service architecture with Docker Compose: Node.js Manager, Web Dashboard, and PostgreSQL database communicating in real-time." }
+        name: { fr: "Architecture multi-services et Docker", en: "Multi-service architecture and Docker" },
+        description: { fr: "Trois services (Manager Node.js, dashboard web, PostgreSQL) déployés avec Docker Compose et reliés en temps réel.", en: "Three services (Node.js Manager, web dashboard, PostgreSQL) deployed with Docker Compose and connected in real time." }
       },
       {
-        name: { fr: "Gestion de communauté & produit", en: "Community & Product Management" },
-        description: { fr: "Animation d'une communauté de 8 500+ membres Discord, gestion des retours utilisateurs, évolution continue du produit sur 5+ ans, et financement via code créateur Epic Games.", en: "Management of a 8,500+ member Discord community, user feedback handling, continuous product evolution over 5+ years, and funding through Epic Games creator code." }
+        name: { fr: "Communauté et produit", en: "Community and product" },
+        description: { fr: "Animation d'une communauté de plus de 8 500 membres, prise en compte des retours, évolution du produit sur plus de cinq ans et financement par le code créateur Epic Games.", en: "Running a community of more than 8,500 members, acting on feedback, evolving the product for more than five years and funding it through the Epic Games creator code." }
       },
       {
-        name: { fr: "Communication temps réel (Socket.IO)", en: "Real-time Communication (Socket.IO)" },
-        description: { fr: "Implémentation de communications bidirectionnelles en temps réel entre le Dashboard web et le Manager via Socket.IO pour le contrôle instantané des bots.", en: "Implementation of bidirectional real-time communications between the Web Dashboard and Manager via Socket.IO for instant bot control." }
+        name: { fr: "Temps réel avec Socket.IO", en: "Real time with Socket.IO" },
+        description: { fr: "Communication bidirectionnelle entre le dashboard et le Manager pour piloter les bots instantanément.", en: "Two-way communication between the dashboard and the Manager to control the bots instantly." }
       },
       {
-        name: { fr: "Automatisation & Load Balancing", en: "Automation & Load Balancing" },
-        description: { fr: "Système intelligent de répartition de charge entre les bots, création automatique de nouveaux bots, et relancement automatique en cas de crash ou redémarrage serveur.", en: "Intelligent load distribution system between bots, automatic creation of new bots, and automatic restart on crash or server reboot." }
-      }
+        name: { fr: "Automatisation et répartition de charge", en: "Automation and load balancing" },
+        description: { fr: "Répartition des amis entre les bots, création automatique de nouveaux bots et redémarrage après un crash ou un redémarrage du serveur.", en: "Spreading friends across bots, creating new bots automatically and restarting after a crash or a server reboot." }
+      },
     ],
     codeHighlights: [
       {
-        title: { fr: "Load Balancing intelligent des bots", en: "Intelligent bot load balancing" },
-        code: `// LobbyBot 2.0 - Bot Manager avec load balancing
+        title: { fr: "Répartition de charge entre les bots", en: "Load balancing between bots" },
+        code: `// LobbyBot 2.0 : Bot Manager avec load balancing
 class BotManager {
   constructor() {
     this.bots = new Map();  // Map<botId, BotInstance>
@@ -540,13 +548,13 @@ class BotManager {
 }`,
         language: "javascript",
         explanation: {
-          fr: "Ce code implémente le système de load balancing du Bot Manager. La méthode selectOptimalBot() filtre les bots disponibles (< 900 amis), les trie par nombre d'amis croissant, et retourne le moins chargé. Si tous les bots sont pleins, un nouveau bot est automatiquement créé depuis le pool PostgreSQL.",
-          en: "This code implements the Bot Manager's load balancing system. The selectOptimalBot() method filters available bots (< 900 friends), sorts them by ascending friend count, and returns the least loaded one. If all bots are full, a new bot is automatically created from the PostgreSQL pool."
+          fr: "La méthode selectOptimalBot() garde les bots qui ont moins de 900 amis, les trie par nombre d'amis et renvoie le moins chargé. Si tous sont pleins, un nouveau bot est créé à partir des comptes disponibles dans PostgreSQL.",
+          en: "The selectOptimalBot() method keeps the bots with fewer than 900 friends, sorts them by friend count and returns the least loaded one. If they are all full, a new bot is created from the accounts available in PostgreSQL."
         }
       },
       {
-        title: { fr: "Communication temps réel Socket.IO Dashboard", en: "Socket.IO real-time Dashboard communication" },
-        code: `// LobbyBot 2.0 - Dashboard Socket.IO Server
+        title: { fr: "Temps réel entre le dashboard et le Manager", en: "Real time between the dashboard and the Manager" },
+        code: `// LobbyBot 2.0 : Dashboard Socket.IO Server
 const express = require('express');
 const socketIo = require('socket.io');
 const server = require('http').createServer(express());
@@ -587,60 +595,46 @@ io.on('connection', (clientSocket) => {
 });`,
         language: "javascript",
         explanation: {
-          fr: "Ce code gère la communication temps réel entre le Dashboard web et le Discord Manager via Socket.IO. Le serveur Dashboard écoute les connexions clients, envoie l'état initial des bots, propage les mises à jour en temps réel et gère les actions utilisateur (kick, changement de skin).",
-          en: "This code handles real-time communication between the Web Dashboard and Discord Manager via Socket.IO. The Dashboard server listens for client connections, sends initial bot state, propagates real-time updates and handles user actions (kick, skin change)."
+          fr: "Le serveur du dashboard écoute les connexions, envoie l'état initial des bots, diffuse les mises à jour en direct et transmet les actions de l'utilisateur (kick, changement de skin).",
+          en: "The dashboard server listens for connections, sends the initial state of the bots, broadcasts live updates and forwards the user's actions (kick, skin change)."
         }
       }
     ],
     results: {
-      fr: `LobbyBot 2.0 est un projet actif depuis 2020 avec des résultats concrets :
-
-- **8 500+ membres Discord** suivant activement le projet et utilisant les bots au quotidien
-- **Système multi-bots fonctionnel** avec load balancing intelligent et création automatique de nouveaux bots
-- **Dashboard web temps réel** permettant le monitoring et le contrôle de tous les bots
-- **Autorisation officielle d'Epic Games** obtenue après plusieurs échanges directs
-- **Financement autonome** via le système de code créateur Epic Games (10% de commission)
-- **5+ ans de maintenance continue**, avec des évolutions majeures (Python → Node.js, scripts → architecture Docker)
-- **Internationalisation complète** en 4 langues (FR/EN/ES/DE) pour la communauté internationale
-
-Ce projet, initié à 16 ans pendant le COVID, est devenu et reste mon plus gros projet personnel, démontrant ma capacité à mener un projet de A à Z sur le long terme.`,
-      en: `LobbyBot 2.0 has been an active project since 2020 with concrete results:
-
-- **8,500+ Discord members** actively following the project and using bots daily
-- **Functional multi-bot system** with intelligent load balancing and automatic new bot creation
-- **Real-time web dashboard** enabling monitoring and control of all bots
-- **Official Epic Games authorization** obtained after multiple direct exchanges
-- **Self-funded** through the Epic Games creator code system (10% commission)
-- **5+ years of continuous maintenance**, with major evolutions (Python → Node.js, scripts → Docker architecture)
-- **Full internationalization** in 4 languages (FR/EN/ES/DE) for the international community
-
-This project, started at age 16 during COVID, became and remains my biggest personal project, demonstrating my ability to lead a project from A to Z over the long term.`
+      fr: `- **Plus de 8 500 membres sur Discord**, qui utilisent les bots au quotidien.
+- **Plusieurs bots en parallèle**, avec répartition de charge et création automatique de nouveaux bots.
+- **Un dashboard web temps réel** pour surveiller et piloter tous les bots.
+- **L'autorisation d'Epic Games**, obtenue après plusieurs échanges directs.
+- **Un projet qui se finance seul** grâce au code créateur Epic Games (10 % de commission).
+- **Plus de cinq ans de maintenance**, avec deux refontes : de Python à Node.js, puis de scripts isolés à une architecture Docker.
+- **Quatre langues** : français, anglais, espagnol et allemand.`,
+      en: `- **More than 8,500 members on Discord**, who use the bots every day.
+- **Several bots in parallel**, with load balancing and automatic creation of new bots.
+- **A real-time web dashboard** to monitor and control all the bots.
+- **Epic Games' authorization**, obtained after several direct exchanges.
+- **A self-funded project** thanks to the Epic Games creator code (10% commission).
+- **More than five years of maintenance**, with two rewrites: from Python to Node.js, then from standalone scripts to a Docker architecture.
+- **Four languages**: French, English, Spanish and German.`
     },
     reflection: {
-      fr: `LobbyBot 2.0 est le projet qui m'a le plus appris en dehors du cadre scolaire :
+      fr: `C'est le projet qui m'a le plus appris en dehors des cours :
 
-1. **L'évolution technique sur 5 ans** m'a fait passer de simples scripts Python à une architecture distribuée complète avec Docker. Chaque itération m'a poussé à apprendre de nouvelles technologies pour résoudre des problèmes concrets : Node.js pour la performance, PostgreSQL pour la persistance, Socket.IO pour le temps réel, Docker pour le déploiement.
+1. **Cinq ans d'évolution technique.** Chaque refonte répondait à un problème concret : Node.js pour les performances, PostgreSQL pour conserver les données, Socket.IO pour le temps réel, Docker pour le déploiement.
+2. **Une communauté de plus de 8 500 membres.** J'ai appris à communiquer, à gérer les attentes, à choisir quoi développer d'après les retours, et à assumer un service que des gens utilisent tous les jours.
+3. **Les échanges avec Epic Games.** Présenter mon projet à une grande entreprise et respecter ses conditions d'utilisation.
+4. **La maintenance dans la durée.** Les API changent, les serveurs tombent, les besoins évoluent. C'est ce qui m'a donné le goût de l'automatisation : redémarrage automatique, répartition de charge, documentation.`,
+      en: `This is the project that taught me the most outside school:
 
-2. **La gestion d'une communauté de 8 500+ membres** m'a enseigné des compétences non-techniques essentielles : communication, gestion des attentes, priorisation des fonctionnalités basée sur les retours utilisateurs, et la responsabilité de maintenir un service utilisé quotidiennement.
-
-3. **Le contact avec Epic Games** m'a appris à interagir professionnellement avec une grande entreprise, à présenter mon projet de manière convaincante et à respecter leurs conditions d'utilisation.
-
-4. **La maintenance sur le long terme** est la leçon la plus importante : les API changent, les serveurs crashent, les utilisateurs ont des besoins qui évoluent. Ce projet m'a enseigné la valeur d'une architecture robuste, de l'automatisation (relancement automatique, load balancing), et de la documentation.
-
-Ce projet prouve qu'un side project passionné peut devenir quelque chose de significatif avec de la persévérance et une amélioration continue.`,
-      en: `LobbyBot 2.0 is the project that taught me the most outside of school:
-
-1. **5 years of technical evolution** took me from simple Python scripts to a complete distributed architecture with Docker. Each iteration pushed me to learn new technologies to solve concrete problems: Node.js for performance, PostgreSQL for persistence, Socket.IO for real-time, Docker for deployment.
-
-2. **Managing a community of 8,500+ members** taught me essential non-technical skills: communication, expectation management, feature prioritization based on user feedback, and the responsibility of maintaining a daily-used service.
-
-3. **Contact with Epic Games** taught me to interact professionally with a large company, present my project convincingly, and respect their terms of use.
-
-4. **Long-term maintenance** is the most important lesson: APIs change, servers crash, users' needs evolve. This project taught me the value of robust architecture, automation (automatic restart, load balancing), and documentation.
-
-This project proves that a passionate side project can become something significant with perseverance and continuous improvement.`
+1. **Five years of technical change.** Each rewrite answered a concrete problem: Node.js for performance, PostgreSQL to keep data, Socket.IO for real time, Docker for deployment.
+2. **A community of more than 8,500 members.** I learned to communicate, manage expectations, choose what to build from feedback, and take responsibility for a service people use every day.
+3. **Talking with Epic Games.** Presenting my project to a large company and complying with its terms of use.
+4. **Maintenance over time.** APIs change, servers go down, needs evolve. That is where my taste for automation comes from: automatic restarts, load balancing, documentation.`
     },
-    thumbnail: "/images/lobbybot.webp",
+    cover: {
+      word: { fr: "LobbyBot 2.0", en: "LobbyBot 2.0" },
+      metric: { fr: "8 500+", en: "8,500+" },
+      caption: { fr: "membres sur Discord", en: "Discord members" },
+    },
     images: [],
     links: { github: "https://github.com/killianrms/lobbybot2.0-discord", live: "https://github.com/killianrms/lobbybot2.0-website", video: "https://youtu.be/tja-34-FpnY", discord: "https://discord.gg/SarmtBh3Gu" }
   },
@@ -651,129 +645,127 @@ This project proves that a passionate side project can become something signific
     title: { fr: "Referendum, application de vote sécurisée", en: "Referendum, a secure voting app" },
     category: "university",
     technologies: ["Java", "JavaFX", "ElGamal", "Zero Knowledge Proof", "DeepSeek API", "Cryptographie", "Sockets", "Scrum", "Git"],
-    duration: { fr: "Toute la deuxième année de BUT 2 (Projet de fin d'année)", en: "Full second year of CS degree (Year-end project)" },
-    team: { fr: "Groupe de 4 étudiants", en: "Group of 4 students" },
-    role: { fr: "Product Owner & Développeur Cryptographie : chiffrement ElGamal, Preuve Zero Knowledge, ChatBot IA et sécurisation des sockets", en: "Product Owner & Cryptography Developer: ElGamal encryption, Zero Knowledge Proof, AI ChatBot and socket security" },
+    duration: { fr: "Deuxième année de BUT, sur toute l'année universitaire", en: "Second year of BUT, over the full academic year" },
+    team: { fr: "Équipe de 4 étudiants", en: "Team of 4 students" },
+    role: { fr: "Product Owner et développeur cryptographie : chiffrement ElGamal, preuve Zero Knowledge, chatbot et sécurisation des sockets", en: "Product Owner and cryptography developer: ElGamal encryption, zero-knowledge proof, chatbot and socket security" },
     shortDescription: {
-      fr: "Application de vote sécurisée en Java/JavaFX avec chiffrement ElGamal, preuve Zero Knowledge non-interactive, chatbot IA (DeepSeek) et méthodologie Scrum sur toute une année universitaire.",
-      en: "Secure voting application in Java/JavaFX with ElGamal encryption, non-interactive Zero Knowledge Proof, AI chatbot (DeepSeek) and Scrum methodology over a full academic year."
+      fr: "Application de vote sécurisée en Java et JavaFX, développée à quatre sur une année universitaire en Scrum. J'étais Product Owner et responsable de la cryptographie : chiffrement ElGamal et preuve Zero Knowledge non interactive.",
+      en: "A secure voting application in Java and JavaFX, built by a team of four over a full academic year in Scrum. I was Product Owner and in charge of the cryptography: ElGamal encryption and a non-interactive zero-knowledge proof."
     },
     context: {
-      fr: `Referendum est le projet de fin de deuxième année de BUT Informatique. C'est le projet le plus structurant de la formation : il a duré toute l'année universitaire et a été mené avec la méthodologie Scrum dans des conditions proches du monde professionnel.
+      fr: `Referendum est le projet de fin de deuxième année du BUT Informatique. Il a duré toute l'année universitaire et s'est déroulé en Scrum, dans des conditions proches de celles d'une entreprise.
 
-Le cas d'étude était une entreprise fictive qui avait besoin de faire voter ses employés de manière sécurisée. Notre mission était de concevoir et développer une application de vote complète, garantissant la confidentialité des votes, l'intégrité des résultats et l'authentification des votants.
+Le sujet : une entreprise fictive veut faire voter ses employés de façon sécurisée. Nous devions concevoir une application de vote qui garantit la confidentialité des votes, l'intégrité des résultats et l'authentification des votants.
 
-Nous étions une équipe de 4 étudiants, et j'occupais le rôle de Product Owner. À ce titre, je gérais le backlog produit, priorisais les fonctionnalités, et faisais le lien entre les "besoins client" (définis par les enseignants) et l'équipe de développement. Mais j'avais aussi un rôle technique majeur : j'étais responsable de toute la partie cryptographie (chiffrement ElGamal, imposé par les professeurs), de la sécurisation des communications par sockets, de l'implémentation de la Preuve Zero Knowledge non-interactive pour la vérification des votes, et de la création d'un chatbot FAQ alimenté par l'API DeepSeek.
+Nous étions quatre, et j'étais Product Owner : je tenais le backlog, je priorisais les fonctionnalités et je faisais le lien entre les besoins du client, joué par les enseignants, et l'équipe. J'avais aussi la partie cryptographie : le chiffrement ElGamal, imposé par le sujet, la sécurisation des échanges par sockets, la preuve Zero Knowledge non interactive qui vérifie les votes, et un chatbot de FAQ qui s'appuie sur l'API DeepSeek.
 
-Le projet était découpé en plusieurs phases : des sprints avec des rendus réguliers, puis un nouveau contrat où nous devions améliorer davantage l'application, suivis de nouveaux sprints. Chaque phase comprenait des présentations orales devant un "client" (les enseignants), la rédaction de dossiers techniques, et des soutenances.`,
-      en: `Referendum is the final project of the second year of the Computer Science degree. It's the most structuring project of the program: it lasted the entire academic year and was conducted using Scrum methodology under conditions close to the professional world.
+Le projet avançait par phases : des sprints avec des rendus réguliers, puis un nouveau contrat qui demandait d'améliorer l'application, puis de nouveaux sprints. Chaque phase comprenait une présentation orale devant le client, un dossier technique et une soutenance.`,
+      en: `Referendum is the end-of-second-year project of the BUT in Computer Science. It lasted the whole academic year and was run in Scrum, in conditions close to those of a company.
 
-The case study was a fictional company that needed its employees to vote securely. Our mission was to design and develop a complete voting application, guaranteeing vote confidentiality, result integrity, and voter authentication.
+The brief: a fictional company wants its employees to vote securely. We had to design a voting application that guarantees the confidentiality of votes, the integrity of results and the authentication of voters.
 
-We were a team of 4 students, and I held the role of Product Owner. In this capacity, I managed the product backlog, prioritized features, and served as the link between "client needs" (defined by instructors) and the development team. But I also had a major technical role: I was responsible for the entire cryptography part (ElGamal encryption, imposed by the professors), securing socket communications, implementing the non-interactive Zero Knowledge Proof for vote verification, and creating a FAQ chatbot powered by the DeepSeek API.
+There were four of us, and I was Product Owner: I kept the backlog, prioritized features and was the link between the needs of the client, played by our teachers, and the team. I was also in charge of the cryptography: ElGamal encryption, required by the brief, securing socket communication, the non-interactive zero-knowledge proof that checks votes, and an FAQ chatbot built on the DeepSeek API.
 
-The project was divided into several phases: sprints with regular deliveries, then a new contract where we had to further improve the application, followed by more sprints. Each phase included oral presentations to a "client" (the instructors), technical documentation writing, and defenses.`
+The project moved in phases: sprints with regular deliveries, then a new contract asking us to improve the application, then more sprints. Each phase included an oral presentation to the client, a technical report and a defense.`
     },
     objectives: {
-      fr: `1. **Application de vote sécurisée** : Développer une application Java/JavaFX permettant de créer des scrutins, de voter de manière confidentielle, et de consulter les résultats de manière sécurisée.
+      fr: `1. **Application de vote** : créer des scrutins, voter de façon confidentielle et consulter les résultats, en Java avec une interface JavaFX.
 
-2. **Chiffrement ElGamal** : Implémenter le protocole cryptographique ElGamal (imposé par les professeurs) pour garantir la confidentialité des votes. C'était ma partie principale dans l'équipe.
+2. **Chiffrement ElGamal** : garantir la confidentialité des votes avec le protocole imposé par le sujet. C'était ma partie principale.
 
-3. **Preuve Zero Knowledge non-interactive** : Garantir que chaque vote est bien 0 ou 1 (oui ou non) sans révéler la valeur du vote. Le projet intègre les fonctions createZKProof (création de la preuve côté client) et verifyZKProof (vérification côté serveur) pour valider les votes en un seul échange.
+3. **Preuve Zero Knowledge non interactive** : garantir que chaque vote vaut 0 ou 1 (oui ou non) sans révéler lequel. createZKProof crée la preuve côté client, verifyZKProof la vérifie côté serveur, en un seul échange.
 
-4. **ChatBot FAQ (DeepSeek API)** : Créer un chatbot intégré à l'application pour répondre aux questions fréquentes des utilisateurs. L'API DeepSeek est utilisée uniquement pour comprendre la question de l'utilisateur et fournir la réponse la plus pertinente parmi des réponses pré-préparées relatives à l'application.
+4. **Chatbot de FAQ** : répondre aux questions fréquentes des utilisateurs. L'API DeepSeek sert uniquement à comprendre la question, pour renvoyer la réponse la plus proche parmi des réponses préparées à l'avance.
 
-5. **Sécurisation des sockets** : Mettre en place une communication client-serveur sécurisée via des sockets chiffrés, pour empêcher l'interception ou la manipulation des votes en transit.
+5. **Sockets sécurisés** : chiffrer les échanges entre le client et le serveur pour empêcher l'interception ou la modification des votes.
 
-6. **Méthodologie Scrum** : Travailler en sprints avec des rendus réguliers, des rétrospectives, un backlog priorisé, et des présentations client orales.
+6. **Scrum** : sprints, rendus réguliers, rétrospectives, backlog priorisé et présentations au client.
 
-7. **Documentation technique** : Rédiger des dossiers techniques complets à chaque phase du projet (architecture, choix techniques, diagrammes UML, tests).`,
-      en: `1. **Secure voting application**: Develop a Java/JavaFX application allowing creation of polls, confidential voting, and secure result viewing.
+7. **Documentation** : un dossier technique à chaque phase (architecture, choix techniques, diagrammes UML, tests).`,
+      en: `1. **Voting application**: create ballots, vote confidentially and view results, in Java with a JavaFX interface.
 
-2. **ElGamal encryption**: Implement the ElGamal cryptographic protocol (imposed by professors) to guarantee vote confidentiality. This was my main part within the team.
+2. **ElGamal encryption**: guarantee the confidentiality of votes with the protocol required by the brief. This was my main part.
 
-3. **Non-interactive Zero Knowledge Proof**: Ensure each vote is strictly 0 or 1 (yes or no) without revealing the actual vote value. The project integrates createZKProof (client-side proof creation) and verifyZKProof (server-side verification) functions to validate votes in a single exchange.
+3. **Non-interactive zero-knowledge proof**: guarantee that each vote is 0 or 1 (yes or no) without revealing which. createZKProof builds the proof on the client, verifyZKProof checks it on the server, in a single exchange.
 
-4. **FAQ ChatBot (DeepSeek API)**: Create a chatbot integrated into the application to answer frequently asked questions. The DeepSeek API is used solely to understand the user's question and provide the most relevant answer from pre-prepared responses related to the application.
+4. **FAQ chatbot**: answer users' frequent questions. The DeepSeek API is only used to understand the question, so the application can return the closest answer among ones written in advance.
 
-5. **Socket security**: Set up secure client-server communication via encrypted sockets, to prevent interception or manipulation of votes in transit.
+5. **Secure sockets**: encrypt exchanges between client and server to prevent votes from being intercepted or altered.
 
-6. **Scrum methodology**: Work in sprints with regular deliveries, retrospectives, a prioritized backlog, and oral client presentations.
+6. **Scrum**: sprints, regular deliveries, retrospectives, a prioritized backlog and presentations to the client.
 
-7. **Technical documentation**: Write complete technical documents at each project phase (architecture, technical choices, UML diagrams, tests).`
+7. **Documentation**: a technical report at each phase (architecture, technical choices, UML diagrams, tests).`
     },
     approach: {
-      fr: `Le projet a suivi la méthodologie Scrum sur toute l'année. En tant que Product Owner, j'organisais les sprint plannings, maintenais le backlog, et présentais les démos au "client" (les enseignants) à chaque fin de sprint. À la fin de chaque cycle, nous recevions un nouveau contrat avec des exigences supplémentaires, simulant l'évolution des besoins d'un vrai client.
+      fr: `Le projet s'est déroulé en Scrum sur toute l'année. Comme Product Owner, j'organisais les sprint plannings, je tenais le backlog et je présentais la démo au client à la fin de chaque sprint. À la fin de chaque cycle, un nouveau contrat ajoutait des exigences, comme le ferait un vrai client.
 
-Côté technique, l'application est développée en Java avec une interface JavaFX. Mon rôle technique principal était le chiffrement ElGamal, un système de cryptographie asymétrique à clé publique. Le principe : chaque vote est chiffré avec la clé publique du scrutin avant d'être envoyé au serveur. Seul le détenteur de la clé privée peut déchiffrer les votes à la clôture du scrutin. Cela garantit que personne, pas même le serveur, ne peut lire un vote individuel avant la fin du scrutin.
+L'application est écrite en Java avec une interface JavaFX. Ma partie principale était le chiffrement ElGamal, un système de cryptographie asymétrique. Chaque vote est chiffré avec la clé publique du scrutin avant d'être envoyé au serveur, et seul le détenteur de la clé privée peut déchiffrer les votes à la clôture. Personne, pas même le serveur, ne peut lire un vote avant la fin du scrutin.
 
-**Preuve Zero Knowledge non-interactive** : Pour garantir l'intégrité des votes, le projet intègre une preuve Zero Knowledge. L'objectif est de prouver côté serveur que le vote d'un client est bien "oui" ou "non" (0 ou 1), sans révéler lequel. Si un utilisateur tente de voter une valeur invalide (par exemple 10 ou un nombre négatif), le vote est rejeté. La preuve est non-interactive : un seul échange entre le client et le serveur suffit, l'envoi de la preuve avec le message chiffré. Côté client, la fonction createZKProof génère deux preuves (une vraie, une simulée) via des engagements cryptographiques, un haché SHA-256 et de l'arithmétique modulaire. Côté serveur, verifyZKProof recalcule les valeurs et vérifie que la somme des challenges correspond au haché. Si c'est le cas, la preuve est valide, le vote est bien 0 ou 1, sans que le serveur ne sache lequel.
+**Preuve Zero Knowledge non interactive.** Elle prouve au serveur que le vote d'un client vaut bien 0 ou 1, sans révéler lequel. Un vote invalide, par exemple 10 ou un nombre négatif, est rejeté. Un seul échange suffit : la preuve part avec le message chiffré. Côté client, createZKProof génère deux preuves, une vraie et une simulée, à partir d'engagements cryptographiques, d'un haché SHA-256 et d'arithmétique modulaire. Côté serveur, verifyZKProof recalcule les valeurs et vérifie que la somme des challenges correspond au haché.
 
-**ChatBot FAQ (DeepSeek API)** : J'ai implémenté un chatbot FAQ intégré à l'application dont le but est de répondre aux questions fréquentes des utilisateurs. J'ai intégré l'API DeepSeek qui sert uniquement à comprendre la question de l'utilisateur pour lui fournir la réponse la plus pertinente parmi des réponses spécifiques pré-préparées, limitées aux questions relatives à l'application.
+**Chatbot de FAQ.** J'ai intégré l'API DeepSeek pour comprendre la question de l'utilisateur. La réponse, elle, vient toujours d'une liste préparée à l'avance et limitée à l'application.
 
-J'ai également sécurisé les communications par sockets entre le client et le serveur. Les échanges sont chiffrés pour empêcher toute interception (man-in-the-middle) ou manipulation des données en transit.
+**Sockets.** Les échanges entre le client et le serveur sont chiffrés, pour empêcher une interception de type man-in-the-middle ou une modification des données en transit.
 
-Le reste de l'équipe travaillait sur l'interface JavaFX, la gestion des utilisateurs, la base de données et la logique métier des scrutins. Nous faisions des revues de code régulières et utilisions Git pour la gestion du code source.`,
-      en: `The project followed Scrum methodology throughout the year. As Product Owner, I organized sprint plannings, maintained the backlog, and presented demos to the "client" (instructors) at each sprint end. At the end of each cycle, we received a new contract with additional requirements, simulating the evolving needs of a real client.
+Le reste de l'équipe travaillait sur l'interface JavaFX, la gestion des utilisateurs, la base de données et la logique des scrutins. Nous relisions régulièrement le code des autres et tout passait par Git.`,
+      en: `The project ran in Scrum for the whole year. As Product Owner, I organized sprint plannings, kept the backlog and presented the demo to the client at the end of each sprint. At the end of each cycle, a new contract added requirements, as a real client would.
 
-On the technical side, the application is developed in Java with a JavaFX interface. My main technical role was ElGamal encryption, an asymmetric public-key cryptography system. The principle: each vote is encrypted with the poll's public key before being sent to the server. Only the private key holder can decrypt votes when the poll closes. This ensures that nobody, not even the server, can read an individual vote before the poll ends.
+The application is written in Java with a JavaFX interface. My main part was ElGamal encryption, an asymmetric cryptosystem. Each vote is encrypted with the ballot's public key before being sent to the server, and only the holder of the private key can decrypt the votes when the ballot closes. Nobody, not even the server, can read a vote before the end.
 
-**Non-interactive Zero Knowledge Proof**: To guarantee vote integrity, the project integrates a Zero Knowledge Proof. The goal is to prove server-side that a client's vote is indeed "yes" or "no" (0 or 1), without revealing which one. If a user attempts to vote an invalid value (e.g., 10 or a negative number), the vote is rejected. The proof is non-interactive: a single exchange between client and server suffices, sending the proof along with the encrypted message. Client-side, the createZKProof function generates two proofs (one real, one simulated) via cryptographic commitments, a SHA-256 hash, and modular arithmetic. Server-side, verifyZKProof recalculates values and verifies that the sum of challenges matches the hash. If so, the proof is valid, the vote is indeed 0 or 1, without the server knowing which.
+**Non-interactive zero-knowledge proof.** It proves to the server that a client's vote is indeed 0 or 1, without revealing which. An invalid vote, for example 10 or a negative number, is rejected. A single exchange is enough: the proof travels with the encrypted message. On the client, createZKProof generates two proofs, one real and one simulated, from cryptographic commitments, a SHA-256 hash and modular arithmetic. On the server, verifyZKProof recomputes the values and checks that the sum of the challenges matches the hash.
 
-**FAQ ChatBot (DeepSeek API)**: I implemented a FAQ chatbot integrated into the application to answer users' frequently asked questions. I integrated the DeepSeek API which serves solely to understand the user's question and provide the most relevant answer from specific pre-prepared responses, limited to questions related to the application.
+**FAQ chatbot.** I integrated the DeepSeek API to understand the user's question. The answer itself always comes from a list written in advance and limited to the application.
 
-I also secured socket communications between client and server. Exchanges are encrypted to prevent any interception (man-in-the-middle) or data manipulation in transit.
+**Sockets.** Exchanges between client and server are encrypted, to prevent man-in-the-middle interception or changes to data in transit.
 
-The rest of the team worked on the JavaFX interface, user management, database, and poll business logic. We conducted regular code reviews and used Git for source code management.`
+The rest of the team worked on the JavaFX interface, user management, the database and the ballot logic. We reviewed each other's code regularly and everything went through Git.`
     },
     architecture: {
-      fr: `Application Java client-serveur avec interface JavaFX :
-- **Client JavaFX** : Interface graphique pour la création de scrutins, le vote et la consultation des résultats.
-- **Serveur Java** : Gestion des scrutins, stockage des votes chiffrés, déchiffrement à la clôture.
-- **Cryptographie ElGamal** : Génération de clés (publique/privée), chiffrement des votes côté client, déchiffrement côté serveur à la clôture du scrutin.
-- **Preuve Zero Knowledge** : Fonctions createZKProof (client) et verifyZKProof (serveur) dans la librairie cryptographique pour valider que chaque vote est strictement 0 ou 1 sans révéler sa valeur.
-- **ChatBot FAQ** : Chatbot intégré utilisant l'API DeepSeek pour comprendre les questions utilisateurs et fournir des réponses pré-préparées relatives à l'application.
-- **Sockets sécurisés** : Communication client-serveur chiffrée pour protéger les échanges de données.
-- **Méthodologie** : Scrum avec sprints, backlog, rétrospectives, présentations client, dossiers techniques.`,
-      en: `Java client-server application with JavaFX interface:
-- **JavaFX Client**: GUI for poll creation, voting, and result viewing.
-- **Java Server**: Poll management, encrypted vote storage, decryption at poll closure.
-- **ElGamal Cryptography**: Key generation (public/private), client-side vote encryption, server-side decryption at poll closure.
-- **Zero Knowledge Proof**: createZKProof (client) and verifyZKProof (server) functions in the cryptographic library to validate that each vote is strictly 0 or 1 without revealing its value.
-- **FAQ ChatBot**: Integrated chatbot using the DeepSeek API to understand user questions and provide pre-prepared answers related to the application.
-- **Secure Sockets**: Encrypted client-server communication to protect data exchanges.
-- **Methodology**: Scrum with sprints, backlog, retrospectives, client presentations, technical documents.`
+      fr: `Application Java client-serveur :
+- **Client JavaFX** : création de scrutins, vote et consultation des résultats.
+- **Serveur Java** : gestion des scrutins, stockage des votes chiffrés, déchiffrement à la clôture.
+- **ElGamal** : génération des clés, chiffrement côté client, déchiffrement côté serveur à la clôture.
+- **Preuve Zero Knowledge** : createZKProof côté client et verifyZKProof côté serveur, dans la bibliothèque cryptographique.
+- **Chatbot de FAQ** : compréhension de la question par l'API DeepSeek, réponses préparées à l'avance.
+- **Sockets sécurisés** : échanges chiffrés entre le client et le serveur.`,
+      en: `Client-server Java application:
+- **JavaFX client**: creating ballots, voting and viewing results.
+- **Java server**: ballot management, storage of encrypted votes, decryption at closing.
+- **ElGamal**: key generation, encryption on the client, decryption on the server at closing.
+- **Zero-knowledge proof**: createZKProof on the client and verifyZKProof on the server, in the cryptographic library.
+- **FAQ chatbot**: question understood by the DeepSeek API, answers written in advance.
+- **Secure sockets**: encrypted exchanges between client and server.`
     },
     skills: [
       {
         name: { fr: "Cryptographie ElGamal", en: "ElGamal cryptography" },
-        description: { fr: "Implémentation complète du protocole ElGamal : génération de clés asymétriques, chiffrement et déchiffrement des votes. Compréhension des fondements mathématiques (logarithme discret, arithmétique modulaire) et des enjeux de sécurité.", en: "Complete implementation of the ElGamal protocol: asymmetric key generation, vote encryption and decryption. Understanding of mathematical foundations (discrete logarithm, modular arithmetic) and security challenges." }
+        description: { fr: "Génération de clés asymétriques, chiffrement et déchiffrement des votes, avec les bases mathématiques nécessaires (logarithme discret, arithmétique modulaire).", en: "Asymmetric key generation, encryption and decryption of votes, with the underlying mathematics (discrete logarithm, modular arithmetic)." }
       },
       {
-        name: { fr: "Preuve Zero Knowledge non-interactive", en: "Non-interactive Zero Knowledge Proof" },
-        description: { fr: "Vérification cryptographique que chaque vote est strictement 0 ou 1 sans révéler sa valeur. Preuve non-interactive en un seul échange via engagements cryptographiques, haché SHA-256 et arithmétique modulaire (fonctions createZKProof et verifyZKProof).", en: "Cryptographic verification that each vote is strictly 0 or 1 without revealing its value. Non-interactive proof in a single exchange via cryptographic commitments, SHA-256 hash, and modular arithmetic (createZKProof and verifyZKProof functions)." }
+        name: { fr: "Preuve Zero Knowledge non interactive", en: "Non-interactive zero-knowledge proof" },
+        description: { fr: "Vérifier qu'un vote vaut 0 ou 1 sans révéler sa valeur, en un seul échange : engagements cryptographiques, haché SHA-256 et arithmétique modulaire.", en: "Checking that a vote is 0 or 1 without revealing its value, in a single exchange: cryptographic commitments, SHA-256 hash and modular arithmetic." }
       },
       {
-        name: { fr: "ChatBot IA (DeepSeek API)", en: "AI ChatBot (DeepSeek API)" },
-        description: { fr: "Implémentation d'un chatbot FAQ intégré à l'application utilisant l'API DeepSeek pour comprendre les questions des utilisateurs et fournir des réponses pertinentes pré-préparées, limitées au contexte de l'application.", en: "Implementation of a FAQ chatbot integrated into the application using the DeepSeek API to understand user questions and provide relevant pre-prepared answers, limited to the application context." }
+        name: { fr: "Chatbot avec l'API DeepSeek", en: "Chatbot with the DeepSeek API" },
+        description: { fr: "Chatbot de FAQ qui utilise l'API pour comprendre la question et répond à partir de réponses préparées, limitées à l'application.", en: "An FAQ chatbot that uses the API to understand the question and answers from prepared responses limited to the application." }
       },
       {
-        name: { fr: "Sécurisation des sockets", en: "Socket Security" },
-        description: { fr: "Mise en place de communications client-serveur chiffrées via sockets Java, protection contre l'interception et la manipulation des données en transit.", en: "Implementation of encrypted client-server communications via Java sockets, protection against interception and data manipulation in transit." }
+        name: { fr: "Sécurisation des sockets", en: "Socket security" },
+        description: { fr: "Échanges client-serveur chiffrés via des sockets Java, contre l'interception et la modification des données en transit.", en: "Encrypted client-server exchanges over Java sockets, against interception and tampering in transit." }
       },
       {
         name: { fr: "Product Owner (Scrum)", en: "Product Owner (Scrum)" },
-        description: { fr: "Gestion du backlog produit, priorisation des fonctionnalités, organisation des sprints, présentations client orales, rédaction de dossiers techniques. Interface entre les besoins client et l'équipe de développement.", en: "Product backlog management, feature prioritization, sprint organization, oral client presentations, technical document writing. Interface between client needs and the development team." }
+        description: { fr: "Backlog, priorisation, organisation des sprints, présentations au client et dossiers techniques. Le lien entre le besoin et l'équipe.", en: "Backlog, prioritization, sprint organization, client presentations and technical reports. The link between the need and the team." }
       },
       {
-        name: { fr: "Java avancé & JavaFX", en: "Advanced Java & JavaFX" },
-        description: { fr: "Développement d'une application desktop Java complète avec interface graphique JavaFX, gestion d'événements, et architecture client-serveur.", en: "Development of a complete Java desktop application with JavaFX GUI, event handling, and client-server architecture." }
-      }
+        name: { fr: "Java et JavaFX", en: "Java and JavaFX" },
+        description: { fr: "Application de bureau en Java avec interface JavaFX, gestion d'événements et architecture client-serveur.", en: "A desktop application in Java with a JavaFX interface, event handling and a client-server architecture." }
+      },
     ],
     codeHighlights: [
       {
-        title: { fr: "Chiffrement ElGamal avec grands nombres", en: "ElGamal encryption with big numbers" },
-        code: `// Referendum - Chiffrement ElGamal en Java
+        title: { fr: "Chiffrement ElGamal avec de grands nombres", en: "ElGamal encryption with large numbers" },
+        code: `// Referendum : Chiffrement ElGamal en Java
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
@@ -816,13 +808,13 @@ public class ElGamalEncryption {
 }`,
         language: "java",
         explanation: {
-          fr: "Implémentation du chiffrement asymétrique ElGamal en Java avec BigInteger pour les grands nombres. La génération de clés utilise un nombre premier p de 512+ bits, un générateur g, une clé privée x aléatoire et une clé publique h = g^x mod p. Le chiffrement génère un k éphémère, calcule c1 = g^k et c2 = m * h^k, garantissant la sécurité par la difficulté du logarithme discret.",
-          en: "ElGamal asymmetric encryption implementation in Java with BigInteger for large numbers. Key generation uses a 512+ bit prime p, generator g, random private key x and public key h = g^x mod p. Encryption generates ephemeral k, computes c1 = g^k and c2 = m * h^k, ensuring security through discrete logarithm hardness."
+          fr: "Chiffrement ElGamal en Java avec BigInteger. La génération de clés utilise un nombre premier p d'au moins 512 bits, un générateur g, une clé privée x aléatoire et une clé publique h = g^x mod p. Le chiffrement tire un k éphémère puis calcule c1 = g^k et c2 = m * h^k. La sécurité repose sur la difficulté du logarithme discret.",
+          en: "ElGamal encryption in Java with BigInteger. Key generation uses a prime p of at least 512 bits, a generator g, a random private key x and a public key h = g^x mod p. Encryption draws an ephemeral k, then computes c1 = g^k and c2 = m * h^k. Security rests on the hardness of the discrete logarithm."
         }
       },
       {
-        title: { fr: "Interface JavaFX avec gestion votes chiffrés", en: "JavaFX interface with encrypted votes management" },
-        code: `// Referendum - Controlleur JavaFX pour vote chiffre
+        title: { fr: "Contrôleur JavaFX du vote chiffré", en: "JavaFX controller for encrypted voting" },
+        code: `// Referendum : Controlleur JavaFX pour vote chiffre
 public class VoteController {
     @FXML private ListView<String> candidateListView;
     @FXML private TextArea encryptedVoteArea;
@@ -859,54 +851,45 @@ public class VoteController {
 }`,
         language: "java",
         explanation: {
-          fr: "Ce contrôleur JavaFX gère l'interface de vote chiffré. L'utilisateur sélectionne un candidat, le vote est converti en BigInteger puis chiffré avec ElGamal. Le texte chiffré (c1, c2) est affiché en hexadécimal et stocké en base de données. Seul l'administrateur avec la clé privée peut déchiffrer les résultats.",
-          en: "This JavaFX controller manages the encrypted voting interface. User selects a candidate, vote is converted to BigInteger then encrypted with ElGamal. Ciphertext (c1, c2) is displayed in hexadecimal and stored in database. Only the administrator with the private key can decrypt results."
+          fr: "Ce contrôleur gère l'écran de vote. Le choix de l'utilisateur est converti en BigInteger puis chiffré avec ElGamal. Le texte chiffré (c1, c2) est affiché en hexadécimal et enregistré en base. Seul l'administrateur, qui détient la clé privée, peut déchiffrer les résultats.",
+          en: "This controller handles the voting screen. The user's choice is converted to a BigInteger, then encrypted with ElGamal. The ciphertext (c1, c2) is displayed in hexadecimal and stored in the database. Only the administrator, who holds the private key, can decrypt the results."
         }
       }
     ],
     results: {
-      fr: `Le projet Referendum a été mené avec succès sur toute l'année universitaire :
-
-- **Application de vote fonctionnelle et sécurisée** : Création de scrutins, vote confidentiel avec chiffrement ElGamal, consultation des résultats après clôture, le tout via une interface JavaFX intuitive.
-- **Cryptographie ElGamal opérationnelle** : Le système de chiffrement asymétrique garantit que les votes sont illisibles en transit et en stockage, et ne sont déchiffrés qu'à la clôture du scrutin.
-- **Preuve Zero Knowledge fonctionnelle** : Vérification cryptographique que chaque vote est bien 0 ou 1 en un seul échange, sans compromettre la confidentialité du vote. Les votes invalides sont automatiquement rejetés par le serveur.
-- **ChatBot FAQ opérationnel** : Chatbot intégré utilisant l'API DeepSeek pour répondre aux questions fréquentes des utilisateurs de manière pertinente et contextuelle.
-- **Communications sécurisées** : Les échanges client-serveur via sockets sont chiffrés, empêchant toute interception.
-- **Méthodologie Scrum respectée** : Sprints réguliers, rendus, amélioration continue via les nouveaux contrats, présentations orales devant le client, et dossiers techniques complets à chaque phase.
-- **Travail d'équipe structuré** : Collaboration efficace à 4, avec des rôles clairs et une bonne répartition du travail.`,
-      en: `The Referendum project was successfully conducted throughout the academic year:
-
-- **Functional and secure voting application**: Poll creation, confidential voting with ElGamal encryption, result viewing after closure, all through an intuitive JavaFX interface.
-- **Operational ElGamal cryptography**: The asymmetric encryption system ensures votes are unreadable in transit and storage, and are only decrypted at poll closure.
-- **Functional Zero Knowledge Proof**: Cryptographic verification that each vote is indeed 0 or 1 in a single exchange, without compromising vote confidentiality. Invalid votes are automatically rejected by the server.
-- **Operational FAQ ChatBot**: Integrated chatbot using the DeepSeek API to answer users' frequently asked questions in a relevant and contextual manner.
-- **Secure communications**: Client-server exchanges via sockets are encrypted, preventing any interception.
-- **Scrum methodology respected**: Regular sprints, deliveries, continuous improvement through new contracts, oral presentations to the client, and complete technical documents at each phase.
-- **Structured teamwork**: Effective collaboration of 4, with clear roles and good work distribution.`
+      fr: `- **Une application de vote qui fonctionne de bout en bout** : création de scrutins, vote confidentiel, résultats disponibles après la clôture.
+- **Des votes illisibles en transit comme en base**, déchiffrés uniquement à la clôture du scrutin.
+- **Une preuve Zero Knowledge en un seul échange** : le serveur rejette tout vote qui ne vaut pas 0 ou 1, sans jamais connaître sa valeur.
+- **Un chatbot de FAQ** intégré à l'application.
+- **Des échanges client-serveur chiffrés.**
+- **Un projet tenu en Scrum toute l'année** : sprints, rendus, nouveaux contrats, présentations orales et dossiers techniques à chaque phase.`,
+      en: `- **A voting application that works end to end**: creating ballots, confidential voting, results available after closing.
+- **Votes unreadable in transit and in the database**, decrypted only when the ballot closes.
+- **A zero-knowledge proof in a single exchange**: the server rejects any vote that is not 0 or 1, without ever knowing its value.
+- **An FAQ chatbot** built into the application.
+- **Encrypted client-server exchanges.**
+- **A project run in Scrum all year**: sprints, deliveries, new contracts, oral presentations and technical reports at each phase.`
     },
     reflection: {
-      fr: `Le projet Referendum est celui qui m'a le plus apporté sur le plan professionnel pendant ma formation :
+      fr: `C'est le projet de ma formation qui m'a le plus préparé au travail en entreprise :
 
-1. **Le rôle de Product Owner** m'a appris à voir un projet au-delà du code. Gérer un backlog, prioriser les fonctionnalités en fonction de la valeur métier, et présenter un produit à un client, ce sont des compétences que je n'aurais pas développées en restant uniquement développeur.
+1. **Product Owner.** Tenir un backlog, prioriser selon la valeur pour le client et présenter un produit : je n'aurais pas appris cela en restant seulement développeur.
+2. **Cryptographie.** Je ne connaissais pas du tout le domaine. Comprendre les mathématiques (logarithme discret, arithmétique modulaire, SHA-256), implémenter un chiffrement asymétrique et concevoir une preuve non interactive m'a donné le goût de la sécurité et de la rigueur qu'elle demande.
+3. **API d'IA.** J'ai appris à limiter le modèle à une tâche précise, comprendre la question, et à garder la main sur les réponses.
+4. **La durée.** Sur une année, il faut entretenir la motivation, gérer la dette technique et s'adapter aux changements de périmètre à chaque contrat. Rien à voir avec un projet de quelques semaines.
+5. **L'oral et l'écrit.** Les présentations et les dossiers m'ont appris à expliquer simplement des notions compliquées.`,
+      en: `Of all my school projects, this is the one that prepared me best for working in a company:
 
-2. **La cryptographie ElGamal et la Preuve Zero Knowledge** m'ont confronté à un domaine que je ne connaissais pas du tout. Comprendre les fondements mathématiques (logarithme discret, arithmétique modulaire, SHA-256), implémenter un protocole de chiffrement asymétrique, et concevoir une preuve non-interactive garantissant l'intégrité des votes sans compromettre leur confidentialité m'a donné une vraie sensibilité à la cybersécurité et à la rigueur qu'elle exige.
-
-3. **Le chatbot IA avec DeepSeek** m'a permis d'explorer l'intégration d'API d'intelligence artificielle dans une application concrète, en limitant l'IA à la compréhension de la question pour fournir des réponses pré-préparées pertinentes.
-
-4. **La durée du projet** (toute l'année) m'a appris la gestion sur le long terme : maintenir la motivation, gérer la dette technique, et s'adapter aux changements de périmètre à chaque nouveau contrat. C'est très différent d'un projet de quelques semaines.
-
-5. **Les présentations orales et dossiers techniques** m'ont forcé à structurer ma pensée et à expliquer des concepts complexes de manière accessible. C'est une compétence essentielle que le code seul ne développe pas.`,
-      en: `The Referendum project taught me the most on a professional level during my studies:
-
-1. **The Product Owner role** taught me to see a project beyond the code. Managing a backlog, prioritizing features based on business value, and presenting a product to a client, these are skills I wouldn't have developed by staying purely a developer.
-
-2. **ElGamal cryptography and Zero Knowledge Proof** confronted me with a domain I knew nothing about. Understanding the mathematical foundations (discrete logarithm, modular arithmetic, SHA-256), implementing an asymmetric encryption protocol, and designing a non-interactive proof guaranteeing vote integrity without compromising confidentiality gave me a genuine sensitivity to cybersecurity and the rigor it demands.
-
-3. **The AI chatbot with DeepSeek** allowed me to explore integrating artificial intelligence APIs into a concrete application, limiting the AI to question understanding to provide relevant pre-prepared answers.
-
-4. **The project duration** (the full year) taught me long-term management: maintaining motivation, managing technical debt, and adapting to scope changes with each new contract. It's very different from a project lasting just a few weeks.
-
-5. **Oral presentations and technical documents** forced me to structure my thinking and explain complex concepts in an accessible way. It's an essential skill that code alone doesn't develop.`
+1. **Product Owner.** Keeping a backlog, prioritizing by value for the client and presenting a product: I would not have learned that by staying a developer only.
+2. **Cryptography.** I knew nothing about the field. Understanding the mathematics (discrete logarithm, modular arithmetic, SHA-256), implementing asymmetric encryption and designing a non-interactive proof gave me a taste for security and the rigor it requires.
+3. **AI APIs.** I learned to limit the model to one precise task, understanding the question, and to keep control of the answers.
+4. **Duration.** Over a year you have to keep motivation up, manage technical debt and adapt to scope changes with each contract. Nothing like a project of a few weeks.
+5. **Speaking and writing.** The presentations and reports taught me to explain complicated ideas simply.`
+    },
+    cover: {
+      word: { fr: "Referendum", en: "Referendum" },
+      metric: { fr: "ElGamal + ZKP", en: "ElGamal + ZKP" },
+      caption: { fr: "votes chiffrés et preuve Zero Knowledge", en: "encrypted votes and a zero-knowledge proof" },
     },
     thumbnail: "/images/referendum1.webp",
     images: ["/images/referendum1.webp", "/images/referendum2.webp", "/images/referendum3.webp", "/images/referendum4.webp", "/images/referendum5.webp"],
@@ -922,81 +905,81 @@ public class VoteController {
     team: { fr: "Équipe Golem Gang, 5 étudiants", en: "Golem Gang team, 5 students" },
     role: { fr: "Développeur : game design et développement Unity", en: "Developer: game design and Unity development" },
     shortDescription: {
-      fr: "Jeu vidéo développé en 48h sur Unity lors de la Code Game Jam 2026. Thème : \"Fête des Clics\". Scroll Party est un jeu de sensibilisation à l'addiction aux réseaux sociaux où le joueur doit résister au scroll pendant une soirée.",
-      en: "Video game developed in 48h on Unity during the Code Game Jam 2026. Theme: \"Fête des Clics\" (Click Party). Scroll Party is an awareness game about social media addiction where the player must resist scrolling during a party."
+      fr: "Jeu Unity réalisé en 48 heures à cinq pour la Code Game Jam 2026, sur le thème « Fête des Clics ». Le joueur est en soirée, téléphone en main, et gagne en résistant à l'envie de scroller.",
+      en: "A Unity game made in 48 hours by a team of five for Code Game Jam 2026, on the theme \"Fête des Clics\" (Click Party). You are at a party, phone in hand, and you win by resisting the urge to scroll."
     },
     context: {
-      fr: `La Code Game Jam est une compétition nationale de développement de jeux vidéo. L'édition 2026 s'est déroulée du 22 au 24 janvier 2026 (48h non-stop). Le sujet a été révélé en direct sur Twitch et le brainstorming d'équipe s'est fait sur Discord.
+      fr: `La Code Game Jam est une compétition nationale de création de jeux vidéo. L'édition 2026 a duré 48 heures, du 22 au 24 janvier. Le sujet a été révélé en direct sur Twitch et notre équipe a fait son brainstorming sur Discord.
 
-Le thème était "FÊTE DES CLICS". Notre équipe Golem Gang (5 membres) a créé **Scroll Party**, un jeu développé sur Unity qui joue sur le double sens du thème : la fête (une soirée) et les clics (le scroll sur un téléphone, façon TikTok).
+Le thème était « Fête des Clics ». Avec Golem Gang, notre équipe de cinq, nous avons créé **Scroll Party**, un jeu Unity qui joue sur les deux sens du thème : la fête, une soirée, et les clics, le scroll sur un téléphone façon TikTok.
 
-Le concept : le joueur est à une soirée et scroll sur son téléphone comme sur TikTok. Des PNJ viennent régulièrement lui parler. Le joueur a le choix : poser son téléphone pour répondre (augmenter sa jauge de sociabilisation) ou continuer à scroller (augmenter sa jauge de likes). Le jeu explore le thème de l'addiction aux réseaux sociaux de manière ludique et immersive.`,
-      en: `The Code Game Jam is a national video game development competition. The 2026 edition took place from January 22 to 24, 2026 (48h non-stop). The subject was revealed live on Twitch and team brainstorming was done on Discord.
+Le joueur est en soirée et scrolle sur son téléphone. Des personnages viennent régulièrement lui parler. Il peut poser son téléphone pour répondre, ce qui remplit sa jauge de sociabilisation, ou continuer à scroller, ce qui remplit sa jauge de likes. Le jeu parle de l'addiction aux réseaux sociaux.`,
+      en: `Code Game Jam is a national video game creation competition. The 2026 edition lasted 48 hours, from January 22 to 24. The theme was revealed live on Twitch and our team brainstormed on Discord.
 
-The theme was "FÊTE DES CLICS" (Click Party). Our Golem Gang team (5 members) created **Scroll Party**, a game developed on Unity that plays on the double meaning of the theme: the party (a social event) and the clicks (scrolling on a phone, TikTok-style).
+The theme was "Fête des Clics" (Click Party). With Golem Gang, our team of five, we made **Scroll Party**, a Unity game that plays on both meanings of the theme: the party, an evening out, and the clicks, scrolling on a phone TikTok-style.
 
-The concept: the player is at a party and scrolls on their phone like on TikTok. NPCs regularly come to talk to them. The player has a choice: put down their phone to respond (increase their socialization gauge) or keep scrolling (increase their likes gauge). The game explores the theme of social media addiction in a fun and immersive way.`
+The player is at a party, scrolling on their phone. Characters regularly come up to talk. The player can put the phone down to answer, which fills the socializing gauge, or keep scrolling, which fills the likes gauge. The game is about social media addiction.`
     },
     objectives: {
-      fr: `1. **Développer un jeu complet en 48h** sur Unity autour du thème "Fête des Clics"
-2. **Mécaniques de jeu à double jauge** : jauge de likes (scroll/addiction) vs jauge de sociabilisation (interactions avec les PNJ)
-3. **Sensibilisation à l'addiction** : montrer les effets du scroll compulsif (voix dans la tête, encouragements à continuer) vs le "déclic" de poser son téléphone
-4. **Ambiance sonore immersive** : création de musiques originales pour le jeu, publiées sur SoundCloud`,
-      en: `1. **Develop a complete game in 48h** on Unity around the "Fête des Clics" theme
-2. **Dual gauge game mechanics**: likes gauge (scroll/addiction) vs socialization gauge (NPC interactions)
-3. **Addiction awareness**: show the effects of compulsive scrolling (voices in the head, encouragement to continue) vs the "click moment" of putting down the phone
-4. **Immersive sound design**: creation of original music for the game, published on SoundCloud`
+      fr: `1. **Livrer un jeu jouable en 48 heures** sur Unity, autour du thème « Fête des Clics ».
+2. **Deux jauges opposées** : les likes, quand on scrolle, et la sociabilisation, quand on parle aux personnages.
+3. **Faire ressentir l'addiction** : des voix encouragent à continuer de scroller, jusqu'au « déclic » de poser son téléphone.
+4. **Une ambiance sonore** : des musiques originales, publiées sur SoundCloud.`,
+      en: `1. **Ship a playable game in 48 hours** on Unity, around the theme "Fête des Clics".
+2. **Two opposing gauges**: likes, when you scroll, and socializing, when you talk to the characters.
+3. **Make addiction felt**: voices urge you to keep scrolling, until the "déclic", the moment you put the phone down.
+4. **A sound atmosphere**: original music, published on SoundCloud.`
     },
     approach: {
-      fr: `Le jeu a été développé sur Unity en C#. L'organisation de l'équipe s'est faite via Trello pour répartir les tâches sur les 48h.
+      fr: `Le jeu est développé sur Unity en C#. Nous nous sommes réparti les tâches sur Trello pour les 48 heures.
 
-**Mécaniques de jeu :**
-- Le joueur est à une soirée et tient son téléphone, scrollant un fil façon TikTok avec des contenus qui défilent.
-- Des PNJ viennent régulièrement lui parler. Le joueur peut choisir de poser son téléphone pour répondre ou d'ignorer et continuer à scroller.
-- **Jauge de likes** : si le joueur continue à scroller sans écouter les PNJ, cette jauge augmente. Des voix dans sa tête l'encouragent ("wow c'est trop bien", "continue") pour conforter l'addiction. Si elle atteint 100%, le joueur perd, il est complètement absorbé par son écran.
-- **Jauge de sociabilisation** : si le joueur pose son téléphone pour parler aux PNJ, cette jauge augmente. L'écran commence à trembler, la vision devient floue, simulant le manque et l'addiction. Si elle atteint 100%, le joueur a le **DÉCLIC** (jeu de mots avec "des clics" du thème) : il réalise ce qu'il fait, pose définitivement son téléphone, et profite de sa soirée. Il gagne !
+**Les mécaniques :**
+- Le joueur est en soirée, téléphone en main, et fait défiler un fil façon TikTok.
+- Des personnages viennent lui parler. Il peut poser son téléphone pour répondre, ou les ignorer et continuer.
+- **Jauge de likes** : elle monte quand le joueur scrolle sans écouter. Des voix dans sa tête l'encouragent (« wow c'est trop bien », « continue »). À 100 %, il a perdu : son écran l'a complètement absorbé.
+- **Jauge de sociabilisation** : elle monte quand le joueur pose son téléphone pour parler. L'écran se met à trembler et la vision devient floue, comme un manque. À 100 %, le joueur a le **déclic**, jeu de mots avec les « clics » du thème : il pose son téléphone pour de bon et profite de sa soirée. Il a gagné.
 
-Le jeu utilise ces mécaniques inversées pour créer une expérience de sensibilisation : gagner demande de résister à l'envie de scroller, ce qui reproduit la difficulté réelle de décrocher de son téléphone.`,
-      en: `The game was developed on Unity in C#. Team organization was done via Trello to distribute tasks over the 48h.
+Pour gagner, il faut donc résister à l'envie de scroller, et c'est difficile, comme dans la vraie vie.`,
+      en: `The game is built on Unity in C#. We split the tasks on Trello for the 48 hours.
 
-**Game mechanics:**
-- The player is at a party holding their phone, scrolling a TikTok-style feed with content flowing by.
-- NPCs regularly come to talk to them. The player can choose to put down their phone to respond or ignore them and keep scrolling.
-- **Likes gauge**: if the player keeps scrolling without listening to NPCs, this gauge increases. Voices in their head encourage them ("wow this is amazing", "keep going") to reinforce addiction. If it reaches 100%, the player loses, completely absorbed by their screen.
-- **Socialization gauge**: if the player puts down their phone to talk to NPCs, this gauge increases. The screen starts shaking, vision becomes blurry, simulating withdrawal and addiction. If it reaches 100%, the player has the **DÉCLIC** (wordplay with "des clics"/clicks from the theme): they realize what they're doing, permanently put down their phone, and enjoy their party. They win!
+**The mechanics:**
+- The player is at a party, phone in hand, scrolling a TikTok-style feed.
+- Characters come up to talk. The player can put the phone down to answer, or ignore them and carry on.
+- **Likes gauge**: it rises when the player scrolls without listening. Voices in their head cheer them on ("wow, this is great", "keep going"). At 100%, the game is lost: the screen has swallowed them completely.
+- **Socializing gauge**: it rises when the player puts the phone down to talk. The screen starts shaking and vision blurs, like withdrawal. At 100%, the player has the **déclic**, a French pun on the theme's "clics": they put the phone away for good and enjoy the party. They win.
 
-The game uses these inverted mechanics to create an awareness experience: winning requires resisting the urge to scroll, which reproduces the real difficulty of putting down one's phone.`
+So winning means resisting the urge to scroll, and that is hard, as it is in real life.`
     },
     architecture: {
-      fr: `Jeu Unity développé en 48h :
-- **Moteur** : Unity avec scripts C#
-- **Mécaniques** : Système de double jauge (likes vs sociabilisation), PNJ interactifs, effets visuels d'addiction (tremblement, flou)
-- **Audio** : Musiques originales créées pour le jeu (publiées sur SoundCloud), voix intérieures encourageant le scroll
-- **Organisation** : Trello pour la gestion des tâches en équipe sur 48h`,
-      en: `Unity game developed in 48h:
-- **Engine**: Unity with C# scripts
-- **Mechanics**: Dual gauge system (likes vs socialization), interactive NPCs, addiction visual effects (shaking, blur)
-- **Audio**: Original music created for the game (published on SoundCloud), inner voices encouraging scrolling
-- **Organization**: Trello for team task management over 48h`
+      fr: `Jeu Unity réalisé en 48 heures :
+- **Moteur** : Unity, scripts en C#.
+- **Mécaniques** : deux jauges (likes et sociabilisation), personnages interactifs, effets visuels du manque (tremblement, flou).
+- **Audio** : musiques originales publiées sur SoundCloud, voix intérieures qui poussent à scroller.
+- **Organisation** : Trello pour répartir les tâches.`,
+      en: `Unity game made in 48 hours:
+- **Engine**: Unity, C# scripts.
+- **Mechanics**: two gauges (likes and socializing), interactive characters, visual effects of withdrawal (shaking, blur).
+- **Audio**: original music published on SoundCloud, inner voices pushing you to scroll.
+- **Organization**: Trello to split the tasks.`
     },
     skills: [
       {
-        name: { fr: "Développement Unity / C#", en: "Unity / C# Development" },
-        description: { fr: "Développement d'un jeu complet sur Unity en C# en 48h : mécaniques de gameplay, système de jauges, effets visuels, intégration audio.", en: "Development of a complete Unity game in C# in 48h: gameplay mechanics, gauge system, visual effects, audio integration." }
+        name: { fr: "Unity et C#", en: "Unity and C#" },
+        description: { fr: "Un jeu développé en 48 heures : mécaniques, système de jauges, effets visuels et intégration du son.", en: "A game built in 48 hours: mechanics, gauge system, visual effects and sound integration." }
       },
       {
-        name: { fr: "Game Design & Narration", en: "Game Design & Storytelling" },
-        description: { fr: "Conception de mécaniques de jeu à double jauge pour sensibiliser à l'addiction aux réseaux sociaux, avec un twist narratif (le \"déclic\") lié au thème de la compétition.", en: "Design of dual-gauge game mechanics to raise awareness about social media addiction, with a narrative twist (the \"click moment\") linked to the competition theme." }
+        name: { fr: "Game design", en: "Game design" },
+        description: { fr: "Deux jauges opposées pour parler de l'addiction aux réseaux sociaux, et une fin, le déclic, tirée du thème de la compétition.", en: "Two opposing gauges to talk about social media addiction, and an ending, the déclic, drawn from the competition's theme." }
       },
       {
-        name: { fr: "Travail d'équipe en 48h", en: "48h Teamwork" },
-        description: { fr: "Coordination d'une équipe de 5 sur 48h avec Trello, répartition efficace des tâches (développement, game design, sound design, graphisme).", en: "Coordination of a 5-person team over 48h with Trello, efficient task distribution (development, game design, sound design, graphics)." }
-      }
+        name: { fr: "Travail d'équipe en 48 heures", en: "Teamwork in 48 hours" },
+        description: { fr: "À cinq, avec Trello pour répartir développement, game design, son et graphisme.", en: "Five of us, with Trello to split development, game design, sound and graphics." }
+      },
     ],
     codeHighlights: [
       {
-        title: { fr: "Système de double jauge de Scroll Party", en: "Scroll Party's dual gauge system" },
-        code: `// Scroll Party - Systeme de jauges Unity C#
+        title: { fr: "Les deux jauges de Scroll Party", en: "Scroll Party's two gauges" },
+        code: `// Scroll Party : Systeme de jauges Unity C#
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -1050,40 +1033,43 @@ public class GaugeManager : MonoBehaviour
 }`,
         language: "csharp",
         explanation: {
-          fr: "Ce système de double jauge est le coeur du gameplay de Scroll Party. Les jauges de sociabilisation et de likes évoluent en fonction des choix du joueur : interagir avec les PNJ augmente la sociabilisation, scroller augmente les likes. Le decay naturel force le joueur à faire des choix constants. Atteindre le maximum d'une jauge déclenche la fin correspondante.",
-          en: "This dual gauge system is the core gameplay of Scroll Party. The socialization and likes gauges evolve based on player choices: interacting with NPCs increases socialization, scrolling increases likes. Natural decay forces the player to make constant choices. Reaching the maximum of a gauge triggers the corresponding ending."
+          fr: "Les jauges de sociabilisation et de likes évoluent selon les choix du joueur : parler aux personnages remplit la première, scroller remplit la seconde. Les deux redescendent toutes seules avec le temps, ce qui oblige à choisir en permanence. Quand une jauge atteint son maximum, la fin correspondante se déclenche.",
+          en: "The socializing and likes gauges change with the player's choices: talking to characters fills the first, scrolling fills the second. Both drain over time, which forces constant choices. When a gauge reaches its maximum, the matching ending is triggered."
         }
       }
     ],
     results: {
-      fr: `Le jeu Scroll Party a été livré fonctionnel à la fin des 48h :
+      fr: `Scroll Party était jouable à la fin des 48 heures :
 
-- **Jeu complet et jouable** avec les deux mécaniques de jauge fonctionnelles, les PNJ interactifs, et les deux fins (victoire par déclic / défaite par addiction)
-- **Effets immersifs** : voix intérieures lors du scroll, tremblements et vision floue lors de la sociabilisation pour simuler l'addiction
-- **Bande-son originale** publiée sur SoundCloud avec les musiques du jeu
-- **Gestion de projet** via Trello avec une répartition claire des tâches sur les 48h
+- **Les deux jauges, les personnages et les deux fins** : victoire par le déclic, défaite par l'addiction.
+- **Les effets** : voix intérieures pendant le scroll, tremblements et vision floue quand on pose le téléphone.
+- **Une bande-son originale**, publiée sur SoundCloud.
 
-Le concept du double sens "Fête des Clics" → fête + déclic a été le fil rouge du jeu, mêlant gameplay addictif et message de sensibilisation.`,
-      en: `The Scroll Party game was delivered functional at the end of the 48h:
+Le double sens du thème, la fête et le déclic, a servi de fil rouge du début à la fin.`,
+      en: `Scroll Party was playable at the end of the 48 hours:
 
-- **Complete and playable game** with both gauge mechanics functional, interactive NPCs, and two endings (victory by realization / defeat by addiction)
-- **Immersive effects**: inner voices during scrolling, shaking and blurred vision during socialization to simulate addiction
-- **Original soundtrack** published on SoundCloud with game music
-- **Project management** via Trello with clear task distribution over the 48h
+- **Both gauges, the characters and the two endings**: winning through the déclic, losing to addiction.
+- **The effects**: inner voices while scrolling, shaking and blurred vision when the phone is put down.
+- **An original soundtrack**, published on SoundCloud.
 
-The "Fête des Clics" double meaning concept → party + click moment was the game's common thread, combining addictive gameplay with an awareness message.`
+The double meaning of the theme, the party and the déclic, ran through the whole game.`
     },
     reflection: {
-      fr: `La Code Game Jam 2026 m'a appris à développer un jeu vidéo complet en un temps très limité. Contrairement au développement web, le game development sur Unity impose de penser en termes de game loop, de physique, d'animations et de sound design, des compétences très différentes de mon quotidien.
+      fr: `C'était mon premier jeu vidéo. Sur Unity, il faut penser en boucle de jeu, en physique, en animations et en son, loin de ce que je fais d'habitude.
 
-Le plus grand défi a été de transformer le thème "Fête des Clics" en une expérience de jeu significative. Le concept du déclic, où gagner consiste à arrêter de jouer avec son téléphone, crée un paradoxe intéressant qui fait réfléchir le joueur sur ses propres habitudes numériques.
+Le plus difficile a été de tirer une vraie idée de jeu du thème. Le déclic, où l'on gagne en arrêtant de jouer avec son téléphone, retourne la logique habituelle d'un jeu.
 
-Travailler à 5 sur 48h avec Trello nous a appris à prioriser ce qui compte vraiment dans un jeu : les mécaniques de base doivent fonctionner avant de s'attaquer au polish visuel ou sonore.`,
-      en: `The Code Game Jam 2026 taught me to develop a complete video game in very limited time. Unlike web development, game development on Unity requires thinking in terms of game loops, physics, animations, and sound design, very different skills from my daily routine.
+À cinq sur 48 heures, nous avons aussi appris à faire marcher les mécaniques de base avant de soigner l'image et le son.`,
+      en: `It was my first video game. On Unity you have to think in terms of game loop, physics, animation and sound, far from what I usually do.
 
-The biggest challenge was transforming the "Fête des Clics" theme into a meaningful game experience. The "click moment" concept, where winning consists of stopping phone use, creates an interesting paradox that makes the player reflect on their own digital habits.
+The hardest part was getting a real game idea out of the theme. The déclic, where you win by no longer playing with your phone, turns the usual logic of a game around.
 
-Working as a team of 5 over 48h with Trello taught us to prioritize what truly matters in a game: core mechanics must work before tackling visual or audio polish.`
+With five of us and 48 hours, we also learned to get the core mechanics working before polishing visuals and sound.`
+    },
+    cover: {
+      word: { fr: "Scroll Party", en: "Scroll Party" },
+      metric: { fr: "48 h", en: "48 h" },
+      caption: { fr: "pour créer un jeu Unity à cinq", en: "to build a Unity game as a team of five" },
     },
     thumbnail: "/images/codegamejam2026.webp",
     images: [],
@@ -1096,86 +1082,86 @@ Working as a team of 5 over 48h with Trello taught us to prioritize what truly m
     title: { fr: "Nuit de l'Info 2025", en: "Nuit de l'Info 2025" },
     category: "competition",
     technologies: ["TypeScript", "HTML/CSS", "Chrome Extension (Manifest V3)", "DeepSeek API", "GitHub Pages"],
-    duration: { fr: "Décembre 2025 (1 nuit)", en: "December 2025 (1 night)" },
+    duration: { fr: "Décembre 2025 (une nuit)", en: "December 2025 (one night)" },
     team: { fr: "Équipe Golem Gang, 7 étudiants", en: "Golem Gang team, 7 students" },
-    role: { fr: "Développeur : participation aux 3 défis", en: "Developer: participation in all 3 challenges" },
+    role: { fr: "Développeur : participation aux trois défis", en: "Developer: took part in all three challenges" },
     shortDescription: {
-      fr: "Compétition nationale de développement en une nuit. Sujet principal : \"Comment les établissements scolaires peuvent tenir tête aux Big Tech ?\". 3 défis relevés : extension de sécurité Chrome, chatbot IA et jeu d'ergonomie frustrante.",
-      en: "National one-night development competition. Main subject: \"How can schools stand up to Big Tech?\". 3 challenges completed: Chrome security extension, AI chatbot, and frustrating ergonomics game."
+      fr: "Compétition nationale de développement en une nuit, sur le sujet « Comment les établissements scolaires peuvent tenir tête aux Big Tech ? ». À sept, nous avons livré un site sur le numérique responsable et trois défis : une extension Chrome de sécurité, un chatbot et un jeu à l'ergonomie volontairement frustrante.",
+      en: "A national overnight development competition on the subject \"How can schools stand up to Big Tech?\". As a team of seven, we shipped a website about responsible digital technology and three challenges: a Chrome security extension, a chatbot and a deliberately frustrating usability game."
     },
     context: {
-      fr: `La Nuit de l'Info est une compétition nationale annuelle qui rassemble des étudiants en informatique de toute la France pendant une nuit entière. L'objectif est de faire travailler ensemble les étudiants autour de défis informatiques portant sur des thématiques d'actualité, en utilisant des technologies modernes.
+      fr: `La Nuit de l'Info est une compétition nationale qui réunit chaque année des étudiants en informatique de toute la France pendant une nuit entière, autour de défis proposés par des partenaires.
 
-L'édition 2025 portait sur le sujet : "Comment les établissements scolaires peuvent tenir tête aux Big Tech ?", nous invitant à réfléchir au numérique responsable et à l'indépendance numérique des écoles. En parallèle du défi principal, nous avons participé à 3 défis connexes proposés par les partenaires de l'événement.
+Le sujet de l'édition 2025 : « Comment les établissements scolaires peuvent tenir tête aux Big Tech ? ». Il invitait à réfléchir au numérique responsable et à l'indépendance numérique des écoles. En plus du sujet principal, nous avons relevé trois défis de partenaires.
 
-Notre équipe "Golem Gang" était composée de 7 étudiants. Nous nous sommes organisés rapidement pour livrer un site web interactif et 3 défis complémentaires en une seule nuit. Le site est développé en TypeScript et déployé sur GitHub Pages.`,
-      en: `The Nuit de l'Info is an annual national competition that brings together computer science students from all over France for an entire night. The goal is to have students work together on IT challenges around current topics, using modern technologies.
+Notre équipe, Golem Gang, comptait sept étudiants. En une nuit, nous avons livré un site interactif et les trois défis. Le site est écrit en TypeScript et hébergé sur GitHub Pages.`,
+      en: `Nuit de l'Info is a national competition that brings together computer science students from all over France every year for a whole night, around challenges set by partners.
 
-The 2025 edition focused on the topic: "How can schools stand up to Big Tech?", inviting us to reflect on responsible digital and schools' digital independence. Alongside the main challenge, we participated in 3 related challenges proposed by event partners.
+The 2025 subject: "How can schools stand up to Big Tech?". It invited us to think about responsible digital technology and the digital independence of schools. On top of the main subject, we took on three partner challenges.
 
-Our "Golem Gang" team consisted of 7 students. We organized quickly to deliver an interactive website and 3 complementary challenges in a single night. The site is developed in TypeScript and deployed on GitHub Pages.`
+Our team, Golem Gang, had seven students. In one night we shipped an interactive website and the three challenges. The site is written in TypeScript and hosted on GitHub Pages.`
     },
     objectives: {
-      fr: `1. **Défi principal** : Développer un site interactif sur le numérique responsable avec simulateur d'empreinte numérique, quiz de connaissances et système de badges
-2. **Défi "La Ligue des Extensions"** : Créer SafeLinks, une extension Chrome (Manifest V3) open source qui détecte la sécurité des liens avant de cliquer
-3. **Défi "Simplifier pour mieux vivre"** : Concevoir le Password Game, un champ de saisie volontairement frustrant avec des règles absurdes, un bouton esthétique mais délibérément compliqué à utiliser
-4. **Défi Chatbot "Chat'bruti"** : Développer un chatbot IA drôle et inutilement philosophique, intégré au site`,
-      en: `1. **Main challenge**: Develop an interactive site about responsible digital with digital footprint simulator, knowledge quiz, and badge system
-2. **"La Ligue des Extensions" challenge**: Create SafeLinks, an open source Chrome extension (Manifest V3) that detects link safety before clicking
-3. **"Simplifier pour mieux vivre" challenge**: Design the Password Game, a deliberately frustrating input field with absurd rules, an aesthetic but deliberately complicated button to use
-4. **Chatbot challenge "Chat'bruti"**: Develop a funny and unnecessarily philosophical AI chatbot, integrated into the site`
+      fr: `1. **Sujet principal** : un site interactif sur le numérique responsable, avec un simulateur d'empreinte numérique, un quiz et des badges à débloquer.
+2. **Défi « La Ligue des Extensions »** : SafeLinks, une extension Chrome (Manifest V3) open source qui évalue la sécurité d'un lien avant le clic.
+3. **Défi « Simplifier pour mieux vivre »** : le Password Game, un champ de saisie aux règles absurdes, joli mais volontairement pénible à utiliser.
+4. **Défi chatbot « Chat'bruti »** : un chatbot drôle et inutilement philosophique, intégré au site.`,
+      en: `1. **Main subject**: an interactive website about responsible digital technology, with a digital footprint simulator, a quiz and badges to unlock.
+2. **"La Ligue des Extensions" challenge**: SafeLinks, an open source Chrome extension (Manifest V3) that assesses a link's safety before you click.
+3. **"Simplifier pour mieux vivre" challenge**: the Password Game, an input field with absurd rules, pretty but deliberately painful to use.
+4. **"Chat'bruti" chatbot challenge**: a funny and pointlessly philosophical chatbot, built into the site.`
     },
     approach: {
-      fr: `Le site principal est développé en TypeScript et déployé sur GitHub Pages. Il propose une plateforme interactive sur le numérique responsable avec plusieurs modules :
+      fr: `Le site principal est écrit en TypeScript et hébergé sur GitHub Pages. Il regroupe plusieurs modules :
 
-- **Simulateur d'empreinte numérique** : Calcul de l'impact numérique de l'utilisateur avec un système de badges à débloquer.
-- **Quiz de connaissances** : Test sur le numérique responsable et la cybersécurité.
-- **Password Game** : Un jeu d'ergonomie volontairement frustrant où l'utilisateur doit créer un mot de passe en suivant des règles de plus en plus absurdes, le bouton est esthétique mais délibérément compliqué à utiliser.
+- **Simulateur d'empreinte numérique** : il calcule l'impact numérique de l'utilisateur et débloque des badges.
+- **Quiz** : des questions sur le numérique responsable et la cybersécurité.
+- **Password Game** : il faut créer un mot de passe en suivant des règles de plus en plus absurdes.
 
-Pour le défi extension, nous avons développé **SafeLinks**, une extension Chrome Manifest V3 qui analyse la sécurité des liens avant que l'utilisateur ne clique dessus. Le code est open source sur GitHub.
+Pour le défi extension, nous avons développé **SafeLinks**, une extension Chrome Manifest V3 qui analyse les liens d'une page avant que l'utilisateur ne clique. Le code est public sur GitHub.
 
-Pour le défi chatbot, nous avons créé **Chat'bruti**, un chatbot IA accessible via un bouton en bas à droite du site, conçu pour être drôle et inutilement philosophique dans ses réponses.`,
-      en: `The main site is developed in TypeScript and deployed on GitHub Pages. It offers an interactive platform about responsible digital with several modules:
+Pour le défi chatbot, nous avons créé **Chat'bruti**, accessible par un bouton en bas à droite du site.`,
+      en: `The main site is written in TypeScript and hosted on GitHub Pages. It brings several modules together:
 
-- **Digital footprint simulator**: Calculation of the user's digital impact with a badge system to unlock.
-- **Knowledge quiz**: Test on responsible digital and cybersecurity.
-- **Password Game**: A deliberately frustrating ergonomics game where the user must create a password following increasingly absurd rules, the button is aesthetic but deliberately complicated to use.
+- **Digital footprint simulator**: it computes the user's digital impact and unlocks badges.
+- **Quiz**: questions about responsible digital technology and cybersecurity.
+- **Password Game**: you have to create a password by following increasingly absurd rules.
 
-For the extension challenge, we developed **SafeLinks**, a Chrome Manifest V3 extension that analyzes link safety before the user clicks. The code is open source on GitHub.
+For the extension challenge we built **SafeLinks**, a Manifest V3 Chrome extension that analyzes the links on a page before the user clicks. The code is public on GitHub.
 
-For the chatbot challenge, we created **Chat'bruti**, an AI chatbot accessible via a button in the bottom right of the site, designed to be funny and unnecessarily philosophical in its responses.`
+For the chatbot challenge we made **Chat'bruti**, reachable through a button at the bottom right of the site.`
     },
     architecture: {
-      fr: `Projet multi-composants développé en une nuit :
-- **Site principal** : TypeScript, HTML/CSS, déployé sur GitHub Pages, modules interactifs (simulateur, quiz, Password Game)
-- **Extension Chrome SafeLinks** : Manifest V3, détection de la sécurité des liens
-- **Chatbot Chat'bruti** : IA intégrée au site, personnalité humoristique et philosophique
-- **Hébergement** : GitHub Pages`,
-      en: `Multi-component project developed in one night:
-- **Main site**: TypeScript, HTML/CSS, deployed on GitHub Pages, interactive modules (simulator, quiz, Password Game)
-- **SafeLinks Chrome Extension**: Manifest V3, link safety detection
-- **Chat'bruti Chatbot**: AI integrated into the site, humorous and philosophical personality
-- **Hosting**: GitHub Pages`
+      fr: `Plusieurs composants livrés en une nuit :
+- **Site principal** : TypeScript, HTML et CSS, avec le simulateur, le quiz et le Password Game.
+- **Extension Chrome SafeLinks** : Manifest V3, analyse de la sécurité des liens.
+- **Chatbot Chat'bruti** : intégré au site.
+- **Hébergement** : GitHub Pages.`,
+      en: `Several components shipped in one night:
+- **Main site**: TypeScript, HTML and CSS, with the simulator, the quiz and the Password Game.
+- **SafeLinks Chrome extension**: Manifest V3, link safety analysis.
+- **Chat'bruti chatbot**: built into the site.
+- **Hosting**: GitHub Pages.`
     },
     skills: [
       {
-        name: { fr: "Développement sous pression", en: "Development Under Pressure" },
-        description: { fr: "Capacité à produire du code de qualité dans un temps très limité (une nuit), à prendre des décisions techniques rapides et à livrer 3 défis complémentaires en parallèle.", en: "Ability to produce quality code in very limited time (one night), make quick technical decisions, and deliver 3 complementary challenges in parallel." }
+        name: { fr: "Développer sous contrainte de temps", en: "Developing against the clock" },
+        description: { fr: "Livrer en une nuit, prendre des décisions techniques rapides et avancer sur trois défis en parallèle.", en: "Shipping in one night, making quick technical decisions and moving forward on three challenges in parallel." }
       },
       {
-        name: { fr: "Travail d'équipe intensif", en: "Intensive Teamwork" },
-        description: { fr: "Coordination efficace au sein d'une équipe de 7 personnes, répartition rapide des tâches sur 3 défis simultanés, communication constante et résolution rapide des conflits.", en: "Efficient coordination within a 7-person team, quick task distribution across 3 simultaneous challenges, constant communication and quick conflict resolution." }
+        name: { fr: "Travail d'équipe intensif", en: "Intensive teamwork" },
+        description: { fr: "À sept, répartition rapide des tâches sur trois défis et communication constante.", en: "Seven of us, tasks split quickly across three challenges and constant communication." }
       },
       {
-        name: { fr: "Extension Chrome (Manifest V3)", en: "Chrome Extension (Manifest V3)" },
-        description: { fr: "Développement d'une extension Chrome open source avec le nouveau format Manifest V3 pour la détection de sécurité des liens.", en: "Development of an open source Chrome extension with the new Manifest V3 format for link safety detection." }
-      }
+        name: { fr: "Extension Chrome (Manifest V3)", en: "Chrome extension (Manifest V3)" },
+        description: { fr: "Une extension open source au format Manifest V3 qui évalue la sécurité des liens.", en: "An open source extension in the Manifest V3 format that assesses the safety of links." }
+      },
     ],
     codeHighlights: [
       {
-        title: { fr: "Extension Chrome SafeLinks : analyse de sécurité des liens", en: "SafeLinks Chrome extension: link safety analysis" },
-        code: `// SafeLinks - Chrome Extension Manifest V3
-// content-script.ts - Analyse des liens sur la page
+        title: { fr: "SafeLinks : analyse de la sécurité des liens", en: "SafeLinks: link safety analysis" },
+        code: `// SafeLinks : Chrome Extension Manifest V3
+// content-script.ts : Analyse des liens sur la page
 
 interface LinkAnalysis {
   url: string;
@@ -1224,36 +1210,37 @@ document.querySelectorAll('a[href]').forEach(link => {
 });`,
         language: "typescript",
         explanation: {
-          fr: "Cette extension Chrome (Manifest V3) analyse la sécurité des liens sur chaque page visitée. Le content script inspecte tous les liens : vérification HTTPS, détection de domaines suspects (patterns de phishing, TLDs douteux, IP-like), et URLs anormalement longues. Les liens dangereux sont surlignés en rouge avec un tooltip explicatif.",
-          en: "This Chrome extension (Manifest V3) analyzes link safety on every visited page. The content script inspects all links: HTTPS verification, suspicious domain detection (phishing patterns, dubious TLDs, IP-like), and abnormally long URLs. Dangerous links are highlighted in red with an explanatory tooltip."
+          fr: "Le content script de l'extension inspecte tous les liens de la page : présence du HTTPS, domaines suspects (motifs d'hameçonnage, extensions douteuses, adresses qui ressemblent à une IP) et URL anormalement longues. Les liens dangereux sont surlignés en rouge, avec une infobulle qui explique pourquoi.",
+          en: "The extension's content script inspects every link on the page: HTTPS, suspicious domains (phishing patterns, dubious TLDs, IP-like addresses) and abnormally long URLs. Dangerous links are highlighted in red, with a tooltip explaining why."
         }
       }
     ],
     results: {
-      fr: `Le site et les 3 défis ont été livrés fonctionnels à la fin de la nuit :
+      fr: `Le site et les trois défis étaient en ligne à la fin de la nuit :
 
-- **Site principal** déployé sur GitHub Pages avec le simulateur d'empreinte numérique, le quiz et le système de badges
-- **SafeLinks** : extension Chrome fonctionnelle détectant la sécurité des liens, code open source publié sur GitHub
-- **Password Game** : jeu d'ergonomie volontairement frustrant avec un bouton esthétique mais compliqué, le défi d'ergonomie inversée est réussi
-- **Chat'bruti** : chatbot IA humoristique intégré au site, accessible en bas à droite
+- **Le site principal** sur GitHub Pages, avec le simulateur d'empreinte numérique, le quiz et les badges.
+- **SafeLinks**, l'extension Chrome, avec son code public sur GitHub.
+- **Le Password Game**, joli et pénible à la fois, comme le demandait le défi.
+- **Chat'bruti**, le chatbot, en bas à droite du site.`,
+      en: `The site and the three challenges were online by the end of the night:
 
-Cette expérience m'a appris la valeur du prototypage rapide et de la priorisation des fonctionnalités essentielles (MVP) lorsque le temps est limité.`,
-      en: `The site and all 3 challenges were delivered functional by the end of the night:
-
-- **Main site** deployed on GitHub Pages with the digital footprint simulator, quiz, and badge system
-- **SafeLinks**: functional Chrome extension detecting link safety, open source code published on GitHub
-- **Password Game**: deliberately frustrating ergonomics game with an aesthetic but complicated button, the reverse ergonomics challenge is successful
-- **Chat'bruti**: humorous AI chatbot integrated into the site, accessible in the bottom right
-
-This experience taught me the value of rapid prototyping and prioritizing essential features (MVP) when time is limited.`
+- **The main site** on GitHub Pages, with the digital footprint simulator, the quiz and the badges.
+- **SafeLinks**, the Chrome extension, with its code public on GitHub.
+- **The Password Game**, pretty and painful at once, as the challenge required.
+- **Chat'bruti**, the chatbot, at the bottom right of the site.`
     },
     reflection: {
-      fr: `La Nuit de l'Info 2025 a été une expérience unique qui m'a appris énormément sur la gestion de projet en conditions extrêmes. En seulement une nuit, il faut savoir identifier les priorités, se répartir efficacement les tâches à 7, et se concentrer sur un MVP fonctionnel pour chaque défi.
+      fr: `En une nuit, il faut décider vite : repérer ce qui compte, se répartir le travail à sept et viser une première version qui marche pour chaque défi avant de l'améliorer.
 
-La particularité de cette édition était la diversité des défis : passer d'une extension Chrome à un chatbot IA en passant par un jeu d'ergonomie frustrante demande une grande adaptabilité technique. C'est cette polyvalence et cette capacité à livrer rapidement qui font la valeur de cette compétition.`,
-      en: `The Nuit de l'Info 2025 was a unique experience that taught me a lot about project management under extreme conditions. In just one night, you need to identify priorities, efficiently distribute tasks among 7 people, and focus on a functional MVP for each challenge.
+Cette édition demandait aussi de changer de sujet sans cesse, d'une extension Chrome à un chatbot puis à un jeu d'ergonomie. J'y ai appris à entrer rapidement dans une technologie que je ne connaissais pas la veille.`,
+      en: `In one night you have to decide fast: spot what matters, split the work between seven people and aim for a first working version of each challenge before improving it.
 
-The specificity of this edition was the diversity of challenges: going from a Chrome extension to an AI chatbot to a frustrating ergonomics game requires great technical adaptability. It's this versatility and ability to deliver quickly that make this competition valuable.`
+This edition also meant switching subjects constantly, from a Chrome extension to a chatbot to a usability game. I learned to get into a technology quickly that I did not know the day before.`
+    },
+    cover: {
+      word: { fr: "Nuit de l'Info", en: "Nuit de l'Info" },
+      metric: { fr: "1 nuit", en: "1 night" },
+      caption: { fr: "un site et trois défis, à sept", en: "one website and three challenges, team of seven" },
     },
     thumbnail: "/images/ndi2025.webp",
     images: [],
@@ -1262,11 +1249,11 @@ The specificity of this edition was the diversity of challenges: going from a Ch
   {
     slug: "application-sauvegarde",
     year: "2025",
-    title: { fr: "Application de Sauvegarde", en: "Backup Application" },
+    title: { fr: "Application de sauvegarde", en: "Backup application" },
     category: "university",
     shortDescription: {
-      fr: "Système de sauvegarde automatique client-serveur avec gestion de versions, chiffrement AES-256-GCM et interface web Flask",
-      en: "Automated client-server backup system with version management, AES-256-GCM encryption and Flask web interface"
+      fr: "Système de sauvegarde automatique client-serveur en Python : versions conservées 30 jours, chiffrement AES-256-GCM, déduplication et interface web Flask pour restaurer un fichier.",
+      en: "An automated client-server backup system in Python: versions kept for 30 days, AES-256-GCM encryption, deduplication and a Flask web interface to restore a file."
     },
     technologies: [
       "Python",
@@ -1281,47 +1268,55 @@ The specificity of this edition was the diversity of challenges: going from a Ch
     duration: { fr: "3 mois", en: "3 months" },
     team: { fr: "Projet universitaire, équipe de 4 étudiants", en: "University project, team of 4 students" },
     role: {
-      fr: "Développeur principal : architecture système, gestion des versions, chiffrement, interface web",
-      en: "Lead Developer, System architecture, version management, encryption, web interface"
+      fr: "Développeur principal : architecture, gestion des versions, chiffrement et interface web",
+      en: "Lead developer: architecture, version management, encryption and web interface"
     },
     context: {
-      fr: "Projet de BUT Informatique visant à créer un système de sauvegarde robuste pour protéger les données contre les ransomwares et les erreurs utilisateur, avec une rétention de 30 jours.",
-      en: "Computer Science degree project aimed at creating a robust backup system to protect data against ransomware and user errors, with 30-day retention."
+      fr: "Projet de BUT Informatique mené à quatre pendant trois mois. L'objectif : un système de sauvegarde qui protège les données contre les ransomwares et les erreurs de manipulation, avec 30 jours de rétention.",
+      en: "A BUT in Computer Science project carried out by four students over three months. The goal: a backup system that protects data against ransomware and user mistakes, with 30 days of retention."
     },
     objectives: {
-      fr: "Développer un système de sauvegarde automatique, sécurisé via SSH, avec gestion intelligente des versions, compression gzip (70 % de réduction), déduplication par hash SHA-256 et chiffrement AES-256-GCM.",
-      en: "Develop an automated backup system, secured via SSH, with intelligent version management, gzip compression (70% reduction), SHA256 hash deduplication and AES-256-GCM encryption."
+      fr: "Sauvegarder automatiquement les fichiers d'un poste vers un serveur, par SSH, en conservant leurs versions. Chaque fichier est compressé avec gzip (environ 70 % de réduction), dédupliqué grâce à son empreinte SHA-256 et chiffré en AES-256-GCM.",
+      en: "Automatically back up a workstation's files to a server over SSH, keeping their versions. Each file is compressed with gzip (about 70% smaller), deduplicated using its SHA-256 hash and encrypted with AES-256-GCM."
     },
     approach: {
-      fr: "Architecture client-serveur avec un daemon de surveillance (watchdog) sur le client, transfert SSH/SCP sécurisé, traitement côté serveur (compression + chiffrement + déduplication), stockage des métadonnées dans SQLite et interface web Flask pour le monitoring et la restauration.",
-      en: "Client-server architecture with client-side monitoring daemon (watchdog), secure SSH/SCP transfer, server-side processing (compression + encryption + deduplication), SQLite metadata storage and Flask web interface for monitoring and restoration."
+      fr: "Sur le client, un daemon surveille les fichiers avec watchdog et les envoie au serveur en SSH/SCP. Le serveur compresse, chiffre et déduplique chaque fichier, puis enregistre ses métadonnées dans SQLite. Une interface web Flask permet de suivre les sauvegardes et de restaurer une version.",
+      en: "On the client, a daemon watches files with watchdog and sends them to the server over SSH/SCP. The server compresses, encrypts and deduplicates each file, then stores its metadata in SQLite. A Flask web interface lets you follow backups and restore a version."
     },
     architecture: {
-      fr: "Client : daemon watchdog, SSH/SCP via Paramiko. Serveur : process_file.py pour le traitement, version_manager.py pour la gestion des versions et la déduplication, encryption.py pour AES-256-GCM, app.py (Flask) pour l'interface web (dashboard, restauration, API REST), SQLite pour les métadonnées, service systemd pour l'automatisation.",
-      en: "Client: watchdog daemon, SSH/SCP via Paramiko. Server: process_file.py for processing, version_manager.py for version/deduplication management, encryption.py for AES-256-GCM, Flask app.py for web interface (dashboard, restore, REST API), SQLite for metadata, systemd service for automation."
+      fr: `- **Client** : daemon watchdog, transferts SSH/SCP avec Paramiko.
+- **Traitement** : process_file.py reçoit les fichiers, version_manager.py gère les versions et la déduplication, encryption.py le chiffrement AES-256-GCM.
+- **Interface** : app.py (Flask) pour le tableau de bord, la restauration et l'API REST.
+- **Stockage** : SQLite pour les métadonnées.
+- **Exploitation** : un service systemd lance le tout automatiquement.`,
+      en: `- **Client**: watchdog daemon, SSH/SCP transfers with Paramiko.
+- **Processing**: process_file.py receives the files, version_manager.py handles versions and deduplication, encryption.py the AES-256-GCM encryption.
+- **Interface**: app.py (Flask) for the dashboard, restoring and the REST API.
+- **Storage**: SQLite for metadata.
+- **Operation**: a systemd service starts everything automatically.`
     },
     skills: [
       {
-        name: { fr: "Python avancé & Architecture système", en: "Advanced Python & System Architecture" },
-        description: { fr: "Architecture client-serveur avec daemon watchdog, transferts SSH/SCP via Paramiko, et automatisation systemd.", en: "Client-server architecture with watchdog daemon, SSH/SCP transfers via Paramiko, and systemd automation." }
+        name: { fr: "Python et architecture système", en: "Python and system architecture" },
+        description: { fr: "Architecture client-serveur avec un daemon watchdog, des transferts SSH/SCP via Paramiko et un service systemd.", en: "Client-server architecture with a watchdog daemon, SSH/SCP transfers through Paramiko and a systemd service." }
       },
       {
-        name: { fr: "Cryptographie & Sécurité", en: "Cryptography & Security" },
-        description: { fr: "Chiffrement AES-256-GCM avec dérivation PBKDF2, compression gzip (70% réduction), et déduplication par hash SHA256.", en: "AES-256-GCM encryption with PBKDF2 key derivation, gzip compression (70% reduction), and SHA256 hash deduplication." }
+        name: { fr: "Cryptographie et sécurité", en: "Cryptography and security" },
+        description: { fr: "Chiffrement AES-256-GCM avec dérivation de clé PBKDF2, compression gzip et déduplication par empreinte SHA-256.", en: "AES-256-GCM encryption with PBKDF2 key derivation, gzip compression and deduplication by SHA-256 hash." }
       },
       {
-        name: { fr: "Flask & API REST", en: "Flask & REST API" },
-        description: { fr: "Interface web Flask avec dashboard temps réel, API REST pour consultation et restauration de versions, authentification intégrée.", en: "Flask web interface with real-time dashboard, REST API for version browsing and restoration, integrated authentication." }
+        name: { fr: "Flask et API REST", en: "Flask and REST API" },
+        description: { fr: "Interface web avec tableau de bord en temps réel, API REST pour consulter et restaurer les versions, authentification.", en: "Web interface with a real-time dashboard, a REST API to browse and restore versions, authentication." }
       },
       {
-        name: { fr: "Base de données SQLite", en: "SQLite Database" },
-        description: { fr: "Stockage des métadonnées de versions avec timestamps, gestion de la rétention 30 jours, et requêtes optimisées.", en: "Version metadata storage with timestamps, 30-day retention management, and optimized queries." }
-      }
+        name: { fr: "SQLite", en: "SQLite" },
+        description: { fr: "Métadonnées des versions avec horodatage et gestion de la rétention de 30 jours.", en: "Version metadata with timestamps and 30-day retention management." }
+      },
     ],
     codeHighlights: [
       {
-        title: { fr: "Gestion de versions avec compression et chiffrement", en: "Version management with compression and encryption" },
-        code: `# daemon-sauvegarde - Version Manager avec deduplication
+        title: { fr: "Gestion des versions : compression, chiffrement, déduplication", en: "Version management: compression, encryption, deduplication" },
+        code: `# daemon-sauvegarde : Version Manager avec deduplication
 class VersionManager:
     def save_version(self, file_path, relative_path, action='modified'):
         # 1. Calcul hash SHA256 du fichier
@@ -1333,7 +1328,7 @@ class VersionManager:
         if current_hash == file_hash:
             return  # Fichier inchange, pas de nouvelle version
 
-        # 3. Deduplication - verifier si hash existe deja
+        # 3. Deduplication : verifier si hash existe deja
         dedup_info = self._check_deduplication(file_hash)
 
         if dedup_info:
@@ -1369,13 +1364,13 @@ class VersionManager:
         self.conn.commit()`,
         language: "python",
         explanation: {
-          fr: "Ce code implémente la gestion de versions avec déduplication intelligente. Chaque fichier est haché (SHA-256), comparé à la version actuelle, puis compressé (gzip, 70 %), chiffré (AES-256-GCM) et stocké de manière dédupliquée. Si le même hash existe déjà, le fichier est réutilisé (économie d'espace). Les métadonnées sont enregistrées dans SQLite avec un horodatage pour la rétention de 30 jours.",
-          en: "This code implements version management with intelligent deduplication. Each file is hashed (SHA256), compared to current version, then compressed (gzip 70%), encrypted (AES-256-GCM) and stored in deduplicated manner. If same hash already exists, file is reused (space saving). Metadata is recorded in SQLite with timestamp for 30-day retention."
+          fr: "Chaque fichier est haché en SHA-256 et comparé à la version courante, puis compressé avec gzip, chiffré en AES-256-GCM et stocké une seule fois : si la même empreinte existe déjà, le fichier est réutilisé. Les métadonnées sont enregistrées dans SQLite avec un horodatage, pour la rétention de 30 jours.",
+          en: "Each file is hashed with SHA-256 and compared with the current version, then compressed with gzip, encrypted with AES-256-GCM and stored only once: if the same hash already exists, the file is reused. Metadata is recorded in SQLite with a timestamp, for the 30-day retention."
         }
       },
       {
-        title: { fr: "API Flask pour restauration de versions", en: "Flask API for version restoration" },
-        code: `# daemon-sauvegarde - Flask Web Interface API
+        title: { fr: "API Flask de restauration", en: "Flask restore API" },
+        code: `# daemon-sauvegarde : Flask Web Interface API
 @app.route('/api/files/<path:file_path>/versions', methods=['GET'])
 @auth.login_required
 def get_file_versions(file_path):
@@ -1444,18 +1439,23 @@ def restore_file():
     })`,
         language: "python",
         explanation: {
-          fr: "Cette API Flask expose des endpoints REST pour consulter l'historique des versions et restaurer des fichiers. GET /api/files/<path>/versions retourne toutes les versions avec leurs métadonnées (horodatage, tailles, hash). POST /api/restore gère la restauration complète : récupération depuis dedup_store, déchiffrement AES-256-GCM, décompression gzip et écriture du fichier restauré. L'interface web utilise ces endpoints pour permettre une restauration à un instant donné.",
-          en: "This Flask API exposes REST endpoints to consult version history and restore files. GET /api/files/<path>/versions returns all versions with metadata (timestamp, sizes, hash). POST /api/restore handles complete restoration: retrieval from dedup_store, AES-256-GCM decryption, gzip decompression and writing of restored file. The web interface uses these endpoints to enable point-in-time restoration."
+          fr: "GET /api/files/<path>/versions renvoie toutes les versions d'un fichier avec leurs métadonnées (horodatage, tailles, empreinte). POST /api/restore fait la restauration : lecture dans le stockage dédupliqué, déchiffrement AES-256-GCM, décompression gzip et écriture du fichier. L'interface web s'appuie sur ces deux routes pour restaurer un fichier à une date donnée.",
+          en: "GET /api/files/<path>/versions returns every version of a file with its metadata (timestamp, sizes, hash). POST /api/restore does the restoring: reading from the deduplicated store, AES-256-GCM decryption, gzip decompression and writing the file. The web interface relies on these two routes to restore a file as it was at a given date."
         }
       }
     ],
     results: {
-      fr: "Système prêt pour la production avec 80 à 90 % de réduction d'espace disque (compression gzip 70 % + déduplication), interface web fonctionnelle avec dashboard en temps réel, API REST complète, tests automatiques d'intégrité et de restauration, rétention de 30 jours.",
-      en: "Production-ready system with 80-90% disk space reduction (70% gzip compression + deduplication), functional web interface with real-time dashboard, complete REST API, automated integrity and restore tests, 30-day retention."
+      fr: "Le système réduit l'espace disque de 80 à 90 % grâce à la compression gzip et à la déduplication. Il comprend un tableau de bord web en temps réel, une API REST, des tests automatiques d'intégrité et de restauration, et une rétention de 30 jours.",
+      en: "The system cuts disk usage by 80 to 90% through gzip compression and deduplication. It includes a real-time web dashboard, a REST API, automated integrity and restore tests, and 30 days of retention."
     },
     reflection: {
-      fr: "Projet enrichissant qui m'a permis d'approfondir mes compétences en architecture système, sécurité (SSH, chiffrement), optimisation (compression + déduplication) et développement web. La gestion de versions avec rétention m'a particulièrement formé aux problématiques de stockage et de récupération de données.",
-      en: "Enriching project that allowed me to deepen my skills in system architecture, security (SSH, encryption), optimization (compression + deduplication) and web development. Version management with retention particularly trained me in data storage and recovery challenges."
+      fr: "Ce projet m'a fait travailler l'architecture système, la sécurité (SSH, chiffrement) et l'optimisation du stockage. La gestion des versions avec rétention m'a surtout appris à penser à la restauration dès la conception, et à la tester.",
+      en: "This project had me work on system architecture, security (SSH, encryption) and storage optimization. Managing versions with retention mostly taught me to think about restoring from the design stage, and to test it."
+    },
+    cover: {
+      word: { fr: "Sauvegarde", en: "Backup" },
+      metric: { fr: "80-90 %", en: "80-90%" },
+      caption: { fr: "d'espace disque économisé", en: "of disk space saved" },
     },
     thumbnail: "/images/daemon-sauvegarde.webp",
     images: [],
@@ -1463,22 +1463,20 @@ def restore_file():
   },
 ];
 
-export const getProjectCount = (): number => projects.filter(p => !p.archived).length;
 
 /** What the home page list needs. Keeps the full write-ups out of the home bundle. */
 export type ProjectSummary = Pick<
   Project,
-  "slug" | "year" | "featured" | "archived" | "title" | "category" | "technologies" | "shortDescription" | "thumbnail"
+  "slug" | "year" | "featured" | "title" | "category" | "technologies" | "shortDescription" | "cover"
 >;
 
-export const summarizeProject = ({ slug, year, featured, archived, title, category, technologies, shortDescription, thumbnail }: Project): ProjectSummary => ({
+export const summarizeProject = ({ slug, year, featured, title, category, technologies, shortDescription, cover }: Project): ProjectSummary => ({
   slug,
   year,
   featured,
-  archived,
   title,
   category,
   technologies,
   shortDescription,
-  thumbnail,
+  cover,
 });

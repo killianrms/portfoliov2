@@ -16,7 +16,7 @@ function entry(path: string, priority: number, changeFrequency: "monthly" | "yea
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...entry("/", 1, "monthly"),
-    ...projects.filter((p) => !p.archived).flatMap((p) => entry(`/projects/${p.slug}`, 0.7, "monthly")),
+    ...projects.flatMap((p) => entry(`/projects/${p.slug}`, 0.7, "monthly")),
     ...entry("/legal", 0.2, "yearly"),
   ];
 }

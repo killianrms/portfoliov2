@@ -1,68 +1,71 @@
 "use client";
 
-import Image from "next/image";
+import type { PointerEvent } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import type { ProjectSummary } from "@/data/projects";
 import { localize } from "@/lib/typo";
 import { ArrowUpRightIcon } from "./Icons";
+import ProjectCover from "./ProjectCover";
 
 interface ProjectCardProps {
   project: ProjectSummary;
+  /** The main project takes the full width, cover and text side by side. */
+  wide?: boolean;
 }
 
-export default function ProjectCard({ project }: ProjectCardProps) {
+// The card's highlight follows the pointer (see .spot in globals.css).
+function trackPointer(e: PointerEvent<HTMLAnchorElement>) {
+  const box = e.currentTarget.getBoundingClientRect();
+  e.currentTarget.style.setProperty("--mx", `${e.clientX - box.left}px`);
+  e.currentTarget.style.setProperty("--my", `${e.clientY - box.top}px`);
+}
+
+export default function ProjectCard({ project, wide = false }: ProjectCardProps) {
   const { language, t, path } = useLanguage();
-  const extra = project.technologies.length - 4;
+  const shown = wide ? 6 : 3;
+  const extra = project.technologies.length - shown;
 
   return (
     <Link
       href={path(`/projects/${project.slug}`)}
       prefetch={false}
-      className="group grid gap-5 border-b border-line py-8 outline-offset-4 md:grid-cols-12 md:gap-8 md:py-10"
+      onPointerMove={trackPointer}
+      className={`reveal card spot group flex flex-col overflow-hidden outline-offset-4 transition-colors duration-300 hover:border-accent-ink ${
+        wide ? "md:col-span-2 lg:col-span-3 lg:flex-row" : ""
+      }`}
     >
-      {/* Thumbnail (first on mobile, last on desktop) */}
-      <div
-        className="relative aspect-[16/9] overflow-hidden border border-line bg-surface md:order-last md:col-span-4 md:aspect-[16/10]"
-      >
-        <Image
-          src={project.thumbnail}
-          alt=""
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 33vw, 400px"
-          className="thumb-mono object-cover"
-        />
-      </div>
+      <ProjectCover
+        cover={project.cover}
+        category={project.category}
+        year={project.year}
+        className={`aspect-[16/10] shrink-0 border-line ${wide ? "border-b lg:aspect-auto lg:min-h-[23rem] lg:w-[54%] lg:border-b-0 lg:border-r" : "border-b"}`}
+      />
 
-      <div className="md:col-span-8 md:flex md:gap-8">
-        <p className="type-label flex items-center gap-3 text-muted md:w-24 md:shrink-0 md:flex-col md:items-start md:gap-2">
-          <span className="text-foreground">{t(`projects.filter.${project.category}`)}</span>
-          <span>{project.year}</span>
+      <div className={`relative z-10 flex flex-1 flex-col p-5 md:p-6 ${wide ? "lg:justify-center lg:p-10" : ""}`}>
+        <div className="flex items-start justify-between gap-4">
+          <h3
+            className={`font-bold leading-tight tracking-tight transition-colors group-hover:text-accent-ink ${
+              wide ? "text-2xl lg:text-[2rem]" : "text-[1.3rem]"
+            }`}
+          >
+            {project.title[language]}
+          </h3>
+          <span className="sr-only">{t("projects.viewProject")}</span>
+          <ArrowUpRightIcon
+            size={wide ? 22 : 18}
+            className="mt-1 shrink-0 text-muted transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent-ink"
+          />
+        </div>
+
+        <p className={`mt-3 leading-relaxed text-muted ${wide ? "lg:text-[1.05rem]" : "line-clamp-4 text-[0.95rem]"}`}>
+          {localize(project.shortDescription, language)}
         </p>
 
-        <div className="mt-3 min-w-0 flex-1 md:mt-0">
-          <div className="flex items-start justify-between gap-4">
-            <h3 className="text-[1.4rem] font-bold leading-tight transition-colors group-hover:text-accent-ink md:text-[1.75rem]">
-              {project.title[language]}
-            </h3>
-            <ArrowUpRightIcon
-              size={22}
-              className="mt-1 shrink-0 text-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent-ink"
-            />
-          </div>
-          {project.featured && (
-            <p className="type-label mt-2 inline-block bg-accent px-1.5 py-0.5 text-on-accent">
-              {t("projects.featured")}
-            </p>
-          )}
-          <p className="mt-3 line-clamp-3 max-w-2xl leading-relaxed text-muted">
-            {localize(project.shortDescription, language)}
-          </p>
-          <p className="type-label mt-4 text-foreground/70">
-            {project.technologies.slice(0, 4).join(" · ")}
-            {extra > 0 && <span className="text-muted"> · +{extra}</span>}
-          </p>
-        </div>
+        <p className={`type-label mt-auto pt-5 text-foreground/70 ${wide ? "lg:mt-7 lg:pt-0" : ""}`}>
+          {project.technologies.slice(0, shown).join(" · ")}
+          {extra > 0 && <span className="text-muted"> · +{extra}</span>}
+        </p>
       </div>
     </Link>
   );

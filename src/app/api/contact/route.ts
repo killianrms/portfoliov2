@@ -9,7 +9,8 @@ const EMAIL_RE = /^[^\s@<>()[\]\\,;:"]+@[^\s@<>()[\]\\,;:"]+\.[a-z]{2,}$/i;
 
 // Spam protection without a third-party captcha:
 // - a hidden "company" field that people never see but bots fill in,
-// - a minimum time between opening the page and sending,
+// - a minimum time between opening the page and sending, measured by the
+//   browser ("elapsed", in ms) so that device clock drift never matters,
 // - a per-IP limit. It lives in memory, so it is per server instance:
 //   enough to stop a script hammering one instance, not a distributed attack.
 const MIN_FILL_MS = 3000;
@@ -27,14 +28,14 @@ function rateLimited(ip: string, now: number): boolean {
 
 export async function POST(req: Request) {
   try {
-    const { name, email, message, company, startedAt } = await req.json();
+    const { name, email, message, company, elapsed } = await req.json();
     const now = Date.now();
 
     // Bots get a fake success so they don't retry.
     const looksLikeBot =
       (typeof company === "string" && company.trim() !== "") ||
-      typeof startedAt !== "number" ||
-      now - startedAt < MIN_FILL_MS;
+      typeof elapsed !== "number" ||
+      elapsed < MIN_FILL_MS;
     if (looksLikeBot) return NextResponse.json({ success: true });
 
     const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";

@@ -11,28 +11,25 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-line">
-      <div className="@container mx-auto max-w-7xl px-4 sm:px-6 md:px-10">
-        <p
-          className="type-display select-none whitespace-nowrap pt-10 text-[16vw] leading-[0.78] text-surface supports-[font-size:1cqw]:text-[17.5cqw]"
-          aria-hidden="true"
-        >
-          Killian Ramus
-        </p>
-        <div className="type-label flex flex-col gap-3 border-t border-line py-6 text-muted sm:flex-row sm:items-center sm:justify-between">
-          <span>
-            © {BUILD_DATE?.slice(0, 4)} Killian Ramus. {t("footer.rights")}
+      <div className="type-label mx-auto flex max-w-7xl flex-col gap-4 px-4 py-7 text-muted sm:px-6 md:flex-row md:items-center md:justify-between md:px-10">
+        <span className="flex items-center gap-3">
+          <span className="type-display grid h-6 w-6 place-items-center bg-accent pt-px text-base text-on-accent" aria-hidden="true">
+            KR
           </span>
-          <span className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
-            {t("footer.build")} {BUILD_SHA} · {BUILD_DATE}
-          </span>
-          <Link href={path("/legal")} className="hover:text-foreground transition-colors">
+          © {BUILD_DATE?.slice(0, 4)} Killian Ramus. {t("footer.rights")}
+        </span>
+        <span className="flex items-center gap-2.5">
+          <span className="h-1.5 w-1.5 rounded-full bg-accent-ink" aria-hidden="true" />
+          {t("footer.build")} {BUILD_SHA} · {BUILD_DATE}
+        </span>
+        <span className="flex items-center gap-6">
+          <Link href={path("/legal")} className="transition-colors hover:text-foreground">
             {t("nav.legal")}
           </Link>
-          <a href="#" className="text-foreground hover:text-accent-ink transition-colors">
+          <a href="#top" className="text-foreground transition-colors hover:text-accent-ink">
             ↑ {t("footer.top")}
           </a>
-        </div>
+        </span>
       </div>
     </footer>
   );

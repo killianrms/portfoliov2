@@ -6,6 +6,7 @@ import "../globals.css";
 import ClientProviders from "@/components/ClientProviders";
 import { translations } from "@/data/translations";
 import { LANGUAGES, SITE_URL, alternates, isLanguage } from "@/lib/i18n";
+import { THEME_COLOR, THEME_SCRIPT } from "@/lib/theme";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -31,10 +32,8 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#e9eaec" },
-    { media: "(prefers-color-scheme: dark)", color: "#0c0d11" },
-  ],
+  // Dark is the default theme; ThemeContext updates this when the visitor switches.
+  themeColor: THEME_COLOR.dark,
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
@@ -44,7 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const home = alternates("/", lang);
   return {
     metadataBase: new URL(SITE_URL),
-    title: { default: t["meta.title"], template: "%s - Killian RAMUS" },
+    title: { default: t["meta.title"], template: "%s | Killian RAMUS" },
     description: t["meta.description"],
     keywords: ["Killian RAMUS", "portfolio", "DevOps", "CI/CD", "automation", "automatisation", "Polytech Montpellier", "ITESOFT", "alternance"],
     alternates: home,
@@ -61,10 +60,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   };
 }
 
-// Applied before first paint so the theme never flashes or remounts the app:
-// the saved choice if there is one, otherwise the device setting.
-const themeScript = `(function(){var d=false;try{var t=localStorage.getItem("theme");d=t?t==="dark":matchMedia("(prefers-color-scheme: dark)").matches;}catch(e){}document.documentElement.classList.add(d?"dark":"light");})();`;
-
 export default async function RootLayout({
   children,
   params,
@@ -76,9 +71,11 @@ export default async function RootLayout({
   if (!isLanguage(lang)) notFound();
 
   return (
-    <html lang={lang} className={`${archivo.variable} ${jetbrains.variable}`} suppressHydrationWarning>
+    // Dark by default. The inline script switches to light before first paint
+    // for visitors who chose it, hence suppressHydrationWarning on <html>.
+    <html lang={lang} className={`${archivo.variable} ${jetbrains.variable} dark`} suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
       <body className="antialiased">
         <ClientProviders language={lang}>{children}</ClientProviders>

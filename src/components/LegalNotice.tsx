@@ -12,7 +12,7 @@ type Section = { title: string; body: string[] };
 const content: Record<"fr" | "en", { title: string; updated: string; sections: Section[] }> = {
   fr: {
     title: "Mentions légales et confidentialité",
-    updated: "Dernière mise à jour : septembre 2026",
+    updated: "Dernière mise à jour : novembre 2026",
     sections: [
       {
         title: "Éditeur du site",
@@ -50,14 +50,14 @@ const content: Record<"fr" | "en", { title: string; updated: string; sections: S
       {
         title: "Cookies",
         body: [
-          "Ce site n'utilise aucun cookie. Il mesure son audience avec Vercel Web Analytics, qui ne dépose pas de cookie et ne permet pas de vous identifier : seules des statistiques agrégées (pages vues, pays, type d'appareil) sont produites, à seule fin de mesurer la fréquentation. Votre choix de langue et de thème (clair ou sombre) est enregistré dans votre navigateur. Ni l'un ni l'autre ne nécessite de consentement.",
+          "Ce site n'utilise aucun cookie. Il mesure son audience avec Vercel Web Analytics, qui ne dépose pas de cookie et ne permet pas de vous identifier : seules des statistiques agrégées (pages vues, pays, type d'appareil) sont produites, à seule fin de mesurer la fréquentation. Votre choix de thème (sombre ou clair) est enregistré dans votre navigateur. Ni l'un ni l'autre ne nécessite de consentement.",
         ],
       },
     ],
   },
   en: {
     title: "Legal notice & privacy",
-    updated: "Last updated: September 2026",
+    updated: "Last updated: November 2026",
     sections: [
       {
         title: "Publisher",
@@ -95,7 +95,7 @@ const content: Record<"fr" | "en", { title: string; updated: string; sections: S
       {
         title: "Cookies",
         body: [
-          "This site uses no cookies. It measures traffic with Vercel Web Analytics, which sets no cookie and cannot identify you: it only produces aggregated statistics (page views, country, device type), solely to measure audience. Your language and theme (light or dark) choice is stored in your browser. Neither requires consent."
+          "This site uses no cookies. It measures traffic with Vercel Web Analytics, which sets no cookie and cannot identify you: it only produces aggregated statistics (page views, country, device type), solely to measure audience. Your choice of theme (dark or light) is stored in your browser. Neither requires consent."
         ],
       },
     ],
@@ -114,7 +114,7 @@ export default function LegalNotice() {
           <ArrowIcon size={14} className="rotate-180 transition-transform group-hover:-translate-x-1" />
           {t("legal.back")}
         </Link>
-        <h1 className="type-wide mt-8 max-w-4xl text-balance text-[2.1rem] sm:text-5xl">{c.title}</h1>
+        <h1 className="type-headline mt-8 max-w-4xl text-balance text-[2.2rem] sm:text-5xl lg:text-6xl">{c.title}</h1>
         <p className="type-label mt-4 text-muted">{fix(c.updated)}</p>
 
         <div className="mt-10 divide-y divide-line border-t border-line">
