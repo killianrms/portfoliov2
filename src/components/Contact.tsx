@@ -63,10 +63,8 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="relative overflow-clip border-t border-line">
-      <div className="glow-blob pointer-events-none absolute -bottom-72 -left-56 h-[44rem] w-[44rem] opacity-70" aria-hidden="true" />
-
-      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 md:px-10 md:py-28">
+    <section id="contact" className="border-t border-line">
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 md:px-10 md:py-28">
         <SectionHeader title={t("nav.contact")} />
 
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">

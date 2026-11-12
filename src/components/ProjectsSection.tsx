@@ -19,7 +19,7 @@ export default function ProjectsSection({ projects }: { projects: ProjectSummary
 
   return (
     <section id="projects" className="border-t border-line">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:px-10 md:py-28">
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 md:px-10 md:py-28">
         <SectionHeader
           title={t("projects.title")}
           meta={`${projects.length} ${t("projects.count")} · ${Math.min(...years)} → ${Math.max(...years)}`}
@@ -54,7 +54,7 @@ export default function ProjectsSection({ projects }: { projects: ProjectSummary
 
         <div className="mt-8 grid gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-3">
           {visible.map((project) => (
-            <ProjectCard key={project.slug} project={project} wide={project.cover.tone === "accent"} />
+            <ProjectCard key={project.slug} project={project} wide={project.cover.lead} />
           ))}
         </div>
       </div>

@@ -29,7 +29,7 @@ export default function Journey() {
 
   return (
     <section id="journey" className="border-t border-line">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:px-10 md:py-28">
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 md:px-10 md:py-28">
         <SectionHeader title={t("journey.title")} meta={`${first} → ${last}`} />
 
         {/* Education as a pipeline: each degree is a stage */}
@@ -47,7 +47,7 @@ export default function Journey() {
 
           <ol className="canvas-dots px-4 py-8 md:grid md:grid-cols-3 md:px-7 md:py-10">
             {education.map((stage, i) => (
-              <li key={stage.title.en} className="relative flex gap-4 pb-9 last:pb-0 md:block md:pb-0 md:pr-8">
+              <li key={stage.title.en} className="relative flex gap-4 pb-7 last:pb-0 md:block md:pb-0 md:pr-8">
                 {/* Wire to the next stage */}
                 {i < education.length - 1 && (
                   <span

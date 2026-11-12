@@ -84,7 +84,6 @@ const fr = {
   "projects.filter.personal": "Perso",
   "projects.filter.university": "Université",
   "projects.filter.competition": "Compétition",
-  "projects.featured": "À la une",
   "projects.filterLabel": "Filtrer les projets",
   "projects.viewProject": "Voir le projet",
 
@@ -226,7 +225,6 @@ const en: Record<keyof typeof fr, string> = {
   "projects.filter.personal": "Personal",
   "projects.filter.university": "University",
   "projects.filter.competition": "Competition",
-  "projects.featured": "Featured",
   "projects.filterLabel": "Filter projects",
   "projects.viewProject": "View project",
 
