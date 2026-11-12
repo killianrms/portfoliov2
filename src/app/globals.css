@@ -138,10 +138,6 @@ body {
   mask-image: radial-gradient(ellipse 85% 85% at 62% 34%, #000 25%, transparent 78%);
 }
 
-.glow-blob {
-  background: radial-gradient(closest-side, var(--glow), transparent);
-}
-
 .card {
   position: relative;
   border: 1px solid var(--line);
@@ -258,11 +254,11 @@ body {
 }
 
 /* ── Workflow diagram ─────────────────────────────────────────────── */
-/* Each step runs (amber), completes (violet) and hands over to the next
-   along the wire, in a loop. --i is the step index. */
+/* Without .flow-run the diagram is static and complete. With it, each step
+   runs (amber), completes (violet) and hands over to the next along the
+   wire, once; the component restarts the whole run. --i is the step index. */
 
 .flow {
-  --flow-loop: 10s;
   --flow-step: 1s;
   --tile: 3rem;
 }
@@ -283,16 +279,17 @@ body {
   place-items: center;
   width: var(--tile);
   height: var(--tile);
-  border: 1px solid var(--line-strong);
-  background: var(--surface-2);
-  color: var(--muted);
-  animation: flow-tile var(--flow-loop) linear var(--delay) infinite both;
+  border: 1px solid var(--accent-ink);
+  background: var(--accent-soft);
+  color: var(--foreground);
+}
+.flow-run .flow-tile {
+  animation: flow-tile 1.7s linear var(--delay) both;
 }
 @keyframes flow-tile {
-  0%, 3% { border-color: var(--line-strong); background: var(--surface-2); color: var(--muted); box-shadow: 0 0 0 0 transparent; }
-  5%, 13% { border-color: var(--signal); background: var(--surface-2); color: var(--foreground); box-shadow: 0 0 0 5px var(--signal-soft); }
-  16%, 88% { border-color: var(--accent-ink); background: var(--accent-soft); color: var(--foreground); box-shadow: 0 0 0 0 transparent; }
-  96%, 100% { border-color: var(--line-strong); background: var(--surface-2); color: var(--muted); box-shadow: 0 0 0 0 transparent; }
+  0%, 27% { border-color: var(--line-strong); background: var(--surface-2); color: var(--muted); box-shadow: 0 0 0 0 transparent; }
+  30%, 76% { border-color: var(--signal); background: var(--surface-2); color: var(--foreground); box-shadow: 0 0 0 5px var(--signal-soft); }
+  94%, 100% { border-color: var(--accent-ink); background: var(--accent-soft); color: var(--foreground); box-shadow: 0 0 0 0 transparent; }
 }
 
 .flow-check {
@@ -305,12 +302,13 @@ body {
   height: 16px;
   background: var(--accent);
   color: var(--on-accent);
-  animation: flow-check var(--flow-loop) linear var(--delay) infinite both;
+}
+.flow-run .flow-check {
+  animation: flow-check 1.7s linear var(--delay) both;
 }
 @keyframes flow-check {
-  0%, 14% { opacity: 0; transform: scale(0.4); }
-  17%, 88% { opacity: 1; transform: scale(1); }
-  94%, 100% { opacity: 0; transform: scale(0.4); }
+  0%, 86% { opacity: 0; transform: scale(0.4); }
+  100% { opacity: 1; transform: scale(1); }
 }
 
 /* Wire to the next step: vertical on phones, horizontal from md */
@@ -320,18 +318,19 @@ body {
   top: var(--tile);
   bottom: 0;
   width: 1px;
-  background-color: var(--line-strong);
-  animation: flow-wire var(--flow-loop) linear var(--delay) infinite both;
+  background-color: var(--accent-ink);
 }
 .flow-node:last-child .flow-wire {
   display: none;
 }
-@keyframes flow-wire {
-  0%, 12% { background-color: var(--line-strong); }
-  16%, 88% { background-color: var(--accent-ink); }
-  96%, 100% { background-color: var(--line-strong); }
+.flow-run .flow-wire {
+  animation: flow-wire 1.7s linear var(--delay) both;
 }
-.flow-wire::after {
+@keyframes flow-wire {
+  0%, 72% { background-color: var(--line-strong); }
+  96%, 100% { background-color: var(--accent-ink); }
+}
+.flow-run .flow-wire::after {
   content: "";
   position: absolute;
   left: -2.5px;
@@ -340,19 +339,19 @@ body {
   border-radius: 50%;
   background: var(--signal);
   box-shadow: 0 0 10px 2px var(--signal-soft);
-  animation: flow-pulse-y var(--flow-loop) linear var(--delay) infinite both;
+  animation: flow-pulse-y 1.7s linear var(--delay) both;
 }
 @keyframes flow-pulse-y {
-  0%, 11% { top: 0; opacity: 0; }
-  12% { top: 0; opacity: 1; }
-  16% { top: calc(100% - 6px); opacity: 1; }
-  17%, 100% { top: calc(100% - 6px); opacity: 0; }
+  0%, 71% { top: 0; opacity: 0; }
+  72% { top: 0; opacity: 1; }
+  96% { top: calc(100% - 6px); opacity: 1; }
+  100% { top: calc(100% - 6px); opacity: 0; }
 }
 @keyframes flow-pulse-x {
-  0%, 11% { left: 0; opacity: 0; }
-  12% { left: 0; opacity: 1; }
-  16% { left: calc(100% - 6px); opacity: 1; }
-  17%, 100% { left: calc(100% - 6px); opacity: 0; }
+  0%, 71% { left: 0; opacity: 0; }
+  72% { left: 0; opacity: 1; }
+  96% { left: calc(100% - 6px); opacity: 1; }
+  100% { left: calc(100% - 6px); opacity: 0; }
 }
 @media (min-width: 768px) {
   .flow-wire {
@@ -363,7 +362,7 @@ body {
     width: auto;
     height: 1px;
   }
-  .flow-wire::after {
+  .flow-run .flow-wire::after {
     left: 0;
     top: -2.5px;
     animation-name: flow-pulse-x;
@@ -437,22 +436,6 @@ code {
   .cursor-block,
   .rise {
     animation: none;
-  }
-  .flow-tile {
-    animation: none;
-    border-color: var(--accent-ink);
-    background: var(--accent-soft);
-    color: var(--foreground);
-  }
-  .flow-check {
-    animation: none;
-  }
-  .flow-wire {
-    animation: none;
-    background-color: var(--accent-ink);
-  }
-  .flow-wire::after {
-    display: none;
   }
 }
 

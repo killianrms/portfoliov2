@@ -24,7 +24,6 @@ export default function Hero() {
   return (
     <section id="top" className="relative overflow-clip pt-14">
       <div className="canvas-dots fade-edges pointer-events-none absolute inset-0" aria-hidden="true" />
-      <div className="glow-blob pointer-events-none absolute -right-48 -top-64 h-[48rem] w-[48rem]" aria-hidden="true" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 md:px-10">
         <div className="grid pt-7 lg:grid-cols-[minmax(0,1fr)_19rem] lg:gap-x-14 lg:pt-11 xl:grid-cols-[minmax(0,1fr)_21rem]">

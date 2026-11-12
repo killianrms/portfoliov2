@@ -32,9 +32,12 @@ export default function ProjectCard({ project, wide = false }: ProjectCardProps)
       prefetch={false}
       onPointerMove={trackPointer}
       className={`reveal card spot group flex flex-col overflow-hidden outline-offset-4 transition-colors duration-300 hover:border-accent-ink ${
-        wide ? "md:col-span-2 lg:col-span-3 lg:flex-row" : ""
+        wide ? "border-line-strong md:col-span-2 lg:col-span-3 lg:flex-row" : ""
       }`}
     >
+      {/* The main project carries the same violet edge as its entry in the journey */}
+      {wide && <span className="absolute inset-y-0 left-0 z-20 w-[3px] bg-accent" aria-hidden="true" />}
+
       <ProjectCover
         cover={project.cover}
         category={project.category}
@@ -58,7 +61,7 @@ export default function ProjectCard({ project, wide = false }: ProjectCardProps)
           />
         </div>
 
-        <p className={`mt-3 leading-relaxed text-muted ${wide ? "lg:text-[1.05rem]" : "line-clamp-4 text-[0.95rem]"}`}>
+        <p className={`mt-3 leading-relaxed text-muted ${wide ? "line-clamp-4 sm:line-clamp-none lg:text-[1.05rem]" : "line-clamp-3 text-[0.95rem] sm:line-clamp-4"}`}>
           {localize(project.shortDescription, language)}
         </p>
 

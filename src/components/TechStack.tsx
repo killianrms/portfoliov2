@@ -45,7 +45,7 @@ export default function TechStack() {
 
   return (
     <section id="skills" className="border-t border-line">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:px-10 md:py-28">
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 md:px-10 md:py-28">
         <SectionHeader title={t("tech.title")} />
         <p className="-mt-4 mb-8 max-w-2xl text-muted md:-mt-6 md:mb-10 md:text-lg">{t("tech.subtitle")}</p>
 

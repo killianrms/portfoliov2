@@ -18,14 +18,14 @@ export default function About() {
 
   return (
     <section id="about" className="border-t border-line">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:px-10 md:py-28">
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 md:px-10 md:py-28">
         <SectionHeader title={t("about.title")} meta={t("hero.caption")} />
 
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
           <div className="reveal lg:col-span-7">
             <p className="type-headline text-balance text-[1.75rem] sm:text-4xl lg:text-[2.75rem]">{t("about.statement")}</p>
 
-            <dl className="mt-10 border-t border-line lg:mt-14 lg:max-w-xl">
+            <dl className="mt-10 hidden border-t border-line sm:block lg:mt-14 lg:max-w-xl">
               {facts.map((f) => (
                 <div key={f.key} className="grid grid-cols-[6.5rem_1fr] gap-4 border-b border-line py-3.5">
                   <dt className="type-label pt-[0.2rem] text-muted">{f.key}</dt>

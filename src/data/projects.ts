@@ -16,14 +16,15 @@ export interface ProjectCover {
   /** One striking fact, and what it measures. */
   metric: { fr: string; en: string };
   caption: { fr: string; en: string };
-  /** "accent" is reserved for the main project. */
-  tone?: "accent";
+  /** Small drawing in the corner of the poster, specific to the project. */
+  motif: "flow" | "chart" | "bars" | "cipher" | "gauges" | "night" | "dedup";
+  /** The main project: its card takes the full width. */
+  lead?: boolean;
 }
 
 export interface Project {
   slug: string;
   year: string;
-  featured?: boolean;
   title: { fr: string; en: string };
   category: "professional" | "personal" | "university" | "competition";
   technologies: string[];
@@ -52,7 +53,6 @@ export const projects: Project[] = [
   {
     slug: "itesoft-assistant-ingenieur",
     year: "2025",
-    featured: true,
     title: { fr: "AutoInit et Streamline for Invoices chez ITESOFT", en: "AutoInit and Streamline for Invoices at ITESOFT" },
     category: "professional",
     technologies: ["n8n", "Docker", "Azure DevOps", "Node.js", "Java", "AngularJS", "PostgreSQL", "SSH / SFTP", "Grafana", "Git"],
@@ -231,7 +231,8 @@ The lessons I keep:
       word: { fr: "AutoInit", en: "AutoInit" },
       metric: { fr: "2 h → 1 min", en: "2 h → 1 min" },
       caption: { fr: "pour initialiser une plateforme client", en: "to set up a client platform" },
-      tone: "accent",
+      motif: "flow",
+      lead: true,
     },
     images: [],
     links: {}
@@ -385,6 +386,7 @@ function renderChart(data) {
       word: { fr: "TamaStat", en: "TamaStat" },
       metric: { fr: "100 %", en: "100%" },
       caption: { fr: "de taux d'occupation, contre 75-82 % avant", en: "occupancy rate, up from 75-82%" },
+      motif: "chart",
     },
     thumbnail: "/images/tamastat.webp",
     images: [],
@@ -393,7 +395,6 @@ function renderChart(data) {
   {
     slug: "lobbybot-fortnite",
     year: "2020",
-    featured: true,
     title: { fr: "LobbyBot 2.0, bots Fortnite", en: "LobbyBot 2.0, Fortnite bots" },
     category: "personal",
     technologies: ["Node.js", "Python", "Discord.js", "Express", "Socket.IO", "PostgreSQL", "Docker", "OAuth2", "WebSocket", "Asyncio"],
@@ -634,6 +635,7 @@ io.on('connection', (clientSocket) => {
       word: { fr: "LobbyBot 2.0", en: "LobbyBot 2.0" },
       metric: { fr: "8 500+", en: "8,500+" },
       caption: { fr: "membres sur Discord", en: "Discord members" },
+      motif: "bars",
     },
     images: [],
     links: { github: "https://github.com/killianrms/lobbybot2.0-discord", live: "https://github.com/killianrms/lobbybot2.0-website", video: "https://youtu.be/tja-34-FpnY", discord: "https://discord.gg/SarmtBh3Gu" }
@@ -641,7 +643,6 @@ io.on('connection', (clientSocket) => {
   {
     slug: "referendum",
     year: "2024",
-    featured: true,
     title: { fr: "Referendum, application de vote sécurisée", en: "Referendum, a secure voting app" },
     category: "university",
     technologies: ["Java", "JavaFX", "ElGamal", "Zero Knowledge Proof", "DeepSeek API", "Cryptographie", "Sockets", "Scrum", "Git"],
@@ -890,6 +891,7 @@ public class VoteController {
       word: { fr: "Referendum", en: "Referendum" },
       metric: { fr: "ElGamal + ZKP", en: "ElGamal + ZKP" },
       caption: { fr: "votes chiffrés et preuve Zero Knowledge", en: "encrypted votes and a zero-knowledge proof" },
+      motif: "cipher",
     },
     thumbnail: "/images/referendum1.webp",
     images: ["/images/referendum1.webp", "/images/referendum2.webp", "/images/referendum3.webp", "/images/referendum4.webp", "/images/referendum5.webp"],
@@ -1070,6 +1072,7 @@ With five of us and 48 hours, we also learned to get the core mechanics working 
       word: { fr: "Scroll Party", en: "Scroll Party" },
       metric: { fr: "48 h", en: "48 h" },
       caption: { fr: "pour créer un jeu Unity à cinq", en: "to build a Unity game as a team of five" },
+      motif: "gauges",
     },
     thumbnail: "/images/codegamejam2026.webp",
     images: [],
@@ -1241,6 +1244,7 @@ This edition also meant switching subjects constantly, from a Chrome extension t
       word: { fr: "Nuit de l'Info", en: "Nuit de l'Info" },
       metric: { fr: "1 nuit", en: "1 night" },
       caption: { fr: "un site et trois défis, à sept", en: "one website and three challenges, team of seven" },
+      motif: "night",
     },
     thumbnail: "/images/ndi2025.webp",
     images: [],
@@ -1456,6 +1460,7 @@ def restore_file():
       word: { fr: "Sauvegarde", en: "Backup" },
       metric: { fr: "80-90 %", en: "80-90%" },
       caption: { fr: "d'espace disque économisé", en: "of disk space saved" },
+      motif: "dedup",
     },
     thumbnail: "/images/daemon-sauvegarde.webp",
     images: [],
@@ -1467,13 +1472,12 @@ def restore_file():
 /** What the home page list needs. Keeps the full write-ups out of the home bundle. */
 export type ProjectSummary = Pick<
   Project,
-  "slug" | "year" | "featured" | "title" | "category" | "technologies" | "shortDescription" | "cover"
+  "slug" | "year" | "title" | "category" | "technologies" | "shortDescription" | "cover"
 >;
 
-export const summarizeProject = ({ slug, year, featured, title, category, technologies, shortDescription, cover }: Project): ProjectSummary => ({
+export const summarizeProject = ({ slug, year, title, category, technologies, shortDescription, cover }: Project): ProjectSummary => ({
   slug,
   year,
-  featured,
   title,
   category,
   technologies,

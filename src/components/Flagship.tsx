@@ -1,6 +1,6 @@
 "use client";
 
-import type { CSSProperties, ReactNode } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { localize } from "@/lib/typo";
@@ -47,12 +47,41 @@ const STEPS: { icon: ReactNode; label: Localized; detail: Localized }[] = [
 const MANUAL_MIN = 120;
 const RUN_MIN = 42.5;
 
+// A run takes about 7 s; the finished state then holds until the next one.
+const RUN_EVERY_MS = 15000;
+
 export default function Flagship() {
   const { language, t, path } = useLanguage();
 
+  // The diagram is rendered complete and static. Once it scrolls into view
+  // (and unless the visitor prefers reduced motion) it plays a run from the
+  // first step, then again at intervals: `run` remounts the list, which
+  // restarts every step's animation together.
+  const [run, setRun] = useState(0);
+  const windowRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = windowRef.current;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let timer: number | undefined;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        window.clearInterval(timer);
+        if (!entry.isIntersecting) return;
+        setRun((n) => n + 1);
+        timer = window.setInterval(() => setRun((n) => n + 1), RUN_EVERY_MS);
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      window.clearInterval(timer);
+    };
+  }, []);
+
   return (
     <section id="autoinit" className="border-t border-line">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:px-10 md:py-28">
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 md:px-10 md:py-28">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
           <div className="reveal lg:col-span-6">
             <p className="type-label flex items-center gap-2.5 text-accent-ink">
@@ -82,7 +111,7 @@ export default function Flagship() {
         </div>
 
         {/* Workflow window */}
-        <div className="reveal flow card mt-12 md:mt-16">
+        <div ref={windowRef} className="reveal flow card mt-12 md:mt-16">
           <div className="type-label flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-b border-line px-4 py-3 md:px-7">
             <span className="flex items-center gap-3">
               <span className="flex gap-1.5" aria-hidden="true">
@@ -99,11 +128,11 @@ export default function Flagship() {
           </div>
 
           <div className="canvas-dots px-4 py-8 md:px-7 md:py-11">
-            <ol className="md:flex">
+            <ol key={run} className={`md:flex ${run > 0 ? "flow-run" : ""}`}>
               {STEPS.map((s, i) => (
                 <li
                   key={s.label.en}
-                  className="flow-node relative flex gap-4 pb-7 last:pb-0 md:block md:flex-1 md:pb-0"
+                  className="flow-node relative flex gap-4 pb-5 last:pb-0 md:block md:flex-1 md:pb-0"
                   style={{ "--i": i } as CSSProperties}
                 >
                   <span className="flow-wire" aria-hidden="true" />
