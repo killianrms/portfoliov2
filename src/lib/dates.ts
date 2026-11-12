@@ -1,22 +1,26 @@
-const BIRTH = new Date(2004, 5, 28); // 28 juin 2004
-const ITESOFT_START = new Date(2025, 8, 1); // septembre 2025
+// All dates are "YYYY-MM-DD" strings so results don't depend on the time zone.
+const BIRTH = { year: 2004, month: 6, day: 28 };
+const ITESOFT_START = { year: 2025, month: 9 };
 
-export function getAge(now = new Date()): number {
-  let age = now.getFullYear() - BIRTH.getFullYear();
-  const m = now.getMonth() - BIRTH.getMonth();
-  if (m < 0 || (m === 0 && now.getDate() < BIRTH.getDate())) age--;
-  return age;
+function parts(today: string) {
+  const [year, month, day] = today.split("-").map(Number);
+  return { year, month, day };
 }
 
-export function getWorkStudyDuration(language: "fr" | "en", now = new Date()): string {
-  const months =
-    (now.getFullYear() - ITESOFT_START.getFullYear()) * 12 +
-    (now.getMonth() - ITESOFT_START.getMonth());
-  if (months < 1) return language === "fr" ? "< 1 mois" : "< 1 mo";
-  if (months < 12) return `${months} ${language === "fr" ? "mois" : "mo"}`;
+export function getAge(today: string): number {
+  const now = parts(today);
+  const hadBirthday = now.month > BIRTH.month || (now.month === BIRTH.month && now.day >= BIRTH.day);
+  return now.year - BIRTH.year - (hadBirthday ? 0 : 1);
+}
+
+export function getWorkStudyDuration(language: "fr" | "en", today: string): string {
+  const now = parts(today);
+  const months = (now.year - ITESOFT_START.year) * 12 + (now.month - ITESOFT_START.month);
+  const mo = language === "fr" ? "mois" : "mo";
+  if (months < 1) return `< 1 ${mo}`;
+  if (months < 12) return `${months} ${mo}`;
   const years = Math.floor(months / 12);
-  const rem = months % 12;
+  const rest = months % 12;
   const y = language === "fr" ? `${years} an${years > 1 ? "s" : ""}` : `${years} yr${years > 1 ? "s" : ""}`;
-  if (rem === 0) return y;
-  return `${y} ${rem} ${language === "fr" ? "mois" : "mo"}`;
+  return rest === 0 ? y : `${y} ${rest} ${mo}`;
 }

@@ -21,10 +21,10 @@ export default function HighlightedCode({ code, language }: { code: string; lang
     <SyntaxHighlighter
       language={language}
       style={vscDarkPlus}
-      customStyle={{ margin: 0, padding: "1rem 1rem 1.25rem", fontSize: "0.78rem", lineHeight: 1.65, background: "#121211" }}
+      customStyle={{ margin: 0, padding: "1rem 1rem 1.25rem", fontSize: "0.78rem", lineHeight: 1.65, background: "#0b0b11" }}
       codeTagProps={{ style: { fontFamily: "var(--font-mono)" } }}
       showLineNumbers
-      lineNumberStyle={{ color: "#5a5852", minWidth: "2.2em" }}
+      lineNumberStyle={{ color: "#5d5b70", minWidth: "2.2em" }}
     >
       {code}
     </SyntaxHighlighter>

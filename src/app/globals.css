@@ -1,60 +1,71 @@
 @import "tailwindcss";
 
-@variant dark (&:where(.dark, .dark *));
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
   --color-muted: var(--muted);
   --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
   --color-accent: var(--accent);
   --color-accent-ink: var(--accent-ink);
   --color-on-accent: var(--on-accent);
-  --color-on-accent-muted: var(--on-accent-muted);
   --color-signal: var(--signal);
-  --color-ink: var(--ink);
+  --color-signal-ink: var(--signal-ink);
   --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", monospace;
 }
 
-/* Technical-drawing palette: cool paper, ink, violet. Amber is reserved
-   for "in progress" states, like a running CI job. accent-ink is the
-   contrast-safe accent for small text. */
-:root {
-  --background: #e9eaec;
-  --surface: #dcdee3;
-  --foreground: #0e0f13;
-  --muted: #555966;
-  --line: #c6c9d1;
+/* Night canvas, ink and violet. Dark is the default theme; light is opt-in.
+   Amber is reserved for "in progress" states, like a running CI job.
+   accent-ink and signal-ink are the contrast-safe shades for text and thin lines. */
+:root,
+.dark {
+  --background: #08080c;
+  --surface: #0f0f16;
+  --surface-2: #171722;
+  --foreground: #f2f1f7;
+  --muted: #9d9bb0;
+  --line: #22222e;
+  --line-strong: #383849;
   --accent: #6a2cff;
-  --accent-ink: #6a2cff;
-  --on-accent: #f5f3fa;
-  --on-accent-muted: #ebe4ff;
+  --accent-ink: #b9a4ff;
+  --accent-soft: rgba(124, 77, 255, 0.16);
+  --on-accent: #f7f5ff;
   --signal: #ffbf1f;
-  --ink: #0e0f13;
-  color-scheme: light;
+  --signal-ink: #ffbf1f;
+  --signal-soft: rgba(255, 191, 31, 0.18);
+  --glow: rgba(106, 44, 255, 0.34);
+  --dot: rgba(255, 255, 255, 0.075);
+  color-scheme: dark;
 }
 
-.dark {
-  --background: #0c0d11;
-  --surface: #171920;
-  --foreground: #e8e9ee;
-  --muted: #8b8f9c;
-  --line: #272a33;
+.light {
+  --background: #f3f2f7;
+  --surface: #ffffff;
+  --surface-2: #eae8f2;
+  --foreground: #0d0c14;
+  --muted: #5a576d;
+  --line: #dad8e4;
+  --line-strong: #b7b4c8;
   --accent: #6a2cff;
-  --accent-ink: #b49cff;
-  --on-accent: #f5f3fa;
-  --on-accent-muted: #ebe4ff;
-  --signal: #ffbf1f;
-  --ink: #05060a;
-  color-scheme: dark;
+  --accent-ink: #5b1fe8;
+  --accent-soft: rgba(106, 44, 255, 0.1);
+  --on-accent: #f7f5ff;
+  --signal: #f0a400;
+  --signal-ink: #8a5600;
+  --signal-soft: rgba(240, 164, 0, 0.2);
+  --glow: rgba(106, 44, 255, 0.18);
+  --dot: rgba(13, 12, 20, 0.11);
+  color-scheme: light;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 4.5rem;
+  scroll-padding-top: 5rem;
   -webkit-text-size-adjust: 100%;
+  background: var(--background);
 }
 
 body {
@@ -73,58 +84,157 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid currentColor;
+  outline: 2px solid var(--accent-ink);
   outline-offset: 3px;
+}
+
+/* Cross-fade when the visitor switches theme (class set for 350 ms). */
+.theme-switching,
+.theme-switching * {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
 }
 
 /* ── Type ─────────────────────────────────────────────────────────── */
 
-/* Condensed poster type for the name and big statements */
+/* Condensed poster type: the name, section titles, big numbers */
 .type-display {
   font-family: var(--font-sans);
   font-variation-settings: "wdth" 62;
   font-weight: 900;
   text-transform: uppercase;
-  line-height: 0.82;
-  letter-spacing: -0.01em;
+  line-height: 0.86;
+  letter-spacing: -0.005em;
+  /* The condensed space is very narrow: "1 YR 2 MO" would read as one word. */
+  word-spacing: 0.14em;
 }
 
-/* Wide heavy type for section titles */
-.type-wide {
+/* Statements and page titles */
+.type-headline {
   font-family: var(--font-sans);
-  font-variation-settings: "wdth" 125;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 0.95;
+  font-weight: 650;
+  letter-spacing: -0.028em;
+  line-height: 1.08;
 }
 
 /* Mono metadata labels */
 .type-label {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
-  line-height: 1.4;
+  line-height: 1.45;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-/* ── Pieces ───────────────────────────────────────────────────────── */
+/* ── Surfaces ─────────────────────────────────────────────────────── */
 
-.rule {
-  border-top: 1px solid var(--line);
+/* Dotted canvas, like the background of a workflow editor */
+.canvas-dots {
+  background-image: radial-gradient(circle, var(--dot) 1px, transparent 1.6px);
+  background-size: 26px 26px;
 }
 
-/* Dotted leader between a key and its value, like a spec sheet */
-.leader {
-  flex: 1;
-  min-width: 1rem;
-  border-bottom: 1px dotted var(--line);
-  transform: translateY(-0.3em);
+.fade-edges {
+  -webkit-mask-image: radial-gradient(ellipse 85% 85% at 62% 34%, #000 25%, transparent 78%);
+  mask-image: radial-gradient(ellipse 85% 85% at 62% 34%, #000 25%, transparent 78%);
 }
 
-/* "Running" pipeline stage */
+.glow-blob {
+  background: radial-gradient(closest-side, var(--glow), transparent);
+}
+
+.card {
+  position: relative;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+/* Crop marks on two opposite corners */
+.ticks {
+  position: relative;
+}
+.ticks::before,
+.ticks::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--accent-ink);
+  pointer-events: none;
+}
+.ticks::before {
+  left: -9px;
+  top: -9px;
+  border-right: 0;
+  border-bottom: 0;
+}
+.ticks::after {
+  right: -9px;
+  bottom: -9px;
+  border-left: 0;
+  border-top: 0;
+}
+
+/* Light that follows the pointer inside a card (--mx / --my set in JS) */
+.spot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), var(--accent-soft), transparent 65%);
+  transition: opacity 0.35s ease;
+}
+@media (hover: hover) {
+  .spot:hover::before {
+    opacity: 1;
+  }
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  height: 3rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0 1.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+.btn-primary {
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow: 0 10px 34px -14px var(--glow);
+}
+.btn-ghost {
+  border: 1px solid var(--line-strong);
+  color: var(--foreground);
+}
+@media (hover: hover) {
+  .btn-primary:hover {
+    background: #7a45ff;
+    box-shadow: 0 14px 40px -10px var(--glow);
+    transform: translateY(-1px);
+  }
+  .btn-ghost:hover {
+    border-color: var(--foreground);
+    background: var(--surface);
+  }
+}
+.btn:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+/* ── Status pieces ────────────────────────────────────────────────── */
+
 @keyframes pulse-ring {
-  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--signal) 60%, transparent); }
-  70% { box-shadow: 0 0 0 8px transparent; }
+  0% { box-shadow: 0 0 0 0 var(--signal-soft); }
+  70% { box-shadow: 0 0 0 7px transparent; }
   100% { box-shadow: 0 0 0 0 transparent; }
 }
 .status-running {
@@ -139,18 +249,172 @@ body {
   animation: progress-sweep 2.4s cubic-bezier(0.6, 0, 0.4, 1) infinite;
 }
 
-/* Project thumbnails: monochrome on pointer devices, colour on hover. Touch
-   devices always get colour. */
+@keyframes blink {
+  0%, 55% { opacity: 1; }
+  56%, 100% { opacity: 0; }
+}
+.cursor-block {
+  animation: blink 1.25s steps(1) infinite;
+}
+
+/* ── Workflow diagram ─────────────────────────────────────────────── */
+/* Each step runs (amber), completes (violet) and hands over to the next
+   along the wire, in a loop. --i is the step index. */
+
+.flow {
+  --flow-loop: 10s;
+  --flow-step: 1s;
+  --tile: 3rem;
+}
+@media (min-width: 768px) {
+  .flow {
+    --tile: 3.5rem;
+  }
+}
+
+.flow-node {
+  --delay: calc(var(--i) * var(--flow-step));
+}
+
+.flow-tile {
+  position: relative;
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: var(--tile);
+  height: var(--tile);
+  border: 1px solid var(--line-strong);
+  background: var(--surface-2);
+  color: var(--muted);
+  animation: flow-tile var(--flow-loop) linear var(--delay) infinite both;
+}
+@keyframes flow-tile {
+  0%, 3% { border-color: var(--line-strong); background: var(--surface-2); color: var(--muted); box-shadow: 0 0 0 0 transparent; }
+  5%, 13% { border-color: var(--signal); background: var(--surface-2); color: var(--foreground); box-shadow: 0 0 0 5px var(--signal-soft); }
+  16%, 88% { border-color: var(--accent-ink); background: var(--accent-soft); color: var(--foreground); box-shadow: 0 0 0 0 transparent; }
+  96%, 100% { border-color: var(--line-strong); background: var(--surface-2); color: var(--muted); box-shadow: 0 0 0 0 transparent; }
+}
+
+.flow-check {
+  position: absolute;
+  right: -7px;
+  top: -7px;
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+  color: var(--on-accent);
+  animation: flow-check var(--flow-loop) linear var(--delay) infinite both;
+}
+@keyframes flow-check {
+  0%, 14% { opacity: 0; transform: scale(0.4); }
+  17%, 88% { opacity: 1; transform: scale(1); }
+  94%, 100% { opacity: 0; transform: scale(0.4); }
+}
+
+/* Wire to the next step: vertical on phones, horizontal from md */
+.flow-wire {
+  position: absolute;
+  left: calc(var(--tile) / 2 - 0.5px);
+  top: var(--tile);
+  bottom: 0;
+  width: 1px;
+  background-color: var(--line-strong);
+  animation: flow-wire var(--flow-loop) linear var(--delay) infinite both;
+}
+.flow-node:last-child .flow-wire {
+  display: none;
+}
+@keyframes flow-wire {
+  0%, 12% { background-color: var(--line-strong); }
+  16%, 88% { background-color: var(--accent-ink); }
+  96%, 100% { background-color: var(--line-strong); }
+}
+.flow-wire::after {
+  content: "";
+  position: absolute;
+  left: -2.5px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--signal);
+  box-shadow: 0 0 10px 2px var(--signal-soft);
+  animation: flow-pulse-y var(--flow-loop) linear var(--delay) infinite both;
+}
+@keyframes flow-pulse-y {
+  0%, 11% { top: 0; opacity: 0; }
+  12% { top: 0; opacity: 1; }
+  16% { top: calc(100% - 6px); opacity: 1; }
+  17%, 100% { top: calc(100% - 6px); opacity: 0; }
+}
+@keyframes flow-pulse-x {
+  0%, 11% { left: 0; opacity: 0; }
+  12% { left: 0; opacity: 1; }
+  16% { left: calc(100% - 6px); opacity: 1; }
+  17%, 100% { left: calc(100% - 6px); opacity: 0; }
+}
+@media (min-width: 768px) {
+  .flow-wire {
+    left: var(--tile);
+    right: 0;
+    top: calc(var(--tile) / 2 - 0.5px);
+    bottom: auto;
+    width: auto;
+    height: 1px;
+  }
+  .flow-wire::after {
+    left: 0;
+    top: -2.5px;
+    animation-name: flow-pulse-x;
+  }
+}
+
+/* ── Motion ───────────────────────────────────────────────────────── */
+
+/* Hero entrance, staggered with --d */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+.rise {
+  animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: calc(var(--d, 0) * 80ms);
+}
+
+/* Blocks settle into place as they scroll in. Pure CSS tied to the scroll
+   position: without support (or with reduced motion) everything is simply
+   visible, and nothing ever waits on JavaScript to appear. */
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(26px); }
+  to { opacity: 1; transform: none; }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 12%;
+    }
+  }
+}
+
+/* Project covers */
+.cover-shot {
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
 @media (hover: hover) {
-  .thumb-mono {
-    filter: grayscale(1) contrast(1.05);
-    transition: filter 0.4s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  .group:hover .cover-shot,
+  .group:focus-visible .cover-shot {
+    transform: translate(-6px, -6px);
   }
-  .group:hover .thumb-mono,
-  .group:focus-visible .thumb-mono {
-    filter: none;
-    transform: scale(1.03);
+  .group:hover .cover-zoom,
+  .group:focus-visible .cover-zoom {
+    transform: scale(1.04);
   }
+}
+.cover-zoom {
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 /* Code blocks */
@@ -160,6 +424,8 @@ pre {
 
 code {
   font-family: var(--font-mono);
+  /* Show "!==" and "=>" as typed, not as the font's coding ligatures. */
+  font-variant-ligatures: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -167,7 +433,31 @@ code {
     scroll-behavior: auto;
   }
   .status-running,
-  .progress-sweep {
+  .progress-sweep,
+  .cursor-block,
+  .rise {
     animation: none;
   }
+  .flow-tile {
+    animation: none;
+    border-color: var(--accent-ink);
+    background: var(--accent-soft);
+    color: var(--foreground);
+  }
+  .flow-check {
+    animation: none;
+  }
+  .flow-wire {
+    animation: none;
+    background-color: var(--accent-ink);
+  }
+  .flow-wire::after {
+    display: none;
+  }
+}
+
+/* Diagonal stripes: time that passes without anyone working */
+.hatch {
+  background: repeating-linear-gradient(135deg, var(--accent-ink) 0 1.5px, transparent 1.5px 6px);
+  opacity: 0.75;
 }

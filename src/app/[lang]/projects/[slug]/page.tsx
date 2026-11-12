@@ -25,7 +25,6 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     title,
     description,
     alternates: links,
-    robots: project.archived ? { index: false } : undefined,
     openGraph: { type: "article", url: links.canonical, title, description, images: ogImage(lang) },
     twitter: { title, description },
   };
@@ -36,9 +35,8 @@ export default async function ProjectPage({ params }: { params: Params }) {
   const project = projects.find((p) => p.slug === slug);
   if (!project) notFound();
 
-  // "Next project" cycles through the non-archived ones.
-  const active = projects.filter((p) => !p.archived);
-  const next = active[(active.findIndex((p) => p.slug === slug) + 1) % active.length];
+  // "Next project" cycles through the list.
+  const next = projects[(projects.indexOf(project) + 1) % projects.length];
 
   return (
     <ProjectDetail

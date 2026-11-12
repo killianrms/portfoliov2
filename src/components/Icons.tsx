@@ -64,3 +64,59 @@ export function MoonIcon({ size = 16, className }: IconProps) {
     </svg>
   );
 }
+
+// Steps of the AutoInit workflow diagram
+const stepIcon = { fill: "none", stroke: "currentColor", strokeWidth: 1.7, strokeLinecap: "square" as const, "aria-hidden": true };
+
+export function FormIcon({ size = 20, className }: IconProps) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" className={className} {...stepIcon}>
+      <path d="M5 3.5h14v17H5zM8.5 8.5h7M8.5 12h7M8.5 15.5h4" />
+    </svg>
+  );
+}
+
+export function GitBranchIcon({ size = 20, className }: IconProps) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" className={className} {...stepIcon}>
+      <circle cx="6.5" cy="5.5" r="2.5" />
+      <circle cx="6.5" cy="18.5" r="2.5" />
+      <circle cx="17.5" cy="8" r="2.5" />
+      <path d="M6.5 8v8M17.5 10.5c0 4-5 3.6-9 5.6" />
+    </svg>
+  );
+}
+
+export function PipelineIcon({ size = 20, className }: IconProps) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" className={className} {...stepIcon}>
+      <path d="M2.5 9.5h5v5h-5zM9.5 9.5h5v5h-5zM16.5 9.5h5v5h-5zM7.5 12h2M14.5 12h2" />
+    </svg>
+  );
+}
+
+export function ServerIcon({ size = 20, className }: IconProps) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" className={className} {...stepIcon}>
+      <path d="M4 4h16v7H4zM4 13h16v7H4zM7.5 7.5h.01M7.5 16.5h.01M11 7.5h5M11 16.5h5" />
+    </svg>
+  );
+}
+
+export function GlobeIcon({ size = 20, className }: IconProps) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" className={className} {...stepIcon}>
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M3.5 12h17M12 3.5c3 3 3 14 0 17M12 3.5c-3 3-3 14 0 17" />
+    </svg>
+  );
+}
+
+export function KeyIcon({ size = 20, className }: IconProps) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" className={className} {...stepIcon}>
+      <circle cx="8" cy="15.5" r="4" />
+      <path d="M11 12.5l8.5-8.5M15.5 8l2.5 2.5" />
+    </svg>
+  );
+}
